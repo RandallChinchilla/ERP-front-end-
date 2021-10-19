@@ -9,20 +9,13 @@ import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import { mainListItems, secondaryListItems } from "./listItems";
-import { blue } from "@mui/material/colors";
-// import { mainListItems, secondaryListItems } from "./listItems";
-// import Chart from "./Chart";
-// import Deposits from "./Deposits";
-// import Orders from "./Orders";
+import { blue, grey, indigo } from "@mui/material/colors";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { Button } from "@mui/material";
+import NestedList from "./listItems";
 
 function Copyright(props) {
   return (
@@ -88,7 +81,15 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-const mdTheme = createTheme();
+const mdTheme = createTheme({
+  palette: {
+    mode: "dark",
+    background: {
+        paper: indigo[900],
+           defaul: "#fff",
+         },
+  },
+});
 
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
@@ -127,11 +128,12 @@ function DashboardContent() {
             >
               Dashboard
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+            <Button
+            variant="outlined"
+            color="inherit"
+            endIcon={<ExitToAppIcon/>}>
+              Salir
+            </Button>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -148,9 +150,8 @@ function DashboardContent() {
             </IconButton>
           </Toolbar>
           <Divider />
-          <List>{mainListItems}</List>
+          <NestedList/>
           <Divider />
-          {/* <List>{secondaryListItems}</List> */}
         </Drawer>
         x`
         <Box
@@ -161,7 +162,9 @@ function DashboardContent() {
             height: "100vh",
             overflow: "auto",
           }}
-        ></Box>
+        >
+          <div>Hola</div>
+        </Box>
       </Box>
     </ThemeProvider>
   );

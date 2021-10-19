@@ -2,76 +2,239 @@ import * as React from "react";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ListSubheader from "@mui/material/ListSubheader";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import PeopleIcon from "@mui/icons-material/People";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import LayersIcon from "@mui/icons-material/Layers";
-import AssignmentIcon from "@mui/icons-material/Assignment";
-import HomeWorkIcon from "@mui/icons-material/HomeWork";
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import StorageIcon from '@material-ui/icons/Storage';
+import WorkIcon from '@material-ui/icons/Work';
+import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
+import GroupIcon from '@material-ui/icons/Group';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import BusinessIcon from '@mui/icons-material/Business';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import StackedLineChartIcon from '@mui/icons-material/StackedLineChart';
+import SettingsIcon from '@mui/icons-material/Settings';
+import LockIcon from '@mui/icons-material/Lock';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import Collapse from '@mui/material/Collapse';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 
-export const mainListItems = (
-  <div>
+  export default function NestedList() {
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+  
+    return (
+      <List>
     <ListItem button>
       <ListItemIcon>
-        <DashboardIcon />
+        <AttachMoneyIcon />
       </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+      <ListItemText primary="Cajas" />
     </ListItem>
-    <ListItem button>
+    
+    <ListItemButton onClick={handleClick}>
       <ListItemIcon>
-        <HomeWorkIcon />
-      </ListItemIcon>
-      <ListItemText primary="Activos fijos" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <HomeWorkIcon />
+        <AppRegistrationIcon />
       </ListItemIcon>
       <ListItemText primary="Contabilidad" />
-    </ListItem>
-    {/* <ListItem button>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Customers" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
-    </ListItem> */}
-  </div>
-);
+      {open ? <ExpandLess /> : <ExpandMore/>}
+    </ListItemButton>    
+    
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Asientos" />
+          </ListItemButton>
+        </List>
+      </Collapse>
 
-export const secondaryListItems = (
-  <div>
-    <ListSubheader inset>Saved reports</ListSubheader>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Centros Costo" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Catálogo Cuentas" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Notas EF" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Periodos" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Tipos Cuenta" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Cuentas Transitorias" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Reportes" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <AccountBalanceIcon />
       </ListItemIcon>
-      <ListItemText primary="Current month" />
+      <ListItemText primary="Bancos" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <WorkIcon />
       </ListItemIcon>
-      <ListItemText primary="Last quarter" />
+      <ListItemText primary="Cuentas por Cobrar" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <WorkOutlineIcon />
       </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
+      <ListItemText primary="Cuentas por Pagar" />
     </ListItem>
-  </div>
-);
+    <ListItem button>
+      <ListItemIcon>
+        <AccountBoxIcon />
+      </ListItemIcon>
+      <ListItemText primary="Clientes" />
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <StorageIcon />
+      </ListItemIcon>
+      <ListItemText primary="Inventarios" />
+    </ListItem>
+    
+    <ListItemButton onClick={handleClick}>
+      <ListItemIcon>
+        <BusinessIcon />
+      </ListItemIcon>
+      <ListItemText primary="Activos Fijos" />
+      {open ? <ExpandLess /> : <ExpandMore/>}
+    </ListItemButton>
+    
+    <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Maestro" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Grupo" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Sub Grupo" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Marca" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Forma Depreciación" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Estado" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText primary="Reportes" />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+    <ListItem button>
+      <ListItemIcon>
+        <GroupIcon />
+      </ListItemIcon>
+      <ListItemText primary="Recursos Humanos" />
+    </ListItem>
+    
+    <ListItem button>
+      <ListItemIcon>
+        <StackedLineChartIcon />
+      </ListItemIcon>
+      <ListItemText primary="Presupuesto" />
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <SettingsIcon />
+      </ListItemIcon>
+      <ListItemText primary="Parámetros" />
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <LockIcon />
+      </ListItemIcon>
+      <ListItemText primary="Seguridad" />
+    </ListItem>
+    
+  </List>
+    )
+  }
