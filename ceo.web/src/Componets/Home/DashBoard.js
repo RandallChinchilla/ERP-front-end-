@@ -13,9 +13,11 @@ import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { blue, grey, indigo } from "@mui/material/colors";
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Button } from "@mui/material";
 import NestedList from "./listItems";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Marca from "../ActivosFijos/Marca";
 
 function Copyright(props) {
   return (
@@ -83,11 +85,11 @@ const Drawer = styled(MuiDrawer, {
 
 const mdTheme = createTheme({
   palette: {
-    mode: "dark",
+    mode: "light",
     background: {
-        paper: indigo[900],
-           defaul: "#fff",
-         },
+      paper: indigo[900],
+      defaul: "#fff",
+    },
   },
 });
 
@@ -99,7 +101,12 @@ function DashboardContent() {
 
   return (
     <ThemeProvider theme={mdTheme}>
-      <Box sx={{ display: "flex" }}>
+      <Box
+        sx={{
+          display: "flex",
+          backgroundColor: (theme) => theme.palette.grey[50],
+        }}
+      >
         <CssBaseline />
         <AppBar position="absolute" open={open}>
           <Toolbar
@@ -129,9 +136,10 @@ function DashboardContent() {
               Dashboard
             </Typography>
             <Button
-            variant="outlined"
-            color="inherit"
-            endIcon={<ExitToAppIcon/>}>
+              variant="outlined"
+              color="inherit"
+              endIcon={<ExitToAppIcon />}
+            >
               Salir
             </Button>
           </Toolbar>
@@ -150,20 +158,26 @@ function DashboardContent() {
             </IconButton>
           </Toolbar>
           <Divider />
-          <NestedList/>
+          <NestedList />
           <Divider />
         </Drawer>
-        x`
         <Box
           component="main"
           sx={{
-            backgroundColor: (theme) => theme.palette.grey[100],
+            backgroundColor: (theme) => theme.palette.grey[50],
             flexGrow: 1,
-            height: "100vh",
+            height: "1200px",
             overflow: "auto",
+            color: "#000",
+            py: 10,
+            px: 4,
           }}
         >
-          <div>Hola</div>
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Marca}></Route>
+            </Switch>
+          </Router>
         </Box>
       </Box>
     </ThemeProvider>
