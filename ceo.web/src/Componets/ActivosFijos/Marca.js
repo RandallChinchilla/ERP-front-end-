@@ -16,6 +16,8 @@ import React, { useState } from "react";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { useForm } from "../../Hooks/useForm";
 import { useGetData } from "../../Hooks/useGetData";
+import { Delete, Edit } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core";
 
 // const Item = styled(Paper)(({ theme }) => ({
 //   ...theme.typography.body2,
@@ -24,9 +26,16 @@ import { useGetData } from "../../Hooks/useGetData";
 //   color: theme.palette.text.secondary,
 // }));
 
+const useStyles = makeStyles((theme) => ({
+  iconos: {
+    cursor: "pointer",
+  },
+}));
+
 const columns = [
   { id: "code", label: "Codigo", minWidth: 170 },
   { id: "name", label: "Descripcion", minWidth: 100 },
+  { id: "acciones", label: "Acciones", minWidth: 100 },
 ];
 
 const initialForm = {
@@ -42,6 +51,7 @@ const validationsForm = (form) => {
 };
 
 const Marca = () => {
+  const styles = useStyles();
   const [page, setPage] = React.useState(0);
 
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -53,6 +63,7 @@ const Marca = () => {
 
   if (Error) return null;
   if (!Data) return null;
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -61,6 +72,7 @@ const Marca = () => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
   return (
     <Grid
       container
@@ -127,6 +139,10 @@ const Marca = () => {
                 <TableRow key={row.codigoMarca}>
                   <TableCell>{row.codigoMarca}</TableCell>
                   <TableCell>{row.descripcion}</TableCell>
+                  <TableCell>
+                    <Edit className={styles.iconos} />
+                    <Delete className={styles.iconos} />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
