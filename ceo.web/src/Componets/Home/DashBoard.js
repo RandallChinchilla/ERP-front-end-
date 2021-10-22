@@ -84,13 +84,13 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const mdTheme = createTheme({
-  palette: {
-    mode: "light",
-    background: {
-      paper: indigo[900],
-      defaul: "#fff",
-    },
-  },
+  // palette: {
+  //   mode: "light",
+  //   background: {
+  //     paper: indigo[900],
+  //     defaul: "#fff",
+  //   },
+  // },
 });
 
 function DashboardContent() {
