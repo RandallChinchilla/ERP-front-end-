@@ -20,6 +20,7 @@ import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import { makeStyles } from "@material-ui/core";
+import { indigo, white} from "@mui/material/colors";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -27,212 +28,312 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function NestedList() {
-  const [open, setOpen] = React.useState(true);
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
-  const classes = useStyles();
+const[openContabilidad, setOpenContabilidad] = React.useState(false);
+const[openActivosFijos, setOpenActivosFijos] = React.useState(false);
+const[openCuentasPorPagar, setOpenCuentasPorPagar] = React.useState(false);
+
+const handleClickContabilidad = () => {
+  setOpenContabilidad(!openContabilidad);
+  setOpenActivosFijos(false);
+  setOpenCuentasPorPagar(false);
+};
+
+const handleClickActivosFijos = () => {
+  setOpenActivosFijos(!openActivosFijos);
+  setOpenContabilidad(false);
+  setOpenCuentasPorPagar(false);
+};
+
+const handleClickCuentasPorPagar = () => {
+  setOpenCuentasPorPagar(!openCuentasPorPagar);
+  setOpenContabilidad(false);
+  setOpenActivosFijos(false);
+};
+
+const classes = useStyles();
+  
   return (
-    <List>
-      <ListItem button>
+    <List
+    sx={{bgcolor: indigo[900],
+      height: 1500}}
+      
+      >
+      <ListItemButton>
         <ListItemIcon>
           <AttachMoneyIcon className={classes.iconos} />
         </ListItemIcon>
         <ListItemText className={classes.text}>Cajas</ListItemText>
-      </ListItem>
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <AppRegistrationIcon className={classes.iconos} />
-        </ListItemIcon>
-        <ListItemText className={classes.text}> Contabilidad</ListItemText>
-        {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      
+      <ListItemButton onClick={handleClickContabilidad}>
+      <ListItemIcon>
+        <AppRegistrationIcon className={classes.iconos} />
+      </ListItemIcon>
+      <ListItemText className={classes.text}>Contabilidad</ListItemText>
+      {openContabilidad ? (<ExpandLess style={{ color: 'white' }} />
+        ) : (
+          <ExpandMore style={{ color: 'white' }} />
+        )}
+    </ListItemButton>   
+    
+    <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Asientos" />
+            <ListItemText className={classes.text}>Asientos</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Centros Costo" />
+            <ListItemText className={classes.text}>Centros Costo</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      
+      <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Catálogo Cuentas" />
+          <ListItemButton  sx={{ pl: 4 }}>
+            <ListItemText className={classes.text}>Catálogo Cuentas</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      
+      <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Notas EF" />
+            <ListItemText className={classes.text} >Notas EF</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      
+      <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Periodos" />
+            <ListItemText className={classes.text} >Periodos</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      
+      <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Tipos Cuenta" />
+            <ListItemText className={classes.text}>Tipos Cuenta</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      
+      <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Cuentas Transitorias" />
+            <ListItemText className={classes.text}>Cuentas Transitorias</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      
+      <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Reportes" />
+            <ListItemText className={classes.text}>Reportes</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <ListItem button>
+
+      <ListItemButton>
         <ListItemIcon>
           <AccountBalanceIcon className={classes.iconos} />
         </ListItemIcon>
-        <ListItemText primary="Bancos" />
-      </ListItem>
-      <ListItem button>
+        <ListItemText className={classes.text}>Bancos</ListItemText>
+      </ListItemButton>
+      <ListItemButton>
         <ListItemIcon>
           <WorkIcon className={classes.iconos} />
         </ListItemIcon>
-        <ListItemText primary="Cuentas por Cobrar" />
-      </ListItem>
-      <ListItem button>
+        <ListItemText className={classes.text}>Cuentas por Cobrar</ListItemText>
+      </ListItemButton>
+      
+      <ListItemButton onClick={handleClickCuentasPorPagar}>
         <ListItemIcon>
           <WorkOutlineIcon className={classes.iconos} />
         </ListItemIcon>
-        <ListItemText primary="Cuentas por Pagar" />
-      </ListItem>
-      <ListItem button>
+        <ListItemText className={classes.text}>Cuentas por Pagar</ListItemText>
+        {openCuentasPorPagar ? (<ExpandLess style={{ color: 'white' }} />
+        ) : (
+          <ExpandMore style={{ color: 'white' }} />
+        )}
+      </ListItemButton>
+
+      <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText className={classes.text}>Maestro</ListItemText>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText className={classes.text}>Orden de Compra</ListItemText>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText className={classes.text}>Proveedor</ListItemText>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText className={classes.text}>Tipo Proveedor</ListItemText>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText className={classes.text}>Tipo Servicio</ListItemText>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText className={classes.text}>Tipo Contrato</ListItemText>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText className={classes.text}>Reportes</ListItemText>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      
+      <ListItemButton>
         <ListItemIcon>
           <AccountBoxIcon className={classes.iconos} />
         </ListItemIcon>
-        <ListItemText primary="Clientes" />
-      </ListItem>
-      <ListItem button>
+        <ListItemText className={classes.text}>Clientes</ListItemText>
+      </ListItemButton>
+      
+      <ListItemButton>
         <ListItemIcon>
           <StorageIcon className={classes.iconos} />
         </ListItemIcon>
-        <ListItemText primary="Inventarios" />
-      </ListItem>
-
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <BusinessIcon className={classes.iconos} />
-        </ListItemIcon>
-        <ListItemText primary="Activos Fijos" />
-        {open ? <ExpandLess /> : <ExpandMore />}
+        <ListItemText className={classes.text}>Inventarios</ListItemText>
       </ListItemButton>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      <ListItemButton onClick={handleClickActivosFijos}>
+      <ListItemIcon>
+        <BusinessIcon className={classes.iconos}/>
+      </ListItemIcon>
+      <ListItemText className={classes.text}>Activos Fijos</ListItemText>
+      {openActivosFijos ? (<ExpandLess style={{ color: 'white' }} />
+        ) : (
+          <ExpandMore style={{ color: 'white' }} />
+        )}
+    </ListItemButton>
+    
+    <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Maestro" />
+            <ListItemText className={classes.text}>Maestro</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Grupo" />
+            <ListItemText className={classes.text}>Grupo</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Sub Grupo" />
+            <ListItemText className={classes.text}>Sub Grupo"</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Marca" />
+            <ListItemText className={classes.text}>Marca</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Forma Depreciación" />
+            <ListItemText className={classes.text}>Forma Depreciación</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Estado" />
+            <ListItemText className={classes.text}>Estado</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="Reportes" />
+            <ListItemText className={classes.text}>Reportes</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      <ListItem button>
+      <ListItemButton>
         <ListItemIcon>
           <GroupIcon className={classes.iconos} />
         </ListItemIcon>
-        <ListItemText primary="Recursos Humanos" />
-      </ListItem>
+        <ListItemText className={classes.text}>Recursos Humanos</ListItemText>
+      </ListItemButton>
 
-      <ListItem button>
+      <ListItemButton>
         <ListItemIcon>
           <StackedLineChartIcon className={classes.iconos} />
         </ListItemIcon>
-        <ListItemText primary="Presupuesto" />
-      </ListItem>
-      <ListItem button>
+        <ListItemText className={classes.text}>Presupuesto</ListItemText>
+      </ListItemButton>
+      <ListItemButton>
         <ListItemIcon>
           <SettingsIcon className={classes.iconos} />
         </ListItemIcon>
-        <ListItemText primary="Parámetros" />
-      </ListItem>
-      <ListItem button>
+        <ListItemText className={classes.text}>Parámetros</ListItemText>
+      </ListItemButton>
+      <ListItemButton>
         <ListItemIcon>
           <LockIcon className={classes.iconos} />
         </ListItemIcon>
-        <ListItemText primary="Seguridad" />
-      </ListItem>
+        <ListItemText className={classes.text}>Seguridad</ListItemText>
+      </ListItemButton>
     </List>
   );
 }
