@@ -18,6 +18,13 @@ import { Button } from "@mui/material";
 import NestedList from "./listItems";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Marca from "../ActivosFijos/Marca";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles(() => ({
+  iconos: { color: "white" },
+  text: { color: "white" },
+}));
+
 
 function Copyright(props) {
   return (
@@ -37,7 +44,7 @@ function Copyright(props) {
   );
 }
 
-const drawerWidth = 240;
+const drawerWidth = 270;
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -64,6 +71,7 @@ const Drawer = styled(MuiDrawer, {
     position: "relative",
     whiteSpace: "nowrap",
     width: drawerWidth,
+    backgroundColor: indigo[900],
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -93,7 +101,9 @@ const mdTheme = createTheme({
   // },
 });
 
+
 function DashboardContent() {
+  const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -133,7 +143,7 @@ function DashboardContent() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              CEO
             </Typography>
             <Button
               variant="outlined"
@@ -151,10 +161,11 @@ function DashboardContent() {
               alignItems: "center",
               justifyContent: "flex-end",
               px: [1],
+              backgroundColor: indigo[900]
             }}
           >
             <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
+              <ChevronLeftIcon className={classes.iconos}/>
             </IconButton>
           </Toolbar>
           <Divider />
