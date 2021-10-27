@@ -11,6 +11,7 @@ import {
   TablePagination,
   TableRow,
   Button,
+  Divider,
 } from "@mui/material";
 import React, { useState } from "react";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
@@ -18,8 +19,10 @@ import { useForm } from "../../Hooks/useForm";
 import { useGetData } from "../../Hooks/useGetData";
 import { Delete, Edit } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core";
+
 import { postAction } from "../../Helpers/postHelper";
 import axios from "axios";
+import { red, blue } from "@mui/material/colors";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
@@ -27,12 +30,15 @@ const useStyles = makeStyles((theme) => ({
   iconos: {
     cursor: "pointer",
   },
+  barra: {
+    backgroundColor: blue[100],
+  },
 }));
 
 const columns = [
-  { id: "code", label: "Codigo", minWidth: 170 },
-  { id: "name", label: "Descripcion", minWidth: 100 },
   { id: "acciones", label: "Acciones", minWidth: 100 },
+  { id: "code", label: "Código", minWidth: 170 },
+  { id: "name", label: "Descripción", minWidth: 100 },
 ];
 
 const initialForm = {
@@ -96,7 +102,7 @@ const Marca = () => {
         variant="overline"
         style={{ marginTop: 10, alignSelf: "center", fontSize: 16 }}
       >
-        Agregar Marca
+        Marca Activo
       </Typography>
 
       <Grid mb={4} container alignItems="center">
@@ -137,6 +143,7 @@ const Marca = () => {
               <TableRow>
                 {columns.map((column) => (
                   <TableCell
+                    className={styles.barra}
                     key={column.id}
                     align={column.align}
                     style={{ top: 57, minWidth: column.minWidth }}
@@ -149,12 +156,13 @@ const Marca = () => {
             <TableBody>
               {Data.map((row) => (
                 <TableRow key={row.codigoMarca}>
+                  <TableCell>
+                    <Edit style={{ color: blue[600], width: 40 }} />
+
+                    <Delete style={{ color: red[700] }} />
+                  </TableCell>
                   <TableCell>{row.codigoMarca}</TableCell>
                   <TableCell>{row.descripcion}</TableCell>
-                  <TableCell>
-                    <Edit className={styles.iconos} />
-                    <Delete className={styles.iconos} />
-                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
