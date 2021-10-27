@@ -19,12 +19,12 @@ import NestedList from "./listItems";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Marca from "../ActivosFijos/Marca";
 import { makeStyles } from "@material-ui/core";
+import { CliMaestro } from "../Clientes/CliMaestro";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
   text: { color: "white" },
 }));
-
 
 function Copyright(props) {
   return (
@@ -101,7 +101,6 @@ const mdTheme = createTheme({
   // },
 });
 
-
 function DashboardContent() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
@@ -161,11 +160,11 @@ function DashboardContent() {
               alignItems: "center",
               justifyContent: "flex-end",
               px: [1],
-              backgroundColor: indigo[900]
+              backgroundColor: indigo[900],
             }}
           >
             <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon className={classes.iconos}/>
+              <ChevronLeftIcon className={classes.iconos} />
             </IconButton>
           </Toolbar>
           <Divider />
@@ -186,7 +185,8 @@ function DashboardContent() {
         >
           <Router>
             <Switch>
-              <Route exact path="/" component={Marca}></Route>
+              {/* <Route exact path="/" component={Marca}></Route> */}
+              <Route exact path="/" component={CliMaestro}></Route>
             </Switch>
           </Router>
         </Box>

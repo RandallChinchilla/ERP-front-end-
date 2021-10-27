@@ -20,7 +20,8 @@ import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import { makeStyles } from "@material-ui/core";
-import { indigo, white} from "@mui/material/colors";
+import { indigo, white } from "@mui/material/colors";
+import { Link, NavLink } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -28,238 +29,236 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function NestedList() {
+  const [openCajas, setOpenCajas] = React.useState(false);
+  const [openContabilidad, setOpenContabilidad] = React.useState(false);
+  const [openBancos, setOpenBancos] = React.useState(false);
+  const [openCuentasPorCobrar, setOpenCuentasPorCobrar] = React.useState(false);
+  const [openCuentasPorPagar, setOpenCuentasPorPagar] = React.useState(false);
+  const [openClientes, setOpenClientes] = React.useState(false);
+  const [openInventarios, setOpenInventarios] = React.useState(false);
+  const [openActivosFijos, setOpenActivosFijos] = React.useState(false);
+  const [openRecursosHumanos, setOpenRecursosHumanos] = React.useState(false);
+  const [openPresupuesto, setOpenPresupuesto] = React.useState(false);
+  const [openParametros, setOpenParametros] = React.useState(false);
+  const [openSeguridad, setOpenSeguridad] = React.useState(false);
 
-const[openCajas, setOpenCajas] = React.useState(false);
-const[openContabilidad, setOpenContabilidad] = React.useState(false);
-const[openBancos, setOpenBancos] = React.useState(false);
-const[openCuentasPorCobrar, setOpenCuentasPorCobrar] = React.useState(false);
-const[openCuentasPorPagar, setOpenCuentasPorPagar] = React.useState(false);
-const[openClientes, setOpenClientes] = React.useState(false);
-const[openInventarios, setOpenInventarios] = React.useState(false);
-const[openActivosFijos, setOpenActivosFijos] = React.useState(false);
-const[openRecursosHumanos, setOpenRecursosHumanos] = React.useState(false);
-const[openPresupuesto, setOpenPresupuesto] = React.useState(false);
-const[openParametros, setOpenParametros] = React.useState(false);
-const[openSeguridad, setOpenSeguridad] = React.useState(false);
+  const handleClickCajas = () => {
+    setOpenCajas(!openCajas);
+    setOpenContabilidad(false);
+    setOpenBancos(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenCuentasPorPagar(false);
+    setOpenClientes(false);
+    setOpenInventarios(false);
+    setOpenActivosFijos(false);
+    setOpenRecursosHumanos(false);
+    setOpenPresupuesto(false);
+    setOpenParametros(false);
+    setOpenSeguridad(false);
+  };
 
-const handleClickCajas = () => {
-  setOpenCajas(!openCajas);
-  setOpenContabilidad(false);
-  setOpenBancos(false);
-  setOpenCuentasPorCobrar(false);
-  setOpenCuentasPorPagar(false);
-  setOpenClientes(false);
-  setOpenInventarios(false);
-  setOpenActivosFijos(false);
-  setOpenRecursosHumanos(false);
-  setOpenPresupuesto(false);
-  setOpenParametros(false);
-  setOpenSeguridad(false);
-};
+  const handleClickContabilidad = () => {
+    setOpenContabilidad(!openContabilidad);
+    setOpenCajas(false);
+    setOpenBancos(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenCuentasPorPagar(false);
+    setOpenClientes(false);
+    setOpenInventarios(false);
+    setOpenActivosFijos(false);
+    setOpenRecursosHumanos(false);
+    setOpenPresupuesto(false);
+    setOpenParametros(false);
+    setOpenSeguridad(false);
+  };
 
-const handleClickContabilidad = () => {
-  setOpenContabilidad(!openContabilidad);
-  setOpenCajas(false);
-  setOpenBancos(false);
-  setOpenCuentasPorCobrar(false);
-  setOpenCuentasPorPagar(false);
-  setOpenClientes(false);
-  setOpenInventarios(false);
-  setOpenActivosFijos(false);
-  setOpenRecursosHumanos(false);
-  setOpenPresupuesto(false);
-  setOpenParametros(false);
-  setOpenSeguridad(false);
-};
+  const handleClickBancos = () => {
+    setOpenBancos(!openBancos);
+    setOpenCajas(false);
+    setOpenContabilidad(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenCuentasPorPagar(false);
+    setOpenClientes(false);
+    setOpenInventarios(false);
+    setOpenActivosFijos(false);
+    setOpenRecursosHumanos(false);
+    setOpenPresupuesto(false);
+    setOpenParametros(false);
+    setOpenSeguridad(false);
+  };
 
-const handleClickBancos = () => {
-  setOpenBancos(!openBancos);
-  setOpenCajas(false);
-  setOpenContabilidad(false);
-  setOpenCuentasPorCobrar(false);
-  setOpenCuentasPorPagar(false);
-  setOpenClientes(false);
-  setOpenInventarios(false);
-  setOpenActivosFijos(false);
-  setOpenRecursosHumanos(false);
-  setOpenPresupuesto(false);
-  setOpenParametros(false);
-  setOpenSeguridad(false);
-};
+  const handleClickCuentasPorCobrar = () => {
+    setOpenCuentasPorCobrar(!openCuentasPorCobrar);
+    setOpenCajas(false);
+    setOpenContabilidad(false);
+    setOpenBancos(false);
+    setOpenCuentasPorPagar(false);
+    setOpenClientes(false);
+    setOpenInventarios(false);
+    setOpenActivosFijos(false);
+    setOpenRecursosHumanos(false);
+    setOpenPresupuesto(false);
+    setOpenParametros(false);
+    setOpenSeguridad(false);
+  };
 
-const handleClickCuentasPorCobrar = () => {
-  setOpenCuentasPorCobrar(!openCuentasPorCobrar);
-  setOpenCajas(false);
-  setOpenContabilidad(false);
-  setOpenBancos(false);
-  setOpenCuentasPorPagar(false);
-  setOpenClientes(false);
-  setOpenInventarios(false);
-  setOpenActivosFijos(false);
-  setOpenRecursosHumanos(false);
-  setOpenPresupuesto(false);
-  setOpenParametros(false);
-  setOpenSeguridad(false);
-  
-};
+  const handleClickCuentasPorPagar = () => {
+    setOpenCuentasPorPagar(!openCuentasPorPagar);
+    setOpenCajas(false);
+    setOpenContabilidad(false);
+    setOpenBancos(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenClientes(false);
+    setOpenInventarios(false);
+    setOpenActivosFijos(false);
+    setOpenRecursosHumanos(false);
+    setOpenPresupuesto(false);
+    setOpenParametros(false);
+    setOpenSeguridad(false);
+  };
 
-const handleClickCuentasPorPagar = () => {
-  setOpenCuentasPorPagar(!openCuentasPorPagar);
-  setOpenCajas(false);
-  setOpenContabilidad(false);
-  setOpenBancos(false);
-  setOpenCuentasPorCobrar(false);
-  setOpenClientes(false);
-  setOpenInventarios(false);
-  setOpenActivosFijos(false);
-  setOpenRecursosHumanos(false);
-  setOpenPresupuesto(false);
-  setOpenParametros(false);
-  setOpenSeguridad(false);
-};
+  const handleClickClientes = () => {
+    setOpenClientes(!openClientes);
+    setOpenCajas(false);
+    setOpenContabilidad(false);
+    setOpenBancos(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenCuentasPorPagar(false);
+    setOpenInventarios(false);
+    setOpenActivosFijos(false);
+    setOpenRecursosHumanos(false);
+    setOpenPresupuesto(false);
+    setOpenParametros(false);
+    setOpenSeguridad(false);
+  };
 
-const handleClickClientes = () => {
-  setOpenClientes(!openClientes);
-  setOpenCajas(false);
-  setOpenContabilidad(false);
-  setOpenBancos(false);
-  setOpenCuentasPorCobrar(false);
-  setOpenCuentasPorPagar(false);
-  setOpenInventarios(false);
-  setOpenActivosFijos(false);
-  setOpenRecursosHumanos(false);
-  setOpenPresupuesto(false);
-  setOpenParametros(false);
-  setOpenSeguridad(false);
-};
+  const handleClickInventarios = () => {
+    setOpenInventarios(!openInventarios);
+    setOpenCajas(false);
+    setOpenContabilidad(false);
+    setOpenBancos(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenCuentasPorPagar(false);
+    setOpenClientes(false);
+    setOpenActivosFijos(false);
+    setOpenRecursosHumanos(false);
+    setOpenPresupuesto(false);
+    setOpenParametros(false);
+    setOpenSeguridad(false);
+  };
 
-const handleClickInventarios = () => {
-  setOpenInventarios(!openInventarios);
-  setOpenCajas(false);
-  setOpenContabilidad(false);
-  setOpenBancos(false);
-  setOpenCuentasPorCobrar(false);
-  setOpenCuentasPorPagar(false);
-  setOpenClientes(false);
-  setOpenActivosFijos(false);
-  setOpenRecursosHumanos(false);
-  setOpenPresupuesto(false);
-  setOpenParametros(false);
-  setOpenSeguridad(false);
-};
+  const handleClickActivosFijos = () => {
+    setOpenActivosFijos(!openActivosFijos);
+    setOpenCajas(false);
+    setOpenContabilidad(false);
+    setOpenBancos(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenCuentasPorPagar(false);
+    setOpenClientes(false);
+    setOpenInventarios(false);
+    setOpenRecursosHumanos(false);
+    setOpenPresupuesto(false);
+    setOpenParametros(false);
+    setOpenSeguridad(false);
+  };
 
-const handleClickActivosFijos = () => {
-  setOpenActivosFijos(!openActivosFijos);
-  setOpenCajas(false);
-  setOpenContabilidad(false);
-  setOpenBancos(false);
-  setOpenCuentasPorCobrar(false);
-  setOpenCuentasPorPagar(false);
-  setOpenClientes(false);
-  setOpenInventarios(false);
-  setOpenRecursosHumanos(false);
-  setOpenPresupuesto(false);
-  setOpenParametros(false);
-  setOpenSeguridad(false);
-};
+  const handleClickRecursosHumanos = () => {
+    setOpenRecursosHumanos(!openRecursosHumanos);
+    setOpenCajas(false);
+    setOpenContabilidad(false);
+    setOpenBancos(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenCuentasPorPagar(false);
+    setOpenClientes(false);
+    setOpenInventarios(false);
+    setOpenActivosFijos(false);
+    setOpenPresupuesto(false);
+    setOpenParametros(false);
+    setOpenSeguridad(false);
+  };
 
-const handleClickRecursosHumanos = () => {
-  setOpenRecursosHumanos(!openRecursosHumanos);
-  setOpenCajas(false);
-  setOpenContabilidad(false);
-  setOpenBancos(false);
-  setOpenCuentasPorCobrar(false);
-  setOpenCuentasPorPagar(false);
-  setOpenClientes(false);
-  setOpenInventarios(false);
-  setOpenActivosFijos(false);
-  setOpenPresupuesto(false);
-  setOpenParametros(false);
-  setOpenSeguridad(false);
-};
+  const handleClickPresupuesto = () => {
+    setOpenPresupuesto(!openPresupuesto);
+    setOpenCajas(false);
+    setOpenContabilidad(false);
+    setOpenBancos(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenCuentasPorPagar(false);
+    setOpenClientes(false);
+    setOpenInventarios(false);
+    setOpenActivosFijos(false);
+    setOpenRecursosHumanos(false);
+    setOpenParametros(false);
+    setOpenSeguridad(false);
+  };
 
-const handleClickPresupuesto = () => {
-  setOpenPresupuesto(!openPresupuesto);
-  setOpenCajas(false);
-  setOpenContabilidad(false);
-  setOpenBancos(false);
-  setOpenCuentasPorCobrar(false);
-  setOpenCuentasPorPagar(false);
-  setOpenClientes(false);
-  setOpenInventarios(false);
-  setOpenActivosFijos(false);
-  setOpenRecursosHumanos(false);
-  setOpenParametros(false);
-  setOpenSeguridad(false);
-};
+  const handleClickParametros = () => {
+    setOpenParametros(!openParametros);
+    setOpenCajas(false);
+    setOpenContabilidad(false);
+    setOpenBancos(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenCuentasPorPagar(false);
+    setOpenClientes(false);
+    setOpenInventarios(false);
+    setOpenActivosFijos(false);
+    setOpenRecursosHumanos(false);
+    setOpenPresupuesto(false);
+    setOpenSeguridad(false);
+  };
 
-const handleClickParametros = () => {
-  setOpenParametros(!openParametros);
-  setOpenCajas(false);
-  setOpenContabilidad(false);
-  setOpenBancos(false);
-  setOpenCuentasPorCobrar(false);
-  setOpenCuentasPorPagar(false);
-  setOpenClientes(false);
-  setOpenInventarios(false);
-  setOpenActivosFijos(false);
-  setOpenRecursosHumanos(false);
-  setOpenPresupuesto(false);
-  setOpenSeguridad(false);
-};
+  const handleClickSeguridad = () => {
+    setOpenSeguridad(!openSeguridad);
+    setOpenCajas(false);
+    setOpenContabilidad(false);
+    setOpenBancos(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenCuentasPorPagar(false);
+    setOpenClientes(false);
+    setOpenInventarios(false);
+    setOpenActivosFijos(false);
+    setOpenRecursosHumanos(false);
+    setOpenPresupuesto(false);
+    setOpenParametros(false);
+  };
 
-const handleClickSeguridad = () => {
-  setOpenSeguridad(!openSeguridad);
-  setOpenCajas(false);
-  setOpenContabilidad(false);
-  setOpenBancos(false);
-  setOpenCuentasPorCobrar(false);
-  setOpenCuentasPorPagar(false);
-  setOpenClientes(false);
-  setOpenInventarios(false);
-  setOpenActivosFijos(false);
-  setOpenRecursosHumanos(false);
-  setOpenPresupuesto(false);
-  setOpenParametros(false);
-};
+  const classes = useStyles();
 
-const classes = useStyles();
-  
   return (
-    <List
-    sx={{bgcolor: indigo[900]}} 
-      >
+    <List sx={{ bgcolor: indigo[900] }}>
       <ListItemButton onClick={handleClickCajas}>
         <ListItemIcon>
           <AttachMoneyIcon className={classes.iconos} />
         </ListItemIcon>
         <ListItemText className={classes.text}>Cajas</ListItemText>
-      {openCajas ? (<ExpandLess style={{ color: 'white' }} />
+        {openCajas ? (
+          <ExpandLess style={{ color: "white" }} />
         ) : (
-          <ExpandMore style={{ color: 'white' }} />
+          <ExpandMore style={{ color: "white" }} />
         )}
-    </ListItemButton>   
-    
-    <Collapse in={openCajas} timeout="auto" unmountOnExit>
+      </ListItemButton>
+
+      <Collapse in={openCajas} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemText className={classes.text}>Reportes</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
-      
+
       <ListItemButton onClick={handleClickContabilidad}>
-      <ListItemIcon>
-        <AppRegistrationIcon className={classes.iconos} />
-      </ListItemIcon>
-      <ListItemText className={classes.text}>Contabilidad</ListItemText>
-      {openContabilidad ? (<ExpandLess style={{ color: 'white' }} />
+        <ListItemIcon>
+          <AppRegistrationIcon className={classes.iconos} />
+        </ListItemIcon>
+        <ListItemText className={classes.text}>Contabilidad</ListItemText>
+        {openContabilidad ? (
+          <ExpandLess style={{ color: "white" }} />
         ) : (
-          <ExpandMore style={{ color: 'white' }} />
+          <ExpandMore style={{ color: "white" }} />
         )}
-    </ListItemButton>   
-    
-    <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
+      </ListItemButton>
+
+      <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemText className={classes.text}>Asientos</ListItemText>
@@ -275,34 +274,32 @@ const classes = useStyles();
         </List>
       </Collapse>
 
-      
-      <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton  sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Catálogo Cuentas</ListItemText>
-          </ListItemButton>
-        </List>
-      </Collapse>
-
-      
       <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text} >Notas EF</ListItemText>
+            <ListItemText className={classes.text}>
+              Catálogo Cuentas
+            </ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      
       <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text} >Periodos</ListItemText>
+            <ListItemText className={classes.text}>Notas EF</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      
+      <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText className={classes.text}>Periodos</ListItemText>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
       <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
@@ -311,16 +308,16 @@ const classes = useStyles();
         </List>
       </Collapse>
 
-      
       <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Cuentas Transitorias</ListItemText>
+            <ListItemText className={classes.text}>
+              Cuentas Transitorias
+            </ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
 
-      
       <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
@@ -334,10 +331,11 @@ const classes = useStyles();
           <AccountBalanceIcon className={classes.iconos} />
         </ListItemIcon>
         <ListItemText className={classes.text}>Bancos</ListItemText>
-        {openBancos ? (<ExpandLess style={{color: 'white' }}/>
+        {openBancos ? (
+          <ExpandLess style={{ color: "white" }} />
         ) : (
-        <ExpandMore style={{ color: 'white' }}/>
-          )}
+          <ExpandMore style={{ color: "white" }} />
+        )}
       </ListItemButton>
 
       <Collapse in={openBancos} timeout="auto" unmountOnExit>
@@ -347,15 +345,16 @@ const classes = useStyles();
           </ListItemButton>
         </List>
       </Collapse>
-      
+
       <ListItemButton onClick={handleClickCuentasPorCobrar}>
         <ListItemIcon>
           <WorkIcon className={classes.iconos} />
         </ListItemIcon>
         <ListItemText className={classes.text}>Cuentas por Cobrar</ListItemText>
-        {openCuentasPorCobrar ? (<ExpandLess style={{ color: 'white' }} />
+        {openCuentasPorCobrar ? (
+          <ExpandLess style={{ color: "white" }} />
         ) : (
-          <ExpandMore style={{ color: 'white' }} />
+          <ExpandMore style={{ color: "white" }} />
         )}
       </ListItemButton>
 
@@ -382,15 +381,16 @@ const classes = useStyles();
           </ListItemButton>
         </List>
       </Collapse>
-      
+
       <ListItemButton onClick={handleClickCuentasPorPagar}>
         <ListItemIcon>
           <WorkOutlineIcon className={classes.iconos} />
         </ListItemIcon>
         <ListItemText className={classes.text}>Cuentas por Pagar</ListItemText>
-        {openCuentasPorPagar ? (<ExpandLess style={{ color: 'white' }} />
+        {openCuentasPorPagar ? (
+          <ExpandLess style={{ color: "white" }} />
         ) : (
-          <ExpandMore style={{ color: 'white' }} />
+          <ExpandMore style={{ color: "white" }} />
         )}
       </ListItemButton>
 
@@ -405,7 +405,9 @@ const classes = useStyles();
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Orden de Compra</ListItemText>
+            <ListItemText className={classes.text}>
+              Orden de Compra
+            </ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
@@ -449,35 +451,39 @@ const classes = useStyles();
           </ListItemButton>
         </List>
       </Collapse>
-    
+
       <ListItemButton onClick={handleClickClientes}>
         <ListItemIcon>
           <AccountBoxIcon className={classes.iconos} />
         </ListItemIcon>
         <ListItemText className={classes.text}>Clientes</ListItemText>
-        {openClientes ? (<ExpandLess style={{color: 'white' }}/>
+        {openClientes ? (
+          <ExpandLess style={{ color: "white" }} />
         ) : (
-        <ExpandMore style={{ color: 'white' }}/>
-          )}
+          <ExpandMore style={{ color: "white" }} />
+        )}
       </ListItemButton>
 
       <Collapse in={openClientes} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Reportes</ListItemText>
+            <NavLink tag={Link} to="../CliMaestro">
+              <ListItemText className={classes.text}>Reportes</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
 
       <ListItemButton onClick={handleClickInventarios}>
         <ListItemIcon>
-           <StorageIcon className={classes.iconos} />
+          <StorageIcon className={classes.iconos} />
         </ListItemIcon>
         <ListItemText className={classes.text}>Inventarios</ListItemText>
-        {openInventarios ? (<ExpandLess style={{color: 'white' }}/>
+        {openInventarios ? (
+          <ExpandLess style={{ color: "white" }} />
         ) : (
-        <ExpandMore style={{ color: 'white' }}/>
-          )}
+          <ExpandMore style={{ color: "white" }} />
+        )}
       </ListItemButton>
 
       <Collapse in={openInventarios} timeout="auto" unmountOnExit>
@@ -489,17 +495,18 @@ const classes = useStyles();
       </Collapse>
 
       <ListItemButton onClick={handleClickActivosFijos}>
-      <ListItemIcon>
-        <BusinessIcon className={classes.iconos}/>
-      </ListItemIcon>
-      <ListItemText className={classes.text}>Activos Fijos</ListItemText>
-      {openActivosFijos ? (<ExpandLess style={{ color: 'white' }} />
+        <ListItemIcon>
+          <BusinessIcon className={classes.iconos} />
+        </ListItemIcon>
+        <ListItemText className={classes.text}>Activos Fijos</ListItemText>
+        {openActivosFijos ? (
+          <ExpandLess style={{ color: "white" }} />
         ) : (
-          <ExpandMore style={{ color: 'white' }} />
+          <ExpandMore style={{ color: "white" }} />
         )}
-    </ListItemButton>
-    
-    <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
+      </ListItemButton>
+
+      <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemText className={classes.text}>Maestro</ListItemText>
@@ -534,7 +541,9 @@ const classes = useStyles();
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Forma Depreciación</ListItemText>
+            <ListItemText className={classes.text}>
+              Forma Depreciación
+            </ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
@@ -560,27 +569,32 @@ const classes = useStyles();
           <GroupIcon className={classes.iconos} />
         </ListItemIcon>
         <ListItemText className={classes.text}>Recursos Humanos</ListItemText>
-        {openRecursosHumanos ? (<ExpandLess style={{color: 'white' }}/>
+        {openRecursosHumanos ? (
+          <ExpandLess style={{ color: "white" }} />
         ) : (
-        <ExpandMore style={{ color: 'white' }}/>
-          )}
+          <ExpandMore style={{ color: "white" }} />
+        )}
       </ListItemButton>
 
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Aplicar Planilla</ListItemText>
+            <ListItemText className={classes.text}>
+              Aplicar Planilla
+            </ListItemText>
           </ListItemButton>
         </List>
-      </Collapse> 
+      </Collapse>
 
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Configurar Planilla</ListItemText>
+            <ListItemText className={classes.text}>
+              Configurar Planilla
+            </ListItemText>
           </ListItemButton>
         </List>
-      </Collapse> 
+      </Collapse>
 
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
@@ -588,15 +602,17 @@ const classes = useStyles();
             <ListItemText className={classes.text}>Funcionario</ListItemText>
           </ListItemButton>
         </List>
-      </Collapse> 
+      </Collapse>
 
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Acción Personal</ListItemText>
+            <ListItemText className={classes.text}>
+              Acción Personal
+            </ListItemText>
           </ListItemButton>
         </List>
-      </Collapse> 
+      </Collapse>
 
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
@@ -604,7 +620,7 @@ const classes = useStyles();
             <ListItemText className={classes.text}>Tipo Planilla</ListItemText>
           </ListItemButton>
         </List>
-      </Collapse> 
+      </Collapse>
 
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
@@ -612,7 +628,7 @@ const classes = useStyles();
             <ListItemText className={classes.text}>Forma Pago</ListItemText>
           </ListItemButton>
         </List>
-      </Collapse> 
+      </Collapse>
 
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
@@ -620,19 +636,20 @@ const classes = useStyles();
             <ListItemText className={classes.text}>Tipo Deducción</ListItemText>
           </ListItemButton>
         </List>
-      </Collapse> 
+      </Collapse>
 
       <ListItemButton onClick={handleClickPresupuesto}>
         <ListItemIcon>
           <StackedLineChartIcon className={classes.iconos} />
         </ListItemIcon>
         <ListItemText className={classes.text}>Presupuesto</ListItemText>
-        {openPresupuesto ? (<ExpandLess style={{color: 'white' }}/>
+        {openPresupuesto ? (
+          <ExpandLess style={{ color: "white" }} />
         ) : (
-        <ExpandMore style={{ color: 'white' }}/>
-          )}
+          <ExpandMore style={{ color: "white" }} />
+        )}
       </ListItemButton>
-      
+
       <Collapse in={openPresupuesto} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
@@ -640,18 +657,19 @@ const classes = useStyles();
           </ListItemButton>
         </List>
       </Collapse>
-      
+
       <ListItemButton onClick={handleClickParametros}>
         <ListItemIcon>
-           <SettingsIcon className={classes.iconos} />
+          <SettingsIcon className={classes.iconos} />
         </ListItemIcon>
         <ListItemText className={classes.text}>Parámetros</ListItemText>
-            {openParametros ? (<ExpandLess style={{color: 'white' }}/>
-             ) : (
-             <ExpandMore style={{ color: 'white' }}/>
-              )}
-        </ListItemButton>
-        
+        {openParametros ? (
+          <ExpandLess style={{ color: "white" }} />
+        ) : (
+          <ExpandMore style={{ color: "white" }} />
+        )}
+      </ListItemButton>
+
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
@@ -660,16 +678,16 @@ const classes = useStyles();
         </List>
       </Collapse>
 
-
       <ListItemButton onClick={handleClickSeguridad}>
         <ListItemIcon>
-           <LockIcon className={classes.iconos} />
+          <LockIcon className={classes.iconos} />
         </ListItemIcon>
         <ListItemText className={classes.text}>Seguridad</ListItemText>
-        {openSeguridad ? (<ExpandLess style={{color: 'white' }}/>
+        {openSeguridad ? (
+          <ExpandLess style={{ color: "white" }} />
         ) : (
-        <ExpandMore style={{ color: 'white' }}/>
-          )}
+          <ExpandMore style={{ color: "white" }} />
+        )}
       </ListItemButton>
 
       <Collapse in={openSeguridad} timeout="auto" unmountOnExit>
@@ -679,7 +697,6 @@ const classes = useStyles();
           </ListItemButton>
         </List>
       </Collapse>
-
     </List>
   );
 }
