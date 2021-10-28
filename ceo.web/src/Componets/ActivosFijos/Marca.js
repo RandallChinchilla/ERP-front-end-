@@ -19,21 +19,19 @@ import { useForm } from "../../Hooks/useForm";
 import { useGetData } from "../../Hooks/useGetData";
 import { Delete, Edit } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core";
+
+import { postAction } from "../../Helpers/postHelper";
+import axios from "axios";
 import { red, blue } from "@mui/material/colors";
 
-// const Item = styled(Paper)(({ theme }) => ({
-//   ...theme.typography.body2,
-//   padding: theme.spacing(1),
-//   textAlign: "center",
-//   color: theme.palette.text.secondary,
-// }));
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 const useStyles = makeStyles((theme) => ({
   iconos: {
     cursor: "pointer",
   },
   barra: {
-    backgroundColor: blue[100] ,
+    backgroundColor: blue[100],
   },
 }));
 
@@ -45,6 +43,8 @@ const columns = [
 
 const initialForm = {
   Descripcion: "",
+  CodigoEmpresa: 1,
+  CodigoMarca: 0,
 };
 
 const validationsForm = (form) => {
@@ -60,10 +60,8 @@ const Marca = () => {
   const [page, setPage] = React.useState(0);
 
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const { form, errors, handleChange, handleBlur } = useForm(
-    initialForm,
-    validationsForm
-  );
+  const { form, errors, response, handleChange, handleBlur, handleaddMarca } =
+    useForm(initialForm, validationsForm);
   const { Data, Error } = useGetData("ActMarca");
 
   if (Error) return null;
@@ -76,6 +74,20 @@ const Marca = () => {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
+  };
+
+  const addMarca = async () => {
+    var config = {
+      method: "post",
+      url: `${baseUrl}${"ActMarca/PostActMarca"}`,
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      data: form,
+    };
+    await axios.post(config).then((response) => {
+      console.log(response);
+    });
   };
 
   return (
@@ -112,6 +124,7 @@ const Marca = () => {
             variant="contained"
             size="small"
             startIcon={<AddCircleOutlineIcon />}
+            onClick={handleaddMarca}
           >
             Agregar
           </Button>
@@ -127,9 +140,10 @@ const Marca = () => {
                   Lista de Marcas
                 </TableCell>
               </TableRow>
-              <TableRow >
+              <TableRow>
                 {columns.map((column) => (
-                  <TableCell className={styles.barra}
+                  <TableCell
+                    className={styles.barra}
                     key={column.id}
                     align={column.align}
                     style={{ top: 57, minWidth: column.minWidth }}
@@ -143,8 +157,8 @@ const Marca = () => {
               {Data.map((row) => (
                 <TableRow key={row.codigoMarca}>
                   <TableCell>
-                    <Edit style={{ color: blue[600], width:40}} />
-                    
+                    <Edit style={{ color: blue[600], width: 40 }} />
+
                     <Delete style={{ color: red[700] }} />
                   </TableCell>
                   <TableCell>{row.codigoMarca}</TableCell>
