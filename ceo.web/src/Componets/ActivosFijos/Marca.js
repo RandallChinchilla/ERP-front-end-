@@ -12,6 +12,7 @@ import {
   TableRow,
   Button,
   Divider,
+  Modal,
 } from "@mui/material";
 import React, { useState } from "react";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
@@ -27,6 +28,17 @@ import { red, blue } from "@mui/material/colors";
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
 const useStyles = makeStyles((theme) => ({
+  modal: {
+    position: "absolute",
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  },
   iconos: {
     cursor: "pointer",
   },
@@ -58,11 +70,22 @@ const validationsForm = (form) => {
 const Marca = () => {
   const styles = useStyles();
   const [page, setPage] = React.useState(0);
-
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const { form, errors, response, handleChange, handleBlur, handleaddMarca } =
-    useForm(initialForm, validationsForm);
-  const { Data, Error } = useGetData("ActMarca");
+  const [modalEliminar, setModalEliminar] = useState(false);
+  const [modalEditar, setModalEditar] = useState(false);
+
+  const [consolaSeleccionada, setConsolaSeleccionada] = useState({
+    Descripcion: "",
+    CodigoEmpresa: 1,
+    CodigoMarca: 0,
+  });
+
+  const { form, errors, handleChange, handleBlur, setForm } = useForm(
+    consolaSeleccionada,
+    validationsForm
+  );
+
+  const { Data, Error, setData } = useGetData("ActMarca");
 
   if (Error) return null;
   if (!Data) return null;
@@ -77,18 +100,151 @@ const Marca = () => {
   };
 
   const addMarca = async () => {
-    var config = {
-      method: "post",
-      url: `${baseUrl}${"ActMarca/PostActMarca"}`,
-      //   headers: {
-      //     Authorization: `Bearer ${token}`,
-      //   },
-      data: form,
-    };
-    await axios.post(config).then((response) => {
-      console.log(response);
-    });
+    await axios
+      .post(`${baseUrl}${"ActMarca/PostActMarca"}`, form)
+      .then((response) => {
+        console.log(response);
+        setData(Data.concat(response.data.result));
+      });
   };
+
+  const editMarca = async () => {
+    let itemselect = JSON.stringify({
+      Descripcion: form.Descripcion,
+      CodigoEmpresa: consolaSeleccionada.codigoEmpresa,
+      CodigoMarca: consolaSeleccionada.codigoMarca,
+    });
+    console.log(itemselect);
+
+    var config = {
+      method: "put",
+      url: `${baseUrl}${"ActMarca/PutActMarca"}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: itemselect,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(response.data);
+        // var newData = Data;
+        //console.log(`${"newdata: "}${newData}`);
+
+        Data.map((item) => {
+          // console.log(`${"data: "} ${item.codigoMarca}}`);
+          // console.log(consolaSeleccionada.codigoMarca);
+          if (consolaSeleccionada.codigoMarca === item.codigoMarca) {
+            console.log("se cumpple el if");
+            item.descripcion = consolaSeleccionada.descripcion;
+          }
+        });
+
+        //setData(newData);
+        abrirCerrarModalEditar();
+        //setConsolaSeleccionada(initialForm);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    // var config = {
+    //   method: "put",
+    //   url: `${baseUrl}${"ActMarca/PutActMarca"}`,
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   data: itemselect,
+    // };
+
+    // await axios
+    //   .put(`${baseUrl}${"ActMarca/PutActMarca"}`, config)
+    //   .then((response) => {
+    //     console.log(response);
+    //     abrirCerrarModalEliminar();
+    //     setConsolaSeleccionada(initialForm);
+    //   });
+  };
+
+  const deletMarca = async () => {
+    console.log(consolaSeleccionada.codigoMarca);
+    let itemselect = JSON.stringify({
+      Descripcion: "",
+      CodigoEmpresa: consolaSeleccionada.codigoEmpresa,
+      CodigoMarca: consolaSeleccionada.codigoMarca,
+    });
+
+    var config = {
+      method: "delete",
+      url: `${baseUrl}${"ActMarca/DeleteActMarca"}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: itemselect,
+    };
+
+    await axios
+      .delete(`${baseUrl}${"ActMarca/DeleteActMarca"}`, config)
+      .then((response) => {
+        console.log(response);
+        setData(
+          Data.filter(
+            (item) => item.codigoMarca !== consolaSeleccionada.codigoMarca
+          )
+        );
+        abrirCerrarModalEliminar();
+        setConsolaSeleccionada(initialForm);
+      });
+  };
+
+  const abrirCerrarModalEditar = () => {
+    setModalEditar(!modalEditar);
+  };
+  const abrirCerrarModalEliminar = () => {
+    setModalEliminar(!modalEliminar);
+  };
+
+  const seleccionarConsola = (row, action) => {
+    setConsolaSeleccionada(row);
+    action === "Editar" ? abrirCerrarModalEditar() : abrirCerrarModalEliminar();
+  };
+
+  const bodyEditar = (
+    <div className={styles.modal}>
+      <h3>Editar Marca</h3>
+      <TextField
+        id="edit"
+        name="Descripcion"
+        className={styles.inputMaterial}
+        label="Ingresa la marca"
+        onChange={handleChange}
+        value={form && form.Descripcion}
+      ></TextField>
+      <br />
+      <div align="right">
+        <Button color="primary" onClick={() => editMarca()}>
+          Editar
+        </Button>
+        <Button onClick={() => abrirCerrarModalEditar()}>Cancelar</Button>
+      </div>
+    </div>
+  );
+
+  const bodyEliminar = (
+    <div className={styles.modal}>
+      <p>
+        Estás seguro que deseas eliminar la Marca
+        <br />
+        <b>{consolaSeleccionada && consolaSeleccionada.descripcion}</b> ?{" "}
+      </p>
+      <div align="right">
+        <Button color="secondary" onClick={() => deletMarca()}>
+          Sí
+        </Button>
+        <Button onClick={() => abrirCerrarModalEliminar()}>No</Button>
+      </div>
+    </div>
+  );
 
   return (
     <Grid
@@ -124,7 +280,7 @@ const Marca = () => {
             variant="contained"
             size="small"
             startIcon={<AddCircleOutlineIcon />}
-            onClick={handleaddMarca}
+            onClick={() => addMarca()}
           >
             Agregar
           </Button>
@@ -157,9 +313,15 @@ const Marca = () => {
               {Data.map((row) => (
                 <TableRow key={row.codigoMarca}>
                   <TableCell>
-                    <Edit style={{ color: blue[600], width: 40 }} />
+                    <Edit
+                      style={{ color: blue[600], width: 40 }}
+                      onClick={() => seleccionarConsola(row, "Editar")}
+                    />
 
-                    <Delete style={{ color: red[700] }} />
+                    <Delete
+                      style={{ color: red[700] }}
+                      onClick={() => seleccionarConsola(row, "Eliminar")}
+                    />
                   </TableCell>
                   <TableCell>{row.codigoMarca}</TableCell>
                   <TableCell>{row.descripcion}</TableCell>
@@ -178,6 +340,13 @@ const Marca = () => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
+      <Modal open={modalEditar} onClose={abrirCerrarModalEditar}>
+        {bodyEditar}
+      </Modal>
+
+      <Modal open={modalEliminar} onClose={abrirCerrarModalEliminar}>
+        {bodyEliminar}
+      </Modal>
     </Grid>
   );
 };

@@ -1,6 +1,7 @@
 import { useState } from "react";
+import axios from "axios";
 
-export const useForm = (initialForm, validateForm) => {
+export const useForm = (initialForm, validateForm, setData, Data) => {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState("");
   const [loading, setLoading] = useState(false);
@@ -19,5 +20,12 @@ export const useForm = (initialForm, validateForm) => {
     setErrors(validateForm(form));
   };
 
-  return { form, errors, handleChange, handleBlur };
+  return {
+    form,
+    errors,
+    response,
+    handleChange,
+    handleBlur,
+    setForm,
+  };
 };

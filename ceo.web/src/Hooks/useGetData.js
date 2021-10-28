@@ -23,5 +23,5 @@ export const useGetData = (controller) => {
     getData(controller);
   }, [controller]);
 
-  return { Data, Error };
+  return { Data, Error, setData };
 };

@@ -185,8 +185,8 @@ function DashboardContent() {
         >
           <Router>
             <Switch>
-              {/* <Route exact path="/" component={Marca}></Route> */}
-              <Route exact path="/" component={CliMaestro}></Route>
+              <Route exact path="/" component={Marca}></Route>
+              {/* <Route exact path="/" component={CliMaestro}></Route> */}
             </Switch>
           </Router>
         </Box>
