@@ -183,12 +183,10 @@ function DashboardContent() {
             px: 4,
           }}
         >
-          <Router>
-            <Switch>
-              <Route exact path="/" component={Marca}></Route>
-              {/* <Route exact path="/" component={CliMaestro}></Route> */}
-            </Switch>
-          </Router>
+          <Switch>
+            <Route exact path="/marca" component={Marca}></Route>
+            <Route exact path="/climaestro" component={CliMaestro}></Route>
+          </Switch>
         </Box>
       </Box>
     </ThemeProvider>

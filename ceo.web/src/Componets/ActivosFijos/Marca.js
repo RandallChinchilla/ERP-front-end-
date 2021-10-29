@@ -73,6 +73,7 @@ const Marca = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [modalEliminar, setModalEliminar] = useState(false);
   const [modalEditar, setModalEditar] = useState(false);
+  const [dataToEdit, setDataToEdit] = useState(null);
 
   const [consolaSeleccionada, setConsolaSeleccionada] = useState({
     Descripcion: "",
@@ -81,7 +82,8 @@ const Marca = () => {
   });
 
   const { form, errors, handleChange, handleBlur, setForm } = useForm(
-    consolaSeleccionada,
+    initialForm,
+    setConsolaSeleccionada,
     validationsForm
   );
 
@@ -128,42 +130,19 @@ const Marca = () => {
     axios(config)
       .then(function (response) {
         console.log(response.data);
-        // var newData = Data;
-        //console.log(`${"newdata: "}${newData}`);
-
         Data.map((item) => {
-          // console.log(`${"data: "} ${item.codigoMarca}}`);
-          // console.log(consolaSeleccionada.codigoMarca);
           if (consolaSeleccionada.codigoMarca === item.codigoMarca) {
             console.log("se cumpple el if");
-            item.descripcion = consolaSeleccionada.descripcion;
+            item.descripcion = form.Descripcion;
+            console.log(item.descripcion);
+            console.log(consolaSeleccionada.descripcion);
           }
         });
-
-        //setData(newData);
         abrirCerrarModalEditar();
-        //setConsolaSeleccionada(initialForm);
       })
       .catch(function (error) {
         console.log(error);
       });
-
-    // var config = {
-    //   method: "put",
-    //   url: `${baseUrl}${"ActMarca/PutActMarca"}`,
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   data: itemselect,
-    // };
-
-    // await axios
-    //   .put(`${baseUrl}${"ActMarca/PutActMarca"}`, config)
-    //   .then((response) => {
-    //     console.log(response);
-    //     abrirCerrarModalEliminar();
-    //     setConsolaSeleccionada(initialForm);
-    //   });
   };
 
   const deletMarca = async () => {
@@ -218,7 +197,7 @@ const Marca = () => {
         className={styles.inputMaterial}
         label="Ingresa la marca"
         onChange={handleChange}
-        value={form && form.Descripcion}
+        value={form && form.descripcion}
       ></TextField>
       <br />
       <div align="right">
@@ -269,7 +248,7 @@ const Marca = () => {
             variant="outlined"
             size="small"
             name="Descripcion"
-            value={form.Descripcion}
+            value={form.descripcion}
             onChange={handleChange}
             onBlur={handleBlur}
             required
