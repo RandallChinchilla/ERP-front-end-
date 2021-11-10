@@ -14,7 +14,6 @@ import {
   Button,
   Divider,
 } from "@mui/material";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { makeStyles } from "@material-ui/core";
 import { Box } from "@mui/system";
 import InputLabel from '@mui/material/InputLabel';
@@ -23,10 +22,6 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Switch from '@mui/material/Switch';
 import { Link, NavLink } from "react-router-dom";
 
 
@@ -41,21 +36,12 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export const CliMaestro = () => {
+export const CxpProveedor = () => {
   const styles = useStyles();
 
-  const [CodigoBanco, setCodigoBanco] = React.useState('');
   const [CodigoTipoId, setCodigoTipoId] = React.useState('');
   const [CodigoPais, setCodigoPais] = React.useState('');
-  const [CodigoProvincia, setCodigoProvincia] = React.useState('');
-  const [CodigoCanton, setCodigoCanton] = React.useState('');
   const [CodigoEstado, setCodigoEstado] = React.useState('');
-
-
-
-  const handleChangeCodigoBanco = (event) => {
-    setCodigoBanco(event.target.value);
-  };
 
   const handleChangeCodigoTipoId = (event) => {
     setCodigoTipoId(event.target.value);
@@ -63,14 +49,6 @@ export const CliMaestro = () => {
 
   const handleChangeCodigoPais = (event) => {
     setCodigoPais(event.target.value);
-  };
-
-  const handleChangeCodigoProvincia = (event) => {
-    setCodigoProvincia(event.target.value);
-  };
-
-  const handleChangeCodigoCanton = (event) => {
-    setCodigoCanton(event.target.value);
   };
 
   const handleChangeCodigoEstado = (event) => {
@@ -89,14 +67,13 @@ export const CliMaestro = () => {
         variant="overline"
         style={{ marginTop: 10, alignSelf: "center", fontSize: 16 }}
       >
-        Maestro Clientes
+        Proveedores
       </Typography>
 
       <Grid mb={4} container alignItems="center">
-        {/* <Grid item mr={1}> */}
           
         <Grid item xs={3} marginTop={1} marginBottom={1}>
-        <Box sx={{width: 210}} >
+        <Box sx={{width: 210}}>
           <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Tipo Id</InputLabel>
           <Select
@@ -127,6 +104,16 @@ export const CliMaestro = () => {
           <Grid item xs={3} marginTop={1} marginBottom={1}>
           <TextField
             id="outlined-basic"
+            label="Nombre"
+            variant="outlined"
+            size="small"
+            name="Descripcion"
+          ></TextField>
+           </Grid>
+
+          <Grid item xs={3} marginTop={1} marginBottom={1}>
+          <TextField
+            id="outlined-basic"
             label="Primer Apellido"
             variant="outlined"
             size="small"
@@ -143,26 +130,6 @@ export const CliMaestro = () => {
             name="Descripcion"
           ></TextField>
            </Grid>
-
-           <Grid item xs={3} marginTop={1} marginBottom={1}>
-          <TextField
-            id="outlined-basic"
-            label="Nombre"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
-          ></TextField>
-           </Grid>
-
-        <Grid item xs={3} marginTop={1} marginBottom={1}>
-          <TextField
-            id="outlined-basic"
-            label="Contacto"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
-          ></TextField>
-         </Grid>
 
          <Grid item xs={3} marginTop={1} marginBottom={1}>
           <TextField
@@ -187,17 +154,7 @@ export const CliMaestro = () => {
          <Grid item xs={3} marginTop={1} marginBottom={1}>
           <TextField
             id="outlined-basic"
-            label="Celular"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
-          ></TextField>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-          <TextField
-            id="outlined-basic"
-            label="Email"
+            label="Teléfono Emergencias"
             variant="outlined"
             size="small"
             name="Descripcion"
@@ -221,43 +178,7 @@ export const CliMaestro = () => {
           </FormControl>
          </Box>
          </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Box sx={{width: 210 }} >
-          <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Provincia</InputLabel>
-          <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Provincia"
-          onChange={handleChangeCodigoProvincia}
-          >
-             <MenuItem value={1}>1</MenuItem>
-             <MenuItem value={2}>2</MenuItem>
-             <MenuItem value={3}>3</MenuItem>
-          </Select>
-          </FormControl>
-         </Box>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Box sx={{width: 210 }} >
-          <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Cantón</InputLabel>
-          <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Canton"
-          onChange={handleChangeCodigoCanton}
-          >
-             <MenuItem value={1}>1</MenuItem>
-             <MenuItem value={2}>2</MenuItem>
-             <MenuItem value={3}>3</MenuItem>
-          </Select>
-          </FormControl>
-         </Box>
-         </Grid>
-
+         
          <Grid item xs={3} marginTop={1} marginBottom={1}>
           <TextField
             id="outlined-basic"
@@ -269,27 +190,19 @@ export const CliMaestro = () => {
          </Grid>
 
          <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Box sx={{width: 210 }} >
-          <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Banco</InputLabel>
-          <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Age"
-          onChange={handleChangeCodigoBanco}
-          >
-             <MenuItem value={1}>1</MenuItem>
-             <MenuItem value={2}>2</MenuItem>
-             <MenuItem value={3}>3</MenuItem>
-          </Select>
-          </FormControl>
-         </Box>
+          <TextField
+            id="outlined-basic"
+            label="Contacto"
+            variant="outlined"
+            size="small"
+            name="Descripcion"
+          ></TextField>
          </Grid>
-
+         
          <Grid item xs={3} marginTop={1} marginBottom={1}>
           <TextField
             id="outlined-basic"
-            label="IBAN"
+            label="Celular"
             variant="outlined"
             size="small"
             name="Descripcion"
@@ -297,18 +210,24 @@ export const CliMaestro = () => {
          </Grid>
 
          <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Stack component="form" noValidate spacing={3}>
           <TextField
-           id="date"
-           label="Fecha Ingreso"
-           type="date"
-           sx={{ width: 210 }}
-           InputLabelProps={{
-           shrink: true,
-           }}
-          />
-          </Stack>
-          </Grid>
+            id="outlined-basic"
+            label="Email"
+            variant="outlined"
+            size="small"
+            name="Descripcion"
+          ></TextField>
+         </Grid>
+
+         <Grid item xs={3} marginTop={1} marginBottom={1}>
+          <TextField
+            id="outlined-basic"
+            label="Plazo de Pago"
+            variant="outlined"
+            size="small"
+            name="Descripcion"
+          ></TextField>
+         </Grid>
 
          <Grid item xs={3} marginTop={1} marginBottom={1}>
           <TextareaAutosize
@@ -356,19 +275,6 @@ export const CliMaestro = () => {
          <Grid item xs={3} marginTop={1} marginBottom={1}>
          </Grid>
 
-         {/* <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Box>
-         <FormControlLabel
-         control={<Checkbox id={45} />} label="Es Proveedor?" labelPlacement="start"/>
-         </Box>
-         </Grid> */}
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <FormGroup>
-         <FormControlLabel control={<Switch defaultChecked={false} />} label="Es Proveedor?" />
-         </FormGroup>
-         </Grid>
-
          <Grid item xs={3} marginTop={1} marginBottom={1}>
          </Grid>
 
@@ -381,12 +287,15 @@ export const CliMaestro = () => {
          <Grid item xs={3} marginTop={1} marginBottom={1}>
          <Stack spacing={2} direction="row">
          <Button variant="contained" >Aceptar</Button>
-         <NavLink tag={Link} to="/CliMaestroView"
-         style={isActive => ({
-          color: isActive ? "white" : "white"
-         })}>
+         
+         <NavLink tag={Link} to="/CxpProveedorView" 
+           style={isActive => ({
+            color: isActive ? "white" : "white"
+          })}
+         >
          <Button variant="outlined" color="error" >Cancelar</Button>
          </NavLink>
+         
          </Stack>
          </Grid>
 
@@ -394,5 +303,5 @@ export const CliMaestro = () => {
 
     </Grid>
 
-  );
+);
 };
