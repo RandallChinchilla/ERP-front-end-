@@ -22,7 +22,7 @@ import { makeStyles } from "@material-ui/core";
 import { CliMaestro } from "../Clientes/CliMaestro";
 import ClieMaestroView from "../Clientes/CliMaestroView";
 import { CxpProveedor } from "../CuentasPorPagar/CxpProveedor";
-import CxpProveedorView from "../CuentasPorPagar/CxpProveedorView"
+import CxpProveedorView from "../CuentasPorPagar/CxpProveedorView";
 import { SegUsuario } from "../Seguidad/SegUsuario";
 import SegUsuarioView from "../Seguidad/SegUsuarioView";
 import Registro from "../Autenticacion/Registro";
@@ -191,15 +191,32 @@ function DashboardContent() {
           }}
         >
           <Switch>
+            <Route exact path="/" component={Autenticacion}></Route>
             <Route exact path="/marca" component={Marca}></Route>
             <Route exact path="/climaestro" component={CliMaestro}></Route>
-            <Route exact path="/climaestroview" component={ClieMaestroView}></Route>
+            <Route
+              exact
+              path="/climaestroview"
+              component={ClieMaestroView}
+            ></Route>
             <Route exact path="/cxpproveedor" component={CxpProveedor}></Route>
-            <Route exact path="/cxpproveedorview" component={CxpProveedorView}></Route>
+            <Route
+              exact
+              path="/cxpproveedorview"
+              component={CxpProveedorView}
+            ></Route>
             <Route exact path="/segusuario" component={SegUsuario}></Route>
-            <Route exact path="/segusuarioview" component={SegUsuarioView}></Route>
+            <Route
+              exact
+              path="/segusuarioview"
+              component={SegUsuarioView}
+            ></Route>
             <Route exact path="/registro" component={Registro}></Route>
-            <Route exact path="/autenticacion" component={Autenticacion}></Route>
+            <Route
+              exact
+              path="/autenticacion"
+              component={Autenticacion}
+            ></Route>
           </Switch>
         </Box>
       </Box>

@@ -10,10 +10,9 @@ function App() {
   return (
     <Router>
       {/* <Autenticacion/> */}
-      <Dashboard/>
+      <Dashboard />
       {/* <Switch>
         <Route exact path="/" component={DashBoard} />
-        <Route exact path="/climaestro" component={CliMaestro}></Route>
       </Switch> */}
     </Router>
   );

@@ -246,11 +246,11 @@ export default function NestedList() {
         </List>
       </Collapse>
 
-      <NavLink tag={Link} to="/Autenticacion">
+      {/* <NavLink tag={Link} to="/Autenticacion">
       <ListItemButton >
         <ListItemText className={classes.text}>Prueba</ListItemText>
       </ListItemButton>
-      </NavLink>
+      </NavLink> */}
 
       <ListItemButton onClick={handleClickContabilidad}>
         <ListItemIcon>
@@ -384,7 +384,9 @@ export default function NestedList() {
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <Link to="/CliMaestro">
-              <ListItemText className={classes.text}>Reportes</ListItemText>
+              <ListItemText className={classes.text}>
+                Maetro Clientes
+              </ListItemText>
             </Link>
           </ListItemButton>
         </List>
@@ -423,12 +425,15 @@ export default function NestedList() {
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-          <NavLink tag={Link} to="/CxpProveedor"
-          style={isActive => ({
-            color: isActive ? "inherit" : "inherit"
-          })}>
-            <ListItemText className={classes.text}>Proveedores</ListItemText>
-          </NavLink>  
+            <NavLink
+              tag={Link}
+              to="/CxpProveedor"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Proveedores</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -436,9 +441,9 @@ export default function NestedList() {
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-          <NavLink tag={Link} to="/CxpProveedorView">
-            <ListItemText className={classes.text}>Prueba</ListItemText>
-          </NavLink>
+            <NavLink tag={Link} to="/CxpProveedorView">
+              <ListItemText className={classes.text}>Prueba</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -500,9 +505,11 @@ export default function NestedList() {
       <Collapse in={openClientes} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-              <NavLink tag={Link} to="/CliMaestroView">
-              <ListItemText className={classes.text}>Catálogo Clientes</ListItemText>
-              </NavLink>
+            <NavLink tag={Link} to="/CliMaestroView">
+              <ListItemText className={classes.text}>
+                Catálogo Clientes
+              </ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -728,12 +735,15 @@ export default function NestedList() {
       <Collapse in={openSeguridad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-          <NavLink tag={Link} to="/SegUsuario"
-          style={isActive => ({
-            color: isActive ? "inherit" : "inherit"
-          })}>
-            <ListItemText className={classes.text}>Seguridad</ListItemText>
-          </NavLink> 
+            <NavLink
+              tag={Link}
+              to="/SegUsuario"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Seguridad</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -741,17 +751,18 @@ export default function NestedList() {
       <Collapse in={openSeguridad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-          <NavLink tag={Link} to="/SegUsuarioView"
-          style={isActive => ({
-            color: isActive ? "inherit" : "inherit"
-          })}>
-            <ListItemText className={classes.text}>Prueba</ListItemText>
-          </NavLink> 
+            <NavLink
+              tag={Link}
+              to="/SegUsuarioView"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Prueba</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
-    
     </List>
-
   );
 }
