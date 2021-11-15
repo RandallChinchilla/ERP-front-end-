@@ -1,43 +1,45 @@
+import { useState } from "react";
+import { useHistory } from "react-router";
+import { postAction } from "../Helpers/postHelper";
+
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
-export const useData = (initialForm) => {
+export const useData = (form) => {
+  const [response, setResponse] = useState(false);
+  const [errors, setErrors] = useState("");
+  let usehistory = useHistory();
+
   const handleSubmitLogin = (e) => {
     e.preventDefault();
-    createToken(form).then((tokenresponse) => {
-      //window.localStorage.setItem("userLogged", JSON.stringify(response.data));
+    //postAction("Account/CreateToken", form, setResponse);
+    postAction("Account/CreateToken", form).then((tokenresponse) => {
       if (tokenresponse.status === 201) {
         window.localStorage.setItem(
           "userLoggedToken",
           JSON.stringify(tokenresponse.data.token)
         );
-
-        login(form, tokenresponse.data.token).then((response) => {
-          if (response.status === 200) {
-            window.localStorage.setItem(
-              "userLogged",
-              JSON.stringify(response.data.result)
-            );
-            setForm(initialForm);
-            if (response.data.result.rol == "Admin") {
+        console.log("hola perra");
+        postAction("Account/Login", form, tokenresponse.data.token).then(
+          (response) => {
+            if (response.status === 200) {
+              setResponse(true);
+              window.localStorage.setItem(
+                "userLogged",
+                JSON.stringify(response.data.result)
+              );
               usehistory.push("./Dashboard");
             } else {
-              usehistory.push("./FatherPay");
             }
-          } else {
-            setResponse(true);
           }
-        });
+        );
       } else {
         setErrors("Error de usuario o contraseña");
-        setResponse(true);
       }
     });
-
-    return {
-      form,
-      response,
-      handleSubmitLogin,
-    };
+  };
+  return {
+    response,
+    handleSubmitLogin,
   };
 };
 

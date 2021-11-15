@@ -1,29 +1,20 @@
+import axios from "axios";
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
-// export async function postAction(controller, model) {
-//   const postData = async () => {
-//     var axios = require("axios");
-//     var config = {
-//       method: "post",
-//       url: `${baseUrl}${controller}`,
-//       //   headers: {
-//       //     Authorization: `Bearer ${token}`,
-//       //   },
-//       data: model,
-//     };
-//     try {
-//       const response = await axios(config);
-//       console.log(response.data.isSuccess);
-//       return response;
-//     } catch (error) {
-//       return error.response.data;
-//     }
-//   };
-//   postData(controller);
-// }
+export async function postAction(controller, model, token) {
+  try {
+    const response = await axios({
+      method: "POST",
+      url: `${baseUrl}${controller}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
 
-// export async function deletAction(controller, setData, Data, codigoMarca) {
-//   await axios.delete(`${baseUrl}${controller}`).then((response) => {
-//     setData(Data.filter((consola) => consola.id !== codigoMarca));
-//   });
-// }
+      data: model,
+    });
+    console.log(response);
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+}

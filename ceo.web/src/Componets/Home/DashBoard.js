@@ -191,9 +191,12 @@ function DashboardContent() {
           }}
         >
           <Switch>
-            <Route exact path="/" component={Autenticacion}></Route>
-            <Route exact path="/marca" component={Marca}></Route>
-            <Route exact path="/climaestro" component={CliMaestro}></Route>
+            <Route exact path="/Dashboard/marca" component={Marca}></Route>
+            <Route
+              exact
+              path="/Dashboard/climaestro"
+              component={CliMaestro}
+            ></Route>
             <Route
               exact
               path="/climaestroview"

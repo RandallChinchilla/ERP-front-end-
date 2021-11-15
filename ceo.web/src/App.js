@@ -9,11 +9,10 @@ import Autenticacion from "./Componets/Autenticacion/Autenticacion";
 function App() {
   return (
     <Router>
-      {/* <Autenticacion/> */}
-      <Dashboard />
-      {/* <Switch>
-        <Route exact path="/" component={DashBoard} />
-      </Switch> */}
+      <Switch>
+        <Route exact path="/" component={Autenticacion} />
+        <Route path="/dashboard" component={Dashboard} />
+      </Switch>
     </Router>
   );
 }

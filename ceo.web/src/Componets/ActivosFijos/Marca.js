@@ -88,6 +88,7 @@ const Marca = () => {
   );
 
   const { Data, Error, setData } = useGetData("ActMarca");
+  console.log(Data);
 
   if (Error) return null;
   if (!Data) return null;
