@@ -173,10 +173,10 @@ export default function Autenticacion() {
                     {Data &&
                       options.map((item) => (
                         <MenuItem
-                          key={item.codigoEmpresa}
-                          value={item.codigoEmpresa}
+                          key={item.CodigoEmpresa}
+                          value={item.CodigoEmpresa}
                         >
-                          {item.nombre}
+                          {item.Nombre}
                         </MenuItem>
                       ))}
                   </Select>

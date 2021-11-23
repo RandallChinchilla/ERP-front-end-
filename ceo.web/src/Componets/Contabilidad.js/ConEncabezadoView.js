@@ -20,7 +20,6 @@ import {
   import { makeStyles } from "@material-ui/core";
   import { red, blue, green } from "@mui/material/colors";
   import { Link, NavLink } from "react-router-dom";
-  import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
   
   const baseUrl = process.env.REACT_APP_BASE_URL;
   
@@ -42,22 +41,24 @@ import {
     barra: {
       backgroundColor: blue[100],
     },
+    paper: {
+        width: 1200,
+        height: 420,
+      },   
   }));
   
   const columns = [
     { id: "acciones", label: "Acciones", minWidth: 125 },
-    { id: "empresa", label: "Empresa", minWidth: 100 },
-    { id: "numerodeproveedor", label: "Número de Proveedor", minWidth: 100 },
-    { id: "tipodeidentificacion", label: "Tipo de Identificación", minWidth: 100 },
-    { id: "numerodeid", label: "Número de Identificación", minWidth: 100 },
-    { id: "primerapellido", label: "Primer Apellido", minWidth: 100 },
-    { id: "segundoapellido", label: "Segundo Apellido", minWidth: 100 },
-    { id: "nombre", label: "Nombre", minWidth: 100 },
+    { id: "numeroasiento", label: "Número Asiento", minWidth: 100 },
+    { id: "detalle", label: "Detalle", minWidth: 100 },
+    { id: "fechaingreso", label: "Fecha de Ingreso", minWidth: 100 },
+    { id: "anno", label: "Año", minWidth: 100 },
+    { id: "periodo", label: "Período", minWidth: 100 },
     { id: "estado", label: "Estado", minWidth: 100 },
   ];
   
   
-  const CxpProveedorView = () => {
+  const ConEncabezadoView = () => {
     const styles = useStyles();
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -68,15 +69,14 @@ import {
       CodigoMarca: 0,
     });
   
-    const { Data, Error, setData } = useGetData("CxpProveedor");
+    const { Data, Error, setData } = useGetData("ConEncabezado");
   
     if (Error) return null;
     if (!Data) return null;
   
     const handleChangePage = (event, newPage) => {
       setPage(newPage);
-    };
-  
+    }; 
     const handleChangeRowsPerPage = (event) => {
       setRowsPerPage(+event.target.value);
       setPage(0);
@@ -104,25 +104,16 @@ import {
                 marginBottom: 3,
               }}
             >
-              Proveedores
+              Asientos
             </Typography>
-          </Grid>
+          </Grid>  
         <Paper elevation={3} sx={{ width: "100%" }}>
-        <Grid container justifyContent="left" marginLeft={5} marginTop={3}> 
-          <Button
-            variant="contained"
-            size="medium"
-            endIcon={<AddCircleOutlineIcon />}
-          >
-            Agregar
-          </Button>
-          </Grid>
           <TableContainer sx={{ maxHeight: 440 }}>
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
                   <TableCell align="center" colSpan={12}>
-                    Catálogo Proveedores
+                    Catálogo Asientos
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -142,31 +133,29 @@ import {
                 {Data.map((row) => (
                   <TableRow key={row.codigoMarca}>
                     <TableCell>
-                    <NavLink tag={Link} to="/Dashboard/CxpProveedor">
+                    <NavLink tag={Link} to="/Dashboard/ConEncabezado">
                       <Edit
                         style={{ color: blue[600], width: 30 }}
                       />
                         </NavLink>
   
-                        <NavLink tag={Link} to="/Dashboard/CxpProveedor">
+                        <NavLink tag={Link} to="/Dashboard/ConEncabezado">
                       <Delete
                         style={{ color: red[700], width: 30 }}
                       />
                       </NavLink>
 
-                      <NavLink tag={Link} to="/Dashboard/CxpProveedor">
+                      <NavLink tag={Link} to="/Dashboard/ConEncabezado">
                       <Visibility
                         style={{ color: green[500], width: 30}}/>
                         </NavLink>
 
                     </TableCell>
-                    <TableCell>{row.codigoEmpresa}</TableCell>
-                    <TableCell>{row.numeroProveedor}</TableCell>
-                    <TableCell>{row.codigoTipoIdentificacion}</TableCell>
-                    <TableCell>{row.numeroId}</TableCell>
-                    <TableCell>{row.apellido1}</TableCell>
-                    <TableCell>{row.apellido2}</TableCell>
-                    <TableCell>{row.nombre}</TableCell>
+                    <TableCell>{row.numeroAsiento}</TableCell>
+                    <TableCell>{row.detalle}</TableCell>
+                    <TableCell>{row.fechaIngreso}</TableCell>
+                    <TableCell>{row.anno}</TableCell>
+                    <TableCell>{row.periodo}</TableCell>
                     <TableCell>{row.codigoEstado}</TableCell>
                   </TableRow>
                 ))}
@@ -187,4 +176,4 @@ import {
     );
   };
   
-  export default CxpProveedorView;
+  export default ConEncabezadoView;

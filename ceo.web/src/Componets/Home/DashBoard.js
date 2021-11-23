@@ -23,10 +23,20 @@ import { CliMaestro } from "../Clientes/CliMaestro";
 import ClieMaestroView from "../Clientes/CliMaestroView";
 import { CxpProveedor } from "../CuentasPorPagar/CxpProveedor";
 import CxpProveedorView from "../CuentasPorPagar/CxpProveedorView";
-import { SegUsuario } from "../Seguidad/SegUsuario";
 import SegUsuarioView from "../Seguidad/SegUsuarioView";
 import Registro from "../Autenticacion/Registro";
 import Autenticacion from "../Autenticacion/Autenticacion";
+import ParEmpresa from "../Parametros/ParEmpresa";
+import ParEmpresaView from "../Parametros/ParEmpresaView";
+import SegUsuario from "../Seguidad/SegUsuario";
+import ParMoneda from "../Parametros/ParMoneda";
+import ParTipoIdentificacion from "../Parametros/ParTipoIdentificacion";
+import ParTipoIdentificacionView from "../Parametros/ParTipoIdentificacionView";
+import ParMonedaView from "../Parametros/ParMonedaView";
+import ParCodigoTransaccion from "../Parametros/ParCodigoTransaccion";
+import ParCodigoTransaccionView from "../Parametros/ParCodigoTransaccionView";
+import ConEncabezado from "../Contabilidad.js/ConEncabezado";
+import ConEncabezadoView from "../Contabilidad.js/ConEncabezadoView";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -192,29 +202,23 @@ function DashboardContent() {
         >
           <Switch>
             <Route exact path="/Dashboard/marca" component={Marca}></Route>
-            <Route
-              exact
-              path="/Dashboard/climaestro"
-              component={CliMaestro}
-            ></Route>
-            <Route
-              exact
-              path="/climaestroview"
-              component={ClieMaestroView}
-            ></Route>
-            <Route exact path="/cxpproveedor" component={CxpProveedor}></Route>
-            <Route
-              exact
-              path="/cxpproveedorview"
-              component={CxpProveedorView}
-            ></Route>
-            <Route exact path="/segusuario" component={SegUsuario}></Route>
-            <Route
-              exact
-              path="/segusuarioview"
-              component={SegUsuarioView}
-            ></Route>
-            <Route exact path="/registro" component={Registro}></Route>
+            <Route exact path="/Dashboard/parempresa" component={ParEmpresa}></Route>
+            <Route exact path="/Dashboard/climaestro" component={CliMaestro}></Route>
+            <Route exact path="/Dashboard/climaestroview" component={ClieMaestroView}></Route>
+            <Route exact path="/Dashboard/parempresaview" component={ParEmpresaView}></Route>
+            <Route exact path="/Dashboard/cxpproveedor" component={CxpProveedor}></Route>
+            <Route exact path="/Dashboard/cxpproveedorview"component={CxpProveedorView}></Route>
+            <Route exact path="/Dashboard/segusuario" component={SegUsuario}></Route>
+            <Route exact path="/Dashboard/segusuarioview" component={SegUsuarioView}></Route>
+            <Route exact path="/Dashboard/parmoneda" component={ParMoneda}></Route>
+            <Route exact path="/Dashboard/parmonedaview" component={ParMonedaView}></Route>
+            <Route exact path="/Dashboard/partipoidentificacion" component={ParTipoIdentificacion}></Route>
+            <Route exact path="/Dashboard/partipoidentificacionview" component={ParTipoIdentificacionView}></Route>
+            <Route exact path="/Dashboard/parcodigotransaccion" component={ParCodigoTransaccion}></Route>
+            <Route exact path="/Dashboard/parcodigotransaccionview" component={ParCodigoTransaccionView}></Route>
+            <Route exact path="/Dashboard/conencabezado" component={ConEncabezado}></Route>
+            <Route exact path="/Dashboard/conencabezadoview" component={ConEncabezadoView}></Route>
+            
             <Route
               exact
               path="/autenticacion"

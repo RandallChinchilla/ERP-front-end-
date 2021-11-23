@@ -4,17 +4,10 @@ import {
   TextField,
   Typography,
   Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TablePagination,
-  TableRow,
+  FormHelperText,
   Button,
-  Divider,
+  Checkbox,
 } from "@mui/material";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { makeStyles } from "@material-ui/core";
 import { Box } from "@mui/system";
 import InputLabel from '@mui/material/InputLabel';
@@ -22,13 +15,20 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Switch from '@mui/material/Switch';
 import { Link, NavLink } from "react-router-dom";
-
+import { useGetData } from "../../Hooks/useGetData";
+import { useForm } from "../../Hooks/useForm";
+import { blue } from "@mui/material/colors";
+import SelectPais from "../Listas/SelectPais";
+import SelectEmpresa from "../Listas/SelectEmpresa";
+import SelectId from "../Listas/SelectId";
+import SelectEstado from "../Listas/SelectEstado";
+import SelectBanco from "../Listas/SelectBanco";
+import SelectCanton from "../Listas/SelectCanton";
+import SelectProvincia from "../Listas/SelectProvincia";
 
 const useStyles = makeStyles((theme) => ({
   iconos: {
@@ -37,362 +37,462 @@ const useStyles = makeStyles((theme) => ({
   inputMaterial: {
     marginRight: 3,
   },
+  paper: {
+    width: 1200,
+    height: 700,
+  },
+  listas: {
+    width: 210,
+  },
 }));
 
-
+const validationsForm = (form) => {
+  let errors = {};
+  if (!form.TipoId) {
+    errors.TipoId = "Debe ingresar un tipo de identificación";
+    errors.error = true;
+  }
+  if (!form.Identificacion) {
+    errors.Identificacion = "Debe ingresar un número de identificación";
+    errors.error = true;
+  }
+  if (!form.PrimerApellido) {
+    errors.PrimerApellido = "Debe ingresar el primer apellido";
+    errors.error = true;
+  }
+  if (!form.SegundoApellido) {
+    errors.SegundoApellido = "Debe ingresar el segundo apellido";
+    errors.error = true;
+  }
+  if (!form.Nombre) {
+    errors.Nombre = "Debe ingresar un nombre";
+    errors.error = true;
+  }
+  if (!form.Contacto) {
+    errors.Contacto = "Debe ingresar un contacto";
+    errors.error = true;
+  }
+  if (!form.Telefono) {
+    errors.Telefono= "Debe ingresar un número de teléfono";
+    errors.error = true;
+  }
+  if (!form.Telefono2) {
+    errors.Telefono2 = "Debe ingresar un número de teléfono";
+    errors.error = true;
+  }
+  if (!form.TelefonoCelular) {
+    errors.TelefonoCelular = "Debe ingresar un número de teléfono celular";
+    errors.error = true;
+  }
+  if (!form.Email) {
+    errors.Email = "Debe ingresar un correo electronico";
+    errors.error = true;
+  }
+  if (!form.Pais) {
+    errors.Pais = "Debe ingresar un país";
+    errors.error = true;
+  }
+  if (!form.Provincia) {
+    errors.Provincia = "Debe ingresar una provincia";
+    errors.error = true;
+  }
+  if (!form.Canton) {
+    errors.Canton = "Debe ingresar un cantón";
+    errors.error = true;
+  }
+  if (!form.Direccion) {
+    errors.Direccion = "Debe ingresar la dirección";
+    errors.error = true;
+  }
+  if (!form.Banco) {
+    errors.Banco = "Debe ingresar un banco";
+    errors.error = true;
+  }
+  if (!form.IBAN) {
+    errors.IBAN = "Debe ingresar un IBAN";
+    errors.error = true;
+  }
+  if (!form.FechaIngreso) {
+    errors.FechaIngreso = "Debe ingresar la fecha de ingreso";
+    errors.error = true;
+  }
+  if (!form.Observaciones) {
+    errors.Observaciones = "Debe ingresar sus observaciones";
+    errors.error = true;
+  }
+  if (!form.Estado) {
+    errors.Estado = "Debe ingresar un estado";
+    errors.error = true;
+  }
+  if (!form.Usuario) {
+    errors.Usuario = "Debe ingresar un usuario";
+    errors.error = true;
+  }
+  return errors;
+};
 
 export const CliMaestro = () => {
   const styles = useStyles();
 
-  const [CodigoBanco, setCodigoBanco] = React.useState('');
-  const [CodigoTipoId, setCodigoTipoId] = React.useState('');
-  const [CodigoPais, setCodigoPais] = React.useState('');
-  const [CodigoProvincia, setCodigoProvincia] = React.useState('');
-  const [CodigoCanton, setCodigoCanton] = React.useState('');
-  const [CodigoEstado, setCodigoEstado] = React.useState('');
+  const initialForm = {
+      
+      TipoId: "",
+      Identificacion: "",
+      PrimerApellido: "",
+      SegundoApellido: "",
+      Nombre: "",
+      Contacto: "",
+      Telefono: "",
+      Telefono2: "",
+      TelefonoCelular: "",
+      Email: "",
+      Pais: "",
+      Provincia: "",
+      Canton: "",
+      Direccion: "",
+      Banco: "",
+      IBAN: "",
+      FechaIngreso: "",
+      Observaciones: "",
+      Estado: "",
+      Usuario: "",
+      RememberMe: true,
+    };
 
+  const { form, errors, handleChange, handleBlur } = useForm(
+    initialForm,
+    validationsForm
+  );
 
+  const { Data, Error, setData } = useGetData("CxpProveedor");
 
-  const handleChangeCodigoBanco = (event) => {
-    setCodigoBanco(event.target.value);
-  };
+  if (Error) return null;
+  if (!Data) return null;
 
-  const handleChangeCodigoTipoId = (event) => {
-    setCodigoTipoId(event.target.value);
-  };
-
-  const handleChangeCodigoPais = (event) => {
-    setCodigoPais(event.target.value);
-  };
-
-  const handleChangeCodigoProvincia = (event) => {
-    setCodigoProvincia(event.target.value);
-  };
-
-  const handleChangeCodigoCanton = (event) => {
-    setCodigoCanton(event.target.value);
-  };
-
-  const handleChangeCodigoEstado = (event) => {
-    setCodigoEstado(event.target.value);
-  };
+  let options = Data;
+  console.log(options);
 
   return (
-    <Grid
-      container
-      direction="column"
-      justify="center"
-      alignContent="center"
-      spacing={3}
-    >
-      <Typography
-        variant="overline"
-        style={{ marginTop: 10, alignSelf: "center", fontSize: 16 }}
-      >
-        Maestro Clientes
-      </Typography>
-
-      <Grid mb={4} container alignItems="center">
-        {/* <Grid item mr={1}> */}
-          
-        <Grid item xs={3} marginTop={1} marginBottom={1}>
-        <Box sx={{width: 210}} >
-          <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Tipo Id</InputLabel>
-          <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Age"
-          onChange={handleChangeCodigoTipoId}
-          >
-             <MenuItem value={1}>1</MenuItem>
-             <MenuItem value={2}>2</MenuItem>
-             <MenuItem value={3}>3</MenuItem>
-          </Select>
+    <Grid mb={4} container justifyContent="center">
+      <Paper elevation={3} className={styles.paper}>
+        <Box container sx={{ maxWidth: "100%" }}>
+          <Grid>
+            <Typography
+              component="h1"
+              variant="h6"
+              noWrap
+              sx={{
+                flexGrow: 1,
+                color: blue[600],
+                textAlign: "center",
+                fontSize: 16,
+                marginTop: 3,
+                marginBottom: 3,
+              }}
+            >
+              Clientes
+            </Typography>
+          </Grid>
+          <Grid container justifyContent="center" >
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
+          <FormControl className={styles.listas}>
+            <SelectId/>
           </FormControl>
-         </Box>
-        </Grid>
-          
-          <Grid item xs={3} marginTop={1} marginBottom={1}>
+          </Grid>
+          <Grid  container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
             className={styles.inputMaterial}
-            id="outlined-basic"
-            label="Número Id"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
+            labelId="demo-simple-select-label"
+            id="Identificacion"
+            name="Identificacion"
+            label="Identificación"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.Identificacion}
           ></TextField>
+                        {errors.Identificacion && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.Identificacion}
+                </FormHelperText>
+              )}
           </Grid>
-          
-          <Grid item xs={3} marginTop={1} marginBottom={1}>
+          <Grid  container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
+            labelId="demo-simple-select-label"
+            id="PrimerApellido"
+            name="PrimerApellido"
             label="Primer Apellido"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
+            size="medium"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.PrimerApellido}
           ></TextField>
+                        {errors.PrimerApellido && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.PrimerApellido}
+                </FormHelperText>
+              )}
           </Grid>
-
-          <Grid item xs={3} marginTop={1} marginBottom={1}>
+          <Grid  container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
+            labelId="demo-simple-select-label"
+            id="SegundoApellido"
+            name="SegundoApellido"
             label="Segundo Apellido"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
+            size="medium"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.SegundoApellido}
           ></TextField>
-           </Grid>
-
-           <Grid item xs={3} marginTop={1} marginBottom={1}>
+                        {errors.SegundoApellido && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.SegundoApellido}
+                </FormHelperText>
+              )}
+          </Grid>
+          <Grid  container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
+            labelId="demo-simple-select-label"
+            id="Nombre"
+            name="Nombre"
             label="Nombre"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
+            size="medium"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.Nombre}
           ></TextField>
-           </Grid>
-
-        <Grid item xs={3} marginTop={1} marginBottom={1}>
+                        {errors.Nombre && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.Nombre}
+                </FormHelperText>
+              )}
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
+            className={styles.inputMaterial}
+            labelId="demo-simple-select-label"
+            id="Contacto"
+            name="Contacto"
             label="Contacto"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
-          ></TextField>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.Contacto}
+           ></TextField>
+                        {errors.Contacto && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.Contacto}
+                </FormHelperText>
+              )}
+          </Grid> 
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
+            className={styles.inputMaterial}
+            labelId="demo-simple-select-label"
+            id="Telefono"
+            name="Telefono"
             label="Teléfono"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
-          ></TextField>
-         </Grid>
-         
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.Telefono}
+           ></TextField>
+                        {errors.Telefono && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.Telefono}
+                </FormHelperText>
+              )}
+          </Grid>        
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
+            className={styles.inputMaterial}
+            labelId="demo-simple-select-label"
+            id="Telefono2"
+            name="Telefono2"
             label="Teléfono"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.Telefono2}
           ></TextField>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
+                        {errors.Telefono2 && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.Telefono2}
+                </FormHelperText>
+              )}  
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
-            label="Celular"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
-          ></TextField>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
+            className={styles.inputMaterial}
+            labelId="demo-simple-select-label"
+            id="TelefonoCelular"
+            name="TelefonoCelular"
+            label="Telefono Celular"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.TelefonoCelular}
+           ></TextField>
+                        {errors.TelefonoCelular && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.TelefonoCelular}
+                </FormHelperText>
+              )}
+          </Grid> 
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
+            className={styles.inputMaterial}
+            labelId="demo-simple-select-label"
+            id="Email"
+            name="Email"
             label="Email"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
-          ></TextField>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Box sx={{width: 210 }} >
-          <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">País</InputLabel>
-          <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Pais"
-          onChange={handleChangeCodigoPais}
-          >
-             <MenuItem value={1}>1</MenuItem>
-             <MenuItem value={2}>2</MenuItem>
-             <MenuItem value={3}>3</MenuItem>
-          </Select>
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.Email}
+           ></TextField>
+                        {errors.Email && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.Email}
+                </FormHelperText>
+              )}
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
+          <FormControl className={styles.listas}>
+            <SelectPais/>
           </FormControl>
-         </Box>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Box sx={{width: 210 }} >
-          <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Provincia</InputLabel>
-          <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Provincia"
-          onChange={handleChangeCodigoProvincia}
-          >
-             <MenuItem value={1}>1</MenuItem>
-             <MenuItem value={2}>2</MenuItem>
-             <MenuItem value={3}>3</MenuItem>
-          </Select>
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
+          <FormControl className={styles.listas}>
+            <SelectProvincia/>
           </FormControl>
-         </Box>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Box sx={{width: 210 }} >
-          <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Cantón</InputLabel>
-          <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Canton"
-          onChange={handleChangeCodigoCanton}
-          >
-             <MenuItem value={1}>1</MenuItem>
-             <MenuItem value={2}>2</MenuItem>
-             <MenuItem value={3}>3</MenuItem>
-          </Select>
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
+          <FormControl className={styles.listas}>
+            <SelectCanton/>
           </FormControl>
-         </Box>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
+            className={styles.inputMaterial}
+            labelId="demo-simple-select-label"
+            id="Direccion"
+            name="Direccion"
             label="Dirección"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
-          ></TextField>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Box sx={{width: 210 }} >
-          <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Banco</InputLabel>
-          <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Age"
-          onChange={handleChangeCodigoBanco}
-          >
-             <MenuItem value={1}>1</MenuItem>
-             <MenuItem value={2}>2</MenuItem>
-             <MenuItem value={3}>3</MenuItem>
-          </Select>
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.Direccion}
+           ></TextField>
+                        {errors.Direccion && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.Direccion}
+                </FormHelperText>
+              )}
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
+          <FormControl className={styles.listas}>
+            <SelectBanco/>
           </FormControl>
-         </Box>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
+            className={styles.inputMaterial}
+            labelId="demo-simple-select-label"
+            id="IBAN"
+            name="IBAN"
             label="IBAN"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
-          ></TextField>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Stack component="form" noValidate spacing={3}>
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.IBAN}
+           ></TextField>
+                        {errors.IBAN && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.IBAN}
+                </FormHelperText>
+              )}
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
            id="date"
-           label="Fecha Ingreso"
            type="date"
            sx={{ width: 210 }}
            InputLabelProps={{
            shrink: true,
            }}
+           id="FechaIngreso"
+           name="FechaIngreso"
+           label="Fecha de ingreso"
+           onChange={handleChange}
+           onBlur={handleBlur}
+           value={form.FechaIngreso}
           />
+                        {errors.FechaIngreso && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.FechaIngreso}
+                </FormHelperText>
+              )}
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
+          <TextField
+            className={styles.inputMaterial}
+            labelId="demo-simple-select-label"
+            id="Observaciones"
+            name="Observaciones"
+            label="Observaciones"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.Observaciones}
+           ></TextField>
+                        {errors.Observaciones && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.Observaciones}
+                </FormHelperText>
+              )}
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2} marginTop={1}>
+          <Box sx={{
+            border: 1, 
+            borderColor: 'grey.400',
+            width: 210,
+            height: 50
+          }}>
+          <FormGroup sx={{marginRight: 4, marginTop: 0.5}}>
+          <FormControlLabel control={<Checkbox defaultChecked={false} />} label="Es Proveedor?" 
+          labelPlacement="start"/>
+          </FormGroup>
+          </Box>
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
+          <FormControl className={styles.listas}>
+            <SelectEstado/>
+          </FormControl>
+          </Grid>
+          <Grid container justifyContent="left"  marginBottom={1} marginLeft={6}>
+          <TextField
+            className={styles.inputMaterial}
+            labelId="demo-simple-select-label"
+            id="Usuario"
+            name="Usuario"
+            label="Usuario"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.Usuario}
+          ></TextField>
+                        {errors.Usuario && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.Usuario}
+                </FormHelperText>
+              )}
+          </Grid> 
+         <Grid container justifyContent="right" marginBottom={1}>
+          <Stack spacing={2} direction="row" marginRight={5} marginTop={2}>
+          <Button variant="contained" >Aceptar</Button>
+          <NavLink tag={Link} to="/Dashboard/CliMaestroView"
+           style={isActive => ({
+            color: isActive ? "red" : "red"
+          })}>
+          <Button variant="contained" color="error" >Cancelar</Button>
+          </NavLink>
           </Stack>
           </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-          <TextareaAutosize
-            aria-label="empty textarea"
-            placeholder="Observaciones"
-            minRows= {3}
-            style={{ width: 210 }}
-          />
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Box sx={{width: 210 }} >
-          <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Estado</InputLabel>
-          <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Estado"
-          onChange={handleChangeCodigoEstado}
-          >
-             <MenuItem value={1}>1</MenuItem>
-             <MenuItem value={2}>2</MenuItem>
-             <MenuItem value={3}>3</MenuItem>
-          </Select>
-          </FormControl>
-         </Box>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-          <TextField
-            id="outlined-basic"
-            label="Usuario"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
-          ></TextField>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         </Grid>
-
-         {/* <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Box>
-         <FormControlLabel
-         control={<Checkbox id={45} />} label="Es Proveedor?" labelPlacement="start"/>
-         </Box>
-         </Grid> */}
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <FormGroup>
-         <FormControlLabel control={<Switch defaultChecked={false} />} label="Es Proveedor?" />
-         </FormGroup>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         </Grid>
-         
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Stack spacing={2} direction="row">
-         <Button variant="contained" >Aceptar</Button>
-         <NavLink tag={Link} to="/CliMaestroView"
-         style={isActive => ({
-          color: isActive ? "white" : "white"
-         })}>
-         <Button variant="outlined" color="error" >Cancelar</Button>
-         </NavLink>
-         </Stack>
-         </Grid>
-
     </Grid>
-
+    </Box>
+    </Paper>
     </Grid>
-
   );
 };

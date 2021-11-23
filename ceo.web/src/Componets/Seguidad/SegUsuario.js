@@ -4,6 +4,8 @@ import {
   TextField,
   Typography,
   Button,
+  Paper,
+  FormHelperText,
 } from "@mui/material";
 import { makeStyles } from "@material-ui/core";
 import { Box } from "@mui/system";
@@ -13,6 +15,10 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
 import { Link, NavLink } from "react-router-dom";
+import { useGetData } from "../../Hooks/useGetData";
+import { useForm } from "../../Hooks/useForm";
+import { blue } from "@mui/material/colors";
+import SelectEstado from "../Listas/SelectEstado";
 
 const useStyles = makeStyles((theme) => ({
   iconos: {
@@ -21,193 +27,299 @@ const useStyles = makeStyles((theme) => ({
   inputMaterial: {
     marginRight: 3,
   },
+  paper: {
+    width: 1200,
+    height: 450,
+  },
+  listas: {
+      width: 210,
+  },
 }));
 
-export const SegUsuario = () => {
-  const styles = useStyles();
-
-  const [CodigoEmpresa, setCodigoEmpresa] = React.useState('');
-  const [CodigoEstado, setCodigoEstado] = React.useState('');
-
-  const handleChangeCodigoEmpresa = (event) => {
-    setCodigoEmpresa(event.target.value);
+const validationsForm = (form) => {
+  let errors = {};
+  if (!form.codigoEmpresa) {
+      errors.codigoEmpresa = "Debe seleccionar una empresa";
+      errors.error = true;
+    }
+  if (!form.PrimerApellido) {
+      errors.PrimerApellido = "Debe ingresar el primer apellido";
+      errors.error = true;
+    }
+  if (!form.SegundoApellido) {
+      errors.SegundoApellido = "Debe ingresar el segundo apellido";
+      errors.error = true;
+    }
+  if (!form.Nombre) {
+    errors.Nombre = "Debe ingresar un nombre";
+    errors.error = true;
+  }
+  if (!form.Descripcion) {
+    errors.Descripcion = "Debe ingresar una descripción";
+    errors.error = true;
+  }
+  if (!form.FechaIngreso) {
+    errors.FechaIngreso = "Debe ingresar la fecha de ingreso";
+    errors.error = true;
+  }
+  if (!form.FechaSalida) {
+    errors.FechaSalida = "Debe ingresar la fecha de salida";
+    errors.error = true;
+  }
+  if (!form.FechaExpPassword) {
+    errors.FechaExpPassword = "Debe ingresar la fecha de la expiración de la contraseña";
+    errors.error = true;
+  }
+  return errors;
   };
 
-  const handleChangeCodigoEstado = (event) => {
-    setCodigoEstado(event.target.value);
+  export default function SegUsuario(){
+  
+    const styles = useStyles();
+
+  const initialForm = {
+    codigoEmpresa: "",
+    PrimerApellido: "",
+    SegundoApellido: "",
+    Nombre: "",
+    Descripcion: "",
+    FechaIngreso: "",
+    FechaSalida: "",
+    FechaExpPassword: "",
+    ReinicioDePassword: "",
+    Estado: "",
+    RememberMe: true,
   };
+
+  const { form, errors, handleChange, handleBlur } = useForm(
+    initialForm,
+    validationsForm
+  );
+
+/*   const { Data, Error, setData } = useGetData("SegUsuario");
+
+  if (Error) return null;
+  if (!Data) return null;
+
+  let options = Data;
+  console.log(options); */
+
 
   return (
-    <Grid
-      container
-      direction="column"
-      justify="center"
-      alignContent="center"
-      spacing={3}
-    >
-      <Typography
-        variant="overline"
-        style={{ marginTop: 10, alignSelf: "center", fontSize: 16 }}
-      >
-        Usuarios
-      </Typography>
-
-      <Grid mb={4} container alignItems="center">
-          
-
-      <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Box sx={{width: 210 }} >
-          <FormControl fullWidth>
+    <Grid mb={4} container justifyContent="center">
+      <Paper elevation={3} className={styles.paper}>
+        <Box container sx={{ maxWidth: "100%" }}>
+        <Grid>
+            <Typography
+              component="h1"
+              variant="h6"
+              noWrap
+              sx={{
+                flexGrow: 1,
+                color: blue[600],
+                textAlign: "center",
+                fontSize: 16,
+                marginTop: 3,
+                marginBottom: 3,
+              }}
+            >
+              Usuarios
+            </Typography>
+          </Grid>
+          <Grid container justifyContent="center" >
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
+          <FormControl className={styles.listas}>
           <InputLabel id="demo-simple-select-label">Codigo Empresa</InputLabel>
           <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Estado"
-          onChange={handleChangeCodigoEmpresa}
+            className={styles.listas}
+            labelId="demo-simple-select-label"
+            id="codigoEmpresa"
+            name="codigoEmpresa"
+            label="codigoEstado"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.codigoEmpresa}
           >
              <MenuItem value={1}>1</MenuItem>
              <MenuItem value={2}>2</MenuItem>
              <MenuItem value={3}>3</MenuItem>
           </Select>
           </FormControl>
-         </Box>
-         </Grid>
-
-          <Grid item xs={3} marginTop={1} marginBottom={1}>
+          {errors.codigoEmpresa && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.codigoEmpresa}
+                </FormHelperText>
+              )}
+          </Grid>
+          <Grid  container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
+            labelId="demo-simple-select-label"
+            id="PrimerApellido"
+            name="PrimerApellido"
             label="Primer Apellido"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
+            size="medium"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.PrimerApellido}
           ></TextField>
+                        {errors.PrimerApellido && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.PrimerApellido}
+                </FormHelperText>
+              )}
           </Grid>
-
-          <Grid item xs={3} marginTop={1} marginBottom={1}>
+          <Grid  container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
+            labelId="demo-simple-select-label"
+            id="SegundoApellido"
+            name="SegundoApellido"
             label="Segundo Apellido"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
+            size="medium"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.SegundoApellido}
           ></TextField>
-           </Grid>
-
-           <Grid item xs={3} marginTop={1} marginBottom={1}>
+                        {errors.SegundoApellido && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.SegundoApellido}
+                </FormHelperText>
+              )}
+          </Grid>
+          <Grid  container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
+            labelId="demo-simple-select-label"
+            id="Nombre"
+            name="Nombre"
             label="Nombre"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
+            size="medium"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.Nombre}
           ></TextField>
-           </Grid>
-
-           <Grid item xs={3} marginTop={1} marginBottom={1}>
+                        {errors.Nombre && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.Nombre}
+                </FormHelperText>
+              )}
+          </Grid>
+          <Grid  container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
-            label="Descripcion"
-            variant="outlined"
-            size="small"
+            labelId="demo-simple-select-label"
+            id="Descripcion"
             name="Descripcion"
+            label="Descripción"
+            size="medium"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.Descripcion}
           ></TextField>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Stack component="form" noValidate spacing={3}>
+                        {errors.Descripcion && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.Descripcion}
+                </FormHelperText>
+              )}
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
            id="date"
-           label="Fecha Ingreso"
            type="date"
            sx={{ width: 210 }}
            InputLabelProps={{
            shrink: true,
            }}
+           id="FechaIngreso"
+           name="FechaIngreso"
+           label="Fecha de ingreso"
+           onChange={handleChange}
+           onBlur={handleBlur}
+           value={form.FechaIngreso}
           />
-          </Stack>
+                        {errors.FechaIngreso && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.FechaIngreso}
+                </FormHelperText>
+              )}
           </Grid>
-
-          <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Stack component="form" noValidate spacing={3}>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
            id="date"
-           label="Fecha Salida"
            type="date"
            sx={{ width: 210 }}
            InputLabelProps={{
            shrink: true,
            }}
+           id="FechaSalida"
+           name="FechaSalida"
+           label="Fecha de salida"
+           onChange={handleChange}
+           onBlur={handleBlur}
+           value={form.FechaSalida}
           />
-          </Stack>
+                        {errors.FechaSalida && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.FechaSalida}
+                </FormHelperText>
+              )}
           </Grid>
-
-          <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Stack component="form" noValidate spacing={3}>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
            id="date"
-           label="Fecha Expiración Password"
            type="date"
            sx={{ width: 210 }}
            InputLabelProps={{
            shrink: true,
            }}
+           id="FechaExpPassword"
+           name="FechaExpPassword"
+           label="Fecha expiración de contraseña"
+           onChange={handleChange}
+           onBlur={handleBlur}
+           value={form.FechaExpPassword}
           />
-          </Stack>
+                        {errors.FechaExpPassword && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.FechaExpPassword}
+                </FormHelperText>
+              )}
           </Grid>
-
-          <Grid item xs={3} marginTop={1} marginBottom={1}>
+          <Grid container justifyContent="left" marginBottom={2}>
+          <Grid  container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
-            id="outlined-basic"
-            label="Indicador Reinicio de Password"
-            variant="outlined"
-            size="small"
-            name="Descripcion"
+            labelId="demo-simple-select-label"
+            id="ReinicioDePassword"
+            name="ReinicioDePassword"
+            label="Reinicio de Contraseña"
+            size="medium"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.ReinicioDePassword}
           ></TextField>
-         </Grid>
-
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         <Box sx={{width: 210 }} >
-          <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Estado</InputLabel>
-          <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Estado"
-          onChange={handleChangeCodigoEstado}
-          >
-             <MenuItem value={1}>1</MenuItem>
-             <MenuItem value={2}>2</MenuItem>
-             <MenuItem value={3}>3</MenuItem>
-          </Select>
+                        {errors.ReinicioDePassword && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.ReinicioDePassword}
+                </FormHelperText>
+              )}
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
+          <FormControl className={styles.listas}>
+            <SelectEstado/>
           </FormControl>
-         </Box>
-         </Grid>
-
-         <Grid item xs={3}></Grid>
-         <Grid item xs={3}></Grid>
-         <Grid item xs={3}></Grid>
-         <Grid item xs={3}></Grid>
-         <Grid item xs={3}></Grid>
-         
-         <Grid item xs={3} marginTop={1} marginBottom={1}>
-         
-         <Stack spacing={2} direction="row">
-         <Button variant="contained" >Aceptar</Button>
-         
-         <NavLink tag={Link} to="/SegUsuarioView" 
+          </Grid>
+          </Grid>
+          <Grid container justifyContent="right" marginBottom={1}>
+          <Stack spacing={2} direction="row" marginRight={5} marginTop={2}>
+          <Button variant="contained" >Aceptar</Button>
+          <NavLink tag={Link} to="/Dashboard/SegUsuarioView"
            style={isActive => ({
-            color: isActive ? "white" : "white"
-          })}
-         >
-         <Button variant="outlined" color="error" >Cancelar</Button>
-         </NavLink>
-         
-         </Stack>
-         </Grid>
-
+            color: isActive ? "red" : "red"
+          })}>
+          <Button variant="contained" color="error" >Cancelar</Button>
+          </NavLink>
+          </Stack>
+          </Grid>
     </Grid>
-
+    </Box>
+    </Paper>
     </Grid>
-
 );
 };
