@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
     return errors;
   };
 
-export default function ParEmpresa(){
+export default function ConCatalogo(){
 
     const styles = useStyles();
 
@@ -113,7 +113,7 @@ export default function ParEmpresa(){
                 marginBottom: 3,
               }}
             >
-              Moneda
+              Catálogo Cuentas
             </Typography>
           </Grid>
           <Grid container justifyContent="center" >     
@@ -130,49 +130,87 @@ export default function ParEmpresa(){
           <Grid  container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
             labelId="demo-simple-select-label"
-            id="Descripcion"
-            name="Descripcion"
-            label="Descripción"
+            id="NumeroCuenta"
+            name="NumeroCuenta"
+            label="Número Cuenta"
             size="medium"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={form.Descripcion}
+            value={form.NumeroCuenta}
           ></TextField>
-                        {errors.Descripcion && (
+                        {errors.NumeroCuenta && (
                 <FormHelperText id="my-helper-text" error>
-                  {errors.Descripcion}
+                  {errors.NumeroCuenta}
                 </FormHelperText>
               )}
           </Grid>
           <Grid  container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
             labelId="demo-simple-select-label"
-            id="CodigoInternacional"
-            name="CodigoInternacional"
-            label="Código Internacional"
+            id="Nombre"
+            name="Nombre"
+            label="Nombre"
             size="medium"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={form.CodigoInternacional}
+            value={form.Nombre}
           ></TextField>
-                        {errors.CodigoInternacional && (
+                        {errors.Nombre && (
                 <FormHelperText id="my-helper-text" error>
-                  {errors.CodigoInternacional}
+                  {errors.Nombre}
                 </FormHelperText>
               )}
           </Grid>
-          <Grid container justifyContent="center" xs={3} marginBottom={2} >
-          <Box sx={{
-            border: 1, 
-            borderColor: 'grey.400',
-            width: 210,
-            height: 55
-          }}>
-          <FormGroup sx={{marginRight: 4, marginTop:1}}>
-          <FormControlLabel control={<Checkbox defaultChecked={false} />} label="Moneda local?" 
-          labelPlacement="start"/>
-          </FormGroup>
-          </Box>
+          <Grid  container justifyContent="center" xs={3} marginBottom={2}>
+          <TextField
+            labelId="demo-simple-select-label"
+            id="NumeroMascara"
+            name="NumeroMascara"
+            label="Número Máscara"
+            size="medium"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.NumeroMascara}
+          ></TextField>
+                        {errors.NumeroMascara && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.NumeroMascara}
+                </FormHelperText>
+              )}
+          </Grid>
+          <Grid  container justifyContent="center" xs={3} marginBottom={2}>
+          <TextField
+            labelId="demo-simple-select-label"
+            id="CuentaMadre"
+            name="CuentaMadre"
+            label="Cuenta Madre"
+            size="medium"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.CuentaMadre}
+          ></TextField>
+                        {errors.CuentaMadre && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.CuentaMadre}
+                </FormHelperText>
+              )}
+          </Grid>
+          <Grid  container justifyContent="center" xs={3} marginBottom={2}>
+          <TextField
+            labelId="demo-simple-select-label"
+            id="Nivel"
+            name="Nivel"
+            label="Nivel"
+            size="medium"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.Nivel}
+          ></TextField>
+                        {errors.Nombre && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.Nivel}
+                </FormHelperText>
+              )}
           </Grid>
           <Grid container justifyContent="center" xs={3} marginBottom={2} >
           <Box sx={{
@@ -182,10 +220,29 @@ export default function ParEmpresa(){
             height: 55
           }}>
           <FormGroup sx={{marginRight: 2, marginTop:1}}>
-          <FormControlLabel control={<Checkbox defaultChecked={false} />} label="Moneda referencia?" 
+          <FormControlLabel control={<Checkbox defaultChecked={false} />} label="Es de presupuesto" 
           labelPlacement="start"/>
           </FormGroup>
           </Box>
+          </Grid>
+          <Grid container justifyContent="left">
+          <Grid container justifyContent="center" xs={3} marginBottom={2} >
+          <Box sx={{
+            border: 1, 
+            borderColor: 'grey.400',
+            width: 210,
+            height: 55
+          }}>
+          <FormGroup sx={{marginRight:6, marginTop:1}}>
+          <FormControlLabel control={<Checkbox defaultChecked={false} />} label="Es detalle" 
+          labelPlacement="start"/>
+          </FormGroup>
+          </Box>
+          </Grid>
+          <Grid container justifyContent="center" xs={3} marginBottom={2}>
+          <FormControl className={styles.listas}>
+          <SelectEstado/>
+          </FormControl>
           </Grid>
           <Grid container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
@@ -204,56 +261,12 @@ export default function ParEmpresa(){
               </FormHelperText>
               )}
           </Grid>
-          <Grid container justifyContent="center" xs={3} marginBottom={2}>
-          <FormControl className={styles.listas}>
-          <SelectEstado/>
-          </FormControl>
           </Grid> 
-          <Grid container justifyContent="left">
-          <Grid container justifyContent="center" xs={3} marginBottom={2}>
-          <TextField
-           id="date"
-           type="date"
-           sx={{ width: 210 }}
-           InputLabelProps={{
-           shrink: true,
-           }}
-           id="UltimaModificacion"
-           name="UltimaModificacion"
-           label="Fecha de la ultima modificación"
-           onChange={handleChange}
-           onBlur={handleBlur}
-           value={form.UltimaModificacion}
-          />
-            {errors.UltimaModificacion && (
-                <FormHelperText id="my-helper-text" error>
-                  {errors.UltimaModificacion}
-                </FormHelperText>
-              )}
-          </Grid>
-          <Grid container justifyContent="center" xs={3} marginBottom={2}>
-          <TextField
-           className={styles.inputMaterial}
-           labelId="demo-simple-select-label"
-           id="UsuarioUltMod"
-           name="UsuarioUltMod"
-           label="Usuario ultima modificación"
-           onChange={handleChange}
-           onBlur={handleBlur}
-           value={form.UsuarioUltMod}
-          ></TextField>
-          </Grid>
-          </Grid>
          </Grid>
          <Grid container justifyContent="right" marginBottom={1}>
           <Stack spacing={2} direction="row" marginRight={5} marginTop={2}>
           <Button variant="contained" >Aceptar</Button>
-          <NavLink tag={Link} to="/Dashboard/ParMonedaView"
-           style={isActive => ({
-            color: isActive ? "red" : "red"
-          })}>
           <Button variant="contained" color="error" >Cancelar</Button>
-          </NavLink>
           </Stack>
           </Grid>
     </Box>

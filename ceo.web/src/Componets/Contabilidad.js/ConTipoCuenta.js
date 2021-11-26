@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
     return errors;
   };
 
-export default function ParEmpresa(){
+export default function ConTipoCuenta(){
 
     const styles = useStyles();
 
@@ -113,7 +113,7 @@ export default function ParEmpresa(){
                 marginBottom: 3,
               }}
             >
-              Moneda
+              Tipo Cuenta
             </Typography>
           </Grid>
           <Grid container justifyContent="center" >     
@@ -122,10 +122,22 @@ export default function ParEmpresa(){
           <SelectEmpresa/>
           </FormControl>
           </Grid>
-          <Grid container justifyContent="center" xs={3} marginBottom={2}>
-          <FormControl className={styles.listas}>
-          <SelectMoneda/>
-          </FormControl>
+          <Grid  container justifyContent="center" xs={3} marginBottom={2}>
+          <TextField
+            labelId="demo-simple-select-label"
+            id="TipoCuenta"
+            name="TipoCuenta"
+            label="Tipo Cuenta"
+            size="medium"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.TipoCuenta}
+          ></TextField>
+                        {errors.TipoCuenta && (
+                <FormHelperText id="my-helper-text" error>
+                  {errors.TipoCuenta}
+                </FormHelperText>
+              )}
           </Grid>
           <Grid  container justifyContent="center" xs={3} marginBottom={2}>
           <TextField
@@ -144,36 +156,6 @@ export default function ParEmpresa(){
                 </FormHelperText>
               )}
           </Grid>
-          <Grid  container justifyContent="center" xs={3} marginBottom={2}>
-          <TextField
-            labelId="demo-simple-select-label"
-            id="CodigoInternacional"
-            name="CodigoInternacional"
-            label="Código Internacional"
-            size="medium"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={form.CodigoInternacional}
-          ></TextField>
-                        {errors.CodigoInternacional && (
-                <FormHelperText id="my-helper-text" error>
-                  {errors.CodigoInternacional}
-                </FormHelperText>
-              )}
-          </Grid>
-          <Grid container justifyContent="center" xs={3} marginBottom={2} >
-          <Box sx={{
-            border: 1, 
-            borderColor: 'grey.400',
-            width: 210,
-            height: 55
-          }}>
-          <FormGroup sx={{marginRight: 4, marginTop:1}}>
-          <FormControlLabel control={<Checkbox defaultChecked={false} />} label="Moneda local?" 
-          labelPlacement="start"/>
-          </FormGroup>
-          </Box>
-          </Grid>
           <Grid container justifyContent="center" xs={3} marginBottom={2} >
           <Box sx={{
             border: 1, 
@@ -182,7 +164,35 @@ export default function ParEmpresa(){
             height: 55
           }}>
           <FormGroup sx={{marginRight: 2, marginTop:1}}>
-          <FormControlLabel control={<Checkbox defaultChecked={false} />} label="Moneda referencia?" 
+          <FormControlLabel control={<Checkbox defaultChecked={false} />} label="Indicador Balance" 
+          labelPlacement="start"/>
+          </FormGroup>
+          </Box>
+          </Grid>
+          <Grid container justifyContent="left">
+          <Grid container justifyContent="center" xs={3} marginBottom={2} >
+          <Box sx={{
+            border: 1, 
+            borderColor: 'grey.400',
+            width: 210,
+            height: 55
+          }}>
+          <FormGroup sx={{marginRight:0.8, marginTop: 0.5}}>
+          <FormControlLabel control={<Checkbox defaultChecked={false} />} label="Indicador Resultados" 
+          labelPlacement="start"/>
+          </FormGroup>
+          </Box>
+          </Grid>
+
+          <Grid container justifyContent="center" xs={3} marginBottom={2} >
+          <Box sx={{
+            border: 1, 
+            borderColor: 'grey.400',
+            width: 210,
+            height: 55
+          }}>
+          <FormGroup sx={{marginTop:0.5, marginRight:1}}>
+          <FormControlLabel control={<Checkbox defaultChecked={false} />} label="Indicador Saldo Deudor" 
           labelPlacement="start"/>
           </FormGroup>
           </Box>
@@ -204,51 +214,12 @@ export default function ParEmpresa(){
               </FormHelperText>
               )}
           </Grid>
-          <Grid container justifyContent="center" xs={3} marginBottom={2}>
-          <FormControl className={styles.listas}>
-          <SelectEstado/>
-          </FormControl>
-          </Grid> 
-          <Grid container justifyContent="left">
-          <Grid container justifyContent="center" xs={3} marginBottom={2}>
-          <TextField
-           id="date"
-           type="date"
-           sx={{ width: 210 }}
-           InputLabelProps={{
-           shrink: true,
-           }}
-           id="UltimaModificacion"
-           name="UltimaModificacion"
-           label="Fecha de la ultima modificación"
-           onChange={handleChange}
-           onBlur={handleBlur}
-           value={form.UltimaModificacion}
-          />
-            {errors.UltimaModificacion && (
-                <FormHelperText id="my-helper-text" error>
-                  {errors.UltimaModificacion}
-                </FormHelperText>
-              )}
-          </Grid>
-          <Grid container justifyContent="center" xs={3} marginBottom={2}>
-          <TextField
-           className={styles.inputMaterial}
-           labelId="demo-simple-select-label"
-           id="UsuarioUltMod"
-           name="UsuarioUltMod"
-           label="Usuario ultima modificación"
-           onChange={handleChange}
-           onBlur={handleBlur}
-           value={form.UsuarioUltMod}
-          ></TextField>
-          </Grid>
           </Grid>
          </Grid>
          <Grid container justifyContent="right" marginBottom={1}>
           <Stack spacing={2} direction="row" marginRight={5} marginTop={2}>
           <Button variant="contained" >Aceptar</Button>
-          <NavLink tag={Link} to="/Dashboard/ParMonedaView"
+          <NavLink tag={Link} to="/Dashboard/ConTipoCuentaView"
            style={isActive => ({
             color: isActive ? "red" : "red"
           })}>
