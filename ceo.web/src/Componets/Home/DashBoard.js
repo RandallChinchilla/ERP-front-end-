@@ -37,6 +37,7 @@ import ParCodigoTransaccion from "../Parametros/ParCodigoTransaccion";
 import ParCodigoTransaccionView from "../Parametros/ParCodigoTransaccionView";
 import ConEncabezado from "../Contabilidad.js/ConEncabezado";
 import ConEncabezadoView from "../Contabilidad.js/ConEncabezadoView";
+import ConCatalogo from "../Contabilidad.js/ConCatalogo";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -202,23 +203,92 @@ function DashboardContent() {
         >
           <Switch>
             <Route exact path="/Dashboard/marca" component={Marca}></Route>
-            <Route exact path="/Dashboard/parempresa" component={ParEmpresa}></Route>
-            <Route exact path="/Dashboard/climaestro" component={CliMaestro}></Route>
-            <Route exact path="/Dashboard/climaestroview" component={ClieMaestroView}></Route>
-            <Route exact path="/Dashboard/parempresaview" component={ParEmpresaView}></Route>
-            <Route exact path="/Dashboard/cxpproveedor" component={CxpProveedor}></Route>
-            <Route exact path="/Dashboard/cxpproveedorview"component={CxpProveedorView}></Route>
-            <Route exact path="/Dashboard/segusuario" component={SegUsuario}></Route>
-            <Route exact path="/Dashboard/segusuarioview" component={SegUsuarioView}></Route>
-            <Route exact path="/Dashboard/parmoneda" component={ParMoneda}></Route>
-            <Route exact path="/Dashboard/parmonedaview" component={ParMonedaView}></Route>
-            <Route exact path="/Dashboard/partipoidentificacion" component={ParTipoIdentificacion}></Route>
-            <Route exact path="/Dashboard/partipoidentificacionview" component={ParTipoIdentificacionView}></Route>
-            <Route exact path="/Dashboard/parcodigotransaccion" component={ParCodigoTransaccion}></Route>
-            <Route exact path="/Dashboard/parcodigotransaccionview" component={ParCodigoTransaccionView}></Route>
-            <Route exact path="/Dashboard/conencabezado" component={ConEncabezado}></Route>
-            <Route exact path="/Dashboard/conencabezadoview" component={ConEncabezadoView}></Route>
-            
+            <Route
+              exact
+              path="/Dashboard/parempresa"
+              component={ParEmpresa}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/climaestro"
+              component={CliMaestro}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/climaestroview"
+              component={ClieMaestroView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/parempresaview"
+              component={ParEmpresaView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/cxpproveedor"
+              component={CxpProveedor}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/cxpproveedorview"
+              component={CxpProveedorView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/segusuario"
+              component={SegUsuario}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/segusuarioview"
+              component={SegUsuarioView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/parmoneda"
+              component={ParMoneda}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/parmonedaview"
+              component={ParMonedaView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/partipoidentificacion"
+              component={ParTipoIdentificacion}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/partipoidentificacionview"
+              component={ParTipoIdentificacionView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/parcodigotransaccion"
+              component={ParCodigoTransaccion}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/parcodigotransaccionview"
+              component={ParCodigoTransaccionView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/conencabezado"
+              component={ConEncabezado}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/conencabezadoview"
+              component={ConEncabezadoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/concatalogo"
+              component={ConCatalogo}
+            ></Route>
+
             <Route
               exact
               path="/autenticacion"

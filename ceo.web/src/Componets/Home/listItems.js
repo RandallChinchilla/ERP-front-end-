@@ -260,9 +260,9 @@ export default function NestedList() {
       <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-          <NavLink tag={Link} to="/Dashboard/ConEncabezado">
-            <ListItemText className={classes.text}>Asientos</ListItemText>
-          </NavLink>
+            <NavLink tag={Link} to="/Dashboard/ConEncabezado">
+              <ListItemText className={classes.text}>Asientos</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -278,9 +278,14 @@ export default function NestedList() {
       <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>
+            <NavLink tag={Link} to="/Dashboard/concatalogo">
+              <ListItemText className={classes.text}>
+                Catálogo Cuentas
+              </ListItemText>
+            </NavLink>
+            {/* <ListItemText className={classes.text}>
               Catálogo Cuentas
-            </ListItemText>
+            </ListItemText> */}
           </ListItemButton>
         </List>
       </Collapse>
@@ -437,7 +442,9 @@ export default function NestedList() {
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink tag={Link} to="/Dashboard/CxpProveedorView">
-              <ListItemText className={classes.text}>Catálogo Proveedores</ListItemText>
+              <ListItemText className={classes.text}>
+                Catálogo Proveedores
+              </ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -708,8 +715,8 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-          <NavLink tag={Link} to="/Dashboard/ParEmpresa">
-            <ListItemText className={classes.text}>Empresa</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/ParEmpresa">
+              <ListItemText className={classes.text}>Empresa</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -717,8 +724,8 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-          <NavLink tag={Link} to="/Dashboard/ParMoneda">
-            <ListItemText className={classes.text}>Moneda</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/ParMoneda">
+              <ListItemText className={classes.text}>Moneda</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -726,8 +733,10 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-          <NavLink tag={Link} to="/Dashboard/ParTipoIdentificacion">
-            <ListItemText className={classes.text}>Tipo de Identificación</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/ParTipoIdentificacion">
+              <ListItemText className={classes.text}>
+                Tipo de Identificación
+              </ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -735,8 +744,10 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-          <NavLink tag={Link} to="/Dashboard/ParCodigoTransaccion">
-            <ListItemText className={classes.text}>Códigos Transacción</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/ParCodigoTransaccion">
+              <ListItemText className={classes.text}>
+                Códigos Transacción
+              </ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
