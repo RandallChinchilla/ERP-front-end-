@@ -37,7 +37,27 @@ import ParCodigoTransaccion from "../Parametros/ParCodigoTransaccion";
 import ParCodigoTransaccionView from "../Parametros/ParCodigoTransaccionView";
 import ConEncabezado from "../Contabilidad.js/ConEncabezado";
 import ConEncabezadoView from "../Contabilidad.js/ConEncabezadoView";
+import ConParametros from "../Contabilidad.js/ConParametros";
+import ConParametrosView from "../Contabilidad.js/ConParametrosView";
+import ConCentrosCosto from "../Contabilidad.js/ConCentrosCosto";
+import ConCentrosCostoView from "../Contabilidad.js/ConCentrosCostoView";
 import ConCatalogo from "../Contabilidad.js/ConCatalogo";
+import ConTipoCuenta from "../Contabilidad.js/ConTipoCuenta";
+import ConTipoCuentaView from "../Contabilidad.js/ConTipoCuentaView";
+import ConNotasEF from "../Contabilidad.js/ConNotasEF";
+import ConNotasEFView from "../Contabilidad.js/ConNotasEFView";
+import FelCondicionVenta from "../FacturasElectronicas/FelCondicionVenta";
+import FelCondicionVentaView from "../FacturasElectronicas/FelCondicionVentaView";
+import FelMedioPago from "../FacturasElectronicas/FelMedioPago";
+import FelMedioPagoView from "../FacturasElectronicas/FelMedioPagoView";
+import FelTipoDocumento from "../FacturasElectronicas/FelTipoDocumento";
+import FelTipoDocumentoView from "../FacturasElectronicas/FelTipoDocumentoView";
+import FelTipoCodigo from "../FacturasElectronicas/FelTipoCodigo";
+import FelTipoCodigoView from "../FacturasElectronicas/FelTipoCodigoView";
+import FelUnidadMedida from "../FacturasElectronicas/FelUnidadMedida";
+import FelTipoImpuesto from "../FacturasElectronicas/FelTipoImpuesto";
+import FelUnidadMedidaView from "../FacturasElectronicas/FelUnidadMedidaView";
+import FelTipoImpuestoView from "../FacturasElectronicas/FelTipoImpuestoView";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -285,10 +305,109 @@ function DashboardContent() {
             ></Route>
             <Route
               exact
+              path="/Dashboard/conparametros"
+              component={ConParametros}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/conparametrosview"
+              component={ConParametrosView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/concentroscosto"
+              component={ConCentrosCosto}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/concentroscostoview"
+              component={ConCentrosCostoView}
+            ></Route>
+            <Route
+              exact
               path="/Dashboard/concatalogo"
               component={ConCatalogo}
             ></Route>
-
+            <Route
+              exact
+              path="/Dashboard/contipocuenta"
+              component={ConTipoCuenta}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/contipocuentaview"
+              component={ConTipoCuentaView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/connotasef"
+              component={ConNotasEF}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/connotasefview"
+              component={ConNotasEFView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/felcondicionventa"
+              component={FelCondicionVenta}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/felcondicionventaview"
+              component={FelCondicionVentaView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/felmediopago"
+              component={FelMedioPago}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/felmediopagoview"
+              component={FelMedioPagoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/feltipodocumento"
+              component={FelTipoDocumento}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/feltipodocumentoview"
+              component={FelTipoDocumentoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/feltipocodigo"
+              component={FelTipoCodigo}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/feltipocodigoview"
+              component={FelTipoCodigoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/felunidadmedida"
+              component={FelUnidadMedida}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/felunidadmedidaview"
+              component={FelUnidadMedidaView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/feltipoimpuesto"
+              component={FelTipoImpuesto}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/feltipoimpuestoview"
+              component={FelTipoImpuestoView}
+            ></Route>
             <Route
               exact
               path="/autenticacion"
