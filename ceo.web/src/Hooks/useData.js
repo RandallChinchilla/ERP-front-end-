@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { postAction } from "../Helpers/postHelper";
+import { putAction } from "../Helpers/putHelper";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
@@ -18,7 +19,6 @@ export const useData = (form) => {
           "userLoggedToken",
           JSON.stringify(tokenresponse.data.token)
         );
-        console.log("hola perra");
         postAction("Account/Login", form, tokenresponse.data.token).then(
           (response) => {
             if (response.status === 200) {
@@ -37,9 +37,31 @@ export const useData = (form) => {
       }
     });
   };
+
+  const handleSubmitUpdate = (e) => {
+    // e.preventDefault();
+    const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+    console.log(form);
+    putAction(
+      "FelCondicionVentum/PutFelCondicionVenta",
+      form,
+      userLoggedToken
+    ).then((response) => {
+      if (response.status === 200) {
+        setResponse(true);
+        window.localStorage.setItem(
+          "userLogged",
+          JSON.stringify(response.data.result)
+        );
+        usehistory.push("./Dashboard");
+      } else {
+      }
+    });
+  };
   return {
     response,
     handleSubmitLogin,
+    handleSubmitUpdate,
   };
 };
 
