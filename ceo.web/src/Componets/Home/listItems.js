@@ -22,6 +22,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import { makeStyles } from "@material-ui/core";
 import { indigo, white } from "@mui/material/colors";
 import { Link, NavLink } from "react-router-dom";
+import PostAddIcon from '@mui/icons-material/PostAdd';
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -545,7 +546,7 @@ export default function NestedList() {
 
       <ListItemButton onClick={handleClickFacturaElectronica}>
         <ListItemIcon>
-          <StorageIcon className={classes.iconos} />
+          <PostAddIcon className={classes.iconos} />
         </ListItemIcon>
         <ListItemText className={classes.text}>
           Factura Electrónica
@@ -640,7 +641,9 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
+          <NavLink tag={Link} to="/Dashboard/ActMaestroView">
             <ListItemText className={classes.text}>Maestro</ListItemText>
+          </NavLink>  
           </ListItemButton>
         </List>
       </Collapse>
@@ -648,7 +651,9 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
+          <NavLink tag={Link} to="/Dashboard/ActGrupoView">
             <ListItemText className={classes.text}>Grupo</ListItemText>
+          </NavLink>  
           </ListItemButton>
         </List>
       </Collapse>
@@ -656,7 +661,9 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
+          <NavLink tag={Link} to="/Dashboard/ActSubGrupoView">
             <ListItemText className={classes.text}>Sub Grupo</ListItemText>
+          </NavLink>  
           </ListItemButton>
         </List>
       </Collapse>
@@ -674,9 +681,11 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
+          <NavLink tag={Link} to="/Dashboard/ActFormaDepreciacionView">
             <ListItemText className={classes.text}>
               Forma Depreciación
             </ListItemText>
+          </NavLink>  
           </ListItemButton>
         </List>
       </Collapse>
@@ -684,7 +693,9 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
+          <NavLink tag={Link} to="/Dashboard/ActEstadoView">
             <ListItemText className={classes.text}>Estado</ListItemText>
+          </NavLink>  
           </ListItemButton>
         </List>
       </Collapse>
@@ -692,7 +703,9 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Reportes</ListItemText>
+          <NavLink tag={Link} to="/Dashboard/ActDocumentoView">
+            <ListItemText className={classes.text}>Documento</ListItemText>
+          </NavLink>  
           </ListItemButton>
         </List>
       </Collapse>
