@@ -74,7 +74,23 @@ export default function ConCatalogo() {
                 key={item.Cuenta}
                 nodeId={item.Nivel}
                 label={item.Nombre}
-              ></TreeItem>
+              >
+                {item.ChildrenNode1 && (
+                  <TreeItem
+                    key={item.ChildrenNode1.Cuenta}
+                    nodeId={item.ChildrenNode1.Cuenta}
+                    label={item.ChildrenNode1.Nombre}
+                  >
+                    {item.ChildrenNode1.ChildrenNode1 && (
+                      <TreeItem
+                        key={item.ChildrenNode1.ChildrenNode1.Cuenta}
+                        nodeId={item.ChildrenNode1.ChildrenNode1.Cuenta}
+                        label={item.ChildrenNode1.ChildrenNode1.Nombre}
+                      ></TreeItem>
+                    )}
+                  </TreeItem>
+                )}
+              </TreeItem>
             )
         )}
       {/* <TreeItem nodeId="1" label="Applications">
