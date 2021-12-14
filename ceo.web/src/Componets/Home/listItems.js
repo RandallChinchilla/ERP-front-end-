@@ -413,15 +413,16 @@ export default function NestedList() {
       <Collapse in={openCuentasPorCobrar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Maestro</ListItemText>
+          <NavLink tag={Link} to="/Dashboard/CxcConcepto">
+            <ListItemText className={classes.text}>Concepto</ListItemText>
+          </NavLink>  
           </ListItemButton>
         </List>
       </Collapse>
-
       <Collapse in={openCuentasPorCobrar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Clientes</ListItemText>
+            <ListItemText className={classes.text}>Maestro</ListItemText> 
           </ListItemButton>
         </List>
       </Collapse>
@@ -440,7 +441,9 @@ export default function NestedList() {
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Maestro</ListItemText>
+          <NavLink tag={Link} to="/Dashboard/CxpConcepto">
+            <ListItemText className={classes.text}>Concepto</ListItemText>
+          </NavLink>  
           </ListItemButton>
         </List>
       </Collapse>
@@ -448,9 +451,9 @@ export default function NestedList() {
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>
-              Orden de Compra
-            </ListItemText>
+          <NavLink tag={Link} to="/Dashboard/CxpDependenciaOperativa">
+            <ListItemText className={classes.text}>Dependencia Operativa</ListItemText>
+          </NavLink>  
           </ListItemButton>
         </List>
       </Collapse>
@@ -458,9 +461,7 @@ export default function NestedList() {
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink
-              tag={Link}
-              to="/Dashboard/CxpProveedorView"
+            <NavLink tag={Link} to="/Dashboard/CxpProveedorView"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}
@@ -473,7 +474,9 @@ export default function NestedList() {
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
+          <NavLink tag={Link} to="/Dashboard/CxpTipoProveedor">
             <ListItemText className={classes.text}>Tipo Proveedor</ListItemText>
+          </NavLink>  
           </ListItemButton>
         </List>
       </Collapse>
@@ -481,7 +484,9 @@ export default function NestedList() {
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
+          <NavLink tag={Link} to="/Dashboard/CxpTipoServicio">
             <ListItemText className={classes.text}>Tipo Servicio</ListItemText>
+          </NavLink>  
           </ListItemButton>
         </List>
       </Collapse>
@@ -489,7 +494,9 @@ export default function NestedList() {
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
+          <NavLink tag={Link} to="/Dashboard/CxpTipoContrato">
             <ListItemText className={classes.text}>Tipo Contrato</ListItemText>
+          </NavLink>  
           </ListItemButton>
         </List>
       </Collapse>
@@ -497,11 +504,12 @@ export default function NestedList() {
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Reportes</ListItemText>
+          <NavLink tag={Link} to="/Dashboard/CxpNivelAutorizacion">
+            <ListItemText className={classes.text}>Nivel Autorización</ListItemText>
+          </NavLink>  
           </ListItemButton>
         </List>
       </Collapse>
-
       <ListItemButton onClick={handleClickClientes}>
         <ListItemIcon>
           <AccountBoxIcon className={classes.iconos} />

@@ -58,6 +58,20 @@ import FelUnidadMedida from "../FacturasElectronicas/FelUnidadMedida";
 import FelTipoImpuesto from "../FacturasElectronicas/FelTipoImpuesto";
 import FelUnidadMedidaView from "../FacturasElectronicas/FelUnidadMedidaView";
 import FelTipoImpuestoView from "../FacturasElectronicas/FelTipoImpuestoView";
+import ActMaestroView from "../ActivosFijos/ActMaestroView";
+import ActGrupoView from "../ActivosFijos/ActGrupoView";
+import ActSubGrupoView from "../ActivosFijos/ActSubGrupo";
+import ActFormaDepreciacinView from "../ActivosFijos/ActFormaDepreciacion";
+import ActEstadoView from "../ActivosFijos/ActEstadoView";
+import ActDocumentoView from "../ActivosFijos/ActDocumento";
+import Catalogo from "../Contabilidad.js/Catalogo";
+import CxcConcepto from "../CuentasPorCobrar/CxcConcepto";
+import CxpConcepto from "../CuentasPorPagar/CxpConcepto";
+import CxpDependenciaOperativa from "../CuentasPorPagar/CxpDependenciaOperativa";
+import CxpTipoContrato from "../CuentasPorPagar/CxpTipoContrato";
+import CxpTipoProveedor from "../CuentasPorPagar/CxpTipoProveedor";
+import CxpTipoServicio from "../CuentasPorPagar/CxpTipoServicio";
+import CxpNivelAutorizacion from "../CuentasPorPagar/CxpNivelAutorizacion";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -413,6 +427,48 @@ function DashboardContent() {
               path="/autenticacion"
               component={Autenticacion}
             ></Route>
+            <Route
+              exact
+              path="/Dashboard/actmaestroview"
+              component={ActMaestroView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/actgrupoview"
+              component={ActGrupoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/actsubgrupoview"
+              component={ActSubGrupoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/actformadepreciacionview"
+              component={ActFormaDepreciacinView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/actestadoview"
+              component={ActEstadoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/actdocumentoview"
+              component={ActDocumentoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/catalogo"
+              component={Catalogo}
+            ></Route>
+             <Route exact path="/Dashboard/CxcConcepto" component={CxcConcepto}></Route>
+             <Route exact path="/Dashboard/CxpConcepto" component={CxpConcepto}></Route>
+             <Route exact path="/Dashboard/CxpDependenciaOperativa" component={CxpDependenciaOperativa}></Route>
+             <Route exact path="/Dashboard/CxpTipoContrato" component={CxpTipoContrato}></Route>
+             <Route exact path="/Dashboard/CxpTipoProveedor" component={CxpTipoProveedor}></Route>
+             <Route exact path="/Dashboard/CxpTipoServicio" component={CxpTipoServicio}></Route>
+             <Route exact path="/Dashboard/CxpNivelAutorizacion" component={CxpNivelAutorizacion}></Route>
           </Switch>
         </Box>
       </Box>
