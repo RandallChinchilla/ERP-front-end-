@@ -33,11 +33,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const columns = [
-  { id: "acciones", label: "Acciones", minWidth: 125 },
-  { id: "codigocondicionventa", label: "Condición Venta", minWidth: 100 },
-  { id: "descripcion", label: "Descripción", minWidth: 100 },
-];
+// const columns = [
+//   { id: "acciones", label: "Acciones", minWidth: 125 },
+//   { id: "codigocondicionventa", label: "Condición Venta", minWidth: 100 },
+//   { id: "descripcion", label: "Descripción", minWidth: 100 },
+// ];
 
 const FelCondicionVentaView = () => {
   const { useState } = React;

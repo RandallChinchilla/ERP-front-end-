@@ -230,7 +230,7 @@ function DashboardContent() {
             ></Route>
             <Route
               exact
-              path="/Dashboard/climaestro"
+              path="/Dashboard/climaestro/:isNew"
               component={CliMaestro}
             ></Route>
             <Route

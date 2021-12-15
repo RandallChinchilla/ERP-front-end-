@@ -5,7 +5,7 @@ import { putAction } from "../Helpers/putHelper";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
-export const useData = (form) => {
+export const useData = (form, controller) => {
   const [response, setResponse] = useState(false);
   const [errors, setErrors] = useState("");
   let usehistory = useHistory();
@@ -38,30 +38,41 @@ export const useData = (form) => {
     });
   };
 
-  const handleSubmitUpdate = (e) => {
-    // e.preventDefault();
+  const handleUpdate = (e) => {
+    e.preventDefault();
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(form);
-    putAction(
-      "FelCondicionVentum/PutFelCondicionVenta",
-      form,
-      userLoggedToken
-    ).then((response) => {
+    putAction(controller, form, userLoggedToken).then((response) => {
       if (response.status === 200) {
         setResponse(true);
-        window.localStorage.setItem(
-          "userLogged",
-          JSON.stringify(response.data.result)
-        );
-        usehistory.push("./Dashboard");
+        console.log("Registro Actualizado");
+        usehistory.push("/Dashboard/CliMaestroView");
       } else {
+        console.log("Fallo la Actualizacion del registro");
       }
     });
   };
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+    const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+    console.log(form);
+    postAction(controller, form, userLoggedToken).then((response) => {
+      if (response.status === 200) {
+        setResponse(true);
+        console.log("Registro Creado");
+        usehistory.push("/Dashboard/CliMaestroView");
+      } else {
+        console.log("Fallo la creacion del regisro");
+      }
+    });
+  };
+
   return {
     response,
     handleSubmitLogin,
-    handleSubmitUpdate,
+    handleUpdate,
+    handleAdd,
   };
 };
 
