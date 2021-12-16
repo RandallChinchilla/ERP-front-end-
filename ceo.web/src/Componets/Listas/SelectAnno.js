@@ -1,32 +1,12 @@
 import {
     Select,
     MenuItem,
-    FormHelperText,
   } from "@mui/material";
 import React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import { useGetData } from "../../Hooks/useGetData";
-import { useForm } from "../../Hooks/useForm";
 
-  const validationsForm = (form) => {
-    let errors = {};
-    if (!form.Anno) {
-        errors.Anno = "Debe ingresar un año";
-        errors.error = true;
-      }
-    return errors;
-  };
-
-export default function SelectAnno(){
-    const initialForm = {
-        Anno: "",
-        RememberMe: true,
-      };
-    
-      const { form, errors, handleChange, handleBlur } = useForm(
-        initialForm,
-        validationsForm
-      );
+export default function SelectAnno({ form, handleBlur, handleChange }){
     
       const { Data, Error, setData } = useGetData("ConPeriodo");
     
@@ -57,10 +37,5 @@ export default function SelectAnno(){
                </MenuItem>
              ))}
           </Select>
-          {errors.Anno && (
-                <FormHelperText id="my-helper-text" error>
-                  {errors.Anno}
-                </FormHelperText>
-              )}  
           </>
       )}

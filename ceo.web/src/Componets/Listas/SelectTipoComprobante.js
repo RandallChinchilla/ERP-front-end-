@@ -8,7 +8,7 @@ import { useGetData } from "../../Hooks/useGetData";
 
 export default function SelectId({form, handleBlur, handleChange}){
 
-      const { Data, Error, setData } = useGetData("ParTipoIdentificacion");
+      const { Data, Error, setData } = useGetData("FelTipoDocumento");
     
       if (Error) return null;
       if (!Data) return null;
@@ -17,21 +17,21 @@ export default function SelectId({form, handleBlur, handleChange}){
 
       return(
           <>
-           <InputLabel id="demo-simple-select-label">Tipo ID</InputLabel>
+           <InputLabel id="demo-simple-select-label">Tipo Comprobante</InputLabel>
            <Select
             labelId="demo-simple-select-label"
-            id="TipoId"
-            name="TipoId"
-            label="TipoId"
+            id="codigoTipoDocumento"
+            name="codigoTipoDocumento"
+            label="codigoTipoDocumento"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={form.TipoId}
+            value={form.codigoTipoDocumento}
           >
             {Data &&
              options.map((item) => (
              <MenuItem
-             key={item.codigoTipoIdentificacion}
-             value={item.codigoTipoIdentificacion}
+             key={item.codigoTipoDocumento}
+             value={item.codigoTipoDocumento}
              >
                {item.descripcion}
                </MenuItem>
