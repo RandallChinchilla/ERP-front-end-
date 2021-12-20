@@ -72,6 +72,9 @@ import CxpTipoContrato from "../CuentasPorPagar/CxpTipoContrato";
 import CxpTipoProveedor from "../CuentasPorPagar/CxpTipoProveedor";
 import CxpTipoServicio from "../CuentasPorPagar/CxpTipoServicio";
 import CxpNivelAutorizacion from "../CuentasPorPagar/CxpNivelAutorizacion";
+import InvMaestroView from "../Inventarios/InvMaestroView";
+import FacMaestroView from "../Cajas/FacMaestroView";
+import FacMaestro from "../Cajas/FacMaestro";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -462,13 +465,56 @@ function DashboardContent() {
               path="/Dashboard/catalogo"
               component={Catalogo}
             ></Route>
-             <Route exact path="/Dashboard/CxcConcepto" component={CxcConcepto}></Route>
-             <Route exact path="/Dashboard/CxpConcepto" component={CxpConcepto}></Route>
-             <Route exact path="/Dashboard/CxpDependenciaOperativa" component={CxpDependenciaOperativa}></Route>
-             <Route exact path="/Dashboard/CxpTipoContrato" component={CxpTipoContrato}></Route>
-             <Route exact path="/Dashboard/CxpTipoProveedor" component={CxpTipoProveedor}></Route>
-             <Route exact path="/Dashboard/CxpTipoServicio" component={CxpTipoServicio}></Route>
-             <Route exact path="/Dashboard/CxpNivelAutorizacion" component={CxpNivelAutorizacion}></Route>
+            <Route
+              exact
+              path="/Dashboard/CxcConcepto"
+              component={CxcConcepto}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/CxpConcepto"
+              component={CxpConcepto}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/CxpDependenciaOperativa"
+              component={CxpDependenciaOperativa}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/CxpTipoContrato"
+              component={CxpTipoContrato}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/CxpTipoProveedor"
+              component={CxpTipoProveedor}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/CxpTipoServicio"
+              component={CxpTipoServicio}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/CxpNivelAutorizacion"
+              component={CxpNivelAutorizacion}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/invMaestroView"
+              component={InvMaestroView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/FacMaestroView"
+              component={FacMaestroView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/facMaestro/:isNew"
+              component={FacMaestro}
+            ></Route>
           </Switch>
         </Box>
       </Box>

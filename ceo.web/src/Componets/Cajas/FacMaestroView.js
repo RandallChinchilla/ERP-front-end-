@@ -5,51 +5,50 @@ import { useHistory } from "react-router";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
-const CliMaestroView = () => {
+const FacMaestroView = () => {
   const { useState } = React;
   let usehistory = useHistory();
-  window.localStorage.removeItem("editCliMaestro");
+  window.localStorage.removeItem("editFacMaestro");
 
   const [columns, setColumns] = useState([
     {
-      title: "Empresa",
-      field: "CodigoEmpresaNavigation.Nombre",
-      id: "CodigoEmpresaNavigation.CodigoEmpresa",
+      title: "# Interno",
+      field: "Consecutivo",
     },
-    { title: "Número de Cliente", field: "NumeroCliente" },
+    { title: "Cliente", field: "CliMaestro.Nombre" },
     {
-      title: "Tipo de Identificación",
-      field: "CodigoTipoIdentificacionNavigation.Descripcion",
-      id: "CodigoTipoIdentificacionNavigation.CodigoTipoIdentificacion",
+      title: "Correo",
+      field: "CliMaestro.CorreoElectronico",
     },
     {
-      title: "Número de Identificación",
-      field: "CodigoTipoIdentificacionNavigation.Descripcion",
-      id: "CodigoTipoIdentificacionNavigation.CodigoTipoIdentificacion",
-    },
-    {
-      title: "Primer Apellido",
-      field: "Apellido1",
-      id: "Apellido1",
-    },
-    {
-      title: "Segundo Apellido",
-      field: "Apellido2",
-      id: "Apellido2",
-    },
-    {
-      title: "Nombre",
-      field: "Nombre",
-      id: "Nombre",
-    },
-    {
-      title: "Estado",
+      title: "Estatus",
       field: "CodigoEstadoNavigation.Descripcion",
       id: "CodigoEstadoNavigation.CodigoEstado",
     },
+    {
+      title: "Moneda",
+      field: "Codigo.Descripcion",
+      id: "Codigo.CodigoMoneda",
+    },
+    {
+      title: "Monto",
+    },
+    {
+      title: "Fecha Doc.",
+      field: "Fecha",
+    },
+    {
+      title: "Anulada",
+    },
+    {
+      title: "Consecutivo FE",
+      field: "ComprobanteElectronico",
+    },
   ]);
 
-  const { Data, Error, setData } = useGetData("CliMaestro/GetCliMaestros");
+  const { Data, Error, setData } = useGetData(
+    "IvtEncabezadoFactura/GetIvtEncabezadoFacturas"
+  );
 
   if (Error) return null;
   if (!Data) return null;
@@ -59,18 +58,18 @@ const CliMaestroView = () => {
     console.log(rowUpdate);
     if (isNew) {
       console.log(rowUpdate);
-      usehistory.push(`./CliMaestro/1`);
+      usehistory.push(`./FacMaestro/1`);
     } else {
       console.log(rowUpdate);
-      window.localStorage.setItem("editCliMaestro", JSON.stringify(rowUpdate));
-      usehistory.push(`./CliMaestro/0`);
+      window.localStorage.setItem("editFacMaestro", JSON.stringify(rowUpdate));
+      usehistory.push(`./FacMaestro/0`);
     }
   };
 
   return (
     <div>
       <MaterialTable
-        title=" Catálogo de Clientes"
+        title=" Facturas"
         columns={columns}
         data={Data}
         options={{
@@ -87,18 +86,18 @@ const CliMaestroView = () => {
         actions={[
           {
             icon: "edit",
-            tooltip: "Editar Cliente",
+            tooltip: "Editar Factura",
             onClick: (event, rowData) => updateState(rowData, false),
           },
           {
             icon: "delete",
-            tooltip: "Borrar Cliete",
+            tooltip: "Borrar Factura",
             onClick: (event, rowData) =>
               alert("You want to delete " + rowData.name),
           },
           {
             icon: "add",
-            tooltip: "Add User",
+            tooltip: "Nueva Factura",
             isFreeAction: true,
             onClick: (event, rowData) => updateState(rowData, true),
           },
@@ -108,4 +107,4 @@ const CliMaestroView = () => {
   );
 };
 
-export default CliMaestroView;
+export default FacMaestroView;

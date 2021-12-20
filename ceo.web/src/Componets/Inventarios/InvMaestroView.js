@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
-const CliMaestroView = () => {
+const InvMaestroView = () => {
   const { useState } = React;
   let usehistory = useHistory();
   window.localStorage.removeItem("editCliMaestro");
@@ -16,40 +16,18 @@ const CliMaestroView = () => {
       field: "CodigoEmpresaNavigation.Nombre",
       id: "CodigoEmpresaNavigation.CodigoEmpresa",
     },
-    { title: "Número de Cliente", field: "NumeroCliente" },
+    { title: "Codigo Articulo", field: "CodigoArticulo" },
     {
-      title: "Tipo de Identificación",
-      field: "CodigoTipoIdentificacionNavigation.Descripcion",
-      id: "CodigoTipoIdentificacionNavigation.CodigoTipoIdentificacion",
+      title: "Descripción",
+      field: "Descripcion",
     },
     {
-      title: "Número de Identificación",
-      field: "CodigoTipoIdentificacionNavigation.Descripcion",
-      id: "CodigoTipoIdentificacionNavigation.CodigoTipoIdentificacion",
-    },
-    {
-      title: "Primer Apellido",
-      field: "Apellido1",
-      id: "Apellido1",
-    },
-    {
-      title: "Segundo Apellido",
-      field: "Apellido2",
-      id: "Apellido2",
-    },
-    {
-      title: "Nombre",
-      field: "Nombre",
-      id: "Nombre",
-    },
-    {
-      title: "Estado",
-      field: "CodigoEstadoNavigation.Descripcion",
-      id: "CodigoEstadoNavigation.CodigoEstado",
+      title: "Cantidad",
+      field: "Cantidad",
     },
   ]);
 
-  const { Data, Error, setData } = useGetData("CliMaestro/GetCliMaestros");
+  const { Data, Error, setData } = useGetData("IvtMaestro/GetIvtMaestros");
 
   if (Error) return null;
   if (!Data) return null;
@@ -108,4 +86,4 @@ const CliMaestroView = () => {
   );
 };
 
-export default CliMaestroView;
+export default InvMaestroView;

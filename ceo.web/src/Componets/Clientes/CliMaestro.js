@@ -171,97 +171,8 @@ export const CliMaestro = () => {
     NumeroId: rowEdit ? rowEdit.NumeroId : "",
   };
 
-  // if (rowEdit) {
-  //   const initialForm = {
-  //     CodigoEmpresa: rowEdit.CodigoEmpresa,
-  //     NumeroCliente: rowEdit.NumeroCliente,
-  //     Apellido1: rowEdit.Apellido1,
-  //     Apellido2: rowEdit.Apellido2,
-  //     Nombre: rowEdit.Nombre,
-  //     Contacto: rowEdit.Contacto,
-  //     Telefono1: rowEdit.Telefono1,
-  //     Telefono2: rowEdit.Telefono2,
-  //     TelefonoCelular: rowEdit.TelefonoCelular,
-  //     CorreoElectronico: rowEdit.CorreoElectronico,
-  //     Direccion: rowEdit.Direccion,
-  //     NumeroBanco: rowEdit.NumeroBanco,
-  //     Iban: rowEdit.Iban,
-  //     FechaIngreso: rowEdit.FechaIngreso,
-  //     IndicadorEsProveedor: rowEdit.IndicadorEsProveedor,
-  //     Observaciones: rowEdit.Observaciones,
-  //     CodigoTipoIdentificacion: rowEdit.CodigoTipoIdentificacion,
-  //     CodigoPais: rowEdit.CodigoPais,
-  //     CodigoProvincia: rowEdit.CodigoProvincia,
-  //     CodigoCanton: rowEdit.CodigoCanton,
-  //     CodigoEstado: rowEdit.CodigoEstado,
-  //     IdUsuario: rowEdit.IdUsuario,
-  //     Id: rowEdit.Id,
-  //     NumeroId: rowEdit.NumeroId,
-  //   };
-  //   dataInitial = initialForm;
-  // } else {
-  //   const initialForm = {
-  //     CodigoEmpresa: "",
-  //     NumeroCliente: "",
-  //     Apellido1: "",
-  //     Apellido2: "",
-  //     Nombre: "",
-  //     Contacto: "",
-  //     Telefono1: "",
-  //     Telefono2: "",
-  //     TelefonoCelular: "",
-  //     CorreoElectronico: "",
-  //     Direccion: "",
-  //     NumeroBanco: "",
-  //     Iban: "",
-  //     FechaIngreso: "",
-  //     IndicadorEsProveedor: "",
-  //     Observaciones: "",
-  //     CodigoTipoIdentificacion: "",
-  //     CodigoPais: "",
-  //     CodigoProvincia: "",
-  //     CodigoCanton: "",
-  //     CodigoEstado: "",
-  //     IdUsuario: "",
-  //     Id: "",
-  //     NumeroId: "",
-  //   };
-  //   dataInitial = initialForm;
-  // }
-
-  // const [consolaSeleccionada, setConsolaSeleccionada] = useState({
-  //   TipoId: "",
-  //   Identificacion: "",
-  //   Apellido1: "",
-  //   Apellido2: "",
-  //   Nombre: "",
-  //   Contacto: "",
-  //   Telefono1: "",
-  //   Telefono2: "",
-  //   TelefonoCelular: "",
-  //   CorreoElectronico: "",
-  //   CodigoPais: "",
-  //   CodigoProvincia: "",
-  //   CodigoCanton: "",
-  //   Direccion: "",
-  //   NumeroBanco: "",
-  //   Iban: "",
-  //   FechaIngreso: "",
-  //   Observaciones: "",
-  //   CodigoEstado: "",
-  //   Usuario: "Cano",
-  //   IndicadorEsProveedor: false,
-  //   RememberMe: true,
-  // });
-
   const { isNew } = useParams();
   console.log(isNew);
-  // const { NumeroCliente } = useParams();
-  // let dataEdit;
-
-  // const { Data, Error, setData } = useGetData(
-  //   `CliMaestro/${CodigoEmpresa}/${NumeroCliente}`
-  // );
 
   const { form, errors, handleChange, handleBlur } = useForm(
     initialForm,
@@ -271,24 +182,6 @@ export const CliMaestro = () => {
     form,
     "CliMaestro/PutCliMaestro"
   );
-  // if (Error) return null;
-  // if (!Data) return null;
-
-  //setConsolaSeleccionada({ Apellido1: Data.Apellido1 });
-
-  //+++++++update row in the table+++++++++
-  // const updateClient = (form) => {
-  //   const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
-  //   putAction("CliMaestro/PutCliMaestro", form, userLoggedToken).then(
-  //     (response) => {
-  //       if (response.status === 200) {
-  //         console.log("Registro actualizado");
-  //       } else {
-  //         console.log("Registro no actualizado");
-  //       }
-  //     }
-  //   );
-  // };
 
   return (
     <Grid mb={4} container justifyContent="center">
@@ -312,28 +205,6 @@ export const CliMaestro = () => {
             </Typography>
           </Grid>
           <Grid container justifyContent="center">
-            {/* <Grid container justifyContent="center" xs={3} marginBottom={2}>
-              <FormControl className={styles.listas}>
-                <SelectId />
-              </FormControl>
-            </Grid> */}
-            {/* <Grid container justifyContent="center" xs={3} marginBottom={2}>
-              <TextField
-                className={styles.inputMaterial}
-                labelId="demo-simple-select-label"
-                id="Identificacion"
-                name="Identificacion"
-                label="Identificación"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={form.Identificacion}
-              ></TextField>
-              {errors.Identificacion && (
-                <FormHelperText id="my-helper-text" error>
-                  {errors.Identificacion}
-                </FormHelperText>
-              )}
-            </Grid> */}
             <Grid container justifyContent="center" xs={3} marginBottom={2}>
               <TextField
                 labelId="demo-simple-select-label"
@@ -608,28 +479,6 @@ export const CliMaestro = () => {
                 <SelectEstado CodigoEstado={form.CodigoEstado} />
               </FormControl>
             </Grid>
-            {/* <Grid
-              container
-              justifyContent="left"
-              marginBottom={1}
-              marginLeft={6}
-            >
-              <TextField
-                className={styles.inputMaterial}
-                labelId="demo-simple-select-label"
-                id="Usuario"
-                name="Usuario"
-                label="Usuario"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={form.Usuario}
-              ></TextField>
-              {errors.Usuario && (
-                <FormHelperText id="my-helper-text" error>
-                  {errors.Usuario}
-                </FormHelperText>
-              )}
-            </Grid> */}
             <Grid container justifyContent="right" marginBottom={1}>
               <Stack spacing={2} direction="row" marginRight={5} marginTop={2}>
                 {isNew == 1 ? (
@@ -641,12 +490,6 @@ export const CliMaestro = () => {
                     Editar
                   </Button>
                 )}
-                {/* <Button
-                  variant="contained"
-                  onClick={isNew ? handleAdd : handleUpdate}
-                >
-                  Aceptar
-                </Button> */}
                 <NavLink
                   tag={Link}
                   to="/Dashboard/CliMaestroView"
