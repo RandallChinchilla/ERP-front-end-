@@ -6,9 +6,9 @@ import React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import { useGetData } from "../../Hooks/useGetData";
 
-export default function SelectId({form, handleBlur, handleChange}){
+export default function SelectMedioPago({form, handleBlur, handleChange}){
 
-      const { Data, Error, setData } = useGetData("FelMedioPago");
+      const { Data, Error, setData } = useGetData("FelMediopago/GetFelMedioPagos");
     
       if (Error) return null;
       if (!Data) return null;

@@ -6,9 +6,9 @@ import React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import { useGetData } from "../../Hooks/useGetData";
 
-export default function SelectId({form, handleBlur, handleChange}){
+export default function SelectTipoComprobante({form, handleBlur, handleChange}){
 
-      const { Data, Error, setData } = useGetData("FelTipoDocumento");
+      const { Data, Error, setData } = useGetData("FelTipoDocumento/GetFelTipoDocumentos");
     
       if (Error) return null;
       if (!Data) return null;
@@ -25,7 +25,7 @@ export default function SelectId({form, handleBlur, handleChange}){
             label="codigoTipoDocumento"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={form.codigoTipoDocumento}
+            value={form.CodigoTipoDocumento}
           >
             {Data &&
              options.map((item) => (
