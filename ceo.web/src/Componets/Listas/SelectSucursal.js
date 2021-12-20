@@ -6,9 +6,9 @@ import React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import { useGetData } from "../../Hooks/useGetData";
 
-export default function SelectTipoImpuesto({form, handleBlur, handleChange}){
+export default function SelectSucursal({form, handleBlur, handleChange}){
 
-      const { Data, Error, setData } = useGetData("FelTipoImpuesto/GetFelTipoImpuestos");
+      const { Data, Error, setData } = useGetData("ParSucursal/GetParSucursales");
     
       if (Error) return null;
       if (!Data) return null;
@@ -17,23 +17,23 @@ export default function SelectTipoImpuesto({form, handleBlur, handleChange}){
 
       return(
           <>
-           <InputLabel id="demo-simple-select-label">Tipo Impuesto</InputLabel>
+           <InputLabel id="demo-simple-select-label">Sucursal</InputLabel>
            <Select
             labelId="demo-simple-select-label"
-            id="codigoTipoImpuesto"
-            name="codigoTipoImpuesto"
-            label="codigoTipoImpuesto"
+            id="CodigoSucursal"
+            name="CodigoSucursal"
+            label="CodigoSucursal"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={form.codigoTipoImpuesto}
+            value={form.CodigoSucursal}
           >
             {Data &&
              options.map((item) => (
              <MenuItem
-             key={item.codigoTipoImpuesto}
-             value={item.codigoTipoImpuesto}
+             key={item.CodigoSucursal}
+             value={item.CodigoSucursal}
              >
-               {item.descripcion}
+               {item.NombreSucursal}
                </MenuItem>
              ))}
           </Select>
