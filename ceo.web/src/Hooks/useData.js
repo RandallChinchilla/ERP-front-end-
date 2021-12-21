@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { postAction } from "../Helpers/postHelper";
+import { putAction } from "../Helpers/putHelper";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
-export const useData = (form) => {
+export const useData = (form, controller) => {
   const [response, setResponse] = useState(false);
   const [errors, setErrors] = useState("");
   let usehistory = useHistory();
@@ -18,7 +19,6 @@ export const useData = (form) => {
           "userLoggedToken",
           JSON.stringify(tokenresponse.data.token)
         );
-        console.log("hola perra");
         postAction("Account/Login", form, tokenresponse.data.token).then(
           (response) => {
             if (response.status === 200) {
@@ -37,9 +37,42 @@ export const useData = (form) => {
       }
     });
   };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+    console.log(form);
+    putAction(controller, form, userLoggedToken).then((response) => {
+      if (response.status === 200) {
+        setResponse(true);
+        console.log("Registro Actualizado");
+        usehistory.push("/Dashboard/CliMaestroView");
+      } else {
+        console.log("Fallo la Actualizacion del registro");
+      }
+    });
+  };
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+    const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+    console.log(form);
+    postAction(controller, form, userLoggedToken).then((response) => {
+      if (response.status === 200) {
+        setResponse(true);
+        console.log("Registro Creado");
+        usehistory.push("/Dashboard/CliMaestroView");
+      } else {
+        console.log("Fallo la creacion del regisro");
+      }
+    });
+  };
+
   return {
     response,
     handleSubmitLogin,
+    handleUpdate,
+    handleAdd,
   };
 };
 

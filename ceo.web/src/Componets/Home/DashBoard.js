@@ -23,10 +23,58 @@ import { CliMaestro } from "../Clientes/CliMaestro";
 import ClieMaestroView from "../Clientes/CliMaestroView";
 import { CxpProveedor } from "../CuentasPorPagar/CxpProveedor";
 import CxpProveedorView from "../CuentasPorPagar/CxpProveedorView";
-import { SegUsuario } from "../Seguidad/SegUsuario";
 import SegUsuarioView from "../Seguidad/SegUsuarioView";
 import Registro from "../Autenticacion/Registro";
 import Autenticacion from "../Autenticacion/Autenticacion";
+import ParEmpresa from "../Parametros/ParEmpresa";
+import ParEmpresaView from "../Parametros/ParEmpresaView";
+import SegUsuario from "../Seguidad/SegUsuario";
+import ParMoneda from "../Parametros/ParMoneda";
+import ParTipoIdentificacion from "../Parametros/ParTipoIdentificacion";
+import ParTipoIdentificacionView from "../Parametros/ParTipoIdentificacionView";
+import ParMonedaView from "../Parametros/ParMonedaView";
+import ParCodigoTransaccion from "../Parametros/ParCodigoTransaccion";
+import ParCodigoTransaccionView from "../Parametros/ParCodigoTransaccionView";
+import ConEncabezado from "../Contabilidad.js/ConEncabezado";
+import ConEncabezadoView from "../Contabilidad.js/ConEncabezadoView";
+import ConParametros from "../Contabilidad.js/ConParametros";
+import ConParametrosView from "../Contabilidad.js/ConParametrosView";
+import ConCentrosCosto from "../Contabilidad.js/ConCentrosCosto";
+import ConCentrosCostoView from "../Contabilidad.js/ConCentrosCostoView";
+import ConCatalogo from "../Contabilidad.js/ConCatalogo";
+import ConTipoCuenta from "../Contabilidad.js/ConTipoCuenta";
+import ConTipoCuentaView from "../Contabilidad.js/ConTipoCuentaView";
+import ConNotasEF from "../Contabilidad.js/ConNotasEF";
+import ConNotasEFView from "../Contabilidad.js/ConNotasEFView";
+import FelCondicionVenta from "../FacturasElectronicas/FelCondicionVenta";
+import FelCondicionVentaView from "../FacturasElectronicas/FelCondicionVentaView";
+import FelMedioPago from "../FacturasElectronicas/FelMedioPago";
+import FelMedioPagoView from "../FacturasElectronicas/FelMedioPagoView";
+import FelTipoDocumento from "../FacturasElectronicas/FelTipoDocumento";
+import FelTipoDocumentoView from "../FacturasElectronicas/FelTipoDocumentoView";
+import FelTipoCodigo from "../FacturasElectronicas/FelTipoCodigo";
+import FelTipoCodigoView from "../FacturasElectronicas/FelTipoCodigoView";
+import FelUnidadMedida from "../FacturasElectronicas/FelUnidadMedida";
+import FelTipoImpuesto from "../FacturasElectronicas/FelTipoImpuesto";
+import FelUnidadMedidaView from "../FacturasElectronicas/FelUnidadMedidaView";
+import FelTipoImpuestoView from "../FacturasElectronicas/FelTipoImpuestoView";
+import ActMaestroView from "../ActivosFijos/ActMaestroView";
+import ActGrupoView from "../ActivosFijos/ActGrupoView";
+import ActSubGrupoView from "../ActivosFijos/ActSubGrupo";
+import ActFormaDepreciacinView from "../ActivosFijos/ActFormaDepreciacion";
+import ActEstadoView from "../ActivosFijos/ActEstadoView";
+import ActDocumentoView from "../ActivosFijos/ActDocumento";
+import Catalogo from "../Contabilidad.js/Catalogo";
+import CxcConcepto from "../CuentasPorCobrar/CxcConcepto";
+import CxpConcepto from "../CuentasPorPagar/CxpConcepto";
+import CxpDependenciaOperativa from "../CuentasPorPagar/CxpDependenciaOperativa";
+import CxpTipoContrato from "../CuentasPorPagar/CxpTipoContrato";
+import CxpTipoProveedor from "../CuentasPorPagar/CxpTipoProveedor";
+import CxpTipoServicio from "../CuentasPorPagar/CxpTipoServicio";
+import CxpNivelAutorizacion from "../CuentasPorPagar/CxpNivelAutorizacion";
+import InvMaestroView from "../Inventarios/InvMaestroView";
+import FacMaestroView from "../Cajas/FacMaestroView";
+import FacMaestro from "../Cajas/FacMaestro";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -194,31 +242,278 @@ function DashboardContent() {
             <Route exact path="/Dashboard/marca" component={Marca}></Route>
             <Route
               exact
-              path="/Dashboard/climaestro"
+              path="/Dashboard/parempresa"
+              component={ParEmpresa}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/climaestro/:isNew"
               component={CliMaestro}
             ></Route>
             <Route
               exact
-              path="/climaestroview"
+              path="/Dashboard/climaestroview"
               component={ClieMaestroView}
             ></Route>
-            <Route exact path="/cxpproveedor" component={CxpProveedor}></Route>
             <Route
               exact
-              path="/cxpproveedorview"
+              path="/Dashboard/parempresaview"
+              component={ParEmpresaView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/cxpproveedor"
+              component={CxpProveedor}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/cxpproveedorview"
               component={CxpProveedorView}
             ></Route>
-            <Route exact path="/segusuario" component={SegUsuario}></Route>
             <Route
               exact
-              path="/segusuarioview"
+              path="/Dashboard/segusuario"
+              component={SegUsuario}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/segusuarioview"
               component={SegUsuarioView}
             ></Route>
-            <Route exact path="/registro" component={Registro}></Route>
+            <Route
+              exact
+              path="/Dashboard/parmoneda"
+              component={ParMoneda}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/parmonedaview"
+              component={ParMonedaView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/partipoidentificacion"
+              component={ParTipoIdentificacion}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/partipoidentificacionview"
+              component={ParTipoIdentificacionView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/parcodigotransaccion"
+              component={ParCodigoTransaccion}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/parcodigotransaccionview"
+              component={ParCodigoTransaccionView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/conencabezado"
+              component={ConEncabezado}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/conencabezadoview"
+              component={ConEncabezadoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/conparametros"
+              component={ConParametros}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/conparametrosview"
+              component={ConParametrosView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/concentroscosto"
+              component={ConCentrosCosto}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/concentroscostoview"
+              component={ConCentrosCostoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/concatalogo"
+              component={ConCatalogo}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/contipocuenta"
+              component={ConTipoCuenta}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/contipocuentaview"
+              component={ConTipoCuentaView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/connotasef"
+              component={ConNotasEF}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/connotasefview"
+              component={ConNotasEFView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/felcondicionventa"
+              component={FelCondicionVenta}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/felcondicionventaview"
+              component={FelCondicionVentaView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/felmediopago"
+              component={FelMedioPago}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/felmediopagoview"
+              component={FelMedioPagoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/feltipodocumento"
+              component={FelTipoDocumento}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/feltipodocumentoview"
+              component={FelTipoDocumentoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/feltipocodigo"
+              component={FelTipoCodigo}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/feltipocodigoview"
+              component={FelTipoCodigoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/felunidadmedida"
+              component={FelUnidadMedida}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/felunidadmedidaview"
+              component={FelUnidadMedidaView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/feltipoimpuesto"
+              component={FelTipoImpuesto}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/feltipoimpuestoview"
+              component={FelTipoImpuestoView}
+            ></Route>
             <Route
               exact
               path="/autenticacion"
               component={Autenticacion}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/actmaestroview"
+              component={ActMaestroView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/actgrupoview"
+              component={ActGrupoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/actsubgrupoview"
+              component={ActSubGrupoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/actformadepreciacionview"
+              component={ActFormaDepreciacinView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/actestadoview"
+              component={ActEstadoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/actdocumentoview"
+              component={ActDocumentoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/catalogo"
+              component={Catalogo}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/CxcConcepto"
+              component={CxcConcepto}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/CxpConcepto"
+              component={CxpConcepto}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/CxpDependenciaOperativa"
+              component={CxpDependenciaOperativa}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/CxpTipoContrato"
+              component={CxpTipoContrato}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/CxpTipoProveedor"
+              component={CxpTipoProveedor}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/CxpTipoServicio"
+              component={CxpTipoServicio}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/CxpNivelAutorizacion"
+              component={CxpNivelAutorizacion}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/invMaestroView"
+              component={InvMaestroView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/FacMaestroView"
+              component={FacMaestroView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/facMaestro/:isNew"
+              component={FacMaestro}
             ></Route>
           </Switch>
         </Box>

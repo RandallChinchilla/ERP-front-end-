@@ -20,6 +20,7 @@ import {
   import { makeStyles } from "@material-ui/core";
   import { red, blue, green } from "@mui/material/colors";
   import { Link, NavLink } from "react-router-dom";
+  import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
   
   const baseUrl = process.env.REACT_APP_BASE_URL;
   
@@ -89,16 +90,33 @@ import {
         alignContent="center"
         spacing={3}
       >
-        <Typography
-          variant="overline"
-          style={{ marginTop: 10, alignSelf: "center", fontSize: 16 }}
-        >
-          Proveedores
-        </Typography>
-  
-
-  
-        <Paper sx={{ width: "100%" }}>
+        <Grid>
+            <Typography
+              component="h1"
+              variant="h6"
+              noWrap
+              sx={{
+                flexGrow: 1,
+                color: blue[600],
+                textAlign: "center",
+                fontSize: 16,
+                marginTop: 3,
+                marginBottom: 3,
+              }}
+            >
+              Proveedores
+            </Typography>
+          </Grid>
+        <Paper elevation={3} sx={{ width: "100%" }}>
+        <Grid container justifyContent="left" marginLeft={5} marginTop={3}> 
+          <Button
+            variant="contained"
+            size="medium"
+            endIcon={<AddCircleOutlineIcon />}
+          >
+            Agregar
+          </Button>
+          </Grid>
           <TableContainer sx={{ maxHeight: 440 }}>
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
@@ -124,19 +142,19 @@ import {
                 {Data.map((row) => (
                   <TableRow key={row.codigoMarca}>
                     <TableCell>
-                    <NavLink tag={Link} to="/CxpProveedor">
+                    <NavLink tag={Link} to="/Dashboard/CxpProveedor">
                       <Edit
                         style={{ color: blue[600], width: 30 }}
                       />
                         </NavLink>
   
-                        <NavLink tag={Link} to="/CxpProveedor">
+                        <NavLink tag={Link} to="/Dashboard/CxpProveedor">
                       <Delete
                         style={{ color: red[700], width: 30 }}
                       />
                       </NavLink>
 
-                      <NavLink tag={Link} to="/CxpProveedor">
+                      <NavLink tag={Link} to="/Dashboard/CxpProveedor">
                       <Visibility
                         style={{ color: green[500], width: 30}}/>
                         </NavLink>

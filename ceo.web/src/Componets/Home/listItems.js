@@ -22,6 +22,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import { makeStyles } from "@material-ui/core";
 import { indigo, white } from "@mui/material/colors";
 import { Link, NavLink } from "react-router-dom";
+import PostAddIcon from "@mui/icons-material/PostAdd";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -41,6 +42,8 @@ export default function NestedList() {
   const [openPresupuesto, setOpenPresupuesto] = React.useState(false);
   const [openParametros, setOpenParametros] = React.useState(false);
   const [openSeguridad, setOpenSeguridad] = React.useState(false);
+  const [openFacturaElectronica, setOpenFacturaElectronica] =
+    React.useState(false);
 
   const handleClickCajas = () => {
     setOpenCajas(!openCajas);
@@ -55,6 +58,7 @@ export default function NestedList() {
     setOpenPresupuesto(false);
     setOpenParametros(false);
     setOpenSeguridad(false);
+    setOpenFacturaElectronica(false);
   };
 
   const handleClickContabilidad = () => {
@@ -70,6 +74,7 @@ export default function NestedList() {
     setOpenPresupuesto(false);
     setOpenParametros(false);
     setOpenSeguridad(false);
+    setOpenFacturaElectronica(false);
   };
 
   const handleClickBancos = () => {
@@ -85,6 +90,7 @@ export default function NestedList() {
     setOpenPresupuesto(false);
     setOpenParametros(false);
     setOpenSeguridad(false);
+    setOpenFacturaElectronica(false);
   };
 
   const handleClickCuentasPorCobrar = () => {
@@ -100,6 +106,7 @@ export default function NestedList() {
     setOpenPresupuesto(false);
     setOpenParametros(false);
     setOpenSeguridad(false);
+    setOpenFacturaElectronica(false);
   };
 
   const handleClickCuentasPorPagar = () => {
@@ -115,6 +122,7 @@ export default function NestedList() {
     setOpenPresupuesto(false);
     setOpenParametros(false);
     setOpenSeguridad(false);
+    setOpenFacturaElectronica(false);
   };
 
   const handleClickClientes = () => {
@@ -130,6 +138,7 @@ export default function NestedList() {
     setOpenPresupuesto(false);
     setOpenParametros(false);
     setOpenSeguridad(false);
+    setOpenFacturaElectronica(false);
   };
 
   const handleClickInventarios = () => {
@@ -145,6 +154,7 @@ export default function NestedList() {
     setOpenPresupuesto(false);
     setOpenParametros(false);
     setOpenSeguridad(false);
+    setOpenFacturaElectronica(false);
   };
 
   const handleClickActivosFijos = () => {
@@ -160,6 +170,7 @@ export default function NestedList() {
     setOpenPresupuesto(false);
     setOpenParametros(false);
     setOpenSeguridad(false);
+    setOpenFacturaElectronica(false);
   };
 
   const handleClickRecursosHumanos = () => {
@@ -175,6 +186,7 @@ export default function NestedList() {
     setOpenPresupuesto(false);
     setOpenParametros(false);
     setOpenSeguridad(false);
+    setOpenFacturaElectronica(false);
   };
 
   const handleClickPresupuesto = () => {
@@ -190,6 +202,7 @@ export default function NestedList() {
     setOpenRecursosHumanos(false);
     setOpenParametros(false);
     setOpenSeguridad(false);
+    setOpenFacturaElectronica(false);
   };
 
   const handleClickParametros = () => {
@@ -205,6 +218,7 @@ export default function NestedList() {
     setOpenRecursosHumanos(false);
     setOpenPresupuesto(false);
     setOpenSeguridad(false);
+    setOpenFacturaElectronica(false);
   };
 
   const handleClickSeguridad = () => {
@@ -220,6 +234,23 @@ export default function NestedList() {
     setOpenRecursosHumanos(false);
     setOpenPresupuesto(false);
     setOpenParametros(false);
+    setOpenFacturaElectronica(false);
+  };
+
+  const handleClickFacturaElectronica = () => {
+    setOpenFacturaElectronica(!openFacturaElectronica);
+    setOpenContabilidad(false);
+    setOpenCajas(false);
+    setOpenBancos(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenCuentasPorPagar(false);
+    setOpenClientes(false);
+    setOpenInventarios(false);
+    setOpenActivosFijos(false);
+    setOpenRecursosHumanos(false);
+    setOpenPresupuesto(false);
+    setOpenParametros(false);
+    setOpenSeguridad(false);
   };
 
   const classes = useStyles();
@@ -241,17 +272,14 @@ export default function NestedList() {
       <Collapse in={openCajas} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Reportes</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/FacMaestroView">
+              <ListItemText className={classes.text}>
+                Maestro Facturas
+              </ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
-
-      {/* <NavLink tag={Link} to="/Autenticacion">
-      <ListItemButton >
-        <ListItemText className={classes.text}>Prueba</ListItemText>
-      </ListItemButton>
-      </NavLink> */}
-
       <ListItemButton onClick={handleClickContabilidad}>
         <ListItemIcon>
           <AppRegistrationIcon className={classes.iconos} />
@@ -267,7 +295,29 @@ export default function NestedList() {
       <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Asientos</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/ConEncabezadoView">
+              <ListItemText className={classes.text}>Asientos</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/ConParametrosView">
+              <ListItemText className={classes.text}>Parámetros</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/ConCentrosCostoView">
+              <ListItemText className={classes.text}>
+                Centros Costo
+              </ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -275,25 +325,23 @@ export default function NestedList() {
       <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Centros Costo</ListItemText>
-          </ListItemButton>
-        </List>
-      </Collapse>
-
-      <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>
+            <NavLink tag={Link} to="/Dashboard/concatalogo">
+              <ListItemText className={classes.text}>
+                Catálogo Cuentas
+              </ListItemText>
+            </NavLink>
+            {/* <ListItemText className={classes.text}>
               Catálogo Cuentas
-            </ListItemText>
+            </ListItemText> */}
           </ListItemButton>
         </List>
       </Collapse>
-
       <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Notas EF</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/ConNotasEFView">
+              <ListItemText className={classes.text}>Notas EF</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -309,7 +357,9 @@ export default function NestedList() {
       <Collapse in={openContabilidad} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Tipos Cuenta</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/ConTipoCuentaView">
+              <ListItemText className={classes.text}>Tipos Cuenta</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -367,31 +417,19 @@ export default function NestedList() {
       <Collapse in={openCuentasPorCobrar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/CxcConcepto">
+              <ListItemText className={classes.text}>Concepto</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openCuentasPorCobrar} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
             <ListItemText className={classes.text}>Maestro</ListItemText>
           </ListItemButton>
         </List>
       </Collapse>
-
-      <Collapse in={openCuentasPorCobrar} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Clientes</ListItemText>
-          </ListItemButton>
-        </List>
-      </Collapse>
-
-      <Collapse in={openCuentasPorCobrar} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <Link to="/Dashboard/CliMaestro">
-              <ListItemText className={classes.text}>
-                Maetro Clientes
-              </ListItemText>
-            </Link>
-          </ListItemButton>
-        </List>
-      </Collapse>
-
       <ListItemButton onClick={handleClickCuentasPorPagar}>
         <ListItemIcon>
           <WorkOutlineIcon className={classes.iconos} />
@@ -407,7 +445,9 @@ export default function NestedList() {
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Maestro</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/CxpConcepto">
+              <ListItemText className={classes.text}>Concepto</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -415,9 +455,11 @@ export default function NestedList() {
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>
-              Orden de Compra
-            </ListItemText>
+            <NavLink tag={Link} to="/Dashboard/CxpDependenciaOperativa">
+              <ListItemText className={classes.text}>
+                Dependencia Operativa
+              </ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -427,7 +469,7 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/CxpProveedor"
+              to="/Dashboard/CxpProveedorView"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}
@@ -437,12 +479,13 @@ export default function NestedList() {
           </ListItemButton>
         </List>
       </Collapse>
-
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/CxpProveedorView">
-              <ListItemText className={classes.text}>Prueba</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/CxpTipoProveedor">
+              <ListItemText className={classes.text}>
+                Tipo Proveedor
+              </ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -451,7 +494,11 @@ export default function NestedList() {
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Tipo Proveedor</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/CxpTipoServicio">
+              <ListItemText className={classes.text}>
+                Tipo Servicio
+              </ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -459,7 +506,11 @@ export default function NestedList() {
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Tipo Servicio</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/CxpTipoContrato">
+              <ListItemText className={classes.text}>
+                Tipo Contrato
+              </ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -467,19 +518,14 @@ export default function NestedList() {
       <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Tipo Contrato</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/CxpNivelAutorizacion">
+              <ListItemText className={classes.text}>
+                Nivel Autorización
+              </ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
-
-      <Collapse in={openCuentasPorPagar} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Reportes</ListItemText>
-          </ListItemButton>
-        </List>
-      </Collapse>
-
       <ListItemButton onClick={handleClickClientes}>
         <ListItemIcon>
           <AccountBoxIcon className={classes.iconos} />
@@ -495,20 +541,8 @@ export default function NestedList() {
       <Collapse in={openClientes} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/CliMaestro">
-              <ListItemText className={classes.text}>Reportes</ListItemText>
-            </NavLink>
-          </ListItemButton>
-        </List>
-      </Collapse>
-
-      <Collapse in={openClientes} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/CliMaestroView">
-              <ListItemText className={classes.text}>
-                Catálogo Clientes
-              </ListItemText>
+            <NavLink tag={Link} to="/Dashboard/CliMaestroView">
+              <ListItemText className={classes.text}>Clientes</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -529,7 +563,91 @@ export default function NestedList() {
       <Collapse in={openInventarios} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Reportes</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/InvMaestroView">
+              <ListItemText className={classes.text}>Maestro</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <ListItemButton onClick={handleClickFacturaElectronica}>
+        <ListItemIcon>
+          <PostAddIcon className={classes.iconos} />
+        </ListItemIcon>
+        <ListItemText className={classes.text}>
+          Factura Electrónica
+        </ListItemText>
+        {openFacturaElectronica ? (
+          <ExpandLess style={{ color: "white" }} />
+        ) : (
+          <ExpandMore style={{ color: "white" }} />
+        )}
+      </ListItemButton>
+
+      <Collapse in={openFacturaElectronica} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/FelTipoDocumentoView">
+              <ListItemText className={classes.text}>
+                Tipo Documento
+              </ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={openFacturaElectronica} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/FelCondicionVentaView">
+              <ListItemText className={classes.text}>
+                Condición Venta
+              </ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={openFacturaElectronica} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/FelMedioPagoView">
+              <ListItemText className={classes.text}>Medio Pago</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={openFacturaElectronica} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/FelTipoCodigoView">
+              <ListItemText className={classes.text}>Tipo Código</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={openFacturaElectronica} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/FelUnidadMedidaView">
+              <ListItemText className={classes.text}>
+                Unidad Medida
+              </ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <Collapse in={openFacturaElectronica} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/FelTipoImpuestoView">
+              <ListItemText className={classes.text}>
+                Tipo Impuesto
+              </ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -549,7 +667,9 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Maestro</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/ActMaestroView">
+              <ListItemText className={classes.text}>Maestro</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -557,7 +677,9 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Grupo</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/ActGrupoView">
+              <ListItemText className={classes.text}>Grupo</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -565,7 +687,9 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Sub Grupo</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/ActSubGrupoView">
+              <ListItemText className={classes.text}>Sub Grupo</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -583,9 +707,11 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>
-              Forma Depreciación
-            </ListItemText>
+            <NavLink tag={Link} to="/Dashboard/ActFormaDepreciacionView">
+              <ListItemText className={classes.text}>
+                Forma Depreciación
+              </ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -593,7 +719,9 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Estado</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/ActEstadoView">
+              <ListItemText className={classes.text}>Estado</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -601,7 +729,9 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Reportes</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/ActDocumentoView">
+              <ListItemText className={classes.text}>Documento</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
@@ -699,7 +829,6 @@ export default function NestedList() {
           </ListItemButton>
         </List>
       </Collapse>
-
       <ListItemButton onClick={handleClickParametros}>
         <ListItemIcon>
           <SettingsIcon className={classes.iconos} />
@@ -711,15 +840,46 @@ export default function NestedList() {
           <ExpandMore style={{ color: "white" }} />
         )}
       </ListItemButton>
-
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Reportes</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/ParEmpresaView">
+              <ListItemText className={classes.text}>Empresa</ListItemText>
+            </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
-
+      <Collapse in={openParametros} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/ParMonedaView">
+              <ListItemText className={classes.text}>Moneda</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openParametros} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/ParTipoIdentificacionView">
+              <ListItemText className={classes.text}>
+                Tipo de Identificación
+              </ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openParametros} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/ParCodigoTransaccionView">
+              <ListItemText className={classes.text}>
+                Códigos Transacción
+              </ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
       <ListItemButton onClick={handleClickSeguridad}>
         <ListItemIcon>
           <LockIcon className={classes.iconos} />
@@ -737,7 +897,7 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/SegUsuario"
+              to="/Dashboard/SegUsuario"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}
@@ -753,7 +913,7 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/SegUsuarioView"
+              to="/Dashboard/SegUsuarioView"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}
