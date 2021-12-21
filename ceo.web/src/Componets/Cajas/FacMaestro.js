@@ -8,7 +8,7 @@ import {
   Button,
   Checkbox,
 } from "@mui/material";
-import { makeStyles } from "@material-ui/core";
+import { Divider, makeStyles } from "@material-ui/core";
 import { Box } from "@mui/system";
 import FormControl from "@mui/material/FormControl";
 import Stack from "@mui/material/Stack";
@@ -223,7 +223,7 @@ const FacMaestro = () => {
           <Grid container spacing={2} justifyContent="center" pl={5} pr={5}>
             <Grid item xs={12} container justifyContent="center" mt={5} mb={5}>
               <Typography component="h1" variant="h6" noWrap>
-                Detalle Factura
+                Factura
               </Typography>
             </Grid>
             <Grid item xs={6} container justifyContent="center">
@@ -385,6 +385,74 @@ const FacMaestro = () => {
                 className={styles.inpuntEmpresa}
                 size="small"
               ></TextField>
+            </Grid>
+            <Grid item xs={12} mt={2}>
+              <Divider />
+            </Grid>
+            <Grid item xs={12} container justifyContent="center" mt={1} mb={2}>
+              <Typography component="h1" variant="h6" noWrap>
+                Totales
+              </Typography>
+            </Grid>
+            <Grid item xs={3} container justifyContent="center">
+              <TextField
+                id="Subtotal"
+                name="Subtotal"
+                label="Subtotal"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={form.Subtotal}
+                className={styles.inpuntEmpresa}
+                size="small"
+                disabled
+              ></TextField>
+            </Grid>
+            <Grid item xs={3} container justifyContent="center">
+              <TextField
+                id="Descuento"
+                name="Descuento"
+                label="Descuento"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={form.Descuento}
+                className={styles.inpuntEmpresa}
+                size="small"
+                disabled
+              ></TextField>
+            </Grid>
+            <Grid item xs={3} container justifyContent="center">
+              <TextField
+                id="Impuesto"
+                name="Impuesto"
+                label="Impuesto"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={form.Impuesto}
+                className={styles.inpuntEmpresa}
+                size="small"
+                disabled
+              ></TextField>
+            </Grid>
+            <Grid item xs={3} container justifyContent="center">
+              <TextField
+                id="Total"
+                name="Total"
+                label="Total"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={form.Total}
+                className={styles.inpuntEmpresa}
+                size="small"
+                disabled
+              ></TextField>
+            </Grid>
+            <Grid item xs={12} mt={2}>
+              <Divider />
+            </Grid>
+            <Grid item xs={12} container justifyContent="center" mt={1} mb={5}>
+              <Typography component="h1" variant="h6" noWrap>
+                Detalle Factura
+              </Typography>
             </Grid>
           </Grid>
         </Box>
