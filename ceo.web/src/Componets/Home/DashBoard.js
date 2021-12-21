@@ -75,6 +75,7 @@ import CxpNivelAutorizacion from "../CuentasPorPagar/CxpNivelAutorizacion";
 import InvMaestroView from "../Inventarios/InvMaestroView";
 import FacMaestroView from "../Cajas/FacMaestroView";
 import FacMaestro from "../Cajas/FacMaestro";
+import InvMaestro from "../Inventarios/InvMaestro";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -514,6 +515,11 @@ function DashboardContent() {
               exact
               path="/Dashboard/facMaestro/:isNew"
               component={FacMaestro}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/InvMaestro/:isNew"
+              component={InvMaestro}
             ></Route>
           </Switch>
         </Box>

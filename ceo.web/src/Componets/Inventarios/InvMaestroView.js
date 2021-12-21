@@ -8,7 +8,7 @@ const baseUrl = process.env.REACT_APP_BASE_URL;
 const InvMaestroView = () => {
   const { useState } = React;
   let usehistory = useHistory();
-  window.localStorage.removeItem("editCliMaestro");
+  window.localStorage.removeItem("editInvMaestro");
 
   const [columns, setColumns] = useState([
     {
@@ -37,18 +37,18 @@ const InvMaestroView = () => {
     console.log(rowUpdate);
     if (isNew) {
       console.log(rowUpdate);
-      usehistory.push(`./CliMaestro/1`);
+      usehistory.push(`./InvMaestro/1`);
     } else {
       console.log(rowUpdate);
-      window.localStorage.setItem("editCliMaestro", JSON.stringify(rowUpdate));
-      usehistory.push(`./CliMaestro/0`);
+      window.localStorage.setItem("editInvMaestro", JSON.stringify(rowUpdate));
+      usehistory.push(`./InvMaestro/0`);
     }
   };
 
   return (
     <div>
       <MaterialTable
-        title=" Catálogo de Clientes"
+        title=" Catálogo Inventario Maestro"
         columns={columns}
         data={Data}
         options={{
@@ -65,18 +65,18 @@ const InvMaestroView = () => {
         actions={[
           {
             icon: "edit",
-            tooltip: "Editar Cliente",
+            tooltip: "Editar Inventario",
             onClick: (event, rowData) => updateState(rowData, false),
           },
           {
             icon: "delete",
-            tooltip: "Borrar Cliete",
+            tooltip: "Borrar Inventario",
             onClick: (event, rowData) =>
               alert("You want to delete " + rowData.name),
           },
           {
             icon: "add",
-            tooltip: "Add User",
+            tooltip: "Agregar Inventario",
             isFreeAction: true,
             onClick: (event, rowData) => updateState(rowData, true),
           },

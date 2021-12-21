@@ -20,12 +20,12 @@ export default function SelectTipoImpuesto({form, handleBlur, handleChange}){
            <InputLabel id="demo-simple-select-label">Tipo Impuesto</InputLabel>
            <Select
             labelId="demo-simple-select-label"
-            id="codigoTipoImpuesto"
-            name="codigoTipoImpuesto"
-            label="codigoTipoImpuesto"
+            id="CodigoTipoImpuesto"
+            name="CodigoTipoImpuesto"
+            label="CodigoTipoImpuesto"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={form.codigoTipoImpuesto}
+            value={form.CodigoTipoImpuesto}
           >
             {Data &&
              options.map((item) => (
