@@ -273,9 +273,7 @@ export default function NestedList() {
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink tag={Link} to="/Dashboard/FacMaestroView">
-              <ListItemText className={classes.text}>
-                Maestro Facturas
-              </ListItemText>
+              <ListItemText className={classes.text}>Facturación</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>

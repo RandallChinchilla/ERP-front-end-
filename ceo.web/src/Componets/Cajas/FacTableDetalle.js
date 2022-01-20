@@ -8,16 +8,10 @@ export const FacTableDetalle = (props) => {
   let usehistory = useHistory();
   window.localStorage.removeItem("editCliMaestro");
 
-  // const modelRequest = {
-  //   codigoEmpresa: props.data.CodigoEmpresa,
-  //   consecutivo: props.data.Consecutivo,
-  // };
-
   const [columns, setColumns] = useState([
     {
       title: "Codigo",
       field: "CodigoArticulo",
-      // id: "CodigoEmpresaNavigation.CodigoEmpresa",
     },
     {
       title: "Descripción",
@@ -41,33 +35,22 @@ export const FacTableDetalle = (props) => {
     },
     {
       title: "Total",
-      field: "PrecioUnitario * Cantidad",
+      field: "Total",
     },
   ]);
 
-  // const { Data, Error, setData } = useGetDataProps(
-  //   "IvtEncabezadoFactura/GetIvtEncabezadoFactura",
-  //   modelRequest
-  // );
+  // const options = props.DataDet.map((item) => ({
+  //   ...item,
+  //   Total: item.Cantidad * item.PrecioUnitario,
+  // }));
 
-  // if (Error) return null;
-  //if (!props.DataDet) return null;
+  // const options = props.DataDet.map(function (item) {
+  //   return { ...item, Total: item.Cantidad * item.PrecioUnitario };
+  // });
+
   const options = props.DataDet;
-
-  //+++++++update row in the table+++++++++
-  const updateState = (rowUpdate, isNew) => {
-    console.log(rowUpdate);
-    if (isNew) {
-      console.log(rowUpdate);
-      usehistory.push(`./CliMaestro/1`);
-    } else {
-      console.log(rowUpdate);
-      window.localStorage.setItem("editCliMaestro", JSON.stringify(rowUpdate));
-      usehistory.push(`./CliMaestro/0`);
-    }
-  };
-
   console.log("hola perra");
+  console.log(options);
 
   return (
     <div>
