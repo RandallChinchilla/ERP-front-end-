@@ -21,7 +21,7 @@ export const useGetData = (controller) => {
       }
     };
     getData(controller);
-  }, [controller]);
+  }, []);
 
   return { Data, Error, setData };
 };
@@ -42,10 +42,21 @@ export const useGetDataProps = (controller, model) => {
         if (response.data == null) {
           setDataDet([]);
         } else {
-          setDataDet(response.data);
+          const subtotal = response.data.reduce(
+            (preValue, currentValue) =>
+              preValue + currentValue.Cantidad * currentValue.PrecioUnitario,
+            0
+          );
+
+          setDataDet(
+            response.data.map((item) => ({
+              ...item,
+              Total: item.Cantidad * item.PrecioUnitario,
+            }))
+          );
         }
       });
-  }, [controller]);
+  }, []);
 
   return { DataDet, ErrorDet, setDataDet };
 };

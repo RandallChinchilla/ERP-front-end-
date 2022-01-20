@@ -83,7 +83,7 @@ const FacMaestro = () => {
   const rowEdit = JSON.parse(localStorage.getItem("editFacMaestro"));
   const userData = JSON.parse(localStorage.getItem("userLogged"));
   const styles = useStyles();
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(rowEdit ? true : false);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -149,7 +149,6 @@ const FacMaestro = () => {
       codigoEmpresa: form.CodigoEmpresa,
       consecutivo: 0,
       codigoMoneda: form.CodigoMoneda,
-      // fecha: "24/07/2021",
       codigoSucursal: form.CodigoSucursal,
       codigoTipoDocumento: form.CodigoTipoDocumento,
       codigoCondicionVenta: form.CodigoCondicionVenta,
@@ -159,8 +158,8 @@ const FacMaestro = () => {
       codigoEstado: 1,
       comprobanteElectronico: "0",
       comprobanteElectronicoReversa: "0",
-      id: "scano1",
-      userName: "scanobaq",
+      id: userData.id,
+      userName: userData.userName,
     };
 
     console.log(addRowRequest);
@@ -171,7 +170,7 @@ const FacMaestro = () => {
     ).then((response) => {
       if (response.status === 200) {
         setShow(true);
-        console.log("Registro agregado");
+        // console.log("Registro agregado");
       } else {
         console.log("No se pudo agregar el registro");
       }
@@ -289,6 +288,7 @@ const FacMaestro = () => {
                   value={form.Nombre}
                   className={styles.inpuntEmpresa}
                   size="small"
+                  disabled="true"
                 ></TextField>
                 {errors.Nombre && (
                   <FormHelperText id="my-helper-text" error>
@@ -306,6 +306,7 @@ const FacMaestro = () => {
                   value={form.NumeroCliente}
                   className={styles.inpuntEmpresa}
                   size="small"
+                  disabled="true"
                 ></TextField>
                 {errors.NumeroCliente && (
                   <FormHelperText id="my-helper-text" error>
@@ -324,6 +325,7 @@ const FacMaestro = () => {
                   value={form.CorreoElectronico}
                   className={styles.inpuntEmpresa}
                   size="small"
+                  disabled="true"
                 ></TextField>
                 {errors.CorreoElectronico && (
                   <FormHelperText id="my-helper-text" error>
@@ -341,6 +343,7 @@ const FacMaestro = () => {
                   value={form.TelefonoCelular}
                   className={styles.inpuntEmpresa}
                   size="small"
+                  disabled="true"
                 ></TextField>
                 {errors.TelefonoCelular && (
                   <FormHelperText id="my-helper-text" error>
@@ -358,6 +361,7 @@ const FacMaestro = () => {
                   value={form.Direccion}
                   className={styles.inpuntEmpresa}
                   size="small"
+                  disabled="true"
                 ></TextField>
                 {errors.Direccion && (
                   <FormHelperText id="my-helper-text" error>
@@ -384,91 +388,12 @@ const FacMaestro = () => {
                 <Divider />
               </Grid>
               {show && (
-                <Grid container spacing={2} justifyContent="center">
-                  <Grid
-                    item
-                    xs={12}
-                    container
-                    justifyContent="center"
-                    mt={1}
-                    mb={2}
-                  >
-                    <Typography component="h1" variant="h6" noWrap>
-                      Totales
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={3} container justifyContent="center">
-                    <TextField
-                      id="Subtotal"
-                      name="Subtotal"
-                      label="Subtotal"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={form.Subtotal}
-                      className={styles.inpuntEmpresa}
-                      size="small"
-                      disabled
-                    ></TextField>
-                  </Grid>
-                  <Grid item xs={3} container justifyContent="center">
-                    <TextField
-                      id="Descuento"
-                      name="Descuento"
-                      label="Descuento"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={form.Descuento}
-                      className={styles.inpuntEmpresa}
-                      size="small"
-                      disabled
-                    ></TextField>
-                  </Grid>
-                  <Grid item xs={3} container justifyContent="center">
-                    <TextField
-                      id="Impuesto"
-                      name="Impuesto"
-                      label="Impuesto"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={form.Impuesto}
-                      className={styles.inpuntEmpresa}
-                      size="small"
-                      disabled
-                    ></TextField>
-                  </Grid>
-                  <Grid item xs={3} container justifyContent="center">
-                    <TextField
-                      id="Total"
-                      name="Total"
-                      label="Total"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={form.Total}
-                      className={styles.inpuntEmpresa}
-                      size="small"
-                      disabled
-                    ></TextField>
-                  </Grid>
-
-                  <Grid item xs={12} mt={2}>
-                    <Divider />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    container
-                    justifyContent="center"
-                    mt={1}
-                    mb={3}
-                  >
-                    <Typography component="h1" variant="h6" noWrap>
-                      Detalle Factura
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <FacMaestroDetalle data={initialForm} />
-                  </Grid>
-                </Grid>
+                <FacMaestroDetalle data={initialForm} />
+                // <Grid container spacing={2} justifyContent="center">
+                //   <Grid item xs={12}>
+                //     <FacMaestroDetalle data={initialForm} />
+                //   </Grid>
+                // </Grid>
               )}
             </Grid>
           </Box>
