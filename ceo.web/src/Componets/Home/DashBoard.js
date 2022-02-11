@@ -76,6 +76,24 @@ import InvMaestroView from "../Inventarios/InvMaestroView";
 import FacMaestroView from "../Cajas/FacMaestroView";
 import FacMaestro from "../Cajas/FacMaestro";
 import InvMaestro from "../Inventarios/InvMaestro";
+import CliAportante from "../Clientes/CliAportante";
+import PasPortafolio from "../Cartera Pasiva/PasPortafolio";
+import InvPortafolio from "../Inversiones/InvPortafolio";
+import InvEntidadCalificadora from "../Inversiones/InvEntidadCalificadora";
+import InvTipo from "../Inversiones/InvTipo";
+import InvTipoFondo from "../Inversiones/InvTipoFondo";
+import InvTipoCustodia from "../Inversiones/InvTipoCustodia";
+import InvActividadEconomica from "../Inversiones/InvActividadEconomica";
+import InvSectorEconomico from "../Inversiones/InvSectorEconomico";
+import RegTipoDependenciaAcreedor from "../Regulador/RegTipoDependenciaAcreedor";
+import RegTipoEmpresa from "../Regulador/RegTipoEmpresa";
+import RegTipoPersona from "../Regulador/RegTipoPersona";
+import RegTipoOperacionObligaciones from "../Regulador/RegTipoOperacionObligaciones";
+import RegTipoRelacionComercial from "../Regulador/RegTipoRelacionComercial";
+import RegTipoTasa from "../Regulador/RegTipoTasa";
+import ParEstadoCivil from "../Parametros/ParEstadoCivil";
+import ParDistrito from "../Parametros/ParDistrito";
+import ParPeriodicidad from "../Parametros/ParPeriodicidad";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -520,6 +538,96 @@ function DashboardContent() {
               exact
               path="/Dashboard/InvMaestro/:isNew"
               component={InvMaestro}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/CliAportante"
+              component={CliAportante}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/PasPortafolio"
+              component={PasPortafolio}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/InvPortafolio"
+              component={InvPortafolio}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/InvEntidadCalificadora"
+              component={InvEntidadCalificadora}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/InvTipo"
+              component={InvTipo}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/InvTipoFondo"
+              component={InvTipoFondo}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/InvTipoCustodia"
+              component={InvTipoCustodia}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/InvActividadEconomica"
+              component={InvActividadEconomica}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/InvSectorEconomico"
+              component={InvSectorEconomico}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/RegTipoDependenciaAcreedor"
+              component={RegTipoDependenciaAcreedor}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/RegTipoEmpresa"
+              component={RegTipoEmpresa}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/RegTipoPersona"
+              component={RegTipoPersona}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/RegTipoOperacionObligaciones"
+              component={RegTipoOperacionObligaciones}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/RegTipoRelacionComercial"
+              component={RegTipoRelacionComercial}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/RegTipoTasa"
+              component={RegTipoTasa}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/ParEstadoCivil"
+              component={ParEstadoCivil}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/ParDistrito"
+              component={ParDistrito}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/ParPeriodicidad"
+              component={ParPeriodicidad}
             ></Route>
           </Switch>
         </Box>
