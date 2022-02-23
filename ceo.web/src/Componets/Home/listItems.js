@@ -44,6 +44,7 @@ export default function NestedList() {
   const [openSeguridad, setOpenSeguridad] = React.useState(false);
   const [openFacturaElectronica, setOpenFacturaElectronica] =
     React.useState(false);
+  const [openReportes, setOpenReportes] = React.useState(false);
 
   const handleClickCajas = () => {
     setOpenCajas(!openCajas);
@@ -251,6 +252,23 @@ export default function NestedList() {
     setOpenPresupuesto(false);
     setOpenParametros(false);
     setOpenSeguridad(false);
+  };
+
+  const handleClickReportes = () => {
+    setOpenReportes(!openReportes);
+    setOpenContabilidad(false);
+    setOpenCajas(false);
+    setOpenBancos(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenCuentasPorPagar(false);
+    setOpenClientes(false);
+    setOpenInventarios(false);
+    setOpenActivosFijos(false);
+    setOpenRecursosHumanos(false);
+    setOpenPresupuesto(false);
+    setOpenParametros(false);
+    setOpenSeguridad(false);
+    setOpenFacturaElectronica(false);
   };
 
   const classes = useStyles();
@@ -917,6 +935,32 @@ export default function NestedList() {
               })}
             >
               <ListItemText className={classes.text}>Prueba</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <ListItemButton onClick={handleClickReportes}>
+        <ListItemIcon>
+          <LockIcon className={classes.iconos} />
+        </ListItemIcon>
+        <ListItemText className={classes.text}>Reportes</ListItemText>
+        {openReportes ? (
+          <ExpandLess style={{ color: "white" }} />
+        ) : (
+          <ExpandMore style={{ color: "white" }} />
+        )}
+      </ListItemButton>
+      <Collapse in={openReportes} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/reportTest"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>reporte test</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>

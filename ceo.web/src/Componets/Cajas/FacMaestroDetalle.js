@@ -58,6 +58,7 @@ export const FacMaestroDetalle = (props) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   const [columns, setColumns] = useState([
     { title: "Codigo Articulo", field: "CodigoArticulo" },
     {
