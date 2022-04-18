@@ -36,13 +36,12 @@ const useStyles = makeStyles((theme) => ({
 const columns = [
   { id: "acciones", label: "Acciones", minWidth: 125 },
   { id: "CodigoEmpresa", label: "Código Empresa", minWidth: 100 },
-  { id: "CodigoPortafolio", label: "Código Portafolio", minWidth: 100 },
+  { id: "CodigoTipo", label: "Código Tipo Instrumento", minWidth: 100 },
   { id: "Descripcion", label: "Descripción", minWidth: 100 },
-  { id: "IndicadorRegulado", label: "Indicador Regulado", minWidth: 100 },
-  { id: "CodigoCentroCosto", label: "Código Centro Costo", minWidth: 100 },
+  { id: "Usuario", label: "Usuario", minWidth: 100 },
 ];
 
-const PasPortafolio = () => {
+const PasTipoInstrumento = () => {
   const { useState } = React;
   const styles = useStyles();
   const [columns, setColumns] = useState([
@@ -50,26 +49,12 @@ const PasPortafolio = () => {
       title: "Código Empresa",
       field: "CodigoEmpresa",
     },
-    { title: "Código Portafolio", field: "CodigoPortafolio" },
+    { title: "Código Tipo Instrumento", field: "CodigoTipo" },
     { title: "Descripción", field: "Descripcion" },
-    {title: "Indicador Regulado",
-     field: "IndicadorRegulado",
-     editComponent: (props) => {
-      return (
-        <input
-          type="checkbox"
-          checked={props.value}
-          onChange={(e) => props.onChange(e.target.checked)}
-        />
-      );
-    },
-    render: (rowdata) => (
-      <input type="checkbox" checked={rowdata.booleanValue} />
-    ) },
-    { title: "Código Centro Costo", field: "CodigoCentroCosto" },
+    { title: "Usuario", field: "Id" },
   ]);
 
-  const { Data, Error, setData } = useGetData("PasPortafolio/GetPasPortafolios");
+  const { Data, Error, setData } = useGetData("PasTipoInstrumento/GetPasTipoInstrumentos");
   console.log(Data);
 
   if (Error) return null;
@@ -80,7 +65,7 @@ const PasPortafolio = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowAdd);
     postAction(
-      "PasPortafolio/PostPasPortafolio",
+      "PasTipoInstrumento/PostPasTipoInstrumento",
       rowAdd,
       userLoggedToken
     ).then((response) => {
@@ -95,7 +80,7 @@ const PasPortafolio = () => {
   const updateState = (rowUpdate) => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     putAction(
-      "PasPortafolio/PutPasPortafolio",
+      "PasTipoInstrumento/PutPasTipoInstrumento",
       rowUpdate,
       userLoggedToken
     ).then((response) => {
@@ -112,7 +97,7 @@ const PasPortafolio = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowDelete);
     deleteAction(
-      "PasPortafolio/DeletePasPortafolio",
+      "PasTipoInstrumento/DeletePasTipoInstrumento",
       rowDelete,
       userLoggedToken
     ).then((response) => {
@@ -126,7 +111,7 @@ const PasPortafolio = () => {
   return (
     <div>
       <MaterialTable
-        title="Portafolio Cuenta Pasiva"
+        title="Catálogo Tipo Instrumento"
         columns={columns}
         data={Data}
         options={{
@@ -174,4 +159,4 @@ const PasPortafolio = () => {
   );
 };
 
-export default PasPortafolio;
+export default PasTipoInstrumento;

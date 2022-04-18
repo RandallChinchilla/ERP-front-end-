@@ -36,13 +36,11 @@ const useStyles = makeStyles((theme) => ({
 const columns = [
   { id: "acciones", label: "Acciones", minWidth: 125 },
   { id: "CodigoEmpresa", label: "Código Empresa", minWidth: 100 },
-  { id: "CodigoPortafolio", label: "Código Portafolio", minWidth: 100 },
+  { id: "CodigoOrigenAportante", label: "Código Origen Aportante", minWidth: 100 },
   { id: "Descripcion", label: "Descripción", minWidth: 100 },
-  { id: "IndicadorRegulado", label: "Indicador Regulado", minWidth: 100 },
-  { id: "CodigoCentroCosto", label: "Código Centro Costo", minWidth: 100 },
 ];
 
-const PasPortafolio = () => {
+const ParOrigenAportante = () => {
   const { useState } = React;
   const styles = useStyles();
   const [columns, setColumns] = useState([
@@ -50,26 +48,11 @@ const PasPortafolio = () => {
       title: "Código Empresa",
       field: "CodigoEmpresa",
     },
-    { title: "Código Portafolio", field: "CodigoPortafolio" },
+    { title: "Código Origen Aportante", field: "CodigoOrigenAportante" },
     { title: "Descripción", field: "Descripcion" },
-    {title: "Indicador Regulado",
-     field: "IndicadorRegulado",
-     editComponent: (props) => {
-      return (
-        <input
-          type="checkbox"
-          checked={props.value}
-          onChange={(e) => props.onChange(e.target.checked)}
-        />
-      );
-    },
-    render: (rowdata) => (
-      <input type="checkbox" checked={rowdata.booleanValue} />
-    ) },
-    { title: "Código Centro Costo", field: "CodigoCentroCosto" },
   ]);
 
-  const { Data, Error, setData } = useGetData("PasPortafolio/GetPasPortafolios");
+  const { Data, Error, setData } = useGetData("PasOrigenAportante/GetPasOrigenAportantes");
   console.log(Data);
 
   if (Error) return null;
@@ -80,7 +63,7 @@ const PasPortafolio = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowAdd);
     postAction(
-      "PasPortafolio/PostPasPortafolio",
+      "PasOrigenAportante/PostPasOrigenAportante",
       rowAdd,
       userLoggedToken
     ).then((response) => {
@@ -95,7 +78,7 @@ const PasPortafolio = () => {
   const updateState = (rowUpdate) => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     putAction(
-      "PasPortafolio/PutPasPortafolio",
+      "PasOrigenAportante/PutPasOrigenAportante",
       rowUpdate,
       userLoggedToken
     ).then((response) => {
@@ -112,7 +95,7 @@ const PasPortafolio = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowDelete);
     deleteAction(
-      "PasPortafolio/DeletePasPortafolio",
+      "PasOrigenAportante/DeletePasOrigenAportante",
       rowDelete,
       userLoggedToken
     ).then((response) => {
@@ -126,7 +109,7 @@ const PasPortafolio = () => {
   return (
     <div>
       <MaterialTable
-        title="Portafolio Cuenta Pasiva"
+        title=" Catálogo Origen Aportante"
         columns={columns}
         data={Data}
         options={{
@@ -174,4 +157,4 @@ const PasPortafolio = () => {
   );
 };
 
-export default PasPortafolio;
+export default ParOrigenAportante;
