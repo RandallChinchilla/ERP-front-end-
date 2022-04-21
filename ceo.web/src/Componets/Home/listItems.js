@@ -23,8 +23,15 @@ import { makeStyles } from "@material-ui/core";
 import { indigo, white } from "@mui/material/colors";
 import { Link, NavLink } from "react-router-dom";
 import PostAddIcon from "@mui/icons-material/PostAdd";
+<<<<<<< HEAD
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import DonutSmallIcon from "@mui/icons-material/DonutSmall";
+=======
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import DonutSmallIcon from '@mui/icons-material/DonutSmall';
+import AddchartIcon from '@mui/icons-material/Addchart';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+>>>>>>> 704988aeddf22712440d017119f73e1985a60ee1
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -46,6 +53,8 @@ export default function NestedList() {
   const [openSeguridad, setOpenSeguridad] = React.useState(false);
   const [openInversiones, setOpenInversiones] = React.useState(false);
   const [openCarteraPasiva, setOpenCarteraPasiva] = React.useState(false);
+  const [openReguladores, setOpenReguladores] = React.useState(false);
+  const [openAhorros, setOpenAhorros] = React.useState(false);
   const [openFacturaElectronica, setOpenFacturaElectronica] =
     React.useState(false);
   const [openReportes, setOpenReportes] = React.useState(false);
@@ -66,6 +75,8 @@ export default function NestedList() {
     setOpenFacturaElectronica(false);
     setOpenInversiones(false);
     setOpenCarteraPasiva(false);
+    setOpenReguladores(false);
+    setOpenAhorros(false);
   };
 
   const handleClickContabilidad = () => {
@@ -84,6 +95,8 @@ export default function NestedList() {
     setOpenFacturaElectronica(false);
     setOpenInversiones(false);
     setOpenCarteraPasiva(false);
+    setOpenReguladores(false);
+    setOpenAhorros(false);
   };
 
   const handleClickBancos = () => {
@@ -102,6 +115,8 @@ export default function NestedList() {
     setOpenFacturaElectronica(false);
     setOpenInversiones(false);
     setOpenCarteraPasiva(false);
+    setOpenReguladores(false);
+    setOpenAhorros(false);
   };
 
   const handleClickCuentasPorCobrar = () => {
@@ -120,6 +135,8 @@ export default function NestedList() {
     setOpenFacturaElectronica(false);
     setOpenInversiones(false);
     setOpenCarteraPasiva(false);
+    setOpenReguladores(false);
+    setOpenAhorros(false);
   };
 
   const handleClickCuentasPorPagar = () => {
@@ -138,6 +155,8 @@ export default function NestedList() {
     setOpenFacturaElectronica(false);
     setOpenInversiones(false);
     setOpenCarteraPasiva(false);
+    setOpenReguladores(false);
+    setOpenAhorros(false);
   };
 
   const handleClickClientes = () => {
@@ -156,6 +175,8 @@ export default function NestedList() {
     setOpenFacturaElectronica(false);
     setOpenInversiones(false);
     setOpenCarteraPasiva(false);
+    setOpenReguladores(false);
+    setOpenAhorros(false);
   };
 
   const handleClickInventarios = () => {
@@ -174,6 +195,8 @@ export default function NestedList() {
     setOpenFacturaElectronica(false);
     setOpenInversiones(false);
     setOpenCarteraPasiva(false);
+    setOpenReguladores(false);
+    setOpenAhorros(false);
   };
 
   const handleClickActivosFijos = () => {
@@ -192,6 +215,8 @@ export default function NestedList() {
     setOpenFacturaElectronica(false);
     setOpenInversiones(false);
     setOpenCarteraPasiva(false);
+    setOpenReguladores(false);
+    setOpenAhorros(false);
   };
 
   const handleClickRecursosHumanos = () => {
@@ -210,6 +235,8 @@ export default function NestedList() {
     setOpenFacturaElectronica(false);
     setOpenInversiones(false);
     setOpenCarteraPasiva(false);
+    setOpenReguladores(false);
+    setOpenAhorros(false);
   };
 
   const handleClickPresupuesto = () => {
@@ -228,6 +255,8 @@ export default function NestedList() {
     setOpenFacturaElectronica(false);
     setOpenInversiones(false);
     setOpenCarteraPasiva(false);
+    setOpenReguladores(false);
+    setOpenAhorros(false);
   };
 
   const handleClickParametros = () => {
@@ -246,6 +275,8 @@ export default function NestedList() {
     setOpenFacturaElectronica(false);
     setOpenInversiones(false);
     setOpenCarteraPasiva(false);
+    setOpenReguladores(false);
+    setOpenAhorros(false);
   };
 
   const handleClickSeguridad = () => {
@@ -264,6 +295,8 @@ export default function NestedList() {
     setOpenFacturaElectronica(false);
     setOpenInversiones(false);
     setOpenCarteraPasiva(false);
+    setOpenReguladores(false);
+    setOpenAhorros(false);
   };
 
   const handleClickFacturaElectronica = () => {
@@ -282,6 +315,8 @@ export default function NestedList() {
     setOpenSeguridad(false);
     setOpenInversiones(false);
     setOpenCarteraPasiva(false);
+    setOpenReguladores(false);
+    setOpenAhorros(false);
   };
 
   const handleClickInversiones = () => {
@@ -300,6 +335,7 @@ export default function NestedList() {
     setOpenSeguridad(false);
     setOpenFacturaElectronica(false);
     setOpenCarteraPasiva(false);
+    setOpenReguladores(false);
   };
 
   const handleClickCarteraPasiva = () => {
@@ -318,6 +354,48 @@ export default function NestedList() {
     setOpenSeguridad(false);
     setOpenFacturaElectronica(false);
     setOpenInversiones(false);
+    setOpenReguladores(false);
+    setOpenAhorros(false);
+  };
+
+  const handleClickReguladores = () => {
+    setOpenReguladores(!openReguladores);
+    setOpenCarteraPasiva(false);
+    setOpenContabilidad(false);
+    setOpenCajas(false);
+    setOpenBancos(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenCuentasPorPagar(false);
+    setOpenClientes(false);
+    setOpenInventarios(false);
+    setOpenActivosFijos(false);
+    setOpenRecursosHumanos(false);
+    setOpenPresupuesto(false);
+    setOpenParametros(false);
+    setOpenSeguridad(false);
+    setOpenFacturaElectronica(false);
+    setOpenInversiones(false);
+    setOpenAhorros(false);
+  };
+
+  const handleClickAhorros = () => {
+    setOpenAhorros(!openAhorros);
+    setOpenCarteraPasiva(false);
+    setOpenContabilidad(false);
+    setOpenCajas(false);
+    setOpenBancos(false);
+    setOpenCuentasPorCobrar(false);
+    setOpenCuentasPorPagar(false);
+    setOpenClientes(false);
+    setOpenInventarios(false);
+    setOpenActivosFijos(false);
+    setOpenRecursosHumanos(false);
+    setOpenPresupuesto(false);
+    setOpenParametros(false);
+    setOpenSeguridad(false);
+    setOpenFacturaElectronica(false);
+    setOpenInversiones(false);
+    setOpenReguladores(false);
   };
 
   const handleClickReportes = () => {
@@ -1000,6 +1078,39 @@ export default function NestedList() {
           </ListItemButton>
         </List>
       </Collapse>
+      <Collapse in={openParametros} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/ParOrigenAportante">
+              <ListItemText className={classes.text}>
+                Origen Aportante
+              </ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openParametros} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/ParOrigenFondos">
+              <ListItemText className={classes.text}>
+                Origen Fondos
+              </ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openParametros} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/ParDiocesis">
+              <ListItemText className={classes.text}>
+                Diocesis
+              </ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
       <ListItemButton onClick={handleClickSeguridad}>
         <ListItemIcon>
           <LockIcon className={classes.iconos} />
@@ -1299,6 +1410,183 @@ export default function NestedList() {
           </ListItemButton>
         </List>
       </Collapse>
+      <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/PasTipoInstrumento"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Tipo Instrumento</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/PasInstrumento"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Instrumento</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/PasInstrumentoLog"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Instrumento Log</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <ListItemButton onClick={handleClickReguladores}>
+        <ListItemIcon>
+          <AddTaskIcon className={classes.iconos} />
+        </ListItemIcon>
+        <ListItemText className={classes.text}>Reguladores</ListItemText>
+        {openReguladores ? (
+          <ExpandLess style={{ color: "white" }} />
+        ) : (
+          <ExpandMore style={{ color: "white" }} />
+        )}
+      </ListItemButton>
+
+      <Collapse in={openReguladores} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/RegTipoDependenciaAcreedor"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Tipo Dependencia</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openReguladores} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/RegTipoEmpresa"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Tipo Empresa</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openReguladores} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/RegTipoPersona"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Tipo Persona</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openReguladores} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/RegTipoOperacionObligaciones"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Tipo Operación Obligaciones</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openReguladores} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/RegTipoRelacionComercial"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Tipo Relación Comercial</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>  
+      <Collapse in={openReguladores} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/RegTipoTasa"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Tipo Tasa</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>  
+
+      <ListItemButton onClick={handleClickAhorros}>
+        <ListItemIcon>
+          <AddchartIcon className={classes.iconos} />
+        </ListItemIcon>
+        <ListItemText className={classes.text}>Ahorros</ListItemText>
+        {openAhorros ? (
+          <ExpandLess style={{ color: "white" }} />
+        ) : (
+          <ExpandMore style={{ color: "white" }} />
+        )}
+      </ListItemButton>
+
+      <Collapse in={openAhorros} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/AhoTipo"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Tipo Ahorro</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
     </List>
   );
 }

@@ -94,7 +94,17 @@ import RegTipoTasa from "../Regulador/RegTipoTasa";
 import ParEstadoCivil from "../Parametros/ParEstadoCivil";
 import ParDistrito from "../Parametros/ParDistrito";
 import ParPeriodicidad from "../Parametros/ParPeriodicidad";
+<<<<<<< HEAD
 import reportTest from "../Reportes/reportTest";
+=======
+import AhoTipo from "../Ahorros/AhoTipo";
+import PasTipoInstrumento from "../Cartera Pasiva/PasTipoInstrumento";
+import PasInstrumento from "../Cartera Pasiva/PasInstrumento";
+import PasInstrumentoLog from "../Cartera Pasiva/PasInstrumentoLog";
+import ParOrigenAportante from "../Parametros/ParOrigenAportante";
+import ParOrigenFondos from "../Parametros/ParOrigenFondos";
+import ParDiocesis from "../Parametros/ParDiocesis";
+>>>>>>> 704988aeddf22712440d017119f73e1985a60ee1
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -625,6 +635,41 @@ function DashboardContent() {
               exact
               path="/Dashboard/reportTest"
               component={reportTest}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/AhoTipo"
+              component={AhoTipo}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/PasTipoInstrumento"
+              component={PasTipoInstrumento}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/PasInstrumento"
+              component={PasInstrumento}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/PasInstrumentoLog"
+              component={PasInstrumentoLog}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/ParOrigenAportante"
+              component={ParOrigenAportante}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/ParOrigenFondos"
+              component={ParOrigenFondos}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/ParDiocesis"
+              component={ParDiocesis}
             ></Route>
           </Switch>
         </Box>
