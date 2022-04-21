@@ -47,7 +47,6 @@ export const useGetDataProps = (controller, model) => {
               preValue + currentValue.Cantidad * currentValue.PrecioUnitario,
             0
           );
-
           setDataDet(
             response.data.map((item) => ({
               ...item,

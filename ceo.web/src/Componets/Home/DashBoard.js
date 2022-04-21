@@ -94,6 +94,7 @@ import RegTipoTasa from "../Regulador/RegTipoTasa";
 import ParEstadoCivil from "../Parametros/ParEstadoCivil";
 import ParDistrito from "../Parametros/ParDistrito";
 import ParPeriodicidad from "../Parametros/ParPeriodicidad";
+import reportTest from "../Reportes/reportTest";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -559,11 +560,7 @@ function DashboardContent() {
               path="/Dashboard/InvEntidadCalificadora"
               component={InvEntidadCalificadora}
             ></Route>
-            <Route
-              exact
-              path="/Dashboard/InvTipo"
-              component={InvTipo}
-            ></Route>
+            <Route exact path="/Dashboard/InvTipo" component={InvTipo}></Route>
             <Route
               exact
               path="/Dashboard/InvTipoFondo"
@@ -626,8 +623,8 @@ function DashboardContent() {
             ></Route>
             <Route
               exact
-              path="/Dashboard/ParPeriodicidad"
-              component={ParPeriodicidad}
+              path="/Dashboard/reportTest"
+              component={reportTest}
             ></Route>
           </Switch>
         </Box>
