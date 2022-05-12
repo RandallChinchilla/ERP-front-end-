@@ -55,12 +55,9 @@ const FacMaestroView = () => {
 
   //+++++++update row in the table+++++++++
   const updateState = (rowUpdate, isNew) => {
-    console.log(rowUpdate);
     if (isNew) {
-      console.log(rowUpdate);
       usehistory.push(`./FacMaestro/1`);
     } else {
-      console.log(rowUpdate);
       window.localStorage.setItem("editFacMaestro", JSON.stringify(rowUpdate));
       usehistory.push(`./FacMaestro/0`);
     }

@@ -14,7 +14,7 @@ export const useGetData = (controller) => {
       };
       try {
         const response = await axios(config);
-        console.log(response);
+        // console.log(response);
         setData(response.data);
       } catch (error) {
         setError(error.response.status);

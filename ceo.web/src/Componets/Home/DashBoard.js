@@ -5,18 +5,17 @@ import MuiDrawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { blue, grey, indigo } from "@mui/material/colors";
+import { indigo } from "@mui/material/colors";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Button } from "@mui/material";
 import NestedList from "./listItems";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Marca from "../ActivosFijos/Marca";
 import { makeStyles } from "@material-ui/core";
 import { CliMaestro } from "../Clientes/CliMaestro";
@@ -24,7 +23,6 @@ import ClieMaestroView from "../Clientes/CliMaestroView";
 import { CxpProveedor } from "../CuentasPorPagar/CxpProveedor";
 import CxpProveedorView from "../CuentasPorPagar/CxpProveedorView";
 import SegUsuarioView from "../Seguidad/SegUsuarioView";
-import Registro from "../Autenticacion/Registro";
 import Autenticacion from "../Autenticacion/Autenticacion";
 import ParEmpresa from "../Parametros/ParEmpresa";
 import ParEmpresaView from "../Parametros/ParEmpresaView";
@@ -76,6 +74,7 @@ import InvMaestroView from "../Inventarios/InvMaestroView";
 import FacMaestroView from "../Cajas/FacMaestroView";
 import FacMaestro from "../Cajas/FacMaestro";
 import reportTest from "../Reportes/reportTest";
+import { ActMaestro } from "../ActivosFijos/ActMaestro";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -520,6 +519,11 @@ function DashboardContent() {
               exact
               path="/Dashboard/reportTest"
               component={reportTest}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/ActMaestro"
+              component={ActMaestro}
             ></Route>
           </Switch>
         </Box>
