@@ -36,11 +36,11 @@ const useStyles = makeStyles((theme) => ({
 const columns = [
   { id: "acciones", label: "Acciones", minWidth: 125 },
   { id: "CodigoEmpresa", label: "Código Empresa", minWidth: 100 },
-  { id: "CodigoOrigenAportante", label: "Código Origen Aportante", minWidth: 100 },
+  { id: "CodigoEstado", label: "Código Estado", minWidth: 100 },
   { id: "Descripcion", label: "Descripción", minWidth: 100 },
 ];
 
-const ParOrigenAportante = () => {
+const RRHEstado = () => {
   const { useState } = React;
   const styles = useStyles();
   const [columns, setColumns] = useState([
@@ -48,11 +48,15 @@ const ParOrigenAportante = () => {
       title: "Código Empresa",
       field: "CodigoEmpresa",
     },
-    { title: "Código Origen Aportante", field: "CodigoOrigenAportante" },
+    {title: "Nombre",
+    field: "CodigoEmpresaNavigation.Nombre",
+    id: "CodigoEmpresaNavigation.CodigoEmpresa",
+    },
+    { title: "Código Estado", field: "CodigoEstado" },
     { title: "Descripción", field: "Descripcion" },
   ]);
 
-  const { Data, Error, setData } = useGetData("PasOrigenAportante/GetPasOrigenAportantes");
+  const { Data, Error, setData } = useGetData("RrhEstado/GetRrhEstados");
   console.log(Data);
 
   if (Error) return null;
@@ -63,7 +67,7 @@ const ParOrigenAportante = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowAdd);
     postAction(
-      "PasOrigenAportante/PostPasOrigenAportante",
+      "RrhEstado/PostRrhEstado",
       rowAdd,
       userLoggedToken
     ).then((response) => {
@@ -78,7 +82,7 @@ const ParOrigenAportante = () => {
   const updateState = (rowUpdate) => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     putAction(
-      "PasOrigenAportante/PutPasOrigenAportante",
+      "RrhEstado/PutRrhEstado",
       rowUpdate,
       userLoggedToken
     ).then((response) => {
@@ -95,7 +99,7 @@ const ParOrigenAportante = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowDelete);
     deleteAction(
-      "PasOrigenAportante/DeletePasOrigenAportante",
+      "RrhEstado/DeleteRrhEstado",
       rowDelete,
       userLoggedToken
     ).then((response) => {
@@ -109,7 +113,7 @@ const ParOrigenAportante = () => {
   return (
     <div>
       <MaterialTable
-        title=" Catálogo Origen Aportante"
+        title=" Catálogo Estado"
         columns={columns}
         data={Data}
         options={{
@@ -157,4 +161,4 @@ const ParOrigenAportante = () => {
   );
 };
 
-export default ParOrigenAportante;
+export default RRHEstado;

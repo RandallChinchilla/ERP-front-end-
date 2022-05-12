@@ -36,11 +36,11 @@ const useStyles = makeStyles((theme) => ({
 const columns = [
   { id: "acciones", label: "Acciones", minWidth: 125 },
   { id: "CodigoEmpresa", label: "Código Empresa", minWidth: 100 },
-  { id: "CodigoDiocesis", label: "Código Diocesis", minWidth: 100 },
+  { id: "CodigoEmisor", label: "Código Emisor", minWidth: 100 },
   { id: "Descripcion", label: "Descripción", minWidth: 100 },
 ];
 
-const ParDiocesis = () => {
+const ParEmisorTarjeta = () => {
   const { useState } = React;
   const styles = useStyles();
   const [columns, setColumns] = useState([
@@ -53,7 +53,7 @@ const ParDiocesis = () => {
     id: "CodigoEmpresaNavigation.CodigoEmpresa",
     },
 
-    { title: "Código Diocesis", field: "CodigoDiocesis" },
+    { title: "Código Emisor", field: "CodigoEmisor" },
     { title: "Descripción", field: "Descripcion" },
   ]);
 
@@ -114,7 +114,7 @@ const ParDiocesis = () => {
   return (
     <div>
       <MaterialTable
-        title=" Catálogo Diocesis"
+        title=" Catálogo Emisor Tarjeta"
         columns={columns}
         data={Data}
         options={{
@@ -162,4 +162,4 @@ const ParDiocesis = () => {
   );
 };
 
-export default ParDiocesis;
+export default ParEmisorTarjeta;

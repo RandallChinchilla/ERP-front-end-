@@ -23,15 +23,10 @@ import { makeStyles } from "@material-ui/core";
 import { indigo, white } from "@mui/material/colors";
 import { Link, NavLink } from "react-router-dom";
 import PostAddIcon from "@mui/icons-material/PostAdd";
-<<<<<<< HEAD
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import DonutSmallIcon from "@mui/icons-material/DonutSmall";
-=======
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import DonutSmallIcon from '@mui/icons-material/DonutSmall';
 import AddchartIcon from '@mui/icons-material/Addchart';
 import AddTaskIcon from '@mui/icons-material/AddTask';
->>>>>>> 704988aeddf22712440d017119f73e1985a60ee1
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -907,6 +902,16 @@ export default function NestedList() {
         </List>
       </Collapse>
 
+      <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/ActTransaccionView">
+              <ListItemText className={classes.text}>Transacciones</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+
       <ListItemButton onClick={handleClickRecursosHumanos}>
         <ListItemIcon>
           <GroupIcon className={classes.iconos} />
@@ -980,7 +985,43 @@ export default function NestedList() {
           </ListItemButton>
         </List>
       </Collapse>
-
+      <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+          <NavLink tag={Link} to="/Dashboard/RRHISRView">
+            <ListItemText className={classes.text}>ISR</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+          <NavLink tag={Link} to="/Dashboard/RRHEstado">
+            <ListItemText className={classes.text}>Estado</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+          <NavLink tag={Link} to="/Dashboard/RRHFormaDePagoView">
+            <ListItemText className={classes.text}>Forma De Pago</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+          <NavLink tag={Link} to="/Dashboard/RRHTipoPlantilla">
+            <ListItemText className={classes.text}>Tipo Plantilla</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      
       <ListItemButton onClick={handleClickPresupuesto}>
         <ListItemIcon>
           <StackedLineChartIcon className={classes.iconos} />
@@ -1081,31 +1122,20 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParOrigenAportante">
-              <ListItemText className={classes.text}>
-                Origen Aportante
-              </ListItemText>
-            </NavLink>
-          </ListItemButton>
-        </List>
-      </Collapse>
-      <Collapse in={openParametros} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParOrigenFondos">
-              <ListItemText className={classes.text}>
-                Origen Fondos
-              </ListItemText>
-            </NavLink>
-          </ListItemButton>
-        </List>
-      </Collapse>
-      <Collapse in={openParametros} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
             <NavLink tag={Link} to="/Dashboard/ParDiocesis">
               <ListItemText className={classes.text}>
                 Diocesis
+              </ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openParametros} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/ParEmisorTarjeta">
+              <ListItemText className={classes.text}>
+                Emisor Tarjeta
               </ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1430,7 +1460,7 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/Dashboard/PasInstrumento"
+              to="/Dashboard/PasInstrumentoView"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}
@@ -1445,12 +1475,27 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/Dashboard/PasInstrumentoLog"
+              to="/Dashboard/PasOrigenFondos"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}
             >
-              <ListItemText className={classes.text}>Instrumento Log</ListItemText>
+              <ListItemText className={classes.text}>Origen Fondos</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/PasOrigenAportante"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Origen Aportante</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>

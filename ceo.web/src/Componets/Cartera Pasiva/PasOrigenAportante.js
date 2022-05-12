@@ -36,11 +36,11 @@ const useStyles = makeStyles((theme) => ({
 const columns = [
   { id: "acciones", label: "Acciones", minWidth: 125 },
   { id: "CodigoEmpresa", label: "Código Empresa", minWidth: 100 },
-  { id: "CodigoOrigenFondos", label: "Código Origen Fondos", minWidth: 100 },
+  { id: "CodigoOrigenAportante", label: "Código Origen Aportante", minWidth: 100 },
   { id: "Descripcion", label: "Descripción", minWidth: 100 },
 ];
 
-const ParOrigenFondos = () => {
+const ParOrigenAportante = () => {
   const { useState } = React;
   const styles = useStyles();
   const [columns, setColumns] = useState([
@@ -48,11 +48,15 @@ const ParOrigenFondos = () => {
       title: "Código Empresa",
       field: "CodigoEmpresa",
     },
-    { title: "Código Origen Fondos", field: "CodigoOrigenFondos" },
+    {title: "Nombre",
+    field: "CodigoEmpresaNavigation.Nombre",
+    id: "CodigoEmpresaNavigation.CodigoEmpresa",
+    },
+    { title: "Código Origen Aportante", field: "CodigoOrigenAportante" },
     { title: "Descripción", field: "Descripcion" },
   ]);
 
-  const { Data, Error, setData } = useGetData("PasOrigenFondo/GetPasOrigenFondos");
+  const { Data, Error, setData } = useGetData("PasOrigenAportante/GetPasOrigenAportantes");
   console.log(Data);
 
   if (Error) return null;
@@ -63,7 +67,7 @@ const ParOrigenFondos = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowAdd);
     postAction(
-      "PasOrigenFondo/PostPasOrigenFondo",
+      "PasOrigenAportante/PostPasOrigenAportante",
       rowAdd,
       userLoggedToken
     ).then((response) => {
@@ -78,7 +82,7 @@ const ParOrigenFondos = () => {
   const updateState = (rowUpdate) => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     putAction(
-      "PasOrigenFondo/PutPasOrigenFondo",
+      "PasOrigenAportante/PutPasOrigenAportante",
       rowUpdate,
       userLoggedToken
     ).then((response) => {
@@ -95,7 +99,7 @@ const ParOrigenFondos = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowDelete);
     deleteAction(
-      "PasOrigenFondo/DeletePasOrigenFondo",
+      "PasOrigenAportante/DeletePasOrigenAportante",
       rowDelete,
       userLoggedToken
     ).then((response) => {
@@ -109,7 +113,7 @@ const ParOrigenFondos = () => {
   return (
     <div>
       <MaterialTable
-        title=" Catálogo Origen Fondos"
+        title=" Catálogo Origen Aportante"
         columns={columns}
         data={Data}
         options={{
@@ -157,4 +161,4 @@ const ParOrigenFondos = () => {
   );
 };
 
-export default ParOrigenFondos;
+export default ParOrigenAportante;

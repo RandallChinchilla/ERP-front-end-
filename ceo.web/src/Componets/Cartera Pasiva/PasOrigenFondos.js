@@ -36,11 +36,11 @@ const useStyles = makeStyles((theme) => ({
 const columns = [
   { id: "acciones", label: "Acciones", minWidth: 125 },
   { id: "CodigoEmpresa", label: "Código Empresa", minWidth: 100 },
-  { id: "CodigoDiocesis", label: "Código Diocesis", minWidth: 100 },
+  { id: "CodigoOrigenFondos", label: "Código Origen Fondos", minWidth: 100 },
   { id: "Descripcion", label: "Descripción", minWidth: 100 },
 ];
 
-const ParDiocesis = () => {
+const ParOrigenFondos = () => {
   const { useState } = React;
   const styles = useStyles();
   const [columns, setColumns] = useState([
@@ -52,12 +52,11 @@ const ParDiocesis = () => {
     field: "CodigoEmpresaNavigation.Nombre",
     id: "CodigoEmpresaNavigation.CodigoEmpresa",
     },
-
-    { title: "Código Diocesis", field: "CodigoDiocesis" },
+    { title: "Código Origen Fondos", field: "CodigoOrigenFondos" },
     { title: "Descripción", field: "Descripcion" },
   ]);
 
-  const { Data, Error, setData } = useGetData("ParDiocesis/GetListaParDiocesis");
+  const { Data, Error, setData } = useGetData("PasOrigenFondo/GetPasOrigenFondos");
   console.log(Data);
 
   if (Error) return null;
@@ -68,7 +67,7 @@ const ParDiocesis = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowAdd);
     postAction(
-      "ParDiocesis/PostParDiocesis",
+      "PasOrigenFondo/PostPasOrigenFondo",
       rowAdd,
       userLoggedToken
     ).then((response) => {
@@ -83,7 +82,7 @@ const ParDiocesis = () => {
   const updateState = (rowUpdate) => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     putAction(
-      "ParDiocesis/PutParDiocesis",
+      "PasOrigenFondo/PutPasOrigenFondo",
       rowUpdate,
       userLoggedToken
     ).then((response) => {
@@ -100,7 +99,7 @@ const ParDiocesis = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowDelete);
     deleteAction(
-      "ParDiocesis/DeleteParDiocesis",
+      "PasOrigenFondo/DeletePasOrigenFondo",
       rowDelete,
       userLoggedToken
     ).then((response) => {
@@ -114,7 +113,7 @@ const ParDiocesis = () => {
   return (
     <div>
       <MaterialTable
-        title=" Catálogo Diocesis"
+        title=" Catálogo Origen Fondos"
         columns={columns}
         data={Data}
         options={{
@@ -162,4 +161,4 @@ const ParDiocesis = () => {
   );
 };
 
-export default ParDiocesis;
+export default ParOrigenFondos;

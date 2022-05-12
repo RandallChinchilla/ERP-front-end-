@@ -92,19 +92,24 @@ import RegTipoOperacionObligaciones from "../Regulador/RegTipoOperacionObligacio
 import RegTipoRelacionComercial from "../Regulador/RegTipoRelacionComercial";
 import RegTipoTasa from "../Regulador/RegTipoTasa";
 import ParEstadoCivil from "../Parametros/ParEstadoCivil";
-import ParDistrito from "../Parametros/ParDistrito";
+import ParDistrito from "../Parametros/ParDistrito"; 
 import ParPeriodicidad from "../Parametros/ParPeriodicidad";
-<<<<<<< HEAD
 import reportTest from "../Reportes/reportTest";
-=======
 import AhoTipo from "../Ahorros/AhoTipo";
 import PasTipoInstrumento from "../Cartera Pasiva/PasTipoInstrumento";
-import PasInstrumento from "../Cartera Pasiva/PasInstrumento";
-import PasInstrumentoLog from "../Cartera Pasiva/PasInstrumentoLog";
-import ParOrigenAportante from "../Parametros/ParOrigenAportante";
-import ParOrigenFondos from "../Parametros/ParOrigenFondos";
 import ParDiocesis from "../Parametros/ParDiocesis";
->>>>>>> 704988aeddf22712440d017119f73e1985a60ee1
+import RRHISRView from "../Recursos Humanos/RRHISRView";
+import RRHISR from "../Recursos Humanos/RRHISR";
+import ParEmisorTarjeta from "../Parametros/ParEmisorTarjeta";
+import ActTransaccionView from "../ActivosFijos/ActTransaccionView";
+import ActTransaccion from "../ActivosFijos/ActTransaccion";
+import PasInstrumentoView from "../Cartera Pasiva/PasInstrumentoView";
+import PasInstrumento from "../Cartera Pasiva/PasInstrumento";
+import PasOrigenAportante from "../Cartera Pasiva/PasOrigenAportante";
+import PasOrigenFondos from "../Cartera Pasiva/PasOrigenFondos";
+import RRHEstado from "../Recursos Humanos/RRHEstado";
+import RRHFormaDePagoView from "../Recursos Humanos/RRHFormaDePagoView";
+import RRHFormaDePago from "../Recursos Humanos/RRHFormaDePago";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -648,29 +653,74 @@ function DashboardContent() {
             ></Route>
             <Route
               exact
-              path="/Dashboard/PasInstrumento"
+              path="/Dashboard/PasInstrumento/:isNew"
               component={PasInstrumento}
             ></Route>
             <Route
               exact
-              path="/Dashboard/PasInstrumentoLog"
-              component={PasInstrumentoLog}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/ParOrigenAportante"
-              component={ParOrigenAportante}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/ParOrigenFondos"
-              component={ParOrigenFondos}
+              path="/Dashboard/PasInstrumentoView"
+              component={PasInstrumentoView}
             ></Route>
             <Route
               exact
               path="/Dashboard/ParDiocesis"
               component={ParDiocesis}
             ></Route>
+            <Route
+              exact
+              path="/Dashboard/RRHISRView"
+              component={RRHISRView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/RRHISR/:isNew"
+              component={RRHISR}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/ParEmisorTarjeta"
+              component={ParEmisorTarjeta}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/ActTransaccionView"
+              component={ActTransaccionView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/ActTransaccion/:isNew"
+              component={ActTransaccion}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/PasOrigenAportante"
+              component={PasOrigenAportante}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/PasOrigenFondos"
+              component={PasOrigenFondos}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/RRHEstado"
+              component={RRHEstado}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/RRHFormaDePago/:isNew"
+              component={RRHFormaDePago}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/RRHFormaDePagoView"
+              component={RRHFormaDePagoView}
+            ></Route>
+            {/* <Route
+              exact
+              path="/Dashboard/RRHTipoPlantilla"
+              component={RRHTipoPlantilla}
+            ></Route> */}
           </Switch>
         </Box>
       </Box>
