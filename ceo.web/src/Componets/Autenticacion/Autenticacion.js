@@ -75,7 +75,7 @@ export default function Autenticacion() {
 
   const { response, handleSubmitLogin } = useData(form);
 
-  const { Data, Error, setData } = useGetData("ParEmpresa");
+  const { Data, Error, setData } = useGetData("ParEmpresa/GetParEmpresas");
 
   if (Error) return null;
   if (!Data) return null;

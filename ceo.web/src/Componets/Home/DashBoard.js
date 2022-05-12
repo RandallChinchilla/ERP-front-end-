@@ -5,18 +5,17 @@ import MuiDrawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { blue, grey, indigo } from "@mui/material/colors";
+import { indigo } from "@mui/material/colors";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Button } from "@mui/material";
 import NestedList from "./listItems";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Marca from "../ActivosFijos/Marca";
 import { makeStyles } from "@material-ui/core";
 import { CliMaestro } from "../Clientes/CliMaestro";
@@ -24,7 +23,6 @@ import ClieMaestroView from "../Clientes/CliMaestroView";
 import { CxpProveedor } from "../CuentasPorPagar/CxpProveedor";
 import CxpProveedorView from "../CuentasPorPagar/CxpProveedorView";
 import SegUsuarioView from "../Seguidad/SegUsuarioView";
-import Registro from "../Autenticacion/Registro";
 import Autenticacion from "../Autenticacion/Autenticacion";
 import ParEmpresa from "../Parametros/ParEmpresa";
 import ParEmpresaView from "../Parametros/ParEmpresaView";
@@ -92,7 +90,7 @@ import RegTipoOperacionObligaciones from "../Regulador/RegTipoOperacionObligacio
 import RegTipoRelacionComercial from "../Regulador/RegTipoRelacionComercial";
 import RegTipoTasa from "../Regulador/RegTipoTasa";
 import ParEstadoCivil from "../Parametros/ParEstadoCivil";
-import ParDistrito from "../Parametros/ParDistrito"; 
+import ParDistrito from "../Parametros/ParDistrito";
 import ParPeriodicidad from "../Parametros/ParPeriodicidad";
 import reportTest from "../Reportes/reportTest";
 import AhoTipo from "../Ahorros/AhoTipo";
@@ -110,6 +108,7 @@ import PasOrigenFondos from "../Cartera Pasiva/PasOrigenFondos";
 import RRHEstado from "../Recursos Humanos/RRHEstado";
 import RRHFormaDePagoView from "../Recursos Humanos/RRHFormaDePagoView";
 import RRHFormaDePago from "../Recursos Humanos/RRHFormaDePago";
+import { ActMaestro } from "../ActivosFijos/ActMaestro";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -641,11 +640,7 @@ function DashboardContent() {
               path="/Dashboard/reportTest"
               component={reportTest}
             ></Route>
-            <Route
-              exact
-              path="/Dashboard/AhoTipo"
-              component={AhoTipo}
-            ></Route>
+            <Route exact path="/Dashboard/AhoTipo" component={AhoTipo}></Route>
             <Route
               exact
               path="/Dashboard/PasTipoInstrumento"
@@ -721,6 +716,7 @@ function DashboardContent() {
               path="/Dashboard/RRHTipoPlantilla"
               component={RRHTipoPlantilla}
             ></Route> */}
+            <Route path="/Dashboard/ActMaestro" component={ActMaestro}></Route>
           </Switch>
         </Box>
       </Box>
