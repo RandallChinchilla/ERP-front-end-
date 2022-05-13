@@ -42,8 +42,8 @@ const validationsForm = (form) => {
     errors.CodigoEmpresa = "Debe ingresar una empresa";
     errors.error = true;
   }
-  if (!form.codigoTipoDocumento) {
-    errors.codigoTipoDocumento = "Debe seleccionar el tipo de documento";
+  if (!form.CodigoInstrumento) {
+    errors.CodigoInstrumento = "Debe seleccionar el tipo de documento";
     errors.error = true;
   }
   if (!form.Nombre) {

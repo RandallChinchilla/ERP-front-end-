@@ -17,6 +17,7 @@ import { postAction } from "../../Helpers/postHelper";
 import { useForm } from "../../Hooks/useForm";
 import { useGetData } from "../../Hooks/useGetData";
 import SelectEstado from "../Listas/SelectEstado";
+import { SelectCross } from "../Listas/SelectCross";
 
 
 const useStyles = makeStyles(() => ({
@@ -137,6 +138,10 @@ const validationsForm = (form) => {
   }
   if (!form.Usuario) {
     errors.Usuario = "Debe ingresar un usuario";
+    errors.error = true;
+  }
+  if (!form.CodigoEstado) {
+    errors.CodigoEstado = "Debe seleccionar un estado";
     errors.error = true;
   }
   return errors;
@@ -292,7 +297,7 @@ const RRHISR = () => {
                   ISR
                 </Typography>
               </Grid>
-              <Grid item xs={6} container justifyContent="center">
+              <Grid item xs={12} container justifyContent="center">
                 <TextField
                   id="CodigoEmpresa"
                   name="CodigoEmpresa"
@@ -310,7 +315,7 @@ const RRHISR = () => {
                   </FormHelperText>
                 )}
               </Grid>
-              <Grid item xs={3} container justifyContent="center">
+              {/* <Grid item xs={3} container justifyContent="center">
                 <TextField
                   id="Consecutivo"
                   name="Consecutivo"
@@ -345,7 +350,7 @@ const RRHISR = () => {
                     {errors.FechaHora}
                   </FormHelperText>
                 )}
-              </Grid>
+              </Grid> */}
               <Grid item xs={4} container justifyContent="center">
                 <TextField
                   id="LimiteInicial1"
@@ -774,12 +779,21 @@ const RRHISR = () => {
               </Grid>
               <Grid item xs={6} container justifyContent="center">
                 <FormControl size="small" className={styles.listas}>
-                  <SelectEstado
+                  <SelectCross
                     form={form}
                     handleBlur={handleBlur}
                     handleChange={handleChange}
+                    title={"Estado"}
+                    controller={"ParEstado/GetParEstados"}
+                    name={"CodigoEstado"}
+                    field={"Descripcion"}
                   />
                 </FormControl>
+                {errors.CodigoEstado && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.CodigoEstado}
+                  </FormHelperText>
+                )}
               </Grid>
 
               <Grid item xs={12} container justifyContent="end">

@@ -12,8 +12,12 @@ const RRHISRView = () => {
 
   const [columns, setColumns] = useState([
     {
-      title: "Empresa",
+      title: "Código Empresa",
       field: "CodigoEmpresa",
+    },
+    {title: "Empresa",
+    field: "CodigoEmpresaNavigation.Nombre",
+    id: "CodigoEmpresaNavigation.CodigoEmpresa",
     },
     { title: "Consecutivo", field: "Consecutivo" },
     {
@@ -65,17 +69,17 @@ const RRHISRView = () => {
           exportButton: true,
         }}
         actions={[
-          {
-            icon: "edit",
-            tooltip: "Editar ISR",
-            onClick: (event, rowData) => updateState(rowData, false),
-          },
-          {
-            icon: "delete",
-            tooltip: "Borrar ISR",
-            onClick: (event, rowData) =>
-              alert("You want to delete " + rowData.name),
-          },
+          // {
+          //   icon: "edit",
+          //   tooltip: "Editar ISR",
+          //   onClick: (event, rowData) => updateState(rowData, false),
+          // },
+          // {
+          //   icon: "delete",
+          //   tooltip: "Borrar ISR",
+          //   onClick: (event, rowData) =>
+          //     alert("You want to delete " + rowData.name),
+          // },
           {
             icon: "add",
             tooltip: "Nuevo ISR",

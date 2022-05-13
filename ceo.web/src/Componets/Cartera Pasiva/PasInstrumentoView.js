@@ -16,7 +16,7 @@ const PasInstrumentoView = () => {
       field: "CodigoEmpresa",
     },
     {
-      title: "Nombre",
+      title: "Empresa",
       field: "CodigoEmpresaNavigation.Nombre",
       id: "CodigoEmpresaNavigation.CodigoEmpresa",
     },
