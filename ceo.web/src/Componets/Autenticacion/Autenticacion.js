@@ -1,24 +1,24 @@
-import {
-  Grid,
-  Typography,
-  Paper,
-  Input,
-  Button,
-  Select,
-  MenuItem,
-  FormHelperText,
-  AppBar,
-  Toolbar,
-} from "@mui/material";
-import React, { useState } from "react";
-import { blue } from "@mui/material/colors";
-import { Box } from "@mui/system";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
 import { makeStyles } from "@material-ui/core";
-import { useGetData } from "../../Hooks/useGetData";
-import { useForm } from "../../Hooks/useForm";
+import {
+  AppBar,
+  Button,
+  FormHelperText,
+  Grid,
+  Input,
+  MenuItem,
+  Paper,
+  Select,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { blue } from "@mui/material/colors";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import { Box } from "@mui/system";
+import React, { useContext } from "react";
 import { useData } from "../../Hooks/useData";
+import { useForm } from "../../Hooks/useForm";
+import { useGetData } from "../../Hooks/useGetData";
 
 const useStyles = makeStyles((theme) => ({
   iconos: {
@@ -66,22 +66,22 @@ export default function Autenticacion() {
     RememberMe: true,
   };
 
+  // const { setAut } = useContext(AutContext);
   const styles = useStyles();
-
   const { form, errors, handleChange, handleBlur } = useForm(
     initialForm,
     validationsForm
   );
-
   const { response, handleSubmitLogin } = useData(form);
+  // setAut(response);
+  // console.log(response);
 
-  const { Data, Error, setData } = useGetData("ParEmpresa/GetParEmpresas");
+  const { Data, Error } = useGetData("ParEmpresa/GetParEmpresas");
 
   if (Error) return null;
   if (!Data) return null;
 
   let options = Data;
-  console.log(options);
 
   return (
     <div>
