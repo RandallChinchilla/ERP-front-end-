@@ -7,13 +7,16 @@ import {
   Typography,
   FormHelperText,
   FormControl,
+  Button,
+  Divider,
 } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useForm } from "../../Hooks/useForm";
 import { SelectCross } from "../Listas/SelectCross";
+import { AutContext } from "../../Context/AutContext";
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -42,11 +45,11 @@ const validationsForm = (form) => {
     errors.error = true;
   }
   if (!form.CodigoGrupo) {
-    errors.CodigoGrupo = "Debe ingresar el codigo del activo";
+    errors.CodigoGrupo = "Debe seleccionar un valor";
     errors.error = true;
   }
   if (!form.CodigoSubGrupo) {
-    errors.CodigoSubGrupo = "Debe ingresar el codigo del sub grupo";
+    errors.CodigoSubGrupo = "Debe seleccionar un valor";
     errors.error = true;
   }
   if (!form.Descripcion) {
@@ -58,7 +61,7 @@ const validationsForm = (form) => {
     errors.error = true;
   }
   if (!form.CodigoMarca) {
-    errors.CodigoMarca = "Debe seleccionar una marca";
+    errors.CodigoMarca = "Debe seleccionar una valor";
     errors.error = true;
   }
   if (!form.FechaCompra) {
@@ -70,7 +73,7 @@ const validationsForm = (form) => {
     errors.error = true;
   }
   if (!form.CodigoMoneda) {
-    errors.CodigoMoneda = "Debe seleccionar una marca";
+    errors.CodigoMoneda = "Debe seleccionar una valor";
     errors.error = true;
   }
   if (!form.ValorCompra) {
@@ -97,13 +100,44 @@ const validationsForm = (form) => {
     errors.DiasGarantia = "Debe ingresar un valor";
     errors.error = true;
   }
+  if (!form.Serie) {
+    errors.Serie = "Debe ingresar un valor";
+    errors.error = true;
+  }
+  if (!form.Placa) {
+    errors.Placa = "Debe ingresar un valor";
+    errors.error = true;
+  }
+  if (!form.Ubicacion) {
+    errors.Ubicacion = "Debe ingresar un valor";
+    errors.error = true;
+  }
+  if (!form.UsuarioAsignado) {
+    errors.UsuarioAsignado = "Debe ingresar un valor";
+    errors.error = true;
+  }
+  if (!form.CodigoEstado) {
+    errors.CodigoEstado = "Debe seleccionar un valor";
+    errors.error = true;
+  }
+  if (!form.CodigoCentroCosto) {
+    errors.CodigoCentroCosto = "Debe seleccionar un valor";
+    errors.error = true;
+  }
+  if (!form.CodigoDepartamento) {
+    errors.CodigoDepartamento = "Debe seleccionar un valor";
+    errors.error = true;
+  }
 
   return errors;
 };
 
 export const ActMaestro = () => {
+  const userData = JSON.parse(localStorage.getItem("userLogged"));
+
   const initialForm = {
-    CodigoEmpresa: "",
+    CodigoEmpresa: userData.codigoEmpresa,
+    NombreEmpresa: userData.nombreEmpresa,
     Codigo: "",
     CodigoGrupo: "",
     CodigoSubGrupo: "",
@@ -120,6 +154,15 @@ export const ActMaestro = () => {
     CodigoMoneda: "",
     NumeroFactura: "",
     DiasGarantia: "",
+    Serie: "",
+    Placa: "",
+    Ubicacion: "",
+    UsuarioAsignado: "",
+    CodigoEstado: "",
+    CodigoCentroCosto: "",
+    CodigoDepartamento: "",
+    IdUsuario: userData.id,
+    userName: userData.userName,
   };
 
   const { form, errors, handleChange, handleBlur, setForm } = useForm(
@@ -148,6 +191,7 @@ export const ActMaestro = () => {
               </Grid>
               <Grid item xs={6} className={styles.grid}>
                 <TextField
+                  disabled
                   id="CodigoEmpresa"
                   name="CodigoEmpresa"
                   label="Empresa"
@@ -156,7 +200,7 @@ export const ActMaestro = () => {
                   className={styles.textfiled}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={form.CodigoEmpresa}
+                  value={form.NombreEmpresa}
                 ></TextField>
                 {errors.CodigoEmpresa && (
                   <FormHelperText id="my-helper-text" error>
@@ -238,7 +282,7 @@ export const ActMaestro = () => {
                 <TextField
                   id="NumeroProveedor"
                   name="NumeroProveedor"
-                  label="NumeroProveedor"
+                  label="Número Proveedor"
                   size="small"
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -258,9 +302,9 @@ export const ActMaestro = () => {
                     handleBlur={handleBlur}
                     handleChange={handleChange}
                     title={"Marca"}
-                    controller={"ActMarca"}
-                    name={"codigoMarca"}
-                    field={"descripcion"}
+                    controller={"ActMarca/GetActMarcas"}
+                    name={"CodigoMarca"}
+                    field={"Descripcion"}
                   />
                 </FormControl>
                 {errors.CodigoMarca && (
@@ -425,6 +469,148 @@ export const ActMaestro = () => {
                     {errors.DiasGarantia}
                   </FormHelperText>
                 )}
+              </Grid>
+              <Grid item xs={2} className={styles.grid}>
+                <TextField
+                  id="Serie"
+                  name="Serie"
+                  label="Serie"
+                  size="small"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={form.Serie}
+                ></TextField>
+                {errors.Serie && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.Serie}
+                  </FormHelperText>
+                )}
+              </Grid>
+              <Grid item xs={2} className={styles.grid}>
+                <TextField
+                  id="Placa"
+                  name="Placa"
+                  label="Placa"
+                  size="small"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={form.Placa}
+                ></TextField>
+                {errors.Placa && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.Placa}
+                  </FormHelperText>
+                )}
+              </Grid>
+              <Grid item xs={2} container justifyContent="center">
+                <FormControl size="small" className={styles.listas}>
+                  <SelectCross
+                    form={form}
+                    handleBlur={handleBlur}
+                    handleChange={handleChange}
+                    title={"Departamento"}
+                    controller={"ParDepartamento/GetParDepartamentos"}
+                    name={"CodigoDepartamento"}
+                    field={"Descripcion"}
+                  />
+                </FormControl>
+                {errors.CodigoDepartamento && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.CodigoDepartamento}
+                  </FormHelperText>
+                )}
+              </Grid>
+              <Grid item xs={2} container justifyContent="center">
+                <FormControl size="small" className={styles.listas}>
+                  <SelectCross
+                    form={form}
+                    handleBlur={handleBlur}
+                    handleChange={handleChange}
+                    title={"Centro de Costos"}
+                    controller={"ConCentrocosto/GetConCentrosCosto"}
+                    name={"CodigoCentroCosto"}
+                    field={"Descripcion"}
+                  />
+                </FormControl>
+                {errors.CodigoCentroCosto && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.CodigoCentroCosto}
+                  </FormHelperText>
+                )}
+              </Grid>
+              <Grid item xs={2} className={styles.grid}>
+                <TextField
+                  id="Ubicacion"
+                  name="Ubicacion"
+                  label="Ubicación"
+                  size="small"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={form.Ubicacion}
+                ></TextField>
+                {errors.Ubicacion && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.Ubicacion}
+                  </FormHelperText>
+                )}
+              </Grid>
+              <Grid item xs={2} className={styles.grid}>
+                <TextField
+                  id="UsuarioAsignado"
+                  name="UsuarioAsignado"
+                  label="Usuario Asignado"
+                  size="small"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={form.Ubicacion}
+                ></TextField>
+                {errors.UsuarioAsignado && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.UsuarioAsignado}
+                  </FormHelperText>
+                )}
+              </Grid>
+              <Grid item xs={2} container justifyContent="center">
+                <FormControl size="small" className={styles.listas}>
+                  <SelectCross
+                    form={form}
+                    handleBlur={handleBlur}
+                    handleChange={handleChange}
+                    title={"Estado"}
+                    controller={"ActEstado/GetActEstados"}
+                    name={"CodigoEstado"}
+                    field={"Descripcion"}
+                  />
+                </FormControl>
+                {errors.CodigoEstado && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.CodigoEstado}
+                  </FormHelperText>
+                )}
+              </Grid>
+              <Grid item xs={6} className={styles.grid}>
+                <TextField
+                  disabled
+                  id="IdUsuario"
+                  name="IdUsuario"
+                  label="Usuario"
+                  size="small"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={form.userName}
+                  className={styles.textfiled}
+                ></TextField>
+                {errors.IdUsuario && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.IdUsuario}
+                  </FormHelperText>
+                )}
+              </Grid>
+              <Grid item xs={12} container justifyContent="end">
+                <Button variant="contained">Agregar</Button>
+              </Grid>
+              <Grid item xs={12} mt={2}>
+                <Divider />
               </Grid>
             </Grid>
           </Box>
