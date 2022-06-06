@@ -10,13 +10,16 @@ import {
 import FormControl from "@mui/material/FormControl";
 import Modal from "@mui/material/Modal";
 import { Box } from "@mui/system";
-import MaterialTable from "material-table";
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 import { postAction } from "../../Helpers/postHelper";
 import { useForm } from "../../Hooks/useForm";
-import { useGetData } from "../../Hooks/useGetData";
-import SelectEstado from "../Listas/SelectEstado";
+import { SelectCross } from "../Listas/SelectCross";
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns"
 
 
 const useStyles = makeStyles(() => ({
@@ -43,32 +46,63 @@ const validationsForm = (form) => {
     errors.error = true;
   }
   if (!form.CodigoInstrumento) {
-    errors.CodigoInstrumento = "Debe seleccionar el tipo de documento";
+    errors.CodigoInstrumento = "Debe ingresar el código instrumento";
     errors.error = true;
   }
-  if (!form.Nombre) {
-    errors.Nombre = "Debe seleccionar el tipo de documento";
+  if (!form.Descripcion) {
+    errors.Descripcion = "Debe escribir una descripcion";
     errors.error = true;
   }
-  if (!form.NumeroCliente) {
-    errors.NumeroCliente = "Debe seleccionar el tipo de documento";
+  if (!form.Isin) {
+    errors.Isin = "Debe ingresar el Isin";
     errors.error = true;
   }
-  if (!form.CorreoElectronico) {
-    errors.CorreoElectronico = "Debe seleccionar el tipo de documento";
+  if (!form.Serie) {
+    errors.Serie = "Debe ingresar la serie";
     errors.error = true;
   }
-
-  if (!form.TelefonoCelular) {
-    errors.TelefonoCelular = "Debe seleccionar el tipo de documento";
+  if (!form.FechaEmision) {
+    errors.FechaEmision = "Debe seleccionar la fecha de emisión";
     errors.error = true;
   }
-  if (!form.Direccion) {
-    errors.Direccion = "Debe ingresar la dirección";
+  if (!form.FechaVencimiento) {
+    errors.FechaVencimiento = "Debe seleccionar la fecha de vencimiento";
     errors.error = true;
   }
-  if (!form.Observaciones) {
-    errors.Observaciones = "Debe ingresar sus observaciones";
+  if (!form.FechaUltimoPagoInteres) {
+    errors.FechaUltimoPagoInteres = "Debe seleccionar la fecha del último pago de interés";
+    errors.error = true;
+  }
+  if (!form.FechaProximoPagoInteres) {
+    errors.FechaProximoPagoInteres = "Debe seleccionar la fecha del próximo pago de interés";
+    errors.error = true;
+  }
+  if (!form.TasaBruta) {
+    errors.TasaBruta = "Debe ingresar la tasa bruta";
+    errors.error = true;
+  }
+  if (!form.TasaNeta) {
+    errors.TasaNeta = "Debe ingresar la tasa neta";
+    errors.error = true;
+  }
+  if (!form.Divisor) {
+    errors.Divisor = "Debe ingresar el divisor tasa";
+    errors.error = true;
+  }
+  if (!form.Multiplicador) {
+    errors.Multiplicador = "Debe ingresar el multiplicador tasa";
+    errors.error = true;
+  }
+  if (!form.CodigoMoneda) {
+    errors.CodigoMoneda = "Debe seleccionar la moneda";
+    errors.error = true;
+  }
+  if (!form.CodigoPeriodicidadPagoInteres) {
+    errors.CodigoPeriodicidadPagoInteres = "Debe seleccionar la periodicidad del pago de interés";
+    errors.error = true;
+  }
+  if (!form.CodigoPeriodicidadRevisionTasa) {
+    errors.CodigoPeriodicidadRevisionTasa = "Debe seleccionar la periodicidad de la revisión de tasa";
     errors.error = true;
   }
   return errors;
@@ -86,6 +120,7 @@ const PasInstrumento = () => {
   const initialForm = {
     Consecutivo: rowEdit ? rowEdit.Consecutivo : "",
     CodigoEmpresa: rowEdit ? rowEdit.CodigoEmpresa: userData.codigoEmpresa,
+    NombreEmpresa: rowEdit ? rowEdit.NombreEmpresa: userData.nombreEmpresa,     
     CodigoInstrumento: rowEdit ? rowEdit.CodigoInstrumento : "",
     Descripcion: rowEdit ? rowEdit.Descripcion : "",
     Isin: rowEdit ? rowEdit.Isin : "",
@@ -106,14 +141,7 @@ const PasInstrumento = () => {
     CodigoPeriodicidadRevisionTasa: rowEdit ? rowEdit.CodigoPeriodicidadRevisionTasa : "",
     Usuario: rowEdit ? rowEdit.Usuario : userData.userName,
   };
-//   const { Data } = useGetData("CliMaestro/GetCliMaestros");
-//   const [columns, setColumns] = useState([
-//     { title: "Codigo Cliente", field: "NumeroCliente" },
-//     {
-//       title: "Nombre",
-//       field: "Nombre",
-//     },
-//   ]);
+
 
   const style = {
     position: "absolute",
@@ -150,28 +178,26 @@ const PasInstrumento = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     const addRowRequest = {
       codigoEmpresa: form.CodigoEmpresa,
-      CodigoInstrumento: form.CodigoInstrumento,
-      Descripcion: form.Descripcion,
-      Isin: form.Isin,
-      Serie: form.Serie,
-      FechaEmision: form.FechaEmision,
-      FechaVencimiento: form.FechaVencimiento,
-      FechaUltimoPagoInteres: form.FechaUltimoPagoInteres,
-      FechaProximoPagoInteres: form.FechaProximoPagoInteres,
-      TasaBruta: form.TasaBruta,
-      TasaNeta: form.TasaNeta,
-      Divisor: form.Divisor,
-      Multiplicador: form.Multiplicador,
-      IndicadorTasaVariable: form.IndicadorCapitalizable,
-      IndicadorCapitalizable: form.IndicadorCapitalizable,
-      IndicadorGenerico: form.IndicadorGenerico,
-      Observaciones: form.Observaciones,
-      CodigoMoneda: form.CodigoMoneda,
-      CodigoPeriodicidadPagoInteres: form.CodigoPeriodicidadPagoInteres,
-      CodigoPeriodicidadRevisionTasa: form.CodigoPeriodicidadRevisionTasa,
-      Usuario: form.Usuario,
+      codigoInstrumento: form.CodigoInstrumento,
+      descripcion: form.Descripcion,
+      isin: form.Isin,
+      serie: form.Serie,
+      fechaEmision: form.FechaEmision,
+      fechaVencimiento: form.FechaVencimiento,
+      fechaUltimoPagoInteres: form.FechaUltimoPagoInteres,
+      fechaProximoPagoInteres: form.FechaProximoPagoInteres,
+      tasaBruta: form.TasaBruta,
+      tasaNeta: form.TasaNeta,
+      divisor: form.Divisor,
+      multiplicador: form.Multiplicador,
+      indicadorTasaVariable: form.IndicadorCapitalizable,
+      indicadorCapitalizable: form.IndicadorCapitalizable,
+      indicadorGenerico: form.IndicadorGenerico,
+      observaciones: form.Observaciones,
+      codigoMoneda: form.CodigoMoneda,
+      codigoPeriodicidadPagoInteres: form.CodigoPeriodicidadPagoInteres,
+      codigoPeriodicidadRevisionTasa: form.CodigoPeriodicidadRevisionTasa,
       id: userData.id,
-      userName: userData.userName,
     };
 
     console.log(addRowRequest);
@@ -188,6 +214,8 @@ const PasInstrumento = () => {
       }
     });
   };
+
+  const [value, setValue] = useState(new Date());
 
   return (
     <div>
@@ -214,7 +242,7 @@ const PasInstrumento = () => {
                   label="Empresa"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={form.CodigoEmpresa}
+                  value={form.NombreEmpresa}
                   className={styles.inpuntEmpresa}
                   size="small"
                   disabled="true"
@@ -235,7 +263,6 @@ const PasInstrumento = () => {
                   value={form.CodigoInstrumento}
                   className={styles.inpuntEmpresa}
                   size="small"
-                  disabled="true"
                 ></TextField>
                 {errors.CodigoInstrumento && (
                   <FormHelperText id="my-helper-text" error>
@@ -253,7 +280,6 @@ const PasInstrumento = () => {
                   value={form.Descripcion}
                   className={styles.inpuntEmpresa}
                   size="small"
-                  disabled="true"
                 ></TextField>
                 {errors.Descripcion && (
                   <FormHelperText id="my-helper-text" error>
@@ -271,7 +297,6 @@ const PasInstrumento = () => {
                   value={form.Isin}
                   className={styles.inpuntEmpresa}
                   size="small"
-                  disabled="true"
                 ></TextField>
                 {errors.Isin && (
                   <FormHelperText id="my-helper-text" error>
@@ -289,7 +314,6 @@ const PasInstrumento = () => {
                   value={form.Serie}
                   className={styles.inpuntEmpresa}
                   size="small"
-                  disabled="true"
                 ></TextField>
                 {errors.Serie && (
                   <FormHelperText id="my-helper-text" error>
@@ -297,54 +321,128 @@ const PasInstrumento = () => {
                   </FormHelperText>
                 )}
               </Grid>
-              <Grid item xs={4} container justifyContent="center">
-                <TextField
-                  id="FechaEmision"
-                  name="FechaEmision"
-                  label="Fecha Emisión"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.FechaEmision}
-                  className={styles.inpuntEmpresa}
-                  size="small"
-                  disabled="true"
-                ></TextField>
+              <Grid item xs={3} className={styles.grid}>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DesktopDatePicker
+                    id="FechaEmision"
+                    label="Fecha Emisión"
+                    inputFormat="MM/dd/yyyy"
+                    onChange={(newvalue) => {
+                      setValue(newvalue);
+                      form.FechaEmision = newvalue;
+                    }}
+                    onBlur={handleBlur}
+                    value={form.FechaEmision}
+                    renderInput={(params) => (
+                      <TextField
+                        inputFormat="yyyy/MM/dd"
+                        size="small"
+                        id="FechaEmision"
+                        name="FechaEmision"
+                        onBlur={handleBlur}
+                        value={form.FechaEmision}
+                        onChange={handleChange}
+                        {...params}
+                      />
+                    )}
+                  ></DesktopDatePicker>
+                </LocalizationProvider>
                 {errors.FechaEmision && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.FechaEmision}
                   </FormHelperText>
                 )}
               </Grid>
-              <Grid item xs={4} container justifyContent="center">
-                <TextField
-                  id="FechaUltimoPagoInteres"
-                  name="FechaUltimoPagoInteres"
-                  label="Fecha Último Pago Interés"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.FechaUltimoPagoInteres}
-                  className={styles.inpuntEmpresa}
-                  size="small"
-                  disabled="true"
-                ></TextField>
+              <Grid item xs={3} className={styles.grid}>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DesktopDatePicker
+                    id="FechaVencimiento"
+                    label="Fecha Vencimiento"
+                    inputFormat="MM/dd/yyyy"
+                    onChange={(newvalue) => {
+                      setValue(newvalue);
+                      form.FechaVencimiento = newvalue;
+                    }}
+                    onBlur={handleBlur}
+                    value={form.FechaVencimiento}
+                    renderInput={(params) => (
+                      <TextField
+                        inputFormat="yyyy/MM/dd"
+                        size="small"
+                        id="FechaVencimiento"
+                        name="FechaVencimiento"
+                        onBlur={handleBlur}
+                        value={form.FechaVencimiento}
+                        onChange={handleChange}
+                        {...params}
+                      />
+                    )}
+                  ></DesktopDatePicker>
+                </LocalizationProvider>
+                {errors.FechaVencimiento && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.FechaVencimiento}
+                  </FormHelperText>
+                )}
+              </Grid>
+              <Grid item xs={3} className={styles.grid}>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DesktopDatePicker
+                    id="FechaUltimoPagoInteres"
+                    label="Fecha Último Pago Interés"
+                    inputFormat="MM/dd/yyyy"
+                    onChange={(newvalue) => {
+                      setValue(newvalue);
+                      form.FechaUltimoPagoInteres = newvalue;
+                    }}
+                    onBlur={handleBlur}
+                    value={form.FechaUltimoPagoInteres}
+                    renderInput={(params) => (
+                      <TextField
+                        inputFormat="yyyy/MM/dd"
+                        size="small"
+                        id="FechaUltimoPagoInteres"
+                        name="FechaUltimoPagoInteres"
+                        onBlur={handleBlur}
+                        value={form.FechaUltimoPagoInteres}
+                        onChange={handleChange}
+                        {...params}
+                      />
+                    )}
+                  ></DesktopDatePicker>
+                </LocalizationProvider>
                 {errors.FechaUltimoPagoInteres && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.FechaUltimoPagoInteres}
                   </FormHelperText>
                 )}
               </Grid>
-              <Grid item xs={4} container justifyContent="center">
-                <TextField
-                  id="FechaProximoPagoInteres"
-                  name="FechaProximoPagoInteres"
-                  label="Fecha Próximo Pago Interés"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.FechaProximoPagoInteres}
-                  className={styles.inpuntEmpresa}
-                  size="small"
-                  disabled="true"
-                ></TextField>
+              <Grid item xs={3} className={styles.grid}>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DesktopDatePicker
+                    id="FechaProximoPagoInteres"
+                    label="Fecha Próximo Pago Interés"
+                    inputFormat="MM/dd/yyyy"
+                    onChange={(newvalue) => {
+                      setValue(newvalue);
+                      form.FechaProximoPagoInteres = newvalue;
+                    }}
+                    onBlur={handleBlur}
+                    value={form.FechaProximoPagoInteres}
+                    renderInput={(params) => (
+                      <TextField
+                        inputFormat="yyyy/MM/dd"
+                        size="small"
+                        id="FechaProximoPagoInteres"
+                        name="FechaProximoPagoInteres"
+                        onBlur={handleBlur}
+                        value={form.FechaProximoPagoInteres}
+                        onChange={handleChange}
+                        {...params}
+                      />
+                    )}
+                  ></DesktopDatePicker>
+                </LocalizationProvider>
                 {errors.FechaProximoPagoInteres && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.FechaProximoPagoInteres}
@@ -361,7 +459,6 @@ const PasInstrumento = () => {
                   value={form.TasaBruta}
                   className={styles.inpuntEmpresa}
                   size="small"
-                  disabled="true"
                 ></TextField>
                 {errors.TasaBruta && (
                   <FormHelperText id="my-helper-text" error>
@@ -379,7 +476,6 @@ const PasInstrumento = () => {
                   value={form.TasaNeta}
                   className={styles.inpuntEmpresa}
                   size="small"
-                  disabled="true"
                 ></TextField>
                 {errors.TasaNeta && (
                   <FormHelperText id="my-helper-text" error>
@@ -397,7 +493,6 @@ const PasInstrumento = () => {
                   value={form.Divisor}
                   className={styles.inpuntEmpresa}
                   size="small"
-                  disabled="true"
                 ></TextField>
                 {errors.Divisor && (
                   <FormHelperText id="my-helper-text" error>
@@ -415,7 +510,6 @@ const PasInstrumento = () => {
                   value={form.Multiplicador}
                   className={styles.inpuntEmpresa}
                   size="small"
-                  disabled="true"
                 ></TextField>
                 {errors.Multiplicador && (
                   <FormHelperText id="my-helper-text" error>
@@ -424,17 +518,20 @@ const PasInstrumento = () => {
                 )}
               </Grid>
               <Grid item xs={4} container justifyContent="center">
-                <TextField
+              <FormControl component="fieldset">
+               <FormGroup>
+               <FormControlLabel control={<Checkbox />} 
                   id="IndicadorTasaVariable"
                   name="IndicadorTasaVariable"
                   label="Indicador Tasa Variable"
+                  labelPlacement="start"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={form.IndicadorTasaVariable}
                   className={styles.inpuntEmpresa}
-                  size="small"
-                  disabled="true"
-                ></TextField>
+                  size="small" />
+               </FormGroup>
+               </FormControl>
                 {errors.IndicadorTasaVariable && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.IndicadorTasaVariable}
@@ -442,17 +539,20 @@ const PasInstrumento = () => {
                 )}
               </Grid>
               <Grid item xs={4} container justifyContent="center">
-                <TextField
+              <FormControl component="fieldset">
+               <FormGroup>
+               <FormControlLabel control={<Checkbox />} 
                   id="IndicadorCapitalizable"
                   name="IndicadorCapitalizable"
                   label="Indicador Capitalizable"
+                  labelPlacement="start"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={form.IndicadorCapitalizable}
                   className={styles.inpuntEmpresa}
-                  size="small"
-                  disabled="true"
-                ></TextField>
+                  size="medium" />
+               </FormGroup>
+               </FormControl>
                 {errors.IndicadorCapitalizable && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.IndicadorCapitalizable}
@@ -460,17 +560,20 @@ const PasInstrumento = () => {
                 )}
               </Grid>
               <Grid item xs={4} container justifyContent="center">
-                <TextField
+              <FormControl component="fieldset">
+               <FormGroup>
+               <FormControlLabel control={<Checkbox />} 
                   id="IndicadorGenerico"
                   name="IndicadorGenerico"
                   label="Indicador Génerico"
+                  labelPlacement="start"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={form.IndicadorGenerico}
                   className={styles.inpuntEmpresa}
-                  size="small"
-                  disabled="true"
-                ></TextField>
+                  size="medium" />
+               </FormGroup>
+               </FormControl>
                 {errors.IndicadorGenerico && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.IndicadorGenerico}
@@ -487,7 +590,6 @@ const PasInstrumento = () => {
                   value={form.Observaciones}
                   className={styles.inpuntEmpresa}
                   size="small"
-                  disabled="true"
                 ></TextField>
                 {errors.Observaciones && (
                   <FormHelperText id="my-helper-text" error>
@@ -496,17 +598,17 @@ const PasInstrumento = () => {
                 )}
               </Grid>
               <Grid item xs={3} container justifyContent="center">
-                <TextField
-                  id="CodigoMoneda"
-                  name="CodigoMoneda"
-                  label="Moneda"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.CodigoMoneda}
-                  className={styles.inpuntEmpresa}
-                  size="small"
-                  disabled="true"
-                ></TextField>
+                <FormControl size="small" className={styles.listas}>
+                  <SelectCross
+                    form={form}
+                    handleBlur={handleBlur}
+                    handleChange={handleChange}
+                    title={"Moneda"}
+                    controller={"ParMonedum/GetParMonedas"}
+                    name={"CodigoMoneda"}
+                    field={"Descripcion"}
+                  />
+                </FormControl>
                 {errors.CodigoMoneda && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.CodigoMoneda}
@@ -514,17 +616,17 @@ const PasInstrumento = () => {
                 )}
               </Grid>
               <Grid item xs={3} container justifyContent="center">
-                <TextField
-                  id="CodigoPeriodicidadPagoInteres"
-                  name="CodigoPeriodicidadPagoInteres"
-                  label="Código Periodicidad Pago Interés"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.CodigoPeriodicidadPagoInteres}
-                  className={styles.inpuntEmpresa}
-                  size="small"
-                  disabled="true"
-                ></TextField>
+                <FormControl size="small" className={styles.listas}>
+                  <SelectCross
+                    form={form}
+                    handleBlur={handleBlur}
+                    handleChange={handleChange}
+                    title={"Periodicidad Pago Interés"}
+                    controller={"ParPeriodicidad/GetParPeriodicidades"}
+                    name={"CodigoPeriodicidad"}
+                    field={"Descripcion"}
+                  />
+                </FormControl>
                 {errors.CodigoPeriodicidadPagoInteres && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.CodigoPeriodicidadPagoInteres}
@@ -532,17 +634,17 @@ const PasInstrumento = () => {
                 )}
               </Grid>
               <Grid item xs={3} container justifyContent="center">
-                <TextField
-                  id="CodigoPeriodicidadRevisionTasa"
-                  name="CodigoPeriodicidadRevisionTasa"
-                  label="Código Periodicidad Revisión Tasa"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.CodigoPeriodicidadRevisionTasa}
-                  className={styles.inpuntEmpresa}
-                  size="small"
-                  disabled="true"
-                ></TextField>
+                <FormControl size="small" className={styles.listas}>
+                  <SelectCross
+                    form={form}
+                    handleBlur={handleBlur}
+                    handleChange={handleChange}
+                    title={"Periodicidad Revisión Tasa"}
+                    controller={"ParPeriodicidad/GetParPeriodicidades"}
+                    name={"CodigoPeriodicidad"}
+                    field={"Descripcion"}
+                  />
+                </FormControl>
                 {errors.CodigoPeriodicidadRevisionTasa && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.CodigoPeriodicidadRevisionTasa}
@@ -568,19 +670,11 @@ const PasInstrumento = () => {
                 )}
               </Grid>
               <Grid item xs={12} container justifyContent="end">
-                <Button onClick={addRow}>Agregar</Button>
+                <Button onClick={addRow} variant="contained">Agregar</Button>
               </Grid>
               <Grid item xs={12} mt={2}>
                 <Divider />
               </Grid>
-              {/* {show && (
-                <FacMaestroDetalle data={initialForm} />
-                // <Grid container spacing={2} justifyContent="center">
-                //   <Grid item xs={12}>
-                //     <FacMaestroDetalle data={initialForm} />
-                //   </Grid>
-                // </Grid>
-              )} */}
             </Grid>
           </Box>
         </Paper>
@@ -593,33 +687,6 @@ const PasInstrumento = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          {/* <Typography id="modal-modal-title" variant="h6" component="h2">
-            Seleccione un producto
-          </Typography> */}
-          {/* <div>
-            <MaterialTable
-              title="Articulo"
-              columns={columns}
-              data={Data}
-              options={{
-                rowStyle: {
-                  fontSize: 12,
-                },
-                headerStyle: {
-                  backgroundColor: "#898883",
-                  color: "#FFF",
-                  fontSize: 13,
-                },
-              }}
-              actions={[
-                {
-                  icon: "add",
-                  tooltip: "Seleccionar Articulo",
-                  onClick: (event, rowData) => selectItem(rowData, false),
-                },
-              ]}
-            />
-          </div> */}
         </Box>
       </Modal>
     </div>

@@ -5,47 +5,37 @@ import { useHistory } from "react-router";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
-const PasInstrumentoView = () => {
+const ActSubGrupoView = () => {
   const { useState } = React;
   let usehistory = useHistory();
-  window.localStorage.removeItem("editPasInstrumento");
+  window.localStorage.removeItem("editActSubGrupo");
 
   const [columns, setColumns] = useState([
     {
       title: "Código Empresa",
       field: "CodigoEmpresa",
     },
-    {
-      title: "Empresa",
-      field: "CodigoEmpresaNavigation.Nombre",
-      id: "CodigoEmpresaNavigation.CodigoEmpresa",
+    // {
+    //   title: "Empresa",
+    //   field: "CodigoEmpresaNavigation.Nombre",
+    //   id: "CodigoEmpresaNavigation.CodigoEmpresa",
+    // },
+    { 
+      title: "Código Grupo", 
+      field: "CodigoGrupo"
     },
     { 
-      title: "Código Instrumento", 
-      field: "CodigoInstrumento"
-    },
+        title: "Código Sub Grupo", 
+        field: "CodigoSubGrupo"
+      },
     {
       title: "Descripción",
       field: "Descripcion",
     },
-    { 
-      title: "Moneda", 
-      field: "CodigoMoneda"
-    },
-    { 
-      title: "Periodicidad Pago Interés", 
-      field: "CodigoNavigation.Descripcion",
-      id: "CodigoNavigation.CodigoPeriodicidad",
-    },
-    { 
-      title: "Periodicidad Revisión Tasa", 
-      field: "CodigoNavigation.Descripcion",
-      id: "CodigoNavigation.CodigoPeriodicidad",
-    },
   ]);
 
   const { Data, Error, setData } = useGetData(
-    "PasInstrumento/GetPasInstrumentos"
+    "ActSubGrupo/GetActSubGrupos"
   );
 
   if (Error) return null;
@@ -56,18 +46,18 @@ const PasInstrumentoView = () => {
     console.log(rowUpdate);
     if (isNew) {
       console.log(rowUpdate);
-      usehistory.push(`./PasInstrumento/1`);
+      usehistory.push(`./ActSubGrupo/1`);
     } else {
       console.log(rowUpdate);
-      window.localStorage.setItem("editPasInstrumento", JSON.stringify(rowUpdate));
-      usehistory.push(`./PasInstrumento/0`);
+      window.localStorage.setItem("editActSubGrupo", JSON.stringify(rowUpdate));
+      usehistory.push(`./ActSubGrupo/0`);
     }
   };
 
   return (
     <div>
       <MaterialTable
-        title="Catálogo Instrumentos"
+        title="Catálogo Sub Grupos"
         columns={columns}
         data={Data}
         options={{
@@ -84,18 +74,18 @@ const PasInstrumentoView = () => {
         actions={[
           {
             icon: "edit",
-            tooltip: "Editar Instrumentos",
+            tooltip: "Editar Sub Grupo",
             onClick: (event, rowData) => updateState(rowData, false),
           },
           {
             icon: "delete",
-            tooltip: "Borrar Instrumentos",
+            tooltip: "Borrar Sub Grupo",
             onClick: (event, rowData) =>
               alert("You want to delete " + rowData.name),
           },
           {
             icon: "add",
-            tooltip: "Nuevo Instrumento",
+            tooltip: "Nuevo Sub Grupo",
             isFreeAction: true,
             onClick: (event, rowData) => updateState(rowData, true),
           },
@@ -105,4 +95,4 @@ const PasInstrumentoView = () => {
   );
 };
 
-export default PasInstrumentoView;
+export default ActSubGrupoView;

@@ -35,24 +35,22 @@ const useStyles = makeStyles((theme) => ({
 
 const columns = [
   { id: "acciones", label: "Acciones", minWidth: 125 },
-  { id: "CodigoFormaDepreciacion", label: "Código Forma Depreciación", minWidth: 100 },
+  { id: "CodigoEstado", label: "Codigo Estado", minWidth: 100 },
   { id: "Descripcion", label: "Descripción", minWidth: 100 },
-  { id: "Formula", label: "Fórmula", minWidth: 100 },
 ];
 
-const ActFormaDepreciacion = () => {
+const ActEstado = () => {
   const { useState } = React;
   const styles = useStyles();
   const [columns, setColumns] = useState([
     {
-      title: "Código Forma Depreciación",
-      field: "CodigoFormaDepreciacion",
+      title: "Código Estado",
+      field: "CodigoEstado",
     },
     { title: "Descripción", field: "Descripcion" },
-    // { title: "Fórmula", field: "Formula" },
   ]);
 
-  const { Data, Error, setData } = useGetData("ActFormaDepreciacion/GetActFormasDepreciacion");
+  const { Data, Error, setData } = useGetData("ActEstado/GetActEstados");
   console.log(Data);
 
   if (Error) return null;
@@ -63,7 +61,7 @@ const ActFormaDepreciacion = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowAdd);
     postAction(
-      "ActFormaDepreciacion/PostActFormaDepreciacion",
+      "ActEstado/PostActEstado",
       rowAdd,
       userLoggedToken
     ).then((response) => {
@@ -78,7 +76,7 @@ const ActFormaDepreciacion = () => {
   const updateState = (rowUpdate) => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     putAction(
-      "ActFormaDepreciacion/PutActFormaDepreciacion",
+      "ActEstado/PutActEstado",
       rowUpdate,
       userLoggedToken
     ).then((response) => {
@@ -95,7 +93,7 @@ const ActFormaDepreciacion = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowDelete);
     deleteAction(
-      "ActFormaDepreciacion/DeleteActFormaDepreciacion",
+      "ActEstado/DeleteActEstado",
       rowDelete,
       userLoggedToken
     ).then((response) => {
@@ -109,7 +107,7 @@ const ActFormaDepreciacion = () => {
   return (
     <div>
       <MaterialTable
-        title=" Catálogo Forma Depreciación"
+        title=" Catálogo Estado Activos Fijos"
         columns={columns}
         data={Data}
         options={{
@@ -157,5 +155,4 @@ const ActFormaDepreciacion = () => {
   );
 };
 
- 
-export default ActFormaDepreciacion;
+export default ActEstado;

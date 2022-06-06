@@ -159,6 +159,7 @@ const RRHISR = () => {
   const initialForm = {
     Consecutivo: rowEdit ? rowEdit.Consecutivo : "",
     CodigoEmpresa: rowEdit ? rowEdit.CodigoEmpresa: userData.codigoEmpresa,
+    NombreEmpresa: rowEdit ? rowEdit.NombreEmpresa: userData.nombreEmpresa,
     FechaHora: rowEdit ? rowEdit.FechaHora : "",
     LimiteInicial1: rowEdit ? rowEdit.LimiteInicial1 : "",
     LimiteFinal1: rowEdit ? rowEdit.LimiteFinal1 : "",
@@ -233,35 +234,34 @@ const RRHISR = () => {
     const addRowRequest = {
       codigoEmpresa: form.CodigoEmpresa,
       consecutivo: 0,
-      FechaHora: form.FechaHora,
-      LimiteInicial1: form.LimiteInicial1,
-      LimiteFinal1: form.LimiteFinal1,
-      Porcentaje1: form.Porcentaje1,
-      LimiteInicial2: form.LimiteInicial2,
-      LimiteFinal2: form.LimiteFinal2,
-      Porcentaje2: form.Porcentaje2,
-      LimiteInicial3: form.LimiteInicial3,
-      LimiteFinal3: form.LimiteFinal3,
-      Porcentaje3: form.Porcentaje3,
-      LimiteInicial4: form.LimiteInicial4,
-      LimiteFinal4: form.LimiteFinal4,
-      Porcentaje4: form.Porcentaje4,
-      LimiteInicial5: form.LimiteInicial5,
-      LimiteFinal5: form.LimiteFinal5,
-      Porcentaje5: form.Porcentaje5,
-      LimiteInicial6: form.LimiteInicial6,
-      LimiteFinal6: form.LimiteFinal6,
-      Porcentaje6: form.Porcentaje6,
-      LimiteInicial7: form.LimiteInicial7,
-      LimiteFinal7: form.LimiteFinal7,
-      Porcentaje7: form.Porcentaje7,
-      LimiteInicial8: form.LimiteInicial8,
-      LimiteFinal8: form.LimiteFinal8,
-      Porcentaje8: form.Porcentaje8,
-      Usuario: form.Usuario,
-      CodigoEstado: form.CodigoEstado,
+      fechaHora: new Date(),
+      limiteInicial1: form.LimiteInicial1,
+      limiteFinal1: form.LimiteFinal1,
+      porcentaje1: form.Porcentaje1,
+      limiteInicial2: form.LimiteInicial2,
+      limiteFinal2: form.LimiteFinal2,
+      porcentaje2: form.Porcentaje2,
+      limiteInicial3: form.LimiteInicial3,
+      limiteFinal3: form.LimiteFinal3,
+      porcentaje3: form.Porcentaje3,
+      limiteInicial4: form.LimiteInicial4,
+      limiteFinal4: form.LimiteFinal4,
+      porcentaje4: form.Porcentaje4,
+      limiteInicial5: form.LimiteInicial5,
+      limiteFinal5: form.LimiteFinal5,
+      porcentaje5: form.Porcentaje5,
+      limiteInicial6: form.LimiteInicial6,
+      limiteFinal6: form.LimiteFinal6,
+      porcentaje6: form.Porcentaje6,
+      limiteInicial7: form.LimiteInicial7,
+      limiteFinal7: form.LimiteFinal7,
+      porcentaje7: form.Porcentaje7,
+      limiteInicial8: form.LimiteInicial8,
+      limiteFinal8: form.LimiteFinal8,
+      porcentaje8: form.Porcentaje8,
+      idUsuario: form.Usuario,
+      codigoEstado: form.CodigoEstado,
       id: userData.id,
-      userName: userData.userName,
     };
 
     console.log(addRowRequest);
@@ -304,7 +304,7 @@ const RRHISR = () => {
                   label="Empresa"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={form.CodigoEmpresa}
+                  value={form.NombreEmpresa}
                   className={styles.inpuntEmpresa}
                   size="small"
                   disabled="true"
@@ -797,60 +797,15 @@ const RRHISR = () => {
               </Grid>
 
               <Grid item xs={12} container justifyContent="end">
-                <Button onClick={addRow}>Agregar</Button>
+                <Button onClick={addRow} variant="contained">Agregar</Button>
               </Grid>
               <Grid item xs={12} mt={2}>
                 <Divider />
               </Grid>
-              {/* {show && (
-                <FacMaestroDetalle data={initialForm} />
-                // <Grid container spacing={2} justifyContent="center">
-                //   <Grid item xs={12}>
-                //     <FacMaestroDetalle data={initialForm} />
-                //   </Grid>
-                // </Grid>
-              )} */}
             </Grid>
           </Box>
         </Paper>
       </Grid>
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          {/* <Typography id="modal-modal-title" variant="h6" component="h2">
-            Seleccione un producto
-          </Typography> */}
-          {/* <div>
-            <MaterialTable
-              title="Articulo"
-              columns={columns}
-              data={Data}
-              options={{
-                rowStyle: {
-                  fontSize: 12,
-                },
-                headerStyle: {
-                  backgroundColor: "#898883",
-                  color: "#FFF",
-                  fontSize: 13,
-                },
-              }}
-              actions={[
-                {
-                  icon: "add",
-                  tooltip: "Seleccionar Articulo",
-                  onClick: (event, rowData) => selectItem(rowData, false),
-                },
-              ]}
-            />
-          </div> */}
-        </Box>
-      </Modal>
     </div>
   );
 };

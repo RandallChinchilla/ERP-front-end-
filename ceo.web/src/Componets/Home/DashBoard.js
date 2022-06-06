@@ -16,7 +16,6 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Button } from "@mui/material";
 import NestedList from "./listItems";
 import { Route, Switch } from "react-router-dom";
-import Marca from "../ActivosFijos/Marca";
 import { makeStyles } from "@material-ui/core";
 import { CliMaestro } from "../Clientes/CliMaestro";
 import ClieMaestroView from "../Clientes/CliMaestroView";
@@ -58,10 +57,6 @@ import FelUnidadMedidaView from "../FacturasElectronicas/FelUnidadMedidaView";
 import FelTipoImpuestoView from "../FacturasElectronicas/FelTipoImpuestoView";
 import ActMaestroView from "../ActivosFijos/ActMaestroView";
 import ActGrupoView from "../ActivosFijos/ActGrupoView";
-import ActSubGrupoView from "../ActivosFijos/ActSubGrupo";
-import ActFormaDepreciacinView from "../ActivosFijos/ActFormaDepreciacion";
-import ActEstadoView from "../ActivosFijos/ActEstadoView";
-import ActDocumentoView from "../ActivosFijos/ActDocumento";
 import Catalogo from "../Contabilidad.js/Catalogo";
 import CxcConcepto from "../CuentasPorCobrar/CxcConcepto";
 import CxpConcepto from "../CuentasPorPagar/CxpConcepto";
@@ -109,6 +104,14 @@ import RRHEstado from "../Recursos Humanos/RRHEstado";
 import RRHFormaDePagoView from "../Recursos Humanos/RRHFormaDePagoView";
 import RRHFormaDePago from "../Recursos Humanos/RRHFormaDePago";
 import { ActMaestro } from "../ActivosFijos/ActMaestro";
+import ActEstado from "../ActivosFijos/ActEstado";
+import ActGrupo from "../ActivosFijos/ActGrupo";
+import ActFormaDepreciacion from "../ActivosFijos/ActFormaDepreciacion";
+import ActMarca from "../ActivosFijos/ActMarca";
+import ActDocumento from "../ActivosFijos/ActDocumento";
+import ActDocumentoView from "../ActivosFijos/ActDocumentoView";
+import ActSubGrupo from "../ActivosFijos/ActSubGrupo";
+import ActSubGrupoView from "../ActivosFijos/ActSubGrupoView";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -273,7 +276,7 @@ function DashboardContent() {
           }}
         >
           <Switch>
-            <Route exact path="/Dashboard/marca" component={Marca}></Route>
+            <Route exact path="/Dashboard/ActMarca" component={ActMarca}></Route>
             <Route
               exact
               path="/Dashboard/parempresa"
@@ -471,28 +474,43 @@ function DashboardContent() {
             ></Route>
             <Route
               exact
-              path="/Dashboard/actgrupoview"
+              path="/Dashboard/ActGrupoView"
               component={ActGrupoView}
             ></Route>
             <Route
               exact
-              path="/Dashboard/actsubgrupoview"
+              path="/Dashboard/ActGrupo/:isNew"
+              component={ActGrupo}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/ActSubGrupoView"
               component={ActSubGrupoView}
             ></Route>
             <Route
               exact
-              path="/Dashboard/actformadepreciacionview"
-              component={ActFormaDepreciacinView}
+              path="/Dashboard/ActSubGrupo/:isNew"
+              component={ActSubGrupo}
             ></Route>
             <Route
               exact
-              path="/Dashboard/actestadoview"
-              component={ActEstadoView}
+              path="/Dashboard/ActFormaDepreciacion"
+              component={ActFormaDepreciacion}
             ></Route>
             <Route
               exact
-              path="/Dashboard/actdocumentoview"
+              path="/Dashboard/ActEstado"
+              component={ActEstado}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/ActDocumentoView"
               component={ActDocumentoView}
+            ></Route>
+            <Route
+              exact
+              path="/Dashboard/ActDocumento/:isNew"
+              component={ActDocumento}
             ></Route>
             <Route
               exact

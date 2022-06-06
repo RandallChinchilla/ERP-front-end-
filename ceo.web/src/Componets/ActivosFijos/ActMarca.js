@@ -35,24 +35,32 @@ const useStyles = makeStyles((theme) => ({
 
 const columns = [
   { id: "acciones", label: "Acciones", minWidth: 125 },
-  { id: "CodigoFormaDepreciacion", label: "Código Forma Depreciación", minWidth: 100 },
+  { id: "CodigoEmpresa", label: "Código Empresa", minWidth: 100 },
+  { id: "CodigoMarca", label: "Código Marca", minWidth: 100 },
   { id: "Descripcion", label: "Descripción", minWidth: 100 },
-  { id: "Formula", label: "Fórmula", minWidth: 100 },
 ];
 
-const ActFormaDepreciacion = () => {
+const ActMarca = () => {
   const { useState } = React;
   const styles = useStyles();
   const [columns, setColumns] = useState([
     {
-      title: "Código Forma Depreciación",
-      field: "CodigoFormaDepreciacion",
+      title: "Código Empresa",
+      field: "CodigoEmpresa",
+    },
+    {title: "Nombre",
+    field: "CodigoEmpresaNavigation.Nombre",
+    id: "CodigoEmpresaNavigation.CodigoEmpresa",
+    },
+
+    {
+      title: "Código Marca",
+      field: "CodigoMarca",
     },
     { title: "Descripción", field: "Descripcion" },
-    // { title: "Fórmula", field: "Formula" },
   ]);
 
-  const { Data, Error, setData } = useGetData("ActFormaDepreciacion/GetActFormasDepreciacion");
+  const { Data, Error, setData } = useGetData("ActMarca/GetActMarcas");
   console.log(Data);
 
   if (Error) return null;
@@ -63,7 +71,7 @@ const ActFormaDepreciacion = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowAdd);
     postAction(
-      "ActFormaDepreciacion/PostActFormaDepreciacion",
+      "ActMarca/PostActMarca",
       rowAdd,
       userLoggedToken
     ).then((response) => {
@@ -78,7 +86,7 @@ const ActFormaDepreciacion = () => {
   const updateState = (rowUpdate) => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     putAction(
-      "ActFormaDepreciacion/PutActFormaDepreciacion",
+      "ActMarca/PutActMarca",
       rowUpdate,
       userLoggedToken
     ).then((response) => {
@@ -95,7 +103,7 @@ const ActFormaDepreciacion = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowDelete);
     deleteAction(
-      "ActFormaDepreciacion/DeleteActFormaDepreciacion",
+      "ActMarca/DeleteActMarca",
       rowDelete,
       userLoggedToken
     ).then((response) => {
@@ -109,7 +117,7 @@ const ActFormaDepreciacion = () => {
   return (
     <div>
       <MaterialTable
-        title=" Catálogo Forma Depreciación"
+        title=" Catálogo Marca"
         columns={columns}
         data={Data}
         options={{
@@ -157,5 +165,4 @@ const ActFormaDepreciacion = () => {
   );
 };
 
- 
-export default ActFormaDepreciacion;
+export default ActMarca;
