@@ -162,7 +162,6 @@ const FacMaestro = () => {
       userName: userData.userName,
     };
 
-    console.log(addRowRequest);
     postAction(
       "IvtEncabezadoFactura/PostIvtEncabezadoFactura",
       addRowRequest,

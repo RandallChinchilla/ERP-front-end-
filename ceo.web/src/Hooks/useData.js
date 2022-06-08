@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 import { postAction } from "../Helpers/postHelper";
 import { putAction } from "../Helpers/putHelper";
+import { helpHttp } from "../Helpers/HelpHttp";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
@@ -12,30 +13,70 @@ export const useData = (form, controller) => {
 
   const handleSubmitLogin = (e) => {
     e.preventDefault();
-    //postAction("Account/CreateToken", form, setResponse);
-    postAction("Account/CreateToken", form).then((tokenresponse) => {
-      if (tokenresponse.status === 201) {
-        window.localStorage.setItem(
-          "userLoggedToken",
-          JSON.stringify(tokenresponse.data.token)
-        );
-        postAction("Account/Login", form, tokenresponse.data.token).then(
-          (response) => {
-            if (response.status === 200) {
+    let url = `${baseUrl}Account/CreateToken`;
+    let token = "";
+    let options = {
+      headers: {
+        //Autorization: `Bearer ${token}`,
+        "content-type": "application/json",
+      },
+      body: form,
+    };
+    helpHttp()
+      .post(url, options)
+      .then((res) => {
+        console.log(res);
+        if (res.token !== "") {
+          let url = `${baseUrl}Account/Login`;
+          token = res.token;
+          console.log(token);
+          options = {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "content-type": "application/json",
+            },
+            body: form,
+          };
+          helpHttp()
+            .post(url, options)
+            .then((resLogin) => {
+              //console.log(resLogin);
               setResponse(true);
               window.localStorage.setItem(
                 "userLogged",
-                JSON.stringify(response.data.result)
+                JSON.stringify(resLogin.result)
               );
               usehistory.push("./Dashboard");
-            } else {
-            }
-          }
-        );
-      } else {
-        setErrors("Error de usuario o contraseña");
-      }
-    });
+            });
+        } else {
+          setResponse(false);
+        }
+      });
+
+    // postAction("Account/CreateToken", form, "").then((tokenresponse) => {
+    //   if (tokenresponse.status === 201) {
+    //     console.log(tokenresponse);
+    //     window.localStorage.setItem(
+    //       "userLoggedToken",
+    //       JSON.stringify(tokenresponse.data.token)
+    //     );
+    //     postAction("Account/Login", form, tokenresponse.data.token).then(
+    //       (response) => {
+    //         if (response.status === 200) {
+    //           setResponse(true);
+    //           window.localStorage.setItem(
+    //             "userLogged",
+    //             JSON.stringify(response.data.result)
+    //           );
+    //           usehistory.push("./Dashboard");
+    //         } else {
+    //         }
+    //       }
+    //     );
+    //   } else {
+    //     setErrors("Error de usuario o contraseña");
+    //   }
+    // });
   };
 
   const handleUpdate = (e) => {

@@ -10,13 +10,14 @@ import {
   Button,
   Divider,
 } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useForm } from "../../Hooks/useForm";
 import { SelectCross } from "../Listas/SelectCross";
 import { AutContext } from "../../Context/AutContext";
+import { postAction } from "../../Helpers/postHelper";
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -40,8 +41,8 @@ const validationsForm = (form) => {
     errors.CodigoEmpresa = "Debe ingresar una empresa";
     errors.error = true;
   }
-  if (!form.Codigo) {
-    errors.Codigo = "Debe ingresar el codigo del activo";
+  if (!form.CodigoActivo) {
+    errors.CodigoActivo = "Debe ingresar el codigo del activo";
     errors.error = true;
   }
   if (!form.CodigoGrupo) {
@@ -134,11 +135,11 @@ const validationsForm = (form) => {
 
 export const ActMaestro = () => {
   const userData = JSON.parse(localStorage.getItem("userLogged"));
-
+  const [value, setValue] = useState(new Date());
   const initialForm = {
     CodigoEmpresa: userData.codigoEmpresa,
     NombreEmpresa: userData.nombreEmpresa,
-    Codigo: "",
+    CodigoActivo: "",
     CodigoGrupo: "",
     CodigoSubGrupo: "",
     Descripcion: "",
@@ -165,10 +166,14 @@ export const ActMaestro = () => {
     userName: userData.userName,
   };
 
-  const { form, errors, handleChange, handleBlur, setForm } = useForm(
-    initialForm,
-    validationsForm
-  );
+  const hanldeSubmit = () => {
+    postAction("ActMaestro/PostActMaestro", form).then((res) => {
+      console.log(res);
+    });
+  };
+
+  const { form, errors, handleChange, handleChangeDate, handleBlur, setForm } =
+    useForm(initialForm, validationsForm);
 
   const styles = useStyles();
   return (
@@ -210,18 +215,18 @@ export const ActMaestro = () => {
               </Grid>
               <Grid item xs={2} className={styles.grid}>
                 <TextField
-                  id="Codigo"
-                  name="Codigo"
+                  id="CodigoActivo"
+                  name="CodigoActivo"
                   className={styles.textfiled}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={form.Codigo}
+                  value={form.CodigoActivo}
                   label="Codigo"
                   size="small"
                 ></TextField>
-                {errors.Codigo && (
+                {errors.CodigoActivo && (
                   <FormHelperText id="my-helper-text" error>
-                    {errors.Codigo}
+                    {errors.CodigoActivo}
                   </FormHelperText>
                 )}
               </Grid>
@@ -317,14 +322,26 @@ export const ActMaestro = () => {
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DesktopDatePicker
                     id="FechaCompra"
-                    name="FechaCompra"
+                    // name="FechaCompra"
                     label="Fecha de Compra"
                     inputFormat="MM/dd/yyyy"
-                    onChange={handleChange}
+                    onChange={(newvalue) => {
+                      setValue(newvalue);
+                      form.FechaCompra = newvalue;
+                    }}
                     onBlur={handleBlur}
                     value={form.FechaCompra}
                     renderInput={(params) => (
-                      <TextField size="small" {...params} />
+                      <TextField
+                        inputFormat="yyyy/MM/dd"
+                        size="small"
+                        id="FechaCompra"
+                        name="FechaCompra"
+                        onBlur={handleBlur}
+                        value={form.FechaCompra}
+                        onChange={handleChange}
+                        {...params}
+                      />
                     )}
                   ></DesktopDatePicker>
                 </LocalizationProvider>
@@ -337,13 +354,24 @@ export const ActMaestro = () => {
               <Grid item xs={2} className={styles.grid}>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DesktopDatePicker
+                    id="FechaSalida"
                     label="Fecha de Salida"
-                    inputFormat="MM/dd/yyyy"
+                    inputFormat="yyyy/MM/dd"
+                    name="FechaSalida"
+                    value={form.FechaSalida}
+                    onChange={(newvalue) => {
+                      setValue(newvalue);
+                      form.FechaSalida = newvalue;
+                    }}
                     renderInput={(params) => (
                       <TextField
+                        inputFormat="yyyy/MM/dd"
                         size="small"
                         id="FechaSalida"
                         name="FechaSalida"
+                        onBlur={handleBlur}
+                        value={form.FechaSalida}
+                        onChange={handleChange}
                         {...params}
                       />
                     )}
@@ -562,7 +590,7 @@ export const ActMaestro = () => {
                   size="small"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={form.Ubicacion}
+                  value={form.UsuarioAsignado}
                 ></TextField>
                 {errors.UsuarioAsignado && (
                   <FormHelperText id="my-helper-text" error>
@@ -607,7 +635,9 @@ export const ActMaestro = () => {
                 )}
               </Grid>
               <Grid item xs={12} container justifyContent="end">
-                <Button variant="contained">Agregar</Button>
+                <Button variant="contained" onClick={hanldeSubmit}>
+                  Agregar
+                </Button>
               </Grid>
               <Grid item xs={12} mt={2}>
                 <Divider />

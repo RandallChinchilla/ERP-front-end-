@@ -18,7 +18,6 @@ export const SelectCross = ({
 
   if (Error) return null;
   if (!Data) return null;
-  console.log(Data);
 
   let options = Data;
 

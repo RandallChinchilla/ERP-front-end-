@@ -19,6 +19,7 @@ import React, { useContext } from "react";
 import { useData } from "../../Hooks/useData";
 import { useForm } from "../../Hooks/useForm";
 import { useGetData } from "../../Hooks/useGetData";
+import { helpHttp } from "../../Helpers/HelpHttp";
 
 const useStyles = makeStyles((theme) => ({
   iconos: {
@@ -75,6 +76,28 @@ export default function Autenticacion() {
   const { response, handleSubmitLogin } = useData(form);
   // setAut(response);
   // console.log(response);
+
+  // const handleSubmitLogin = (e) => {
+  //   e.preventDefault();
+  //   const baseUrl = process.env.REACT_APP_BASE_URL;
+  //   console.log(form);
+  //   let url = `${baseUrl}Account/CreateToken`;
+  //   let token = "";
+  //   const response = "";
+  //   let options = {
+  //     headers: {
+  //       //Autorization: `Bearer ${token}`,
+  //       "content-type": "application/json",
+  //     },
+  //     body: form,
+  //   };
+  //   helpHttp()
+  //     .post(url, options)
+  //     .then((res) => {
+  //       console.log(res);
+
+  //     });
+  // };
 
   const { Data, Error } = useGetData("ParEmpresa/GetParEmpresas");
 

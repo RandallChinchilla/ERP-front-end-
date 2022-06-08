@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 
 export const useForm = (initialForm, validateForm) => {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState("");
-  const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(false);
 
   const handleChange = (e) => {
@@ -13,6 +12,10 @@ export const useForm = (initialForm, validateForm) => {
       ...form,
       [name]: value,
     });
+  };
+
+  const handleChangeDate = (value) => {
+    console.log(value);
   };
 
   const handleBlur = (e) => {
@@ -25,6 +28,7 @@ export const useForm = (initialForm, validateForm) => {
     errors,
     response,
     handleChange,
+    handleChangeDate,
     handleBlur,
     setForm,
   };

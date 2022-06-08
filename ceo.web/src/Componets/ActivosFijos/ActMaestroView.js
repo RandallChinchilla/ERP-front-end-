@@ -7,6 +7,7 @@ import { useHistory } from "react-router";
 
 const ActMaestroView = () => {
   let usehistory = useHistory();
+
   const [columns, setColumns] = useState([
     {
       title: "Empresa",
@@ -50,7 +51,7 @@ const ActMaestroView = () => {
     },
   ]);
 
-  const { Data, Error } = useGetData("ActMaestro");
+  const { Data, Error } = useGetData("ActMaestro/GetActMaestros");
 
   if (Error) return null;
   if (!Data) return null;
