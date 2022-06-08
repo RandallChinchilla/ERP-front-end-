@@ -863,7 +863,7 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/Marca">
+            <NavLink tag={Link} to="/Dashboard/ActMarca">
               <ListItemText className={classes.text}>Marca</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -873,7 +873,7 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ActFormaDepreciacionView">
+            <NavLink tag={Link} to="/Dashboard/ActFormaDepreciacion">
               <ListItemText className={classes.text}>
                 Forma Depreciación
               </ListItemText>
@@ -885,7 +885,7 @@ export default function NestedList() {
       <Collapse in={openActivosFijos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ActEstadoView">
+            <NavLink tag={Link} to="/Dashboard/ActEstado">
               <ListItemText className={classes.text}>Estado</ListItemText>
             </NavLink>
           </ListItemButton>

@@ -5,47 +5,37 @@ import { useHistory } from "react-router";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
-const PasInstrumentoView = () => {
+const ActDocumentoView = () => {
   const { useState } = React;
   let usehistory = useHistory();
-  window.localStorage.removeItem("editPasInstrumento");
+  window.localStorage.removeItem("editActDocumento");
 
   const [columns, setColumns] = useState([
     {
       title: "Código Empresa",
       field: "CodigoEmpresa",
     },
+    // {
+    //   title: "Empresa",
+    //   field: "CodigoEmpresaNavigation.Nombre",
+    //   id: "CodigoEmpresaNavigation.CodigoEmpresa",
+    // },
+    { 
+      title: "Código Activo", 
+      field: "CodigoActivo"
+    },
     {
-      title: "Empresa",
-      field: "CodigoEmpresaNavigation.Nombre",
-      id: "CodigoEmpresaNavigation.CodigoEmpresa",
+      title: "Fecha y Hora",
+      field: "FechaHora",
     },
     { 
-      title: "Código Instrumento", 
-      field: "CodigoInstrumento"
-    },
-    {
-      title: "Descripción",
-      field: "Descripcion",
-    },
-    { 
-      title: "Moneda", 
-      field: "CodigoMoneda"
-    },
-    { 
-      title: "Periodicidad Pago Interés", 
-      field: "CodigoNavigation.Descripcion",
-      id: "CodigoNavigation.CodigoPeriodicidad",
-    },
-    { 
-      title: "Periodicidad Revisión Tasa", 
-      field: "CodigoNavigation.Descripcion",
-      id: "CodigoNavigation.CodigoPeriodicidad",
+      title: "Nombre del Documento", 
+      field: "NombreDocumento"
     },
   ]);
 
   const { Data, Error, setData } = useGetData(
-    "PasInstrumento/GetPasInstrumentos"
+    "ActDocumento/GetActDocumentos"
   );
 
   if (Error) return null;
@@ -56,18 +46,18 @@ const PasInstrumentoView = () => {
     console.log(rowUpdate);
     if (isNew) {
       console.log(rowUpdate);
-      usehistory.push(`./PasInstrumento/1`);
+      usehistory.push(`./ActDocumento/1`);
     } else {
       console.log(rowUpdate);
-      window.localStorage.setItem("editPasInstrumento", JSON.stringify(rowUpdate));
-      usehistory.push(`./PasInstrumento/0`);
+      window.localStorage.setItem("editActDocumento", JSON.stringify(rowUpdate));
+      usehistory.push(`./ActDocumento/0`);
     }
   };
 
   return (
     <div>
       <MaterialTable
-        title="Catálogo Instrumentos"
+        title="Catálogo Documentos"
         columns={columns}
         data={Data}
         options={{
@@ -84,18 +74,18 @@ const PasInstrumentoView = () => {
         actions={[
           {
             icon: "edit",
-            tooltip: "Editar Instrumentos",
+            tooltip: "Editar Documento",
             onClick: (event, rowData) => updateState(rowData, false),
           },
           {
             icon: "delete",
-            tooltip: "Borrar Instrumentos",
+            tooltip: "Borrar Documento",
             onClick: (event, rowData) =>
               alert("You want to delete " + rowData.name),
           },
           {
             icon: "add",
-            tooltip: "Nuevo Instrumento",
+            tooltip: "Nuevo Documento",
             isFreeAction: true,
             onClick: (event, rowData) => updateState(rowData, true),
           },
@@ -105,4 +95,4 @@ const PasInstrumentoView = () => {
   );
 };
 
-export default PasInstrumentoView;
+export default ActDocumentoView;

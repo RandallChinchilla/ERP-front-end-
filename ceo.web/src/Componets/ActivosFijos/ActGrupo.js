@@ -44,10 +44,6 @@ const validationsForm = (form) => {
     errors.CodigoGrupo = "Debe ingresar el código grupo";
     errors.error = true;
   }
-  if (!form.CodigoSubGrupo) {
-    errors.CodigoSubGrupo = "Debe ingresar el código sub grupo";
-    errors.error = true;
-  }
   if (!form.Descripcion) {
     errors.Descripcion = "Debe escribir una descripcion";
     errors.error = true;
@@ -79,8 +75,8 @@ const validationsForm = (form) => {
   return errors;
 };
 
-const ActSubGrupo = () => {
-  const rowEdit = JSON.parse(localStorage.getItem("editActSubGrupo"));
+const ActGrupo = () => {
+  const rowEdit = JSON.parse(localStorage.getItem("editActGrupo"));
   const userData = JSON.parse(localStorage.getItem("userLogged"));
   const styles = useStyles();
   const [show, setShow] = useState(rowEdit ? true : false);
@@ -91,8 +87,7 @@ const ActSubGrupo = () => {
   const initialForm = {
     CodigoEmpresa: rowEdit ? rowEdit.CodigoEmpresa: userData.codigoEmpresa,
     NombreEmpresa: rowEdit ? rowEdit.NombreEmpresa: userData.nombreEmpresa, 
-    CodigoGrupo: rowEdit ? rowEdit.CodigoGrupo: "",
-    CodigoSubGrupo: rowEdit ? rowEdit.CodigoSubGrupo: "",     
+    CodigoGrupo: rowEdit ? rowEdit.CodigoGrupo: "",     
     Descripcion: rowEdit ? rowEdit.Descripcion : "",
     AnnosDepreciacion: rowEdit ? rowEdit.AnnosDepreciacion : "",
     FechaUltimaModificacion: rowEdit ? rowEdit.FechaUltimaModificacion : "",
@@ -129,7 +124,6 @@ const ActSubGrupo = () => {
     const addRowRequest = {
       codigoEmpresa: form.CodigoEmpresa,
       codigoGrupo: form.CodigoGrupo,
-      codigoSubGrupo: form.CodigoSubGrupo,
       descripcion: form.Descripcion,
       annosDepreciacion: form.AnnosDepreciacion,
       fechaUltimaModificacion: form.FechaUltimaModificacion,
@@ -144,7 +138,7 @@ const ActSubGrupo = () => {
 
     console.log(addRowRequest);
     postAction(
-      "PasInstrumento/PostPasInstrumento",
+      "ActGrupo/PostActGrupo",
       addRowRequest,
       userLoggedToken
     ).then((response) => {
@@ -174,10 +168,10 @@ const ActSubGrupo = () => {
                 mb={5}
               >
                 <Typography component="h1" variant="h6" noWrap>
-                Sub Grupos
+                Grupos
                 </Typography>
               </Grid>
-              <Grid item xs={2} container justifyContent="center">
+              <Grid item xs={3} container justifyContent="center">
                 <TextField
                   id="CodigoEmpresa"
                   name="CodigoEmpresa"
@@ -195,7 +189,7 @@ const ActSubGrupo = () => {
                   </FormHelperText>
                 )}
               </Grid>
-              <Grid item xs={2} container justifyContent="center">
+              <Grid item xs={3} container justifyContent="center">
                 <TextField
                   id="CodigoGrupo"
                   name="CodigoGrupo"
@@ -209,23 +203,6 @@ const ActSubGrupo = () => {
                 {errors.CodigoGrupo && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.CodigoGrupo}
-                  </FormHelperText>
-                )}
-              </Grid>
-              <Grid item xs={2} container justifyContent="center">
-                <TextField
-                  id="CodigoSubGrupo"
-                  name="CodigoSubGrupo"
-                  label="Código Sub Grupo"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.CodigoSubGrupo}
-                  className={styles.inpuntEmpresa}
-                  size="small"
-                ></TextField>
-                {errors.CodigoSubGrupo && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.CodigoSubGrupo}
                   </FormHelperText>
                 )}
               </Grid>
@@ -292,24 +269,6 @@ const ActSubGrupo = () => {
                 {errors.FechaUltimaModificacion && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.FechaUltimaModificacion}
-                  </FormHelperText>
-                )}
-              </Grid>
-              <Grid item xs={3} container justifyContent="center">
-                <TextField
-                  id="Usuario"
-                  name="Usuario"
-                  label="Usuario"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.Usuario}
-                  className={styles.inpuntEmpresa}
-                  size="small"
-                  disabled="true"
-                ></TextField>
-                {errors.Usuario && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.Usuario}
                   </FormHelperText>
                 )}
               </Grid>
@@ -398,6 +357,24 @@ const ActSubGrupo = () => {
                   </FormHelperText>
                 )}
               </Grid>
+              <Grid item xs={3} container justifyContent="center">
+                <TextField
+                  id="Usuario"
+                  name="Usuario"
+                  label="Usuario"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={form.Usuario}
+                  className={styles.inpuntEmpresa}
+                  size="small"
+                  disabled="true"
+                ></TextField>
+                {errors.Usuario && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.Usuario}
+                  </FormHelperText>
+                )}
+              </Grid>
               <Grid item xs={12} container justifyContent="end">
                 <Button onClick={addRow} variant="contained">Agregar</Button>
               </Grid>
@@ -421,5 +398,5 @@ const ActSubGrupo = () => {
     </div>
   );
 };
-  
-  export default ActSubGrupo;
+
+export default ActGrupo;
