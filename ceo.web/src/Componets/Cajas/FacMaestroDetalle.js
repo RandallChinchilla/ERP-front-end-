@@ -302,7 +302,7 @@ export const FacMaestroDetalle = (props) => {
             }}
           >
             <AlertTitle>Error</AlertTitle>
-            No existe la cantidad en inventrio{" "}
+            No existe la cantidad en inventario{" "}
             <strong>Revisa el inventrio para este articulo!</strong>
           </Alert>
         )}
@@ -357,7 +357,6 @@ export const FacMaestroDetalle = (props) => {
             onChange={handleChange}
             onBlur={handleBlur}
             value={form.precioUnitario}
-            className={styles.inpunt}
             size="small"
             className={styles.inpunt}
           ></TextField>
@@ -454,7 +453,6 @@ export const FacMaestroDetalle = (props) => {
             onChange={handleChange}
             onBlur={handleBlur}
             value={form.MontoExport}
-            className={styles.inpuntEmpresa}
             size="small"
             className={styles.inpunt}
             disabled

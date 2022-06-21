@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export const helpHttp = () => {
   const customFetch = (endpoint, options) => {
     const defaultHeader = {
@@ -18,14 +16,13 @@ export const helpHttp = () => {
     //options.body = options.body || false;
     if (!options.body) delete options.body;
 
-    console.log(options);
     setTimeout(() => controller.abort(), 3000);
 
     //console.log(options);
 
     return fetch(endpoint, options)
       .then((res) =>
-        res.status !== "200"
+        res.ok
           ? res.json()
           : Promise.reject({
               err: true,

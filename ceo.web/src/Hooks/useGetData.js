@@ -2,23 +2,32 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { helpHttp } from "../Helpers/HelpHttp";
 const baseUrl = process.env.REACT_APP_BASE_URL;
+const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
 
-export const useGetData = (controller) => {
+export const useGetData = (controller, model) => {
   const [Data, setData] = useState([]);
   const [Error, setError] = useState(null);
-  let url = `${baseUrl}${controller}`;
+
+  let url = new URL(`${baseUrl}${controller}`);
+  url.search = new URLSearchParams(model);
+
+  let options = {
+    headers: {
+      Autorization: `Bearer ${userLoggedToken}`,
+    },
+  };
 
   useEffect(() => {
     helpHttp()
-      .get(url)
+      .get(url, options)
       .then((res) => {
         if (!res.err) {
           setData(res);
         } else {
-          console.log(res);
+          setError(res.err);
         }
       });
-  }, []);
+  }, [controller]);
   return { Data, Error, setData };
 };
 
@@ -55,23 +64,3 @@ export const useGetDataProps = (controller, model) => {
 
   return { DataDet, ErrorDet, setDataDet };
 };
-
-// useEffect(() => {
-//   const getData = async (controller) => {
-//     var axios = require("axios");
-//     var config = {
-//       method: "get",
-//       url: `${baseUrl}${controller}`,
-//     };
-//     try {
-//       const response = await axios(config);
-//       // console.log(response);
-//       setData(response.data);
-//     } catch (error) {
-//       setError(error.response.status);
-//     }
-//   };
-//   getData(controller);
-// }, []);
-
-//let options = { headers: { Authorization: `Bearer ${token}` } };

@@ -1,3 +1,4 @@
+import { noAction } from "../Actions/Index.js";
 import {
   CREATE_DATA,
   DELETE_DATA,
@@ -27,10 +28,27 @@ export function crudReducer(state = initialState, action) {
       };
     }
     case UPDATE_DATA: {
-      //console.log(action.payload);
+      console.log(action.payload);
 
       let newData = state.db.map((el) =>
-        el.id === action.payload.id ? action.payload : el
+        // el.CodigoOrigenFondos === action.payload.CodigoOrigenFondos
+        //   ? action.payload
+        //   : el
+
+        el[action.nameId] === action.payload.CodigoOrigenFondos
+          ? action.payload
+          : el
+      );
+      return {
+        ...state,
+        db: newData,
+      };
+    }
+    case DELETE_DATA: {
+      console.log(action.nameId);
+
+      let newData = state.db.filter(
+        (el) => el[action.nameId] !== action.payload
       );
 
       return {
@@ -38,17 +56,8 @@ export function crudReducer(state = initialState, action) {
         db: newData,
       };
     }
-    case DELETE_DATA: {
-      //console.log(action.payload);
-      let newData = state.db.filter((el) => el.id !== action.payload);
-
-      return {
-        ...state,
-        db: newData,
-      };
-    }
     case NO_DATA:
-      return initialState;
+      return state;
     default:
       return state;
   }

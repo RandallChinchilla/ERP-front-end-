@@ -1,4 +1,4 @@
-import { Divider, InputAdornment, makeStyles } from "@material-ui/core";
+import { Divider, makeStyles, InputAdornment } from "@material-ui/core";
 import {
   Button,
   FormHelperText,
@@ -7,15 +7,16 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Modal from "@mui/material/Modal";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { postAction } from "../../Helpers/postHelper";
 import { useForm } from "../../Hooks/useForm";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns"
-
+import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { putAction } from "../../Helpers/putHelper";
+import { CatCuentasModal } from "../Modales/CatCuentasModal";
+import SearchIcon from "@mui/icons-material/Search";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   iconos: {
@@ -32,18 +33,12 @@ const useStyles = makeStyles(() => ({
   },
   inpuntEmpresa: { width: "100%" },
   gridContainer: { paddingRight: 5, paddingLeft: 5 },
+  button: { margin: "1px" },
 }));
 
 const validationsForm = (form) => {
   let errors = {};
-  if (!form.CodigoEmpresa) {
-    errors.CodigoEmpresa = "Debe ingresar una empresa";
-    errors.error = true;
-  }
-  if (!form.CodigoGrupo) {
-    errors.CodigoGrupo = "Debe ingresar el código grupo";
-    errors.error = true;
-  }
+
   if (!form.Descripcion) {
     errors.Descripcion = "Debe escribir una descripcion";
     errors.error = true;
@@ -52,10 +47,7 @@ const validationsForm = (form) => {
     errors.AnnosDepreciacion = "Debe ingresar los años de depreciación";
     errors.error = true;
   }
-  if (!form.FechaUltimaModificacion) {
-    errors.FechaUltimaModificacion = "Debe seleccionar la fecha de la última modificación";
-    errors.error = true;
-  }
+
   if (!form.CodigoFormaDepreciacion) {
     errors.CodigoFormaDepreciacion = "Debe ingresar la forma de depreciacion";
     errors.error = true;
@@ -65,99 +57,96 @@ const validationsForm = (form) => {
     errors.error = true;
   }
   if (!form.NumeroCuentaDepreciacion) {
-    errors.NumeroCuentaDepreciacion = "Debe ingresar el número de cuenta depreciación";
+    errors.NumeroCuentaDepreciacion =
+      "Debe ingresar el número de cuenta depreciación";
     errors.error = true;
   }
   if (!form.NumeroCuentaGastoDepreciacion) {
-    errors.NumeroCuentaGastoDepreciacion = "Debe ingresar el número de cuenta de gasto depreciación";
+    errors.NumeroCuentaGastoDepreciacion =
+      "Debe ingresar el número de cuenta de gasto depreciación";
     errors.error = true;
   }
   return errors;
 };
+const userData = JSON.parse(localStorage.getItem("userLogged"));
+
+const initialForm = {
+  CodigoEmpresa: userData.codigoEmpresa,
+  NombreEmpresa: userData.nombreEmpresa,
+  CodigoGrupo: 0,
+  Descripcion: "",
+  AnnosDepreciacion: "",
+  FechaUltimaModificacion: new Date(),
+  CantidadModificaciones: 0,
+  CodigoFormaDepreciacion: "",
+  NumeroCuentaActivo: "",
+  NumeroCuentaDepreciacion: "",
+  NumeroCuentaGastoDepreciacion: "",
+  Usuario: userData.userName,
+  UsuarioModifica: "",
+};
 
 const ActGrupo = () => {
-  const rowEdit = JSON.parse(localStorage.getItem("editActGrupo"));
-  const userData = JSON.parse(localStorage.getItem("userLogged"));
   const styles = useStyles();
-  const [show, setShow] = useState(rowEdit ? true : false);
+  const { rowUpdate } = useLocation();
+
+  const state = useSelector((state) => state);
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  const [id, setId] = useState(null);
+
+  let usehistory = useHistory();
+
+  const handleOpen = (e) => {
+    setId(e.currentTarget.getAttribute("acountType"));
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
 
-  const initialForm = {
-    CodigoEmpresa: rowEdit ? rowEdit.CodigoEmpresa: userData.codigoEmpresa,
-    NombreEmpresa: rowEdit ? rowEdit.NombreEmpresa: userData.nombreEmpresa, 
-    CodigoGrupo: rowEdit ? rowEdit.CodigoGrupo: "",     
-    Descripcion: rowEdit ? rowEdit.Descripcion : "",
-    AnnosDepreciacion: rowEdit ? rowEdit.AnnosDepreciacion : "",
-    FechaUltimaModificacion: rowEdit ? rowEdit.FechaUltimaModificacion : "",
-    CantidadModificaciones: rowEdit ? rowEdit.CantidadModificaciones : "",
-    CodigoFormaDepreciacion: rowEdit ? rowEdit.CodigoFormaDepreciacion : "",
-    NumeroCuentaActivo: rowEdit ? rowEdit.NumeroCuentaActivo : "",
-    NumeroCuentaDepreciacion: rowEdit ? rowEdit.NumeroCuentaDepreciacion : "",
-    NumeroCuentaGastoDepreciacion: rowEdit ? rowEdit.NumeroCuentaGastoDepreciacion : "",
-    Usuario: rowEdit ? rowEdit.Usuario : userData.userName,
-    UsuarioModifica: rowEdit ? rowEdit.UsuarioModifica : "",
-  };
-
-
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 800,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
+  useEffect(() => {
+    if (rowUpdate) {
+      setForm(rowUpdate);
+    } else {
+      setForm(initialForm);
+    }
+  }, [rowUpdate]);
 
   const { form, errors, handleChange, handleBlur, setForm } = useForm(
     initialForm,
     validationsForm
   );
 
-  //+++++++add Encabezado de Factura+++++++++
-  const addRow = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
-    const addRowRequest = {
-      codigoEmpresa: form.CodigoEmpresa,
-      codigoGrupo: form.CodigoGrupo,
-      descripcion: form.Descripcion,
-      annosDepreciacion: form.AnnosDepreciacion,
-      fechaUltimaModificacion: form.FechaUltimaModificacion,
-      cantidadModificaciones: form.CantidadModificaciones,
-      codigoFormaDepreciacion: form.CodigoFormaDepreciacion,
-      numeroCuentaActivo: form.NumeroCuentaActivo,
-      numeroCuentaDepreciacion: form.NumeroCuentaDepreciacion,
-      numeroCuentaGastoDepreciacion: form.NumeroCuentaGastoDepreciacion,
-      idUsuario: form.Usuario,
-      id: userData.id,
-    };
 
-    console.log(addRowRequest);
-    postAction(
-      "ActGrupo/PostActGrupo",
-      addRowRequest,
-      userLoggedToken
-    ).then((response) => {
-      if (response.status === 200) {
-        setShow(true);
-        // console.log("Registro agregado");
-      } else {
-        console.log("No se pudo agregar el registro");
-      }
-    });
+    if (form.CodigoGrupo === 0) {
+      postAction("ActGrupo/PostActGrupo", form, userLoggedToken).then((res) => {
+        if (res.isSuccess) {
+          setForm(initialForm);
+          return alert("El grupo fue creado con exito");
+        } else {
+          return alert("No se pudo crear el grupo");
+        }
+      });
+    } else {
+      putAction("ActGrupo/PutActGrupo", form, userLoggedToken).then((res) => {
+        if (res.isSuccess) {
+          return alert("El grupo fue actualizado con exito");
+        } else {
+          return alert("No se pudo actualizar el grupo");
+        }
+      });
+    }
   };
-
-  const [value, setValue] = useState(new Date());
+  const model = {
+    CodigoEmpresa: userData.codigoEmpresa,
+  };
 
   return (
     <div>
       <Grid container justifyContent="center">
         <Paper elevation={3} className={styles.paper}>
-          <Box container sx={{ maxWidth: "100%" }}>
+          <Box container sx={{ maxWidth: "100%", "& button": { m: 1 } }}>
             <Grid container spacing={2} justifyContent="center" pl={5} pr={5}>
               <Grid
                 item
@@ -168,7 +157,7 @@ const ActGrupo = () => {
                 mb={5}
               >
                 <Typography component="h1" variant="h6" noWrap>
-                Grupos
+                  Grupos
                 </Typography>
               </Grid>
               <Grid item xs={3} container justifyContent="center">
@@ -178,16 +167,11 @@ const ActGrupo = () => {
                   label="Empresa"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={form.NombreEmpresa}
+                  value={userData.nombreEmpresa}
                   className={styles.inpuntEmpresa}
                   size="small"
-                  disabled="true"
+                  disabled
                 ></TextField>
-                {errors.CodigoEmpresa && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.CodigoEmpresa}
-                  </FormHelperText>
-                )}
               </Grid>
               <Grid item xs={3} container justifyContent="center">
                 <TextField
@@ -195,16 +179,17 @@ const ActGrupo = () => {
                   name="CodigoGrupo"
                   label="Código Grupo"
                   onChange={handleChange}
-                  onBlur={handleBlur}
+                  //onBlur={handleBlur}
                   value={form.CodigoGrupo}
                   className={styles.inpuntEmpresa}
                   size="small"
+                  disabled
                 ></TextField>
-                {errors.CodigoGrupo && (
+                {/* {errors.CodigoGrupo && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.CodigoGrupo}
                   </FormHelperText>
-                )}
+                )} */}
               </Grid>
               <Grid item xs={6} container justifyContent="center">
                 <TextField
@@ -223,7 +208,86 @@ const ActGrupo = () => {
                   </FormHelperText>
                 )}
               </Grid>
-              <Grid item xs={3} container justifyContent="center">
+
+              <Grid item xs={4} container justifyContent="center">
+                <TextField
+                  id="NumeroCuentaActivo"
+                  name="NumeroCuentaActivo"
+                  label="Número Cuenta Activo"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={form.NumeroCuentaActivo}
+                  className={styles.inpuntEmpresa}
+                  size="small"
+                  acountType="NumeroCuentaActivo"
+                  onClick={handleOpen}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                ></TextField>
+                {errors.NumeroCuentaActivo && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.NumeroCuentaActivo}
+                  </FormHelperText>
+                )}
+              </Grid>
+              <Grid item xs={4} container justifyContent="center">
+                <TextField
+                  id="NumeroCuentaDepreciacion"
+                  name="NumeroCuentaDepreciacion"
+                  label="Número Cuenta Depreciación"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={form.NumeroCuentaDepreciacion}
+                  className={styles.inpuntEmpresa}
+                  size="small"
+                  acountType="NumeroCuentaDepreciacion"
+                  onClick={handleOpen}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                ></TextField>
+                {errors.NumeroCuentaDepreciacion && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.NumeroCuentaDepreciacion}
+                  </FormHelperText>
+                )}
+              </Grid>
+              <Grid item xs={4} container justifyContent="center">
+                <TextField
+                  id="NumeroCuentaGastoDepreciacion"
+                  name="NumeroCuentaGastoDepreciacion"
+                  label="Número Cuenta Gasto Depreciación"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={form.NumeroCuentaGastoDepreciacion}
+                  className={styles.inpuntEmpresa}
+                  size="small"
+                  acountType="NumeroCuentaGastoDepreciacion"
+                  onClick={handleOpen}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                ></TextField>
+                {errors.NumeroCuentaGastoDepreciacion && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.NumeroCuentaGastoDepreciacion}
+                  </FormHelperText>
+                )}
+              </Grid>
+              <Grid item xs={4} container justifyContent="center">
                 <TextField
                   id="AnnosDepreciacion"
                   name="AnnosDepreciacion"
@@ -240,56 +304,7 @@ const ActGrupo = () => {
                   </FormHelperText>
                 )}
               </Grid>
-              <Grid item xs={3} className={styles.grid}>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <DesktopDatePicker
-                    id="FechaUltimaModificacion"
-                    label="Fecha Última Modificación"
-                    inputFormat="MM/dd/yyyy"
-                    onChange={(newvalue) => {
-                      setValue(newvalue);
-                      form.FechaUltimaModificacion = newvalue;
-                    }}
-                    onBlur={handleBlur}
-                    value={form.FechaUltimaModificacion}
-                    renderInput={(params) => (
-                      <TextField
-                        inputFormat="yyyy/MM/dd"
-                        size="small"
-                        id="FechaUltimaModificacion"
-                        name="FechaUltimaModificacion"
-                        onBlur={handleBlur}
-                        value={form.FechaUltimaModificacion}
-                        onChange={handleChange}
-                        {...params}
-                      />
-                    )}
-                  ></DesktopDatePicker>
-                </LocalizationProvider>
-                {errors.FechaUltimaModificacion && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.FechaUltimaModificacion}
-                  </FormHelperText>
-                )}
-              </Grid>
-              <Grid item xs={3} container justifyContent="center">
-                <TextField
-                  id="CantidadModificaciones"
-                  name="CantidadModificaciones"
-                  label="Cantidad Modificaciones"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.CantidadModificaciones}
-                  className={styles.inpuntEmpresa}
-                  size="small"
-                ></TextField>
-                {errors.CantidadModificaciones && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.CantidadModificaciones}
-                  </FormHelperText>
-                )}
-              </Grid>
-              <Grid item xs={3} container justifyContent="center">
+              <Grid item xs={4} container justifyContent="center">
                 <TextField
                   id="CodigoFormaDepreciacion"
                   name="CodigoFormaDepreciacion"
@@ -306,77 +321,34 @@ const ActGrupo = () => {
                   </FormHelperText>
                 )}
               </Grid>
-              <Grid item xs={3} container justifyContent="center">
-                <TextField
-                  id="NumeroCuentaActivo"
-                  name="NumeroCuentaActivo"
-                  label="Número Cuenta Activo"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.NumeroCuentaActivo}
-                  className={styles.inpuntEmpresa}
-                  size="small"
-                ></TextField>
-                {errors.NumeroCuentaActivo && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.NumeroCuentaActivo}
-                  </FormHelperText>
-                )}
-              </Grid>
-              <Grid item xs={3} container justifyContent="center">
-                <TextField
-                  id="NumeroCuentaDepreciacion"
-                  name="NumeroCuentaDepreciacion"
-                  label="Número Cuenta Depreciación"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.NumeroCuentaDepreciacion}
-                  className={styles.inpuntEmpresa}
-                  size="small"
-                ></TextField>
-                {errors.NumeroCuentaDepreciacion && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.NumeroCuentaDepreciacion}
-                  </FormHelperText>
-                )}
-              </Grid>
-              <Grid item xs={3} container justifyContent="center">
-                <TextField
-                  id="NumeroCuentaGastoDepreciacion"
-                  name="NumeroCuentaGastoDepreciacion"
-                  label="Número Cuenta Gasto Depreciación"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.NumeroCuentaGastoDepreciacion}
-                  className={styles.inpuntEmpresa}
-                  size="small"
-                ></TextField>
-                {errors.NumeroCuentaGastoDepreciacion && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.NumeroCuentaGastoDepreciacion}
-                  </FormHelperText>
-                )}
-              </Grid>
-              <Grid item xs={3} container justifyContent="center">
+              <Grid item xs={4} container justifyContent="center">
                 <TextField
                   id="Usuario"
                   name="Usuario"
                   label="Usuario"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={form.Usuario}
+                  value={userData.userName}
                   className={styles.inpuntEmpresa}
                   size="small"
-                  disabled="true"
-                ></TextField>
-                {errors.Usuario && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.Usuario}
-                  </FormHelperText>
-                )}
+                  disabled
+                >
+                  {userData.userName}
+                </TextField>
               </Grid>
               <Grid item xs={12} container justifyContent="end">
-                <Button onClick={addRow} variant="contained">Agregar</Button>
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  onClick={() => {
+                    usehistory.push(`./ActGrupoView`);
+                  }}
+                >
+                  Regresar
+                </Button>
+                <Button onClick={handleSubmit} variant="contained">
+                  {rowUpdate ? "Actualizar" : "Agregar"}
+                </Button>
               </Grid>
               <Grid item xs={12} mt={2}>
                 <Divider />
@@ -385,16 +357,17 @@ const ActGrupo = () => {
           </Box>
         </Paper>
       </Grid>
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-        </Box>
-      </Modal>
+      {id && (
+        <CatCuentasModal
+          id={id}
+          open={open}
+          handleClose={handleClose}
+          controller="ConCatalogo/GetConCatDetalle"
+          model={model}
+          setForm={setForm}
+          form={form}
+        />
+      )}
     </div>
   );
 };

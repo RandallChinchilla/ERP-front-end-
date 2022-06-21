@@ -1,14 +1,34 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useGetData } from "../../Hooks/useGetData";
 import MaterialTable from "material-table";
 import { useHistory } from "react-router";
+import CrudContext from "../../Context/Crud/CrudContext";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { helpHttp } from "../../Helpers/HelpHttp";
+import {
+  noAction,
+  readAllAction,
+  updateAction,
+  delAction,
+} from "../../Actions/Index";
+import ActGrupo from "./ActGrupo";
+import { deleteAction } from "../../Helpers/deleteHelper";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
+const controller = "ActGrupo/GetActGrupos";
+const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
 
 const ActGrupoView = () => {
   const { useState } = React;
   let usehistory = useHistory();
   window.localStorage.removeItem("editActGrupo");
+
+  const [error, seterror] = useState(null);
+
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { db } = state.crud;
 
   const [columns, setColumns] = useState([
     {
@@ -20,9 +40,9 @@ const ActGrupoView = () => {
     //   field: "CodigoEmpresaNavigation.Nombre",
     //   id: "CodigoEmpresaNavigation.CodigoEmpresa",
     // },
-    { 
-      title: "Código Grupo", 
-      field: "CodigoGrupo"
+    {
+      title: "Código Grupo",
+      field: "CodigoGrupo",
     },
     {
       title: "Descripción",
@@ -30,24 +50,40 @@ const ActGrupoView = () => {
     },
   ]);
 
-  const { Data, Error, setData } = useGetData(
-    "ActGrupo/GetActGrupos"
-  );
-
-  if (Error) return null;
-  if (!Data) return null;
+  let url = `${baseUrl}${controller}`;
+  useEffect(() => {
+    helpHttp()
+      .get(url)
+      .then((res) => {
+        if (!res.err) {
+          dispatch(readAllAction(res));
+        } else {
+          dispatch(noAction());
+          seterror(res);
+        }
+      });
+  }, [url, dispatch]);
 
   //+++++++update row in the table+++++++++
   const updateState = (rowUpdate, isNew) => {
-    console.log(rowUpdate);
     if (isNew) {
-      console.log(rowUpdate);
-      usehistory.push(`./ActGrupo/1`);
+      usehistory.push(`./ActGrupo`);
     } else {
-      console.log(rowUpdate);
-      window.localStorage.setItem("editActGrupo", JSON.stringify(rowUpdate));
-      usehistory.push(`./ActGrupo/0`);
+      usehistory.push({ pathname: "./ActGrupo", rowUpdate });
     }
+  };
+
+  const deleteItem = (rowDelete) => {
+    deleteAction("ActGrupo/DeleteActGrupo", rowDelete, userLoggedToken).then(
+      (res) => {
+        if (res.isSuccess) {
+          dispatch(delAction(rowDelete.CodigoGrupo, "CodigoGrupo"));
+          alert("El grupo fue eliminado");
+        } else {
+          alert("El grupo no fue eliminado");
+        }
+      }
+    );
   };
 
   return (
@@ -55,7 +91,7 @@ const ActGrupoView = () => {
       <MaterialTable
         title="Catálogo Grupos"
         columns={columns}
-        data={Data}
+        data={db}
         options={{
           rowStyle: {
             fontSize: 12,
@@ -76,8 +112,7 @@ const ActGrupoView = () => {
           {
             icon: "delete",
             tooltip: "Borrar Grupo",
-            onClick: (event, rowData) =>
-              alert("You want to delete " + rowData.name),
+            onClick: (event, rowData) => deleteItem(rowData),
           },
           {
             icon: "add",

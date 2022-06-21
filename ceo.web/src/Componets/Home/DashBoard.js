@@ -1,117 +1,99 @@
-import * as React from "react";
-import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import MuiDrawer from "@mui/material/Drawer";
-import Box from "@mui/material/Box";
+import { makeStyles } from "@material-ui/core";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Button } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import { indigo } from "@mui/material/colors";
+import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
+import MuiDrawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { indigo } from "@mui/material/colors";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { Button } from "@mui/material";
-import NestedList from "./listItems";
+import { createTheme, styled, ThemeProvider } from "@mui/material/styles";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import * as React from "react";
 import { Route, Switch } from "react-router-dom";
-import { makeStyles } from "@material-ui/core";
+import { ActIndex } from "../ActivosFijos/ActIndex";
+import AhoTipo from "../Ahorros/AhoTipo";
+import Autenticacion from "../Autenticacion/Autenticacion";
+import FacMaestro from "../Cajas/FacMaestro";
+import FacMaestroView from "../Cajas/FacMaestroView";
+import { PasIndex } from "../Cartera Pasiva/PasIndex";
+import CliAportante from "../Clientes/CliAportante";
 import { CliMaestro } from "../Clientes/CliMaestro";
 import ClieMaestroView from "../Clientes/CliMaestroView";
-import { CxpProveedor } from "../CuentasPorPagar/CxpProveedor";
-import CxpProveedorView from "../CuentasPorPagar/CxpProveedorView";
-import SegUsuarioView from "../Seguidad/SegUsuarioView";
-import Autenticacion from "../Autenticacion/Autenticacion";
-import ParEmpresa from "../Parametros/ParEmpresa";
-import ParEmpresaView from "../Parametros/ParEmpresaView";
-import SegUsuario from "../Seguidad/SegUsuario";
-import ParMoneda from "../Parametros/ParMoneda";
-import ParTipoIdentificacion from "../Parametros/ParTipoIdentificacion";
-import ParTipoIdentificacionView from "../Parametros/ParTipoIdentificacionView";
-import ParMonedaView from "../Parametros/ParMonedaView";
-import ParCodigoTransaccion from "../Parametros/ParCodigoTransaccion";
-import ParCodigoTransaccionView from "../Parametros/ParCodigoTransaccionView";
-import ConEncabezado from "../Contabilidad.js/ConEncabezado";
-import ConEncabezadoView from "../Contabilidad.js/ConEncabezadoView";
-import ConParametros from "../Contabilidad.js/ConParametros";
-import ConParametrosView from "../Contabilidad.js/ConParametrosView";
+import Catalogo from "../Contabilidad.js/Catalogo";
+import ConCatalogo from "../Contabilidad.js/ConCatalogo";
 import ConCentrosCosto from "../Contabilidad.js/ConCentrosCosto";
 import ConCentrosCostoView from "../Contabilidad.js/ConCentrosCostoView";
-import ConCatalogo from "../Contabilidad.js/ConCatalogo";
-import ConTipoCuenta from "../Contabilidad.js/ConTipoCuenta";
-import ConTipoCuentaView from "../Contabilidad.js/ConTipoCuentaView";
+import ConEncabezado from "../Contabilidad.js/ConEncabezado";
+import ConEncabezadoView from "../Contabilidad.js/ConEncabezadoView";
 import ConNotasEF from "../Contabilidad.js/ConNotasEF";
 import ConNotasEFView from "../Contabilidad.js/ConNotasEFView";
+import ConParametros from "../Contabilidad.js/ConParametros";
+import ConParametrosView from "../Contabilidad.js/ConParametrosView";
+import ConTipoCuenta from "../Contabilidad.js/ConTipoCuenta";
+import ConTipoCuentaView from "../Contabilidad.js/ConTipoCuentaView";
+import CxcConcepto from "../CuentasPorCobrar/CxcConcepto";
+import CxpConcepto from "../CuentasPorPagar/CxpConcepto";
+import CxpDependenciaOperativa from "../CuentasPorPagar/CxpDependenciaOperativa";
+import CxpNivelAutorizacion from "../CuentasPorPagar/CxpNivelAutorizacion";
+import { CxpProveedor } from "../CuentasPorPagar/CxpProveedor";
+import CxpProveedorView from "../CuentasPorPagar/CxpProveedorView";
+import CxpTipoContrato from "../CuentasPorPagar/CxpTipoContrato";
+import CxpTipoProveedor from "../CuentasPorPagar/CxpTipoProveedor";
+import CxpTipoServicio from "../CuentasPorPagar/CxpTipoServicio";
 import FelCondicionVenta from "../FacturasElectronicas/FelCondicionVenta";
 import FelCondicionVentaView from "../FacturasElectronicas/FelCondicionVentaView";
 import FelMedioPago from "../FacturasElectronicas/FelMedioPago";
 import FelMedioPagoView from "../FacturasElectronicas/FelMedioPagoView";
-import FelTipoDocumento from "../FacturasElectronicas/FelTipoDocumento";
-import FelTipoDocumentoView from "../FacturasElectronicas/FelTipoDocumentoView";
 import FelTipoCodigo from "../FacturasElectronicas/FelTipoCodigo";
 import FelTipoCodigoView from "../FacturasElectronicas/FelTipoCodigoView";
-import FelUnidadMedida from "../FacturasElectronicas/FelUnidadMedida";
+import FelTipoDocumento from "../FacturasElectronicas/FelTipoDocumento";
+import FelTipoDocumentoView from "../FacturasElectronicas/FelTipoDocumentoView";
 import FelTipoImpuesto from "../FacturasElectronicas/FelTipoImpuesto";
-import FelUnidadMedidaView from "../FacturasElectronicas/FelUnidadMedidaView";
 import FelTipoImpuestoView from "../FacturasElectronicas/FelTipoImpuestoView";
-import ActMaestroView from "../ActivosFijos/ActMaestroView";
-import ActGrupoView from "../ActivosFijos/ActGrupoView";
-import Catalogo from "../Contabilidad.js/Catalogo";
-import CxcConcepto from "../CuentasPorCobrar/CxcConcepto";
-import CxpConcepto from "../CuentasPorPagar/CxpConcepto";
-import CxpDependenciaOperativa from "../CuentasPorPagar/CxpDependenciaOperativa";
-import CxpTipoContrato from "../CuentasPorPagar/CxpTipoContrato";
-import CxpTipoProveedor from "../CuentasPorPagar/CxpTipoProveedor";
-import CxpTipoServicio from "../CuentasPorPagar/CxpTipoServicio";
-import CxpNivelAutorizacion from "../CuentasPorPagar/CxpNivelAutorizacion";
-import InvMaestroView from "../Inventarios/InvMaestroView";
-import FacMaestroView from "../Cajas/FacMaestroView";
-import FacMaestro from "../Cajas/FacMaestro";
+import FelUnidadMedida from "../FacturasElectronicas/FelUnidadMedida";
+import FelUnidadMedidaView from "../FacturasElectronicas/FelUnidadMedidaView";
 import InvMaestro from "../Inventarios/InvMaestro";
-import CliAportante from "../Clientes/CliAportante";
-import PasPortafolio from "../Cartera Pasiva/PasPortafolio";
-import InvPortafolio from "../Inversiones/InvPortafolio";
-import InvEntidadCalificadora from "../Inversiones/InvEntidadCalificadora";
-import InvTipo from "../Inversiones/InvTipo";
-import InvTipoFondo from "../Inversiones/InvTipoFondo";
-import InvTipoCustodia from "../Inversiones/InvTipoCustodia";
+import InvMaestroView from "../Inventarios/InvMaestroView";
 import InvActividadEconomica from "../Inversiones/InvActividadEconomica";
+import InvEntidadCalificadora from "../Inversiones/InvEntidadCalificadora";
+import InvPortafolio from "../Inversiones/InvPortafolio";
 import InvSectorEconomico from "../Inversiones/InvSectorEconomico";
+import InvTipo from "../Inversiones/InvTipo";
+import InvTipoCustodia from "../Inversiones/InvTipoCustodia";
+import InvTipoFondo from "../Inversiones/InvTipoFondo";
+import ParCodigoTransaccion from "../Parametros/ParCodigoTransaccion";
+import ParCodigoTransaccionView from "../Parametros/ParCodigoTransaccionView";
+import ParDiocesis from "../Parametros/ParDiocesis";
+import ParDistrito from "../Parametros/ParDistrito";
+import ParEmisorTarjeta from "../Parametros/ParEmisorTarjeta";
+import ParEmpresa from "../Parametros/ParEmpresa";
+import ParEmpresaView from "../Parametros/ParEmpresaView";
+import ParEstadoCivil from "../Parametros/ParEstadoCivil";
+import ParMoneda from "../Parametros/ParMoneda";
+import ParMonedaView from "../Parametros/ParMonedaView";
+import ParTipoIdentificacion from "../Parametros/ParTipoIdentificacion";
+import ParTipoIdentificacionView from "../Parametros/ParTipoIdentificacionView";
+import RRHEstado from "../Recursos Humanos/RRHEstado";
+import RRHFormaDePago from "../Recursos Humanos/RRHFormaDePago";
+import RRHFormaDePagoView from "../Recursos Humanos/RRHFormaDePagoView";
+import RRHISR from "../Recursos Humanos/RRHISR";
+import RRHISRView from "../Recursos Humanos/RRHISRView";
 import RegTipoDependenciaAcreedor from "../Regulador/RegTipoDependenciaAcreedor";
 import RegTipoEmpresa from "../Regulador/RegTipoEmpresa";
-import RegTipoPersona from "../Regulador/RegTipoPersona";
 import RegTipoOperacionObligaciones from "../Regulador/RegTipoOperacionObligaciones";
+import RegTipoPersona from "../Regulador/RegTipoPersona";
 import RegTipoRelacionComercial from "../Regulador/RegTipoRelacionComercial";
 import RegTipoTasa from "../Regulador/RegTipoTasa";
-import ParEstadoCivil from "../Parametros/ParEstadoCivil";
-import ParDistrito from "../Parametros/ParDistrito";
-import ParPeriodicidad from "../Parametros/ParPeriodicidad";
 import reportTest from "../Reportes/reportTest";
-import AhoTipo from "../Ahorros/AhoTipo";
-import PasTipoInstrumento from "../Cartera Pasiva/PasTipoInstrumento";
-import ParDiocesis from "../Parametros/ParDiocesis";
-import RRHISRView from "../Recursos Humanos/RRHISRView";
-import RRHISR from "../Recursos Humanos/RRHISR";
-import ParEmisorTarjeta from "../Parametros/ParEmisorTarjeta";
-import ActTransaccionView from "../ActivosFijos/ActTransaccionView";
-import ActTransaccion from "../ActivosFijos/ActTransaccion";
-import PasInstrumentoView from "../Cartera Pasiva/PasInstrumentoView";
-import PasInstrumento from "../Cartera Pasiva/PasInstrumento";
-import PasOrigenAportante from "../Cartera Pasiva/PasOrigenAportante";
-import PasOrigenFondos from "../Cartera Pasiva/PasOrigenFondos";
-import RRHEstado from "../Recursos Humanos/RRHEstado";
-import RRHFormaDePagoView from "../Recursos Humanos/RRHFormaDePagoView";
-import RRHFormaDePago from "../Recursos Humanos/RRHFormaDePago";
-import { ActMaestro } from "../ActivosFijos/ActMaestro";
-import ActEstado from "../ActivosFijos/ActEstado";
-import ActGrupo from "../ActivosFijos/ActGrupo";
-import ActFormaDepreciacion from "../ActivosFijos/ActFormaDepreciacion";
-import ActMarca from "../ActivosFijos/ActMarca";
-import ActDocumento from "../ActivosFijos/ActDocumento";
-import ActDocumentoView from "../ActivosFijos/ActDocumentoView";
-import ActSubGrupo from "../ActivosFijos/ActSubGrupo";
-import ActSubGrupoView from "../ActivosFijos/ActSubGrupoView";
+import SegUsuario from "../Seguidad/SegUsuario";
+import SegUsuarioView from "../Seguidad/SegUsuarioView";
+import NestedList from "./listItems";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -276,7 +258,6 @@ function DashboardContent() {
           }}
         >
           <Switch>
-            <Route exact path="/Dashboard/ActMarca" component={ActMarca}></Route>
             <Route
               exact
               path="/Dashboard/parempresa"
@@ -467,51 +448,9 @@ function DashboardContent() {
               path="/autenticacion"
               component={Autenticacion}
             ></Route>
-            <Route
-              exact
-              path="/Dashboard/actmaestroview"
-              component={ActMaestroView}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/ActGrupoView"
-              component={ActGrupoView}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/ActGrupo/:isNew"
-              component={ActGrupo}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/ActSubGrupoView"
-              component={ActSubGrupoView}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/ActSubGrupo/:isNew"
-              component={ActSubGrupo}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/ActFormaDepreciacion"
-              component={ActFormaDepreciacion}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/ActEstado"
-              component={ActEstado}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/ActDocumentoView"
-              component={ActDocumentoView}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/ActDocumento/:isNew"
-              component={ActDocumento}
-            ></Route>
+            <Route path="/Dashboard/ActIndex" component={ActIndex} />
+            <Route path="/Dashboard/PasIndex" component={PasIndex} />
+
             <Route
               exact
               path="/Dashboard/catalogo"
@@ -577,11 +516,7 @@ function DashboardContent() {
               path="/Dashboard/CliAportante"
               component={CliAportante}
             ></Route>
-            <Route
-              exact
-              path="/Dashboard/PasPortafolio"
-              component={PasPortafolio}
-            ></Route>
+
             <Route
               exact
               path="/Dashboard/InvPortafolio"
@@ -659,21 +594,7 @@ function DashboardContent() {
               component={reportTest}
             ></Route>
             <Route exact path="/Dashboard/AhoTipo" component={AhoTipo}></Route>
-            <Route
-              exact
-              path="/Dashboard/PasTipoInstrumento"
-              component={PasTipoInstrumento}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/PasInstrumento/:isNew"
-              component={PasInstrumento}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/PasInstrumentoView"
-              component={PasInstrumentoView}
-            ></Route>
+
             <Route
               exact
               path="/Dashboard/ParDiocesis"
@@ -696,26 +617,6 @@ function DashboardContent() {
             ></Route>
             <Route
               exact
-              path="/Dashboard/ActTransaccionView"
-              component={ActTransaccionView}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/ActTransaccion/:isNew"
-              component={ActTransaccion}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/PasOrigenAportante"
-              component={PasOrigenAportante}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/PasOrigenFondos"
-              component={PasOrigenFondos}
-            ></Route>
-            <Route
-              exact
               path="/Dashboard/RRHEstado"
               component={RRHEstado}
             ></Route>
@@ -729,12 +630,6 @@ function DashboardContent() {
               path="/Dashboard/RRHFormaDePagoView"
               component={RRHFormaDePagoView}
             ></Route>
-            {/* <Route
-              exact
-              path="/Dashboard/RRHTipoPlantilla"
-              component={RRHTipoPlantilla}
-            ></Route> */}
-            <Route path="/Dashboard/ActMaestro" component={ActMaestro}></Route>
           </Switch>
         </Box>
       </Box>
