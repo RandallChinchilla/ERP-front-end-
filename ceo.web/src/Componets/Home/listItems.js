@@ -1432,14 +1432,12 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/Dashboard/PasPortafolio"
+              to="/Dashboard/PasIndex/PasPortafolio"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}
             >
-              {/* <ListItemText className={classes.text}>Portafolio</ListItemText> */}
-
-              <ListItemText className={classes.text}>reporte test</ListItemText>
+              <ListItemText className={classes.text}>Portafolio</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -1449,7 +1447,7 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/Dashboard/PasTipoInstrumento"
+              to="/Dashboard/PasIndex/PasTipoInstrumento"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}
@@ -1498,7 +1496,7 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/Dashboard/PasOrigenAportante"
+              to="/Dashboard/PasIndex/PasOrigenAportante"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}

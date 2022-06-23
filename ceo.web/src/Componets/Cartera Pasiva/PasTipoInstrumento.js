@@ -1,109 +1,149 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core";
-import { red, blue, green } from "@mui/material/colors";
-import { useGetData } from "../../Hooks/useGetData";
+import React, { useEffect } from "react";
 import MaterialTable from "material-table";
 import { putAction } from "../../Helpers/putHelper";
+import { postAction } from "../../Helpers/postHelper";
+import { useDispatch } from "react-redux";
+import { helpHttp } from "../../Helpers/HelpHttp";
+import { useSelector } from "react-redux";
+import {
+  createAction,
+  delAction,
+  noAction,
+  readAllAction,
+  updateAction,
+} from "../../Actions/Index";
 import { deleteAction } from "../../Helpers/deleteHelper";
-import { postAction } from "../../Helpers/postHelper";  
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
+const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+const userData = JSON.parse(localStorage.getItem("userLogged"));
 
-const useStyles = makeStyles((theme) => ({
-  modal: {
-    position: "absolute",
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-  },
-  iconos: {
-    cursor: "pointer",
-  },
-  barra: {
-    backgroundColor: blue[100],
-  },
-  paper: {
-    width: 1200,
-    height: 420,
-  },
-}));
-
-const columns = [
-  { id: "acciones", label: "Acciones", minWidth: 125 },
-  { id: "CodigoEmpresa", label: "Código Empresa", minWidth: 100 },
-  { id: "CodigoTipo", label: "Código Tipo Instrumento", minWidth: 100 },
-  { id: "Descripcion", label: "Descripción", minWidth: 100 },
-  { id: "Usuario", label: "Usuario", minWidth: 100 },
-];
+/**
+ * Este componente realiza el CRUD sobre PasTipoInstrumento su estado inicial es modificado
+ * mediante Redux
+ * @returns
+ */
 
 const PasTipoInstrumento = () => {
   const { useState } = React;
-  const styles = useStyles();
+  // const styles = useStyles();
+  const [error, seterror] = useState(null);
+
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { db } = state.crud;
+
+  /**
+   * Creamos las columnas que va a tener la tabla y asignamos
+   * a la propiedad field el campo correspondiente a la respuesta
+   * que nos da la Api.
+   */
   const [columns, setColumns] = useState([
     {
       title: "Código Empresa",
       field: "CodigoEmpresa",
+      initialEditValue: userData.codigoEmpresa,
+      editable: "never",
     },
-    { title: "Código Tipo Instrumento", field: "CodigoTipo" },
+    {
+      title: "Nombre",
+      field: "CodigoEmpresaNavigation.Nombre",
+      id: "CodigoEmpresaNavigation.CodigoEmpresa",
+      initialEditValue: userData.nombreEmpresa,
+      editable: "never",
+    },
+    {
+      title: "Código Tipo Instrumento",
+      field: "CodigoTipo",
+      initialEditValue: 0,
+      editable: "never",
+    },
     { title: "Descripción", field: "Descripcion" },
-    { title: "Usuario", field: "Id" },
+    // { title: "Usuario", field: "Id" },
   ]);
 
-  const { Data, Error, setData } = useGetData("PasTipoInstrumento/GetPasTipoInstrumentos");
-  console.log(Data);
+  /**
+   * Realizamos la peticion GET al Api y ejecutamos el action
+   * readAllAction el cual crea el estado inicial que contiene la lista
+   * de datos retornados por la Api.
+   */
 
-  if (Error) return null;
-  if (!Data) return null;
+  let url = `${baseUrl}PasTipoInstrumento/GetPasTipoInstrumentos`;
+  useEffect(() => {
+    helpHttp()
+      .get(url)
+      .then((res) => {
+        if (!res.err) {
+          dispatch(readAllAction(res));
+        } else {
+          dispatch(noAction());
+          seterror(res);
+        }
+      });
+  }, [url, useDispatch]);
 
-  //+++++++add row in the table+++++++++
-  const addState = (rowAdd) => {
-    const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
-    console.log(rowAdd);
+  /**
+   * Esta funcion realiza la conexion con el Api, agrega un registro y actualiza
+   * el estado inicial por medio del dispatch y la acción createAction
+   * @param {rowAdd} Parametro que contiene los datos que vamos a agregar
+   */
+  const addFondos = (rowAdd) => {
+    // console.log(rowAdd);
     postAction(
       "PasTipoInstrumento/PostPasTipoInstrumento",
       rowAdd,
       userLoggedToken
-    ).then((response) => {
-      if (response.status === 200) {
-        console.log("Registro agregado");
+    ).then((res) => {
+      console.log(res);
+      if (res.IsSuccess) {
+        console.log(res);
+        dispatch(createAction(res.Result));
+        return alert(res.Message);
       } else {
-        console.log("No se pudo agregar el registro");
+        return alert(res.Message);
       }
     });
   };
-  //+++++++update row in the table+++++++++
+  /**
+   * Esta funcion realiza la conexion con el Api, actualiza un registro y actualiza
+   * el estado inicial por medio del dispatch y la acción updateAction
+   * @param {*} rowUpdate item de la lista a actualizar
+   */
   const updateState = (rowUpdate) => {
-    const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+    //console.log(rowUpdate);
     putAction(
       "PasTipoInstrumento/PutPasTipoInstrumento",
       rowUpdate,
       userLoggedToken
-    ).then((response) => {
-      if (response.status === 200) {
-        console.log("Registro actualizado");
+    ).then((res) => {
+      if (res.isSuccess) {
+        dispatch(updateAction(rowUpdate, "CodigoTipo"));
+        return alert(res.message);
       } else {
-        console.log("Registro no actualizado");
+        dispatch(noAction());
+        return alert(res.message);
       }
     });
   };
 
-  //+++++++Delete row in the table+++++++++
+  /**
+   * Esta funcion realiza la conexion con el Api, elimina un registro y actualiza
+   * el estado inicial por medio del dispatch y la acción delAction
+   * @param {*} rowDelete
+   */
   const deleteState = (rowDelete) => {
-    const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowDelete);
     deleteAction(
       "PasTipoInstrumento/DeletePasTipoInstrumento",
       rowDelete,
       userLoggedToken
-    ).then((response) => {
-      if (response.status === 200) {
-        setData([]);
+    ).then((res) => {
+      if (res.isSuccess) {
+        dispatch(delAction(rowDelete.CodigoTipo, "CodigoTipo"));
+        return alert(res.message);
       } else {
+        dispatch(noAction());
+        return alert(res.message);
       }
     });
   };
@@ -111,9 +151,9 @@ const PasTipoInstrumento = () => {
   return (
     <div>
       <MaterialTable
-        title="Catálogo Tipo Instrumento"
+        title=" Catálogo Tipo Instrumento"
         columns={columns}
-        data={Data}
+        data={db}
         options={{
           rowStyle: {
             fontSize: 12,
@@ -122,23 +162,22 @@ const PasTipoInstrumento = () => {
             backgroundColor: "#898883",
             color: "#FFF",
             fontSize: 13,
-          },}}
+          },
+        }}
         editable={{
           onRowAdd: (newData) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                setData([...Data, newData]);
-                addState(newData);
+                addFondos(newData);
                 resolve();
               }, 1000);
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                const dataUpdate = [...Data];
+                const dataUpdate = [...db];
                 const index = oldData.tableData.id;
                 dataUpdate[index] = newData;
-                setData([...dataUpdate]);
                 resolve();
                 updateState(dataUpdate[index]);
               }, 1000);
@@ -146,10 +185,9 @@ const PasTipoInstrumento = () => {
           onRowDelete: (oldData) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                const dataDelete = [...Data];
+                const dataDelete = [...db];
                 const index = oldData.tableData.id;
                 deleteState(dataDelete[index]);
-                // dataDelete.splice(index, 1);
                 resolve();
               }, 1000);
             }),
