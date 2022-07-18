@@ -15,8 +15,6 @@ import {
 import { deleteAction } from "../../Helpers/deleteHelper";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
-const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
-const userData = JSON.parse(localStorage.getItem("userLogged"));
 
 /**
  * Este componente realiza el CRUD sobre PasPortafolio su estado inicial es modificado
@@ -25,6 +23,8 @@ const userData = JSON.parse(localStorage.getItem("userLogged"));
  */
 
 const PasPortafolio = () => {
+  const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+  const userData = JSON.parse(localStorage.getItem("userLogged"));
   const { useState } = React;
   // const styles = useStyles();
   const [error, seterror] = useState(null);
@@ -52,26 +52,29 @@ const PasPortafolio = () => {
       initialEditValue: userData.nombreEmpresa,
       editable: "never",
     },
-    { title: "Código Portafolio", 
-      field: "CodigoPortafolio", 
+    {
+      title: "Código Portafolio",
+      field: "CodigoPortafolio",
       initialEditValue: 0,
       editable: "never",
     },
     { title: "Descripción", field: "Descripcion" },
-    {title: "Indicador Regulado",
-     field: "IndicadorRegulado",
-     editComponent: (props) => {
-      return (
-        <input
-          type="checkbox"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.checked)}
-        />
-      );
+    {
+      title: "Indicador Regulado",
+      field: "IndicadorRegulado",
+      editComponent: (props) => {
+        return (
+          <input
+            type="checkbox"
+            value={props.value}
+            onChange={(e) => props.onChange(e.target.checked)}
+          />
+        );
+      },
+      render: (rowdata) => (
+        <input type="checkbox" checked={rowdata.booleanValue} />
+      ),
     },
-    render: (rowdata) => (
-      <input type="checkbox" checked={rowdata.booleanValue} />
-    ) },
     { title: "Código Centro Costo", field: "CodigoCentroCosto" },
   ]);
 
@@ -103,20 +106,18 @@ const PasPortafolio = () => {
    */
   const addFondos = (rowAdd) => {
     // console.log(rowAdd);
-    postAction(
-      "PasPortafolio/PostPasPortafolio",
-      rowAdd,
-      userLoggedToken
-    ).then((res) => {
-      console.log(res);
-      if (res.IsSuccess) {
+    postAction("PasPortafolio/PostPasPortafolio", rowAdd, userLoggedToken).then(
+      (res) => {
         console.log(res);
-        dispatch(createAction(res.Result));
-        return alert(res.Message);
-      } else {
-        return alert(res.Message);
+        if (res.IsSuccess) {
+          console.log(res);
+          dispatch(createAction(res.Result));
+          return alert(res.Message);
+        } else {
+          return alert(res.Message);
+        }
       }
-    });
+    );
   };
   /**
    * Esta funcion realiza la conexion con el Api, actualiza un registro y actualiza

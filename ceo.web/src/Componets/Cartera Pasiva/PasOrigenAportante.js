@@ -15,8 +15,6 @@ import {
 import { deleteAction } from "../../Helpers/deleteHelper";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
-const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
-const userData = JSON.parse(localStorage.getItem("userLogged"));
 
 /**
  * Este componente realiza el CRUD sobre OrigenAportante su estado inicial es modificado
@@ -32,6 +30,8 @@ const ParOrigenAportante = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const { db } = state.crud;
+  const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+  const userData = JSON.parse(localStorage.getItem("userLogged"));
 
   /**
    * Creamos las columnas que va a tener la tabla y asignamos
@@ -138,7 +138,9 @@ const ParOrigenAportante = () => {
       userLoggedToken
     ).then((res) => {
       if (res.isSuccess) {
-        dispatch(delAction(rowDelete.CodigoOrigenAportante, "CodigoOrigenAportante"));
+        dispatch(
+          delAction(rowDelete.CodigoOrigenAportante, "CodigoOrigenAportante")
+        );
         return alert(res.message);
       } else {
         dispatch(noAction());

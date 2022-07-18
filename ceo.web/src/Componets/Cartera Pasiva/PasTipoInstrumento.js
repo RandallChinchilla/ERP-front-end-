@@ -15,8 +15,6 @@ import {
 import { deleteAction } from "../../Helpers/deleteHelper";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
-const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
-const userData = JSON.parse(localStorage.getItem("userLogged"));
 
 /**
  * Este componente realiza el CRUD sobre PasTipoInstrumento su estado inicial es modificado
@@ -28,6 +26,8 @@ const PasTipoInstrumento = () => {
   const { useState } = React;
   // const styles = useStyles();
   const [error, seterror] = useState(null);
+  const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+  const userData = JSON.parse(localStorage.getItem("userLogged"));
 
   const state = useSelector((state) => state);
   const dispatch = useDispatch();

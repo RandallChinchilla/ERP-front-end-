@@ -31,11 +31,7 @@ export function crudReducer(state = initialState, action) {
       console.log(action.payload);
 
       let newData = state.db.map((el) =>
-        // el.CodigoOrigenFondos === action.payload.CodigoOrigenFondos
-        //   ? action.payload
-        //   : el
-
-        el[action.nameId] === action.payload.CodigoOrigenFondos
+        el[action.nameId] === action.payload[action.nameId]
           ? action.payload
           : el
       );
