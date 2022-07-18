@@ -1,56 +1,62 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core";
-import { red, blue, green } from "@mui/material/colors";
-import { useGetData } from "../../Hooks/useGetData";
+import React, { useEffect } from "react";
 import MaterialTable from "material-table";
 import { putAction } from "../../Helpers/putHelper";
+import { postAction } from "../../Helpers/postHelper";
+import { useDispatch } from "react-redux";
+import { helpHttp } from "../../Helpers/HelpHttp";
+import { useSelector } from "react-redux";
+import {
+  createAction,
+  delAction,
+  noAction,
+  readAllAction,
+  updateAction,
+} from "../../Actions/Index";
 import { deleteAction } from "../../Helpers/deleteHelper";
-import { postAction } from "../../Helpers/postHelper";  
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
+const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+const userData = JSON.parse(localStorage.getItem("userLogged"));
 
-const useStyles = makeStyles((theme) => ({
-  modal: {
-    position: "absolute",
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-  },
-  iconos: {
-    cursor: "pointer",
-  },
-  barra: {
-    backgroundColor: blue[100],
-  },
-  paper: {
-    width: 1200,
-    height: 420,
-  },
-}));
-
-const columns = [
-  { id: "acciones", label: "Acciones", minWidth: 125 },
-  { id: "CodigoEmpresa", label: "Código Empresa", minWidth: 100 },
-  { id: "CodigoPortafolio", label: "Código Portafolio", minWidth: 100 },
-  { id: "Descripcion", label: "Descripción", minWidth: 100 },
-  { id: "IndicadorRegulado", label: "Indicador Regulado", minWidth: 100 },
-  { id: "CodigoCentroCosto", label: "Código Centro Costo", minWidth: 100 },
-];
+/**
+ * Este componente realiza el CRUD sobre PasPortafolio su estado inicial es modificado
+ * mediante Redux
+ * @returns
+ */
 
 const PasPortafolio = () => {
   const { useState } = React;
-  const styles = useStyles();
+  // const styles = useStyles();
+  const [error, seterror] = useState(null);
+
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { db } = state.crud;
+
+  /**
+   * Creamos las columnas que va a tener la tabla y asignamos
+   * a la propiedad field el campo correspondiente a la respuesta
+   * que nos da la Api.
+   */
   const [columns, setColumns] = useState([
     {
       title: "Código Empresa",
       field: "CodigoEmpresa",
+      initialEditValue: userData.codigoEmpresa,
+      editable: "never",
     },
-    { title: "Código Portafolio", field: "CodigoPortafolio" },
+    {
+      title: "Nombre",
+      field: "CodigoEmpresaNavigation.Nombre",
+      id: "CodigoEmpresaNavigation.CodigoEmpresa",
+      initialEditValue: userData.nombreEmpresa,
+      editable: "never",
+    },
+    { title: "Código Portafolio", 
+      field: "CodigoPortafolio", 
+      initialEditValue: 0,
+      editable: "never",
+    },
     { title: "Descripción", field: "Descripcion" },
     {title: "Indicador Regulado",
      field: "IndicadorRegulado",
@@ -58,7 +64,7 @@ const PasPortafolio = () => {
       return (
         <input
           type="checkbox"
-          checked={props.value}
+          value={props.value}
           onChange={(e) => props.onChange(e.target.checked)}
         />
       );
@@ -69,56 +75,89 @@ const PasPortafolio = () => {
     { title: "Código Centro Costo", field: "CodigoCentroCosto" },
   ]);
 
-  const { Data, Error, setData } = useGetData("PasPortafolio/GetPasPortafolios");
-  console.log(Data);
+  /**
+   * Realizamos la peticion GET al Api y ejecutamos el action
+   * readAllAction el cual crea el estado inicial que contiene la lista
+   * de datos retornados por la Api.
+   */
 
-  if (Error) return null;
-  if (!Data) return null;
+  let url = `${baseUrl}PasPortafolio/GetPasPortafolios`;
+  useEffect(() => {
+    helpHttp()
+      .get(url)
+      .then((res) => {
+        if (!res.err) {
+          console.log(res);
+          dispatch(readAllAction(res));
+        } else {
+          dispatch(noAction());
+          seterror(res);
+        }
+      });
+  }, [url, useDispatch]);
 
-  //+++++++add row in the table+++++++++
-  const addState = (rowAdd) => {
-    const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
-    console.log(rowAdd);
+  /**
+   * Esta funcion realiza la conexion con el Api, agrega un registro y actualiza
+   * el estado inicial por medio del dispatch y la acción createAction
+   * @param {rowAdd} Parametro que contiene los datos que vamos a agregar
+   */
+  const addFondos = (rowAdd) => {
+    // console.log(rowAdd);
     postAction(
       "PasPortafolio/PostPasPortafolio",
       rowAdd,
       userLoggedToken
-    ).then((response) => {
-      if (response.status === 200) {
-        console.log("Registro agregado");
+    ).then((res) => {
+      console.log(res);
+      if (res.IsSuccess) {
+        console.log(res);
+        dispatch(createAction(res.Result));
+        return alert(res.Message);
       } else {
-        console.log("No se pudo agregar el registro");
+        return alert(res.Message);
       }
     });
   };
-  //+++++++update row in the table+++++++++
+  /**
+   * Esta funcion realiza la conexion con el Api, actualiza un registro y actualiza
+   * el estado inicial por medio del dispatch y la acción updateAction
+   * @param {*} rowUpdate item de la lista a actualizar
+   */
   const updateState = (rowUpdate) => {
-    const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+    //console.log(rowUpdate);
     putAction(
       "PasPortafolio/PutPasPortafolio",
       rowUpdate,
       userLoggedToken
-    ).then((response) => {
-      if (response.status === 200) {
-        console.log("Registro actualizado");
+    ).then((res) => {
+      if (res.isSuccess) {
+        dispatch(updateAction(rowUpdate, "CodigoPortafolio"));
+        return alert(res.message);
       } else {
-        console.log("Registro no actualizado");
+        dispatch(noAction());
+        return alert(res.message);
       }
     });
   };
 
-  //+++++++Delete row in the table+++++++++
+  /**
+   * Esta funcion realiza la conexion con el Api, elimina un registro y actualiza
+   * el estado inicial por medio del dispatch y la acción delAction
+   * @param {*} rowDelete
+   */
   const deleteState = (rowDelete) => {
-    const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     console.log(rowDelete);
     deleteAction(
       "PasPortafolio/DeletePasPortafolio",
       rowDelete,
       userLoggedToken
-    ).then((response) => {
-      if (response.status === 200) {
-        setData([]);
+    ).then((res) => {
+      if (res.isSuccess) {
+        dispatch(delAction(rowDelete.CodigoPortafolio, "CodigoPortafolio"));
+        return alert(res.message);
       } else {
+        dispatch(noAction());
+        return alert(res.message);
       }
     });
   };
@@ -126,9 +165,9 @@ const PasPortafolio = () => {
   return (
     <div>
       <MaterialTable
-        title="Portafolio Cuenta Pasiva"
+        title=" Catálogo Portafolio"
         columns={columns}
-        data={Data}
+        data={db}
         options={{
           rowStyle: {
             fontSize: 12,
@@ -137,23 +176,22 @@ const PasPortafolio = () => {
             backgroundColor: "#898883",
             color: "#FFF",
             fontSize: 13,
-          },}}
+          },
+        }}
         editable={{
           onRowAdd: (newData) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                setData([...Data, newData]);
-                addState(newData);
+                addFondos(newData);
                 resolve();
               }, 1000);
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                const dataUpdate = [...Data];
+                const dataUpdate = [...db];
                 const index = oldData.tableData.id;
                 dataUpdate[index] = newData;
-                setData([...dataUpdate]);
                 resolve();
                 updateState(dataUpdate[index]);
               }, 1000);
@@ -161,10 +199,9 @@ const PasPortafolio = () => {
           onRowDelete: (oldData) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                const dataDelete = [...Data];
+                const dataDelete = [...db];
                 const index = oldData.tableData.id;
                 deleteState(dataDelete[index]);
-                // dataDelete.splice(index, 1);
                 resolve();
               }, 1000);
             }),

@@ -1448,7 +1448,7 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/Dashboard/PasTipoInstrumento"
+              to="/Dashboard/PasIndex/PasTipoInstrumento"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}
@@ -1465,7 +1465,7 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/Dashboard/PasInstrumentoView"
+              to="/Dashboard/pasindex/PasInstrumentoView"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}
@@ -1497,7 +1497,7 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/Dashboard/PasOrigenAportante"
+              to="/Dashboard/PasIndex/PasOrigenAportante"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}
@@ -1505,6 +1505,36 @@ export default function NestedList() {
               <ListItemText className={classes.text}>
                 Origen Aportante
               </ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/pasindex/PasAutorizadoView"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Autorizado</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/pasindex/PasTasaPlazoView"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Tasa Plazo</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
