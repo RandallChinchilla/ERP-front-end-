@@ -1426,20 +1426,19 @@ export default function NestedList() {
           <ExpandMore style={{ color: "white" }} />
         )}
       </ListItemButton>
-
       <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/Dashboard/PasPortafolio"
+              to="/Dashboard/PasIndex/PasAportanteView"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}
             >
-              {/* <ListItemText className={classes.text}>Portafolio</ListItemText> */}
-
-              <ListItemText className={classes.text}>reporte test</ListItemText>
+              <ListItemText className={classes.text}>
+                Cliete Aportante
+              </ListItemText>
             </NavLink>
           </ListItemButton>
         </List>

@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 // import registerServiceWorker from "./registerServiceWorker";
+//const baseUrl = document.getElementsByTagName("base")[0].getAttribute("href");
 
 ReactDOM.render(
   <React.StrictMode>

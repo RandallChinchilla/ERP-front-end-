@@ -40,7 +40,7 @@ export const useData = (form, controller) => {
           helpHttp()
             .post(url, options)
             .then((resLogin) => {
-              //console.log(resLogin);
+              console.log(resLogin);
               setResponse(true);
               window.localStorage.setItem(
                 "userLogged",

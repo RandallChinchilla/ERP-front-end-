@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Select, MenuItem } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
-import { useGetData } from "../../Hooks/useGetData";
+import { helpHttp } from "../../Helpers/HelpHttp";
 
 export const SelectCross = ({
   form,
@@ -11,29 +11,42 @@ export const SelectCross = ({
   controller,
   name,
   field,
+  nameId,
+  disabled,
 }) => {
-  // const { Data, Error, setData } = useGetData("ActGrupo/GetActGrupos");
+  const [data, setData] = useState(null);
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+  let url = `${baseUrl}${controller}`;
+  let options = null;
 
-  const { Data, Error, setData } = useGetData(controller);
+  useEffect(() => {
+    helpHttp()
+      .get(url)
+      .then((res) => {
+        if (!res.err) {
+          setData(res);
+        } else {
+          return null;
+        }
+      });
+  }, [url]);
 
-  if (Error) return null;
-  if (!Data) return null;
-
-  let options = Data;
-
+  if (!data) return null;
+  options = data;
   return (
     <>
       <InputLabel id="demo-simple-select-label">{title}</InputLabel>
       <Select
         labelId="demo-simple-select-label"
-        id={name}
-        name={name}
-        label="CodigoGrupo"
+        id={nameId ? nameId : name}
+        name={nameId ? nameId : name}
         onChange={handleChange}
         onBlur={handleBlur}
-        value={form[name]}
+        value={nameId ? form[nameId] : form[name]}
+        disabled={disabled}
       >
-        {Data &&
+        <MenuItem value={0}>Eliege una opción...</MenuItem>
+        {data &&
           options.map((item) => (
             <MenuItem key={item[name]} value={item[name]}>
               {item[field]}

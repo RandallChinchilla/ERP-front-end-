@@ -68,25 +68,25 @@ const validationsForm = (form) => {
   }
   return errors;
 };
-const userData = JSON.parse(localStorage.getItem("userLogged"));
-
-const initialForm = {
-  CodigoEmpresa: userData.codigoEmpresa,
-  NombreEmpresa: userData.nombreEmpresa,
-  CodigoGrupo: 0,
-  Descripcion: "",
-  AnnosDepreciacion: "",
-  FechaUltimaModificacion: new Date(),
-  CantidadModificaciones: 0,
-  CodigoFormaDepreciacion: "",
-  NumeroCuentaActivo: "",
-  NumeroCuentaDepreciacion: "",
-  NumeroCuentaGastoDepreciacion: "",
-  Usuario: userData.userName,
-  UsuarioModifica: "",
-};
 
 const ActGrupo = () => {
+  const userData = JSON.parse(localStorage.getItem("userLogged"));
+
+  const initialForm = {
+    CodigoEmpresa: userData.codigoEmpresa,
+    NombreEmpresa: userData.nombreEmpresa,
+    CodigoGrupo: 0,
+    Descripcion: "",
+    AnnosDepreciacion: "",
+    FechaUltimaModificacion: new Date(),
+    CantidadModificaciones: 0,
+    CodigoFormaDepreciacion: "",
+    NumeroCuentaActivo: "",
+    NumeroCuentaDepreciacion: "",
+    NumeroCuentaGastoDepreciacion: "",
+    Usuario: userData.userName,
+    UsuarioModifica: "",
+  };
   const styles = useStyles();
   const { rowUpdate } = useLocation();
 

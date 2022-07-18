@@ -15,8 +15,6 @@ import {
 import { deleteAction } from "../../Helpers/deleteHelper";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
-const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
-const userData = JSON.parse(localStorage.getItem("userLogged"));
 
 /**
  * Este componente realiza el CRUD sobre OrigenFondos su estado inicial es modificado
@@ -25,6 +23,8 @@ const userData = JSON.parse(localStorage.getItem("userLogged"));
  */
 
 const ParOrigenFondos = () => {
+  const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+  const userData = JSON.parse(localStorage.getItem("userLogged"));
   const { useState } = React;
   // const styles = useStyles();
   const [error, seterror] = useState(null);

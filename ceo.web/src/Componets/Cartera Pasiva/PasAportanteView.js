@@ -1,39 +1,46 @@
-import React, { useEffect } from "react";
 import MaterialTable from "material-table";
-import { useHistory } from "react-router";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { helpHttp } from "../../Helpers/HelpHttp";
-import { noAction, readAllAction, delAction } from "../../Actions/Index";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { delAction, noAction, readAllAction } from "../../Actions/Index";
 import { deleteAction } from "../../Helpers/deleteHelper";
+import { helpHttp } from "../../Helpers/HelpHttp";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
-const controller = "ActGrupo/GetActGrupos";
+const controller = "PasAportante/GetPasAportantes";
 const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
 
-const ActGrupoView = () => {
-  const { useState } = React;
+export const PasAportanteView = () => {
   let usehistory = useHistory();
-  window.localStorage.removeItem("editActGrupo");
-
-  const [error, seterror] = useState(null);
-
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const { db } = state.crud;
 
-  const [columns, setColumns] = useState([
+  const [columns] = useState([
     {
-      title: "Código Empresa",
-      field: "CodigoEmpresa",
+      title: "Codigo Empresa",
+      field: "CodigoEmpresaNavigation.CodigoEmpresa",
     },
     {
-      title: "Código Grupo",
-      field: "CodigoGrupo",
+      title: "Nombre Empresa",
+      field: "CodigoEmpresaNavigation.Nombre",
     },
     {
-      title: "Descripción",
-      field: "Descripcion",
+      title: "Nombre Aportante",
+      field: "Nombre",
+    },
+    {
+      title: "Teléfono",
+      field: "TelefonoCelular",
+    },
+    {
+      title: "Dirección",
+      field: "DireccionDomicilio",
+    },
+    {
+      title: "Correo",
+      field: "EMailAportante",
     },
   ]);
 
@@ -43,40 +50,42 @@ const ActGrupoView = () => {
       .get(url)
       .then((res) => {
         if (!res.err) {
+          //console.log(res);
           dispatch(readAllAction(res));
         } else {
+          //console.log(res);
           dispatch(noAction());
-          seterror(res);
         }
       });
-  }, [url, dispatch]);
+  }, [url, useDispatch]);
 
-  //+++++++update row in the table+++++++++
   const updateState = (rowUpdate, isNew) => {
     if (isNew) {
-      usehistory.push(`./ActGrupo`);
+      usehistory.push(`./PasAportante`);
     } else {
-      usehistory.push({ pathname: "./ActGrupo", rowUpdate });
+      usehistory.push({ pathname: "./PasAportante", rowUpdate });
     }
   };
 
   const deleteItem = (rowDelete) => {
-    deleteAction("ActGrupo/DeleteActGrupo", rowDelete, userLoggedToken).then(
-      (res) => {
-        if (res.isSuccess) {
-          dispatch(delAction(rowDelete.CodigoGrupo, "CodigoGrupo"));
-          alert("El grupo fue eliminado");
-        } else {
-          alert("El grupo no fue eliminado");
-        }
+    deleteAction(
+      "PasAportante/DeletePasAportante",
+      rowDelete,
+      userLoggedToken
+    ).then((res) => {
+      if (res.isSuccess) {
+        dispatch(delAction(rowDelete.CodigoAportante, "CodigoAportante"));
+        alert("El aportante fue eliminado");
+      } else {
+        alert("El aportante no fue eliminado");
       }
-    );
+    });
   };
 
   return (
     <div>
       <MaterialTable
-        title="Catálogo Grupos"
+        title="Aportantes"
         columns={columns}
         data={db}
         options={{
@@ -103,14 +112,12 @@ const ActGrupoView = () => {
           },
           {
             icon: "add",
-            tooltip: "Nuevo Grupo",
+            tooltip: "Agregar Aportante",
             isFreeAction: true,
             onClick: (event, rowData) => updateState(rowData, true),
           },
         ]}
-      />
+      ></MaterialTable>
     </div>
   );
 };
-
-export default ActGrupoView;
