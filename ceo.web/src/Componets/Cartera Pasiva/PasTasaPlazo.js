@@ -111,14 +111,13 @@ const PasTasaPlazo = () => {
   const addRow = () => {
     const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
     const addRowRequest = {
-      codigoEmpresa: form.CodigoEmpresa,
+      codigoEmpresa: userData.codigoEmpresa,
       codigoTipo: form.CodigoTipo,
       fechaHora: form.FechaHora,
       tasa: form.Tasa,
       tasaMaxima: form.TasaMaxima,
       porcentajeISR: form.PorcentajeISR,
-      codigoEstado: form.FechaVencimiento,
-      usuario: form.Usuario,
+      codigoEstado: form.CodigoEstado,
       id: userData.id,
     };
 
