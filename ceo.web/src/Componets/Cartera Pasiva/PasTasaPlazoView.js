@@ -39,7 +39,7 @@ const PasTasaPlazoView = () => {
   ]);
 
   const { Data, Error, setData } = useGetData(
-    "PasInstrumento/GetPasInstrumentos"
+    "PasTasaPlazo/GetPasTasaPlazos"
   );
 
   if (Error) return null;
