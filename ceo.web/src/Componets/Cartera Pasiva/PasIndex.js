@@ -2,8 +2,8 @@ import React from "react";
 import { Provider } from "react-redux";
 import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
-import PasInstrumento from "./PasInstrumento";
-import PasInstrumentoView from "./PasInstrumentoView";
+import { PasInstrumento } from "./PasInstrumento";
+import { PasInstrumentoView } from "./PasInstrumentoView";
 import PasPortafolio from "./PasPortafolio";
 import PasTipoInstrumento from "./PasTipoInstrumento";
 import PasOrigenAportante from "./PasOrigenAportante";
@@ -42,7 +42,7 @@ export const PasIndex = () => {
         ></Route>
         <Route
           exact
-          path="/Dashboard/pasindex/PasInstrumento/:isNew"
+          path="/Dashboard/pasindex/PasInstrumento"
           component={PasInstrumento}
         ></Route>
         <Route

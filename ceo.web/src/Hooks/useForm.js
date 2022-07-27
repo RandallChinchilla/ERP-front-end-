@@ -23,10 +23,18 @@ export const useForm = (initialForm, validateForm) => {
     setErrors(validateForm(form));
   };
 
+  const handleChecked = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.checked,
+    });
+  };
+
   return {
     form,
     errors,
     response,
+    handleChecked,
     handleChange,
     handleChangeDate,
     handleBlur,

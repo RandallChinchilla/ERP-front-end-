@@ -239,7 +239,6 @@ export const PasAportante = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (form.CodigoAportante === 0) {
-      console.log("first");
       postAction("PasAportante/PostPasAportante", form, userLoggedToken).then(
         (res) => {
           if (res.isSuccess) {
@@ -585,6 +584,7 @@ export const PasAportante = () => {
                   <DesktopDatePicker
                     id="FechaVencimientoId"
                     // name="FechaCompra"
+                    inputFormat="dd/MM/yyyy"
                     label="Fecha vencimiento Id"
                     onChange={(newvalue) => {
                       setValue(newvalue);
@@ -594,7 +594,6 @@ export const PasAportante = () => {
                     value={form.FechaVencimientoId}
                     renderInput={(params) => (
                       <TextField
-                        inputFormat="yyyy/MM/dd"
                         type="datetime-local"
                         size="small"
                         id="FechaVencimientoId"
@@ -618,6 +617,7 @@ export const PasAportante = () => {
                   <DesktopDatePicker
                     id="FechaNacimiento"
                     // name="FechaCompra"
+                    inputFormat="dd/MM/yyyy"
                     label="Fecha Nacimiento"
                     onChange={(newvalue) => {
                       setValue(newvalue);
@@ -627,7 +627,6 @@ export const PasAportante = () => {
                     value={form.FechaNacimiento}
                     renderInput={(params) => (
                       <TextField
-                        inputFormat="yyyy/MM/dd"
                         type="datetime-local"
                         size="small"
                         id="FechaNacimiento"
@@ -799,7 +798,7 @@ export const PasAportante = () => {
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DesktopDatePicker
                     id="FechaNombramiento"
-                    // name="FechaCompra"
+                    inputFormat="dd/MM/yyyy"
                     label="Fecha Nombramiento"
                     onChange={(newvalue) => {
                       setValue(newvalue);
@@ -809,7 +808,6 @@ export const PasAportante = () => {
                     value={form.FechaNombramiento}
                     renderInput={(params) => (
                       <TextField
-                        inputFormat="yyyy/MM/dd"
                         type="datetime-local"
                         size="small"
                         id="FechaNombramiento"
@@ -856,11 +854,6 @@ export const PasAportante = () => {
                   className={styles.inpuntEmpresa}
                   size="small"
                 ></TextField>
-                {/* {errors.TelefonoFijoEncargado && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.TelefonoFijoEncargado}
-                  </FormHelperText>
-                )} */}
               </Grid>
               <Grid item xs={3} container justifyContent="center">
                 <TextField
@@ -883,7 +876,7 @@ export const PasAportante = () => {
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DesktopDatePicker
                     id="FechaOrdenacionConsagracion"
-                    // name="FechaCompra"
+                    inputFormat="dd/MM/yyyy"
                     label="Fecha Ordenación/Consagración"
                     onChange={(newvalue) => {
                       setValue(newvalue);
@@ -893,7 +886,6 @@ export const PasAportante = () => {
                     value={form.FechaOrdenacionConsagracion}
                     renderInput={(params) => (
                       <TextField
-                        inputFormat="yyyy/MM/dd"
                         type="datetime-local"
                         size="small"
                         id="FechaOrdenacionConsagracion"
@@ -951,7 +943,7 @@ export const PasAportante = () => {
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DesktopDatePicker
                     id="FechaIngreso"
-                    // name="FechaCompra"
+                    inputFormat="dd/MM/yyyy"
                     label="Fecha Ingreso"
                     onChange={(newvalue) => {
                       setValue(newvalue);
@@ -961,7 +953,6 @@ export const PasAportante = () => {
                     value={form.FechaIngreso}
                     renderInput={(params) => (
                       <TextField
-                        inputFormat="yyyy/MM/dd"
                         type="datetime-local"
                         size="small"
                         id="FechaIngreso"

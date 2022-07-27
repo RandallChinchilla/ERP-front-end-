@@ -1,4 +1,4 @@
-import { Divider, InputAdornment, makeStyles } from "@material-ui/core";
+import { Divider, makeStyles } from "@material-ui/core";
 import {
   Button,
   FormHelperText,
@@ -8,19 +8,18 @@ import {
   Typography,
 } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-import Modal from "@mui/material/Modal";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { postAction } from "../../Helpers/postHelper";
 import { useForm } from "../../Hooks/useForm";
 import { SelectCross } from "../Listas/SelectCross";
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns"
-
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { useHistory, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   iconos: {
@@ -39,16 +38,18 @@ const useStyles = makeStyles(() => ({
   gridContainer: { paddingRight: 5, paddingLeft: 5 },
 }));
 
+const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+
 const validationsForm = (form) => {
   let errors = {};
   if (!form.CodigoEmpresa) {
     errors.CodigoEmpresa = "Debe ingresar una empresa";
     errors.error = true;
   }
-  if (!form.CodigoInstrumento) {
-    errors.CodigoInstrumento = "Debe ingresar el código instrumento";
-    errors.error = true;
-  }
+  // if (!form.CodigoInstrumento) {
+  //   errors.CodigoInstrumento = "Debe ingresar el código instrumento";
+  //   errors.error = true;
+  // }
   if (!form.Descripcion) {
     errors.Descripcion = "Debe escribir una descripcion";
     errors.error = true;
@@ -70,11 +71,13 @@ const validationsForm = (form) => {
     errors.error = true;
   }
   if (!form.FechaUltimoPagoInteres) {
-    errors.FechaUltimoPagoInteres = "Debe seleccionar la fecha del último pago de interés";
+    errors.FechaUltimoPagoInteres =
+      "Debe seleccionar la fecha del último pago de interés";
     errors.error = true;
   }
   if (!form.FechaProximoPagoInteres) {
-    errors.FechaProximoPagoInteres = "Debe seleccionar la fecha del próximo pago de interés";
+    errors.FechaProximoPagoInteres =
+      "Debe seleccionar la fecha del próximo pago de interés";
     errors.error = true;
   }
   if (!form.TasaBruta) {
@@ -98,121 +101,81 @@ const validationsForm = (form) => {
     errors.error = true;
   }
   if (!form.CodigoPeriodicidadPagoInteres) {
-    errors.CodigoPeriodicidadPagoInteres = "Debe seleccionar la periodicidad del pago de interés";
+    errors.CodigoPeriodicidadPagoInteres =
+      "Debe seleccionar la periodicidad del pago de interés";
     errors.error = true;
   }
   if (!form.CodigoPeriodicidadRevisionTasa) {
-    errors.CodigoPeriodicidadRevisionTasa = "Debe seleccionar la periodicidad de la revisión de tasa";
+    errors.CodigoPeriodicidadRevisionTasa =
+      "Debe seleccionar la periodicidad de la revisión de tasa";
     errors.error = true;
   }
   return errors;
 };
 
-const PasInstrumento = () => {
-  const rowEdit = JSON.parse(localStorage.getItem("editPasInstrumento"));
+export const PasInstrumento = () => {
+  console.log("first");
   const userData = JSON.parse(localStorage.getItem("userLogged"));
   const styles = useStyles();
-  const [show, setShow] = useState(rowEdit ? true : false);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+
+  const { rowUpdate } = useLocation();
+  let usehistory = useHistory();
 
   const initialForm = {
-    Consecutivo: rowEdit ? rowEdit.Consecutivo : "",
-    CodigoEmpresa: rowEdit ? rowEdit.CodigoEmpresa: userData.codigoEmpresa,
-    NombreEmpresa: rowEdit ? rowEdit.NombreEmpresa: userData.nombreEmpresa,     
-    CodigoInstrumento: rowEdit ? rowEdit.CodigoInstrumento : "",
-    Descripcion: rowEdit ? rowEdit.Descripcion : "",
-    Isin: rowEdit ? rowEdit.Isin : "",
-    Serie: rowEdit ? rowEdit.Serie : "",
-    FechaEmision: rowEdit ? rowEdit.FechaEmision : "",
-    FechaVencimiento: rowEdit ? rowEdit.FechaVencimiento : "",
-    FechaUltimoPagoInteres: rowEdit ? rowEdit.FechaUltimoPagoInteres : "",
-    FechaProximoPagoInteres: rowEdit ? rowEdit.FechaProximoPagoInteres : "",
-    TasaBruta: rowEdit ? rowEdit.TasaBruta : "",
-    TasaNeta: rowEdit ? rowEdit.TasaNeta : "",
-    Divisor: rowEdit ? rowEdit.Divisor : "",
-    Multiplicador: rowEdit ? rowEdit.Multiplicador : "",
-    IndicadorTasaVariable: rowEdit ? rowEdit.IndicadorTasaVariable : "",
-    IndicadorCapitalizable: rowEdit ? rowEdit.IndicadorCapitalizable : "",
-    IndicadorGenerico: rowEdit ? rowEdit.IndicadorGenerico : "",
-    CodigoMoneda: rowEdit ? rowEdit.CodigoMoneda : "",
-    CodigoPeriodicidadPagoInteres: rowEdit ? rowEdit.CodigoPeriodicidadPagoInteres : "",
-    CodigoPeriodicidadRevisionTasa: rowEdit ? rowEdit.CodigoPeriodicidadRevisionTasa : "",
-    Usuario: rowEdit ? rowEdit.Usuario : userData.userName,
+    Consecutivo: 0,
+    CodigoEmpresa: userData.codigoEmpresa,
+    NombreEmpresa: userData.nombreEmpresa,
+    CodigoInstrumento: 0,
+    Descripcion: "",
+    Isin: "",
+    Serie: "",
+    FechaEmision: "",
+    FechaVencimiento: "",
+    FechaUltimoPagoInteres: "",
+    FechaProximoPagoInteres: "",
+    TasaBruta: "",
+    TasaNeta: "",
+    Divisor: "",
+    Multiplicador: "",
+    IndicadorTasaVariable: "",
+    IndicadorCapitalizable: "",
+    IndicadorGenerico: "",
+    CodigoMoneda: 0,
+    CodigoPeriodicidadPagoInteres: 0,
+    CodigoPeriodicidadRevisionTasa: 0,
+    Usuario: userData.userName,
   };
 
+  useEffect(() => {
+    if (rowUpdate) {
+      console.log(rowUpdate);
+      setForm(rowUpdate);
+    } else {
+      setForm(initialForm);
+    }
+  }, [rowUpdate]);
 
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 800,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
+  const { form, errors, handleChange, handleBlur, setForm, handleChecked } =
+    useForm(initialForm, validationsForm);
 
-  const { form, errors, handleChange, handleBlur, setForm } = useForm(
-    initialForm,
-    validationsForm
-  );
-
-//   const selectItem = (rowUpdate) => {
-//     console.log(rowUpdate);
-//     setForm({
-//       ...form,
-//       NumeroCliente: rowUpdate.NumeroCliente,
-//       Nombre: rowUpdate.Nombre,
-//       CorreoElectronico: rowUpdate.CorreoElectronico,
-//       TelefonoCelular: rowUpdate.TelefonoCelular,
-//       Direccion: rowUpdate.Direccion,
-//     });
-//     handleClose();
-//   };
-
-  //+++++++add Encabezado de Factura+++++++++
-  const addRow = () => {
-    const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
-    const addRowRequest = {
-      codigoEmpresa: form.CodigoEmpresa,
-      codigoInstrumento: form.CodigoInstrumento,
-      descripcion: form.Descripcion,
-      isin: form.Isin,
-      serie: form.Serie,
-      fechaEmision: form.FechaEmision,
-      fechaVencimiento: form.FechaVencimiento,
-      fechaUltimoPagoInteres: form.FechaUltimoPagoInteres,
-      fechaProximoPagoInteres: form.FechaProximoPagoInteres,
-      tasaBruta: form.TasaBruta,
-      tasaNeta: form.TasaNeta,
-      divisor: form.Divisor,
-      multiplicador: form.Multiplicador,
-      indicadorTasaVariable: form.IndicadorCapitalizable,
-      indicadorCapitalizable: form.IndicadorCapitalizable,
-      indicadorGenerico: form.IndicadorGenerico,
-      observaciones: form.Observaciones,
-      codigoMoneda: form.CodigoMoneda,
-      codigoPeriodicidadPagoInteres: form.CodigoPeriodicidadPagoInteres,
-      codigoPeriodicidadRevisionTasa: form.CodigoPeriodicidadRevisionTasa,
-      id: userData.id,
-    };
-
-    console.log(addRowRequest);
-    postAction(
-      "PasInstrumento/PostPasInstrumento",
-      addRowRequest,
-      userLoggedToken
-    ).then((response) => {
-      if (response.status === 200) {
-        setShow(true);
-        // console.log("Registro agregado");
-      } else {
-        console.log("No se pudo agregar el registro");
-      }
-    });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (form.CodigoInstrumento === 0) {
+      postAction(
+        "PasInstrumento/PostPasInstrumento",
+        form,
+        userLoggedToken
+      ).then((res) => {
+        console.log(res);
+        if (res.IsSuccess) {
+          setForm(initialForm);
+          return alert("El instrumento fue creado con exito");
+        } else {
+          return alert("El instrumento no fue creado");
+        }
+      });
+    } else {
+    }
   };
 
   const [value, setValue] = useState(new Date());
@@ -232,7 +195,7 @@ const PasInstrumento = () => {
                 mb={5}
               >
                 <Typography component="h1" variant="h6" noWrap>
-                Instrumentos
+                  Instrumentos
                 </Typography>
               </Grid>
               <Grid item xs={3} container justifyContent="center">
@@ -242,10 +205,10 @@ const PasInstrumento = () => {
                   label="Empresa"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={form.NombreEmpresa}
+                  value={userData.nombreEmpresa}
                   className={styles.inpuntEmpresa}
                   size="small"
-                  disabled="true"
+                  disabled
                 ></TextField>
                 {errors.CodigoEmpresa && (
                   <FormHelperText id="my-helper-text" error>
@@ -263,12 +226,13 @@ const PasInstrumento = () => {
                   value={form.CodigoInstrumento}
                   className={styles.inpuntEmpresa}
                   size="small"
+                  disabled
                 ></TextField>
-                {errors.CodigoInstrumento && (
+                {/* {errors.CodigoInstrumento && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.CodigoInstrumento}
                   </FormHelperText>
-                )}
+                )} */}
               </Grid>
               <Grid item xs={6} container justifyContent="center">
                 <TextField
@@ -326,7 +290,7 @@ const PasInstrumento = () => {
                   <DesktopDatePicker
                     id="FechaEmision"
                     label="Fecha Emisión"
-                    inputFormat="MM/dd/yyyy"
+                    inputFormat="dd/MM/yyyy"
                     onChange={(newvalue) => {
                       setValue(newvalue);
                       form.FechaEmision = newvalue;
@@ -335,7 +299,6 @@ const PasInstrumento = () => {
                     value={form.FechaEmision}
                     renderInput={(params) => (
                       <TextField
-                        inputFormat="yyyy/MM/dd"
                         size="small"
                         id="FechaEmision"
                         name="FechaEmision"
@@ -358,7 +321,7 @@ const PasInstrumento = () => {
                   <DesktopDatePicker
                     id="FechaVencimiento"
                     label="Fecha Vencimiento"
-                    inputFormat="MM/dd/yyyy"
+                    inputFormat="dd/MM/yyyy"
                     onChange={(newvalue) => {
                       setValue(newvalue);
                       form.FechaVencimiento = newvalue;
@@ -390,7 +353,7 @@ const PasInstrumento = () => {
                   <DesktopDatePicker
                     id="FechaUltimoPagoInteres"
                     label="Fecha Último Pago Interés"
-                    inputFormat="MM/dd/yyyy"
+                    inputFormat="dd/MM/yyyy"
                     onChange={(newvalue) => {
                       setValue(newvalue);
                       form.FechaUltimoPagoInteres = newvalue;
@@ -422,7 +385,7 @@ const PasInstrumento = () => {
                   <DesktopDatePicker
                     id="FechaProximoPagoInteres"
                     label="Fecha Próximo Pago Interés"
-                    inputFormat="MM/dd/yyyy"
+                    inputFormat="dd/MM/yyyy"
                     onChange={(newvalue) => {
                       setValue(newvalue);
                       form.FechaProximoPagoInteres = newvalue;
@@ -518,20 +481,26 @@ const PasInstrumento = () => {
                 )}
               </Grid>
               <Grid item xs={4} container justifyContent="center">
-              <FormControl component="fieldset">
-               <FormGroup>
-               <FormControlLabel control={<Checkbox />} 
-                  id="IndicadorTasaVariable"
-                  name="IndicadorTasaVariable"
-                  label="Indicador Tasa Variable"
-                  labelPlacement="start"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.IndicadorTasaVariable}
-                  className={styles.inpuntEmpresa}
-                  size="small" />
-               </FormGroup>
-               </FormControl>
+                <FormControl component="fieldset">
+                  <FormGroup>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          id="IndicadorTasaVariable"
+                          name="IndicadorTasaVariable"
+                          checked={form.IndicadorTasaVariable || false}
+                          onChange={handleChecked}
+                          onBlur={handleBlur}
+                          //value={form.IndicadorTasaVariable}
+                        />
+                      }
+                      label="Indicador Tasa Variable"
+                      labelPlacement="start"
+                      className={styles.inpuntEmpresa}
+                      size="small"
+                    />
+                  </FormGroup>
+                </FormControl>
                 {errors.IndicadorTasaVariable && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.IndicadorTasaVariable}
@@ -539,20 +508,25 @@ const PasInstrumento = () => {
                 )}
               </Grid>
               <Grid item xs={4} container justifyContent="center">
-              <FormControl component="fieldset">
-               <FormGroup>
-               <FormControlLabel control={<Checkbox />} 
-                  id="IndicadorCapitalizable"
-                  name="IndicadorCapitalizable"
-                  label="Indicador Capitalizable"
-                  labelPlacement="start"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.IndicadorCapitalizable}
-                  className={styles.inpuntEmpresa}
-                  size="medium" />
-               </FormGroup>
-               </FormControl>
+                <FormControl component="fieldset">
+                  <FormGroup>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          id="IndicadorCapitalizable"
+                          name="IndicadorCapitalizable"
+                          onChange={handleChecked}
+                          onBlur={handleBlur}
+                          checked={form.IndicadorCapitalizable || false}
+                        />
+                      }
+                      label="Indicador Capitalizable"
+                      labelPlacement="start"
+                      className={styles.inpuntEmpresa}
+                      size="medium"
+                    />
+                  </FormGroup>
+                </FormControl>
                 {errors.IndicadorCapitalizable && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.IndicadorCapitalizable}
@@ -560,20 +534,26 @@ const PasInstrumento = () => {
                 )}
               </Grid>
               <Grid item xs={4} container justifyContent="center">
-              <FormControl component="fieldset">
-               <FormGroup>
-               <FormControlLabel control={<Checkbox />} 
-                  id="IndicadorGenerico"
-                  name="IndicadorGenerico"
-                  label="Indicador Génerico"
-                  labelPlacement="start"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={form.IndicadorGenerico}
-                  className={styles.inpuntEmpresa}
-                  size="medium" />
-               </FormGroup>
-               </FormControl>
+                <FormControl component="fieldset">
+                  <FormGroup>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          id="IndicadorGenerico"
+                          name="IndicadorGenerico"
+                          onChange={handleChecked}
+                          onBlur={handleBlur}
+                          checked={form.IndicadorGenerico || false}
+                        />
+                      }
+                      label="Indicador Génerico"
+                      labelPlacement="start"
+                      defaultChecked={form.IndicadorGenerico}
+                      className={styles.inpuntEmpresa}
+                      size="medium"
+                    />
+                  </FormGroup>
+                </FormControl>
                 {errors.IndicadorGenerico && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.IndicadorGenerico}
@@ -621,10 +601,11 @@ const PasInstrumento = () => {
                     form={form}
                     handleBlur={handleBlur}
                     handleChange={handleChange}
-                    title={"Periodicidad Pago Interés"}
+                    title="Periodicidad Pago Interés"
                     controller={"ParPeriodicidad/GetParPeriodicidades"}
-                    name={"CodigoPeriodicidad"}
-                    field={"Descripcion"}
+                    name="CodigoPeriodicidad"
+                    nameId="CodigoPeriodicidadPagoInteres"
+                    field="Descripcion"
                   />
                 </FormControl>
                 {errors.CodigoPeriodicidadPagoInteres && (
@@ -639,10 +620,11 @@ const PasInstrumento = () => {
                     form={form}
                     handleBlur={handleBlur}
                     handleChange={handleChange}
-                    title={"Periodicidad Revisión Tasa"}
+                    title="Periodicidad Revisión Tasa"
                     controller={"ParPeriodicidad/GetParPeriodicidades"}
-                    name={"CodigoPeriodicidad"}
-                    field={"Descripcion"}
+                    name="CodigoPeriodicidad"
+                    nameId="CodigoPeriodicidadRevisionTasa"
+                    field="Descripcion"
                   />
                 </FormControl>
                 {errors.CodigoPeriodicidadRevisionTasa && (
@@ -658,10 +640,10 @@ const PasInstrumento = () => {
                   label="Usuario"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={form.Usuario}
+                  value={userData.userName}
                   className={styles.inpuntEmpresa}
                   size="small"
-                  disabled="true"
+                  disabled
                 ></TextField>
                 {errors.Usuario && (
                   <FormHelperText id="my-helper-text" error>
@@ -670,7 +652,9 @@ const PasInstrumento = () => {
                 )}
               </Grid>
               <Grid item xs={12} container justifyContent="end">
-                <Button onClick={addRow} variant="contained">Agregar</Button>
+                <Button onClick={handleSubmit} variant="contained">
+                  Agregar
+                </Button>
               </Grid>
               <Grid item xs={12} mt={2}>
                 <Divider />
@@ -679,18 +663,6 @@ const PasInstrumento = () => {
           </Box>
         </Paper>
       </Grid>
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-        </Box>
-      </Modal>
     </div>
   );
 };
-
-export default PasInstrumento;
