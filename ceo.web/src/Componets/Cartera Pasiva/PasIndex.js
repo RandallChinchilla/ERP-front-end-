@@ -11,10 +11,10 @@ import PasOrigenFondos from "./PasOrigenFondos";
 import store from "../../Store/Index";
 import { PasAportanteView } from "./PasAportanteView";
 import { PasAportante } from "./PasAportante";
-import PasTasaPlazo from "./PasTasaPlazo";
-import PasTasaPlazoView from "./PasTasaPlazoView";
-import PasAutorizado from "./PasAutorizado";
-import PasAutorizadoView from "./PasAutorizadoView";
+import { PasTasaPlazoView }from "./PasTasaPlazoView";
+import {PasAutorizado} from "./PasAutorizado";
+import {PasAutorizadoView} from "./PasAutorizadoView";
+import { PasTasaPlazo } from "./PasTasaPlazo";
 
 export const PasIndex = () => {
   return (
@@ -62,7 +62,7 @@ export const PasIndex = () => {
         ></Route>
         <Route
           exact
-          path="/Dashboard/pasindex/PasTasaPlazo/:isNew"
+          path="/Dashboard/pasindex/PasTasaPlazo"
           component={PasTasaPlazo}
         ></Route>
         <Route
@@ -72,7 +72,7 @@ export const PasIndex = () => {
         ></Route>
         <Route
           exact
-          path="/Dashboard/pasindex/PasAutorizado/:isNew"
+          path="/Dashboard/pasindex/PasAutorizado/"
           component={PasAutorizado}
         ></Route>
         <Route

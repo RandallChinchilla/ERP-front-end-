@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGetData } from "../../Hooks/useGetData";
 import MaterialTable from "material-table";
-import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { delAction, noAction, readAllAction } from "../../Actions/Index";
+import { deleteAction } from "../../Helpers/deleteHelper";
+import { helpHttp } from "../../Helpers/HelpHttp";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
+const controller = "PasTasaPlazo/GetPasTasaPlazos";
+const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
 
-const PasTasaPlazoView = () => {
-  const { useState } = React;
+export const PasTasaPlazoView = () => {
   let usehistory = useHistory();
-  window.localStorage.removeItem("editPasTasaPlazo");
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { db } = state.crud;
 
   const [columns, setColumns] = useState([
     {
@@ -38,24 +46,42 @@ const PasTasaPlazoView = () => {
     },
   ]);
 
-  const { Data, Error, setData } = useGetData(
-    "PasTasaPlazo/GetPasTasaPlazos"
-  );
+  let url = `${baseUrl}${controller}`;
+  useEffect(() => {
+    helpHttp()
+      .get(url)
+      .then((res) => {
+        if (!res.err) {
+          //console.log(res);
+          dispatch(readAllAction(res));
+        } else {
+          //console.log(res);
+          dispatch(noAction());
+        }
+      });
+  }, [url, useDispatch]);
 
-  if (Error) return null;
-  if (!Data) return null;
-
-  //+++++++update row in the table+++++++++
   const updateState = (rowUpdate, isNew) => {
-    console.log(rowUpdate);
     if (isNew) {
-      console.log(rowUpdate);
-      usehistory.push(`./PasTasaPlazo/1`);
+      usehistory.push(`./PasTasaPlazo`);
     } else {
-      console.log(rowUpdate);
-      window.localStorage.setItem("editPasTasaPlazo", JSON.stringify(rowUpdate));
-      usehistory.push(`./PasTasaPlazo/0`);
+      usehistory.push({ pathname: "./PasTasaPlazo", rowUpdate });
     }
+  };
+  //Se agrego la funcion de eliminar
+  const deleteItem = (rowDelete) => {
+    deleteAction(
+      "PasTasaPlazo/DeletePasTasaPlazo",
+      rowDelete,
+      userLoggedToken
+    ).then((res) => {
+      if (res.isSuccess) {
+        dispatch(delAction(rowDelete.CodigoTipo, "CodigoTipo"));
+        alert("La tasa plazo fue eliminado");
+      } else {
+        alert("La tasa plazo no fue eliminado");
+      }
+    });
   };
 
   return (
@@ -63,7 +89,7 @@ const PasTasaPlazoView = () => {
       <MaterialTable
         title="Catálogo Tasa Plazo"
         columns={columns}
-        data={Data}
+        data={db}
         options={{
           rowStyle: {
             fontSize: 12,
@@ -84,8 +110,7 @@ const PasTasaPlazoView = () => {
           {
             icon: "delete",
             tooltip: "Borrar Tasa Plazo",
-            onClick: (event, rowData) =>
-              alert("You want to delete " + rowData.name),
+            onClick: (event, rowData) => deleteItem(rowData),
           },
           {
             icon: "add",
@@ -98,5 +123,3 @@ const PasTasaPlazoView = () => {
     </div>
   );
 };
-
-export default PasTasaPlazoView;

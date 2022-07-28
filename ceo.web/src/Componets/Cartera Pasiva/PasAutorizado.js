@@ -10,14 +10,15 @@ import {
 import FormControl from "@mui/material/FormControl";
 import Modal from "@mui/material/Modal";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { postAction } from "../../Helpers/postHelper";
 import { useForm } from "../../Hooks/useForm";
 import { SelectCross } from "../Listas/SelectCross";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns"
-
+import { putAction } from "../../Helpers/putHelper";
+import { useHistory, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   iconos: {
@@ -34,7 +35,10 @@ const useStyles = makeStyles(() => ({
   },
   inpuntEmpresa: { width: "100%" },
   gridContainer: { paddingRight: 5, paddingLeft: 5 },
+  button: { margin: "1px" },
 }));
+
+const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
 
 const validationsForm = (form) => {
   let errors = {};
@@ -89,88 +93,75 @@ const validationsForm = (form) => {
   return errors;
 };
 
-const PasAutorizado = () => {
-  const rowEdit = JSON.parse(localStorage.getItem("editPasAutorizado"));
+export const PasAutorizado = () => {
   const userData = JSON.parse(localStorage.getItem("userLogged"));
   const styles = useStyles();
-  const [show, setShow] = useState(rowEdit ? true : false);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const { rowUpdate } = useLocation();
+  const [value, setValue] = useState(new Date());
+  let usehistory = useHistory();
 
   const initialForm = {
     CodigoEmpresa: userData.codigoEmpresa,
     NombreEmpresa: userData.nombreEmpresa,     
-    CodigoAportante: rowEdit ? rowEdit.CodigoAportante : "",
-    CodigoTipoIdentificacion: rowEdit ? rowEdit.CodigoTipoIdentificacion : "",
-    NumeroId: rowEdit ? rowEdit.NumeroId : "",
-    Nombre: rowEdit ? rowEdit.Nombre : "",
-    Apellido1: rowEdit ? rowEdit.Apellido1 : "",
-    Apellido2: rowEdit ? rowEdit.Apellido2 : "",
-    FechaVencimientoId: rowEdit ? rowEdit.FechaVencimientoId : "",
-    eMail: rowEdit ? rowEdit.eMail : "",
-    TelefonoCelular: rowEdit ? rowEdit.TelefonoCelular : "",
-    CodigoEstado: rowEdit ? rowEdit.CodigoEstado : "",
+    CodigoAportante: 0,
+    CodigoTipoIdentificacion: 0,
+    NumeroId: "",
+    Nombre: "",
+    Apellido1:  "",
+    Apellido2: "",
+    FechaVencimientoId: "",
+    eMail: "",
+    TelefonoCelular: "",
+    CodigoEstado: 0,
     Usuario: userData.userName,
   };
 
-
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 800,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
+  useEffect(() => {
+    if (rowUpdate) {
+      console.log(rowUpdate);
+      setForm(rowUpdate);
+    } else {
+      setForm(initialForm);
+    }
+  }, [rowUpdate]);
 
   const { form, errors, handleChange, handleBlur, setForm } = useForm(
     initialForm,
     validationsForm
   );
-  //+++++++add Encabezado de Factura+++++++++
-  const addRow = () => {
-    const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
-    const addRowRequest = {
-      codigoEmpresa: userData.codigoEmpresa,
-      codigoAportante: form.CodigoAportante,
-      codigoTipoIdentificacion: form.CodigoTipoIdentificacion,
-      numeroId: form.NumeroId,
-      nombre: form.Nombre,
-      apellido1: form.Apellido1,
-      apellido2: form.Apellido2,
-      fechaVencimientoId: form.FechaVencimientoId,
-      eMail: form.eMail,
-      telefonoCelular: form.TelefonoCelular,
-      codigoEstado: form.CodigoEstado,
-      id: userData.id,
-    };
-
-    console.log(addRowRequest);
-    postAction(
-      "PasAutorizado/PostPasAutorizado",
-      addRowRequest,
-      userLoggedToken
-    ).then((response) => {
-      if (response.status === 200) {
-        setShow(true);
-        // console.log("Registro agregado");
-      } else {
-        console.log("No se pudo agregar el registro");
-      }
-    });
+  //Se creo la opcion de Agregar y Actualizar
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!rowUpdate) {
+      postAction("PasAutorizado/PostPasAutorizado", form, userLoggedToken).then(
+        (res) => {
+          console.log(res)
+          if (res.isSuccess) {
+            setForm(initialForm);
+            return alert("El Autorizado fue creado con exito");
+          } else {
+            return alert("El Autorizado no fue creado");
+          }
+        }
+      );
+    } else {
+      putAction("PasAutorizado/PutPasAutorizado", form, userLoggedToken).then(
+        (res) => {
+          if (res.isSuccess) {
+            return alert("El autorizado fue actualizado con exito");
+          } else {
+            return alert("El registro no fue actualizado");
+          }
+        }
+      );
+    }
   };
-
-  const [value, setValue] = useState(new Date());
 
   return (
     <div>
       <Grid container justifyContent="center">
         <Paper elevation={3} className={styles.paper}>
-          <Box container sx={{ maxWidth: "100%" }}>
+          <Box container sx={{ maxWidth: "100%", "& button": { m: 1 } }}>
             <Grid container spacing={2} justifyContent="center" pl={5} pr={5}>
               <Grid
                 item
@@ -304,7 +295,7 @@ const PasAutorizado = () => {
                   <DesktopDatePicker
                     id="FechaVencimientoId"
                     label="Fecha Vencimiento Id"
-                    inputFormat="MM/dd/yyyy"
+                    inputformat="dd/MM/yyyy"
                     onChange={(newvalue) => {
                       setValue(newvalue);
                       form.FechaVencimientoId = newvalue;
@@ -313,7 +304,7 @@ const PasAutorizado = () => {
                     value={form.FechaVencimientoId}
                     renderInput={(params) => (
                       <TextField
-                        inputFormat="yyyy/MM/dd"
+                        inputformat="dd/MM/yyyy"
                         size="small"
                         id="FechaVencimientoId"
                         name="FechaVencimientoId"
@@ -398,28 +389,29 @@ const PasAutorizado = () => {
                   {userData.userName}
                 </TextField>
               </Grid>
+              {/* Se agregaron las funciones actualizar agregar y regresar */}
               <Grid item xs={12} container justifyContent="end">
-                <Button onClick={addRow} variant="contained">Agregar</Button>
-              </Grid>
-              <Grid item xs={12} mt={2}>
-                <Divider />
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  onClick={() => {
+                    usehistory.push(`./PasAutorizadoView`);
+                  }}
+                >
+                  Regresar
+                </Button>
+                <Button
+                  variant="contained"
+                  onClick={handleSubmit}
+                  disabled={errors.error ? true : false}
+                >
+                  {rowUpdate ? "Actualizar" : "Agregar"}
+                </Button>
               </Grid>
             </Grid>
           </Box>
         </Paper>
       </Grid>
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-        </Box>
-      </Modal>
     </div>
   );
 };
-
-export default PasAutorizado;

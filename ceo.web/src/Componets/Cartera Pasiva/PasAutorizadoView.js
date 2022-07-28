@@ -1,16 +1,23 @@
-import React, { useState } from "react";
-import { useGetData } from "../../Hooks/useGetData";
+import React, { useEffect, useState } from "react";
 import MaterialTable from "material-table";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { delAction, noAction, readAllAction } from "../../Actions/Index";
+import { deleteAction } from "../../Helpers/deleteHelper";
+import { helpHttp } from "../../Helpers/HelpHttp";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
+const controller = "PasAutorizado/GetPasAutorizados";
+const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
 
-const PasAutorizadoView = () => {
-  const { useState } = React;
+export const PasAutorizadoView = () => {
   let usehistory = useHistory();
-  window.localStorage.removeItem("editPasAutorizado");
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { db } = state.crud;
 
-  const [columns, setColumns] = useState([
+  const [columns] = useState([
     {
       title: "Código Empresa",
       field: "CodigoEmpresa",
@@ -38,24 +45,42 @@ const PasAutorizadoView = () => {
     },
   ]);
 
-  const { Data, Error, setData } = useGetData(
-    "PasAutorizado/GetPasAutorizados"
-  );
+  let url = `${baseUrl}${controller}`;
+  useEffect(() => {
+    helpHttp()
+      .get(url)
+      .then((res) => {
+        if (!res.err) {
+          //console.log(res);
+          dispatch(readAllAction(res));
+        } else {
+          //console.log(res);
+          dispatch(noAction());
+        }
+      });
+  }, [url, useDispatch]);
 
-  if (Error) return null;
-  if (!Data) return null;
-
-  //+++++++update row in the table+++++++++
   const updateState = (rowUpdate, isNew) => {
-    console.log(rowUpdate);
     if (isNew) {
-      console.log(rowUpdate);
-      usehistory.push(`./PasAutorizado/1`);
+      usehistory.push(`./PasAutorizado`);
     } else {
-      console.log(rowUpdate);
-      window.localStorage.setItem("editPasAutorizado", JSON.stringify(rowUpdate));
-      usehistory.push(`./PasAutorizado/0`);
+      usehistory.push({ pathname: "./PasAutorizado", rowUpdate });
     }
+  };
+
+  const deleteItem = (rowDelete) => {
+    deleteAction(
+      "PasAutorizado/DeletePasAutorizado",
+      rowDelete,
+      userLoggedToken
+    ).then((res) => {
+      if (res.isSuccess) {
+        dispatch(delAction(rowDelete.CodigoAportante, "CodigoAportante"));
+        alert("El autorizado fue eliminado");
+      } else {
+        alert("El autorizado no fue eliminado");
+      }
+    });
   };
 
   return (
@@ -63,7 +88,7 @@ const PasAutorizadoView = () => {
       <MaterialTable
         title="Catálogo Autorizado"
         columns={columns}
-        data={Data}
+        data={db}
         options={{
           rowStyle: {
             fontSize: 12,
@@ -84,12 +109,11 @@ const PasAutorizadoView = () => {
           {
             icon: "delete",
             tooltip: "Borrar Autorizado",
-            onClick: (event, rowData) =>
-              alert("You want to delete " + rowData.name),
+            onClick: (event, rowData) => deleteItem(rowData),
           },
           {
             icon: "add",
-            tooltip: "Nuevo Autorizado",
+            tooltip: "Agregar Autorizado",
             isFreeAction: true,
             onClick: (event, rowData) => updateState(rowData, true),
           },
@@ -98,5 +122,3 @@ const PasAutorizadoView = () => {
     </div>
   );
 };
-
-export default PasAutorizadoView;

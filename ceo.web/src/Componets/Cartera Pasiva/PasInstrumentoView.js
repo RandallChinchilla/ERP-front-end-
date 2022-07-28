@@ -4,7 +4,8 @@ import MaterialTable from "material-table";
 import { useHistory } from "react-router";
 import { helpHttp } from "../../Helpers/HelpHttp";
 import { useDispatch, useSelector } from "react-redux";
-import { noAction, readAllAction } from "../../Actions/Index";
+import { delAction, noAction, readAllAction } from "../../Actions/Index";
+import { deleteAction } from "../../Helpers/deleteHelper";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 const controller = "PasInstrumento/GetPasInstrumentos";
@@ -53,13 +54,6 @@ export const PasInstrumentoView = () => {
     },
   ]);
 
-  // const { Data, Error, setData } = useGetData(
-  //   "PasInstrumento/GetPasInstrumentos"
-  // );
-
-  // if (Error) return null;
-  // if (!Data) return null;
-
   let url = `${baseUrl}${controller}`;
 
   useEffect(() => {
@@ -82,6 +76,21 @@ export const PasInstrumentoView = () => {
     } else {
       usehistory.push({ pathname: "./PasInstrumento", rowUpdate });
     }
+  };
+  //  se agrego el componente de eliminar
+  const deleteItem = (rowDelete) => {
+    deleteAction(
+      "PasInstrumento/DeletePasInstrumento",
+      rowDelete,
+      userLoggedToken
+    ).then((res) => {
+      if (res.isSuccess) {
+        dispatch(delAction(rowDelete.CodigoInstrumento, "CodigoInstrumento"));
+        alert("El instrumento fue eliminado");
+      } else {
+        alert("El instrumento no fue eliminado");
+      }
+    });
   };
 
   return (
@@ -110,8 +119,7 @@ export const PasInstrumentoView = () => {
           {
             icon: "delete",
             tooltip: "Borrar Instrumentos",
-            onClick: (event, rowData) =>
-              alert("You want to delete " + rowData.name),
+            onClick: (event, rowData) => deleteItem(rowData),
           },
           {
             icon: "add",
