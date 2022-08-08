@@ -16,8 +16,7 @@ import { useForm } from "../../Hooks/useForm";
 import { SelectCross } from "../Listas/SelectCross";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns"
-
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 const useStyles = makeStyles(() => ({
   iconos: {
@@ -47,7 +46,8 @@ const validationsForm = (form) => {
     errors.error = true;
   }
   if (!form.CodigoTipoIdentificacion) {
-    errors.CodigoTipoIdentificacion = "Debe ingresar el tipo de indentificación";
+    errors.CodigoTipoIdentificacion =
+      "Debe ingresar el tipo de indentificación";
     errors.error = true;
   }
   if (!form.NumeroId) {
@@ -100,7 +100,7 @@ const PasAutorizado = () => {
 
   const initialForm = {
     CodigoEmpresa: userData.codigoEmpresa,
-    NombreEmpresa: userData.nombreEmpresa,     
+    NombreEmpresa: userData.nombreEmpresa,
     CodigoAportante: rowEdit ? rowEdit.CodigoAportante : "",
     CodigoTipoIdentificacion: rowEdit ? rowEdit.CodigoTipoIdentificacion : "",
     NumeroId: rowEdit ? rowEdit.NumeroId : "",
@@ -113,7 +113,6 @@ const PasAutorizado = () => {
     CodigoEstado: rowEdit ? rowEdit.CodigoEstado : "",
     Usuario: userData.userName,
   };
-
 
   const style = {
     position: "absolute",
@@ -181,7 +180,7 @@ const PasAutorizado = () => {
                 mb={5}
               >
                 <Typography component="h1" variant="h6" noWrap>
-                Autorizado
+                  Autorizado
                 </Typography>
               </Grid>
               <Grid item xs={3} container justifyContent="center">
@@ -399,7 +398,9 @@ const PasAutorizado = () => {
                 </TextField>
               </Grid>
               <Grid item xs={12} container justifyContent="end">
-                <Button onClick={addRow} variant="contained">Agregar</Button>
+                <Button onClick={addRow} variant="contained">
+                  Agregar
+                </Button>
               </Grid>
               <Grid item xs={12} mt={2}>
                 <Divider />
@@ -415,8 +416,7 @@ const PasAutorizado = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-        </Box>
+        <Box sx={style}></Box>
       </Modal>
     </div>
   );

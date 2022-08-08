@@ -18,6 +18,7 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { postAction } from "../../Helpers/postHelper";
 import { putAction } from "../../Helpers/putHelper";
+import PasAutorizadoView from "./PasAutorizadoView";
 
 const useStyles = makeStyles(() => ({
   iconos: {
@@ -92,8 +93,8 @@ const validationsForm = (form) => {
     errors.Apellido1Encargado = "Debes ingresar primer apellido";
     errors.error = true;
   }
-  if (form.CodigoTipoIdentificacion === 0) {
-    errors.CodigoTipoIdentificacion =
+  if (form.CodigoTipoIdentificacionEncargado === 0) {
+    errors.CodigoTipoIdentificacionEncargado =
       "Debes seleccionar un tipo de identificación";
     errors.error = true;
   }
@@ -129,7 +130,6 @@ const validationsForm = (form) => {
     errors.CodigoCantonEncargado = "Debes seleccionar un canton";
     errors.error = true;
   }
-
   if (form.CodigoDistritoEncargado === 0) {
     errors.CodigoDistritoEncargado = "Debes seleccionar un distrito";
     errors.error = true;
@@ -170,7 +170,11 @@ const validationsForm = (form) => {
     errors.CodigoEstado = "debes seleccionar un codigo";
     errors.error = true;
   }
-
+  if (form.CodigoTipoIdentificacionAutorizado === 0) {
+    errors.CodigoTipoIdentificacionAutorizado =
+      "debes seleccionar un tipo de identificación";
+    errors.error = true;
+  }
   return errors;
 };
 
@@ -180,6 +184,7 @@ export const PasAportante = () => {
   const { rowUpdate } = useLocation();
   const [value, setValue] = useState(new Date());
   let usehistory = useHistory();
+  const [Aportante, setAportante] = useState([]);
 
   const initialForm = {
     CodigoEmpresa: userData.codigoEmpresa,
@@ -222,17 +227,17 @@ export const PasAportante = () => {
     CodigoEstado: 0,
   };
 
-  useEffect(() => {
-    if (rowUpdate) {
-      console.log(rowUpdate);
-      setForm(rowUpdate);
-    } else {
-      setForm(initialForm);
-    }
-  }, [rowUpdate]);
+  // useEffect(() => {
+  //   if (rowUpdate) {
+  //     setForm(rowUpdate);
+  //   } else {
+  //     setForm(initialForm);
+  //   }
+  // }, [rowUpdate]);
 
+  console.log(rowUpdate);
   const { form, errors, handleChange, handleBlur, setForm } = useForm(
-    initialForm,
+    rowUpdate ? rowUpdate : initialForm,
     validationsForm
   );
 
@@ -242,7 +247,8 @@ export const PasAportante = () => {
       postAction("PasAportante/PostPasAportante", form, userLoggedToken).then(
         (res) => {
           if (res.isSuccess) {
-            setForm(initialForm);
+            console.log(res.result);
+            setForm({ ...form, CodigoAportante: res.result.codigoAportante });
             return alert("El Aportante fue creado con exito");
           } else {
             return alert("El aportante no fue creado");
@@ -300,7 +306,7 @@ export const PasAportante = () => {
                     handleBlur={handleBlur}
                     handleChange={handleChange}
                     title="Tipo Aportante"
-                    controller={"PasOrigenAportante/GetPasOrigenAportantes"}
+                    controller="PasOrigenAportante/GetPasOrigenAportantes"
                     name="CodigoOrigenAportante"
                     field="Descripcion"
                   />
@@ -549,11 +555,10 @@ export const PasAportante = () => {
                     handleBlur={handleBlur}
                     handleChange={handleChange}
                     title="Tipo Identificación"
-                    controller={
-                      "ParTipoidentificacion/GetParTiposIdentificacion"
-                    }
+                    controller="ParTipoidentificacion/GetParTiposIdentificacion"
                     name="CodigoTipoIdentificacion"
                     field="Descripcion"
+                    //nameId="CodigoTipoIdentificacionEncargado"
                   />
                 </FormControl>
                 {errors.CodigoTipoIdentificacion && (
@@ -1004,6 +1009,8 @@ export const PasAportante = () => {
               </Grid>
               <Grid item xs={12} container justifyContent="end">
                 <Button
+                  id="btn-back"
+                  name="btn-back"
                   color="secondary"
                   variant="contained"
                   onClick={() => {
@@ -1013,6 +1020,9 @@ export const PasAportante = () => {
                   Regresar
                 </Button>
                 <Button
+                  id="btn-addAportante"
+                  name="btn-addAportante"
+                  color="primary"
                   variant="contained"
                   onClick={handleSubmit}
                   disabled={errors.error ? true : false}
@@ -1020,6 +1030,14 @@ export const PasAportante = () => {
                   {rowUpdate ? "Actualizar" : "Agregar"}
                 </Button>
               </Grid>
+              {form.CodigoAportante !== 0 && (
+                <Grid item xs={12} container justifyContent="center">
+                  <PasAutorizadoView
+                    DataAutorizados={rowUpdate ? rowUpdate.PasAutorizados : []}
+                    Aportante={form.CodigoAportante}
+                  />
+                </Grid>
+              )}
             </Grid>
           </Box>
         </Paper>

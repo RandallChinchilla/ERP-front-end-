@@ -20,6 +20,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useHistory, useLocation } from "react-router-dom";
+import { putAction } from "../../Helpers/putHelper";
 
 const useStyles = makeStyles(() => ({
   iconos: {
@@ -117,6 +118,7 @@ export const PasInstrumento = () => {
   console.log("first");
   const userData = JSON.parse(localStorage.getItem("userLogged"));
   const styles = useStyles();
+  console.log(`first`);
 
   const { rowUpdate } = useLocation();
   let usehistory = useHistory();
@@ -175,6 +177,7 @@ export const PasInstrumento = () => {
         }
       });
     } else {
+      //putAction("PasInstrumento/PutPasInstrumento",form,userLoggedToken)
     }
   };
 
