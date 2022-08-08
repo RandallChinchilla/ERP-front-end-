@@ -15,6 +15,8 @@ import { PasTasaPlazoView }from "./PasTasaPlazoView";
 import {PasAutorizado} from "./PasAutorizado";
 import {PasAutorizadoView} from "./PasAutorizadoView";
 import { PasTasaPlazo } from "./PasTasaPlazo";
+import { PasMaestroView } from "./PasMaestroView";
+import { PasMaestro } from "./PasMaestro";
 
 export const PasIndex = () => {
   return (
@@ -79,6 +81,16 @@ export const PasIndex = () => {
           exact
           path="/Dashboard/pasindex/PasAutorizadoView"
           component={PasAutorizadoView}
+        ></Route>
+        <Route
+          exact
+          path="/Dashboard/pasindex/PasMaestroView"
+          component={PasMaestroView}
+        ></Route>
+        <Route
+          exact
+          path="/Dashboard/pasindex/PasMaestro"
+          component={PasMaestro}
         ></Route>
       </Provider>
     </Switch>
