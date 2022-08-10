@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGetData } from "../../Hooks/useGetData";
 import MaterialTable from "material-table";
 import { useHistory } from "react-router";
 import {
+  fabClasses,
   FormControl,
   FormHelperText,
   Grid,
@@ -18,6 +19,17 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { putAction } from "../../Helpers/putHelper";
 import { Button } from "@material-ui/core";
+import { postAction } from "../../Helpers/postHelper";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  createAction,
+  delAction,
+  noAction,
+  readAllAction,
+  updateAction,
+} from "../../Actions/Index";
+import { initializeConnect } from "react-redux/es/components/connect";
+import { deleteAction } from "../../Helpers/deleteHelper";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
@@ -42,6 +54,11 @@ const useStyles = makeStyles(() => ({
 
 const validationsform = (form) => {
   let errors = {};
+  if (form.CodigoTipoIdentificacion === 0) {
+    errors.CodigoTipoIdentificacion =
+      "debes seleccionar un tipo de identificación";
+    errors.error = true;
+  }
   if (form.CodigoPais === 0) {
     errors.CodigoPais = "debes seleccionar un pais";
     errors.error = true;
@@ -50,32 +67,32 @@ const validationsform = (form) => {
     errors.NumeroId = "debes seleccionar un pais";
     errors.error = true;
   }
-  if (!form.NombreAutorizado) {
-    errors.NombreAutorizado = "debes ingresar un nombre";
+  if (!form.Nombre) {
+    errors.Nombre = "debes ingresar un nombre";
     errors.error = true;
   }
-  if (!form.ApellidoAut1) {
-    errors.ApellidoAut1 = "debes ingresar el apellido";
+  if (!form.Apellido1) {
+    errors.Apellido1 = "debes ingresar el apellido";
     errors.error = true;
   }
-  if (!form.ApellidoAut2) {
-    errors.ApellidoAut2 = "debes ingresar el apellido";
+  if (!form.Apellido2) {
+    errors.Apellido2 = "debes ingresar el apellido";
     errors.error = true;
   }
-  if (!form.FechaVencimientoIdAut) {
-    errors.FechaVencimientoIdAut = "debes ingresar el apellido";
+  if (!form.FechaVencimientoId) {
+    errors.FechaVencimientoId = "debes ingresar el apellido";
     errors.error = true;
   }
-  if (!form.eMailAut) {
-    errors.eMailAut = "Debes ingresar un correo";
+  if (!form.EMail) {
+    errors.EMail = "Debes ingresar un correo";
     errors.error = true;
   }
-  if (!form.TelefonoCelularAut) {
-    errors.TelefonoCelularAut = "Debes ingresar un número de celular";
+  if (!form.TelefonoCelular) {
+    errors.TelefonoCelular = "Debes ingresar un número de celular";
     errors.error = true;
   }
-  if (form.CodigoEstadoAut === 0) {
-    errors.CodigoEstadoAut = "Debese seleccionar un estadao";
+  if (form.CodigoEstado === 0) {
+    errors.CodigoEstado = "Debese seleccionar un estadao";
     errors.error = true;
   }
 
@@ -84,11 +101,16 @@ const validationsform = (form) => {
 
 const PasAutorizadoView = (props) => {
   const styles = useStyles();
-  const { useState } = React;
   let usehistory = useHistory();
   window.localStorage.removeItem("editPasAutorizado");
   const [value, setValue] = useState(new Date());
   const userData = JSON.parse(localStorage.getItem("userLogged"));
+  const [autData, setAutData] = useState([]);
+  const [showbtn, setShowbtn] = useState(false);
+
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { db } = state.crud;
 
   const initialForm = {
     CodigoEmpresa: userData.codigoEmpresa,
@@ -104,6 +126,15 @@ const PasAutorizadoView = (props) => {
     TelefonoCelular: "",
     CodigoEstado: 0,
   };
+
+  useEffect(() => {
+    if (props.DataAutorizados) {
+      // setAutData(props.DataAutorizados);
+      dispatch(readAllAction(props.DataAutorizados));
+    } else {
+      setAutData([]);
+    }
+  }, [props.DataAutorizados]);
 
   const [columns, setColumns] = useState([
     {
@@ -137,30 +168,57 @@ const PasAutorizadoView = (props) => {
     validationsform
   );
 
-  // const { Data, Error, setData } = useGetData(
-  //   "PasAutorizado/GetPasAutorizados"
-  // );
-
-  // if (Error) return null;
-  // if (!Data) return null;
-
-  //+++++++update row in the table+++++++++
-  const updateState = (rowUpdate, isNew) => {
-    if (isNew) {
-      console.log(rowUpdate);
-
-      // usehistory.push(`./PasAutorizado/1`);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (showbtn) {
+      putAction("PasAutorizado/PutPasAutorizado", form, userLoggedToken).then(
+        (res) => {
+          if (res.isSuccess) {
+            dispatch(updateAction(form, "NumeroId"));
+            return alert(res.message);
+          } else {
+            return alert(res.message);
+          }
+        }
+      );
     } else {
-      console.log(rowUpdate);
-      setForm(rowUpdate);
+      postAction("PasAutorizado/PostPasAutorizado", form, userLoggedToken).then(
+        (res) => {
+          if (res.IsSuccess) {
+            dispatch(createAction(res.Result));
+            return alert(res.Message);
+          } else {
+            return alert(res.Message);
+          }
+        }
+      );
+    }
+  };
 
-      // putAction("PasAutorizado/PutPasAutorizado",form,userLoggedToken).then((res) => {
-      //   if (res.isSuccess) {
-      //     console.log("Se actualizo autorizado")
-      //   } else {
-      //     console.log("Se actualizo autorizado")
-      //   }
-      // })
+  const deleteAut = (rowDelete) => {
+    deleteAction(
+      "PasAutorizado/DeletePasAutorizado",
+      rowDelete,
+      userLoggedToken
+    ).then((res) => {
+      if (res.isSuccess) {
+        dispatch(delAction(rowDelete.NumeroId, "NumeroId"));
+        return alert(res.message);
+      } else {
+        dispatch(noAction());
+        return alert(res.message);
+      }
+    });
+  };
+
+  //+++++++update or add row in the table+++++++++
+  const updateAut = (rowUpdate, isUpdate) => {
+    if (isUpdate) {
+      setShowbtn(true);
+      setForm(rowUpdate);
+    } else {
+      setShowbtn(false);
+      setForm(initialForm);
     }
   };
 
@@ -385,13 +443,11 @@ const PasAutorizadoView = (props) => {
             size="small"
             color="primary"
             variant="contained"
-            //onClick={handleSubmit}
+            onClick={handleSubmit}
             disabled={errors.error ? true : false}
             className={styles.btnprimary}
           >
-            {form.CodigoTipoIdentificacion !== 0
-              ? "Actualizar Autorizado"
-              : "Agregar Autorizado"}
+            {showbtn ? "Actualizar Autorizado" : "Agregar Autorizado"}
           </Button>
         </Grid>
       </Grid>
@@ -399,7 +455,7 @@ const PasAutorizadoView = (props) => {
       <MaterialTable
         title="Catálogo Autorizados"
         columns={columns}
-        data={props.DataAutorizados}
+        data={db}
         options={{
           rowStyle: {
             fontSize: 12,
@@ -416,19 +472,18 @@ const PasAutorizadoView = (props) => {
           {
             icon: "edit",
             tooltip: "Editar Autorizado",
-            onClick: (event, rowData) => updateState(rowData, false),
+            onClick: (event, rowData) => updateAut(rowData, true),
           },
           {
             icon: "delete",
             tooltip: "Borrar Autorizado",
-            onClick: (event, rowData) =>
-              alert("You want to delete " + rowData.name),
+            onClick: (event, rowData) => deleteAut(rowData),
           },
           {
             icon: "add",
             tooltip: "Nuevo Autorizado",
             isFreeAction: true,
-            onClick: (event, rowData) => updateState(rowData, true),
+            onClick: (event, rowData) => updateAut(false),
           },
         ]}
       />
