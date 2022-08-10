@@ -10,13 +10,15 @@ import {
 import FormControl from "@mui/material/FormControl";
 import Modal from "@mui/material/Modal";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
-import { postAction } from "../../Helpers/postHelper";
+import React, { useEffect, useState } from "react";
 import { useForm } from "../../Hooks/useForm";
+import { useHistory, useLocation } from "react-router-dom";
 import { SelectCross } from "../Listas/SelectCross";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns"
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { postAction } from "../../Helpers/postHelper";
+import { putAction } from "../../Helpers/putHelper";
 
 
 const useStyles = makeStyles(() => ({
@@ -34,7 +36,10 @@ const useStyles = makeStyles(() => ({
   },
   inpuntEmpresa: { width: "100%" },
   gridContainer: { paddingRight: 5, paddingLeft: 5 },
+  button: { margin: "1px" },
 }));
+
+const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
 
 const validationsForm = (form) => {
   let errors = {};
@@ -69,80 +74,72 @@ const validationsForm = (form) => {
   return errors;
 };
 
-const PasTasaPlazo = () => {
-  const rowEdit = JSON.parse(localStorage.getItem("editPasTasaPlazo"));
+export const PasTasaPlazo = () => {
   const userData = JSON.parse(localStorage.getItem("userLogged"));
   const styles = useStyles();
-  const [show, setShow] = useState(rowEdit ? true : false);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const { rowUpdate } = useLocation();
+  const [value, setValue] = useState(new Date());
+  let usehistory = useHistory();
 
   const initialForm = {
     CodigoEmpresa: userData.codigoEmpresa,
     NombreEmpresa: userData.nombreEmpresa,     
-    CodigoTipo: rowEdit ? rowEdit.CodigoTipo : "",
-    FechaHora: rowEdit ? rowEdit.FechaHora : "",
-    Tasa: rowEdit ? rowEdit.Tasa : "",
-    TasaMaxima: rowEdit ? rowEdit.TasaMaxima : "",
-    PorcentajeISR: rowEdit ? rowEdit.PorcentajeISR : "",
-    CodigoEstado: rowEdit ? rowEdit.CodigoEstado : "",
+    CodigoTipo: 0,
+    FechaHora: "",
+    Tasa: "",
+    TasaMaxima: "",
+    PorcentajeISR: "",
+    CodigoEstado: 0,
     Usuario: userData.userName,
   };
-
-
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 800,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
-
-  const { form, errors, handleChange, handleBlur, setForm } = useForm(
-    initialForm,
-    validationsForm
-  );
-  //+++++++add Encabezado de Factura+++++++++
-  const addRow = () => {
-    const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
-    const addRowRequest = {
-      codigoEmpresa: userData.codigoEmpresa,
-      codigoTipo: form.CodigoTipo,
-      fechaHora: form.FechaHora,
-      tasa: form.Tasa,
-      tasaMaxima: form.TasaMaxima,
-      porcentajeISR: form.PorcentajeISR,
-      codigoEstado: form.CodigoEstado,
-      id: userData.id,
+  //Se agregaron las funciones de Crear y Editar
+    useEffect(() => {
+      if (rowUpdate) {
+        console.log(rowUpdate);
+        setForm(rowUpdate);
+      } else {
+        setForm(initialForm);
+      }
+    }, [rowUpdate]);
+  
+    const { form, errors, handleChange, handleBlur, setForm } = useForm(
+      initialForm,
+      validationsForm
+    );
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      if (form.CodigoTipo === 0) {
+        postAction("PasTasaPlazo/PostPasTasaPlazo", form, userLoggedToken).then(
+          (res) => {
+            if (res.isSuccess) {
+              setForm(initialForm);
+              return alert("La tasa plazo fue creado con exito");
+            } else {
+              return alert("La tasa plazo no fue creado");
+            }
+          }
+        );
+      } else {
+        putAction("PasTasaPlazo/PutPasTasaPlazo", form, userLoggedToken).then(
+          (res) => {
+            if (res.isSuccess) {
+              return alert("El aportente fue actualizado con exito");
+            } else {
+              return alert("El registro no fue actualizado");
+            }
+          }
+        );
+      }
     };
 
-    console.log(addRowRequest);
-    postAction(
-      "PasTasaPlazo/PostPasTasaPlazo",
-      addRowRequest,
-      userLoggedToken
-    ).then((response) => {
-      if (response.status === 200) {
-        setShow(true);
-        // console.log("Registro agregado");
-      } else {
-        console.log("No se pudo agregar el registro");
-      }
-    });
-  };
-
-  const [value, setValue] = useState(new Date());
+  // const [value, setValue] = useState(new Date());
 
   return (
     <div>
       <Grid container justifyContent="center">
         <Paper elevation={3} className={styles.paper}>
-          <Box container sx={{ maxWidth: "100%" }}>
+          <Box container sx={{ maxWidth: "100%", "& button": { m: 1 } }}>
             <Grid container spacing={2} justifyContent="center" pl={5} pr={5}>
               <Grid
                 item
@@ -302,28 +299,29 @@ const PasTasaPlazo = () => {
                   {userData.userName}
                 </TextField>
               </Grid>
+              {/* Se agregaron los funciones de agregar,actualizar y regresar */}
               <Grid item xs={12} container justifyContent="end">
-                <Button onClick={addRow} variant="contained">Agregar</Button>
-              </Grid>
-              <Grid item xs={12} mt={2}>
-                <Divider />
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  onClick={() => {
+                    usehistory.push(`./PasTasaPlazoView`);
+                  }}
+                >
+                  Regresar
+                </Button>
+                <Button
+                  variant="contained"
+                  onClick={handleSubmit}
+                  disabled={errors.error ? true : false}
+                >
+                  {rowUpdate ? "Actualizar" : "Agregar"}
+                </Button>
               </Grid>
             </Grid>
           </Box>
         </Paper>
       </Grid>
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-        </Box>
-      </Modal>
     </div>
   );
 };
-
-export default PasTasaPlazo;

@@ -136,7 +136,7 @@ const PasAutorizadoView = (props) => {
     }
   }, [props.DataAutorizados]);
 
-  const [columns, setColumns] = useState([
+  const [columns] = useState([
     {
       title: "Tipo Identificación",
       field: "CodigoTipoIdentificacion",
@@ -220,6 +220,21 @@ const PasAutorizadoView = (props) => {
       setShowbtn(false);
       setForm(initialForm);
     }
+  };
+
+  const deleteItem = (rowDelete) => {
+    deleteAction(
+      "PasAutorizado/DeletePasAutorizado",
+      rowDelete,
+      userLoggedToken
+    ).then((res) => {
+      if (res.isSuccess) {
+        dispatch(delAction(rowDelete.CodigoAportante, "CodigoAportante"));
+        alert("El autorizado fue eliminado");
+      } else {
+        alert("El autorizado no fue eliminado");
+      }
+    });
   };
 
   return (
@@ -481,7 +496,7 @@ const PasAutorizadoView = (props) => {
           },
           {
             icon: "add",
-            tooltip: "Nuevo Autorizado",
+            tooltip: "Agregar Autorizado",
             isFreeAction: true,
             onClick: (event, rowData) => updateAut(false),
           },
@@ -490,5 +505,4 @@ const PasAutorizadoView = (props) => {
     </div>
   );
 };
-
 export default PasAutorizadoView;

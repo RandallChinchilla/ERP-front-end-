@@ -37,6 +37,7 @@ const useStyles = makeStyles(() => ({
   },
   inpuntEmpresa: { width: "100%" },
   gridContainer: { paddingRight: 5, paddingLeft: 5 },
+  button: { margin: "1px" },
 }));
 
 const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
@@ -47,10 +48,6 @@ const validationsForm = (form) => {
     errors.CodigoEmpresa = "Debe ingresar una empresa";
     errors.error = true;
   }
-  // if (!form.CodigoInstrumento) {
-  //   errors.CodigoInstrumento = "Debe ingresar el código instrumento";
-  //   errors.error = true;
-  // }
   if (!form.Descripcion) {
     errors.Descripcion = "Debe escribir una descripcion";
     errors.error = true;
@@ -177,9 +174,19 @@ export const PasInstrumento = () => {
         }
       });
     } else {
-      //putAction("PasInstrumento/PutPasInstrumento",form,userLoggedToken)
+      putAction("PasInstrumento/PutPasInstrumento", form, userLoggedToken).then(
+        (res) => {
+          if (res.isSuccess) {
+            return alert("El instrumento fue actualizado con exito");
+          } else {
+            return alert("El registro no fue actualizado");
+          }
+        }
+      );
     }
   };
+
+  //Se agrego la opcion de Actualizar
 
   const [value, setValue] = useState(new Date());
 
@@ -187,7 +194,10 @@ export const PasInstrumento = () => {
     <div>
       <Grid container justifyContent="center">
         <Paper elevation={3} className={styles.paper}>
-          <Box container sx={{ maxWidth: "100%" }}>
+          <Box
+            sx={{ maxWidth: "100%", "& button": { m: 1 } }}
+            // container sx={{ maxWidth: "100%" }}
+          >
             <Grid container spacing={2} justifyContent="center" pl={5} pr={5}>
               <Grid
                 item
@@ -483,6 +493,9 @@ export const PasInstrumento = () => {
                   </FormHelperText>
                 )}
               </Grid>
+              {/* Se eliminaron las validaciones de 
+              indicador tasa variable,indicador capitalizable e indicador generico 
+              ya que estas opciones pueder ir marcadas o no dependiendo del caso*/}
               <Grid item xs={4} container justifyContent="center">
                 <FormControl component="fieldset">
                   <FormGroup>
@@ -494,7 +507,6 @@ export const PasInstrumento = () => {
                           checked={form.IndicadorTasaVariable || false}
                           onChange={handleChecked}
                           onBlur={handleBlur}
-                          //value={form.IndicadorTasaVariable}
                         />
                       }
                       label="Indicador Tasa Variable"
@@ -504,11 +516,6 @@ export const PasInstrumento = () => {
                     />
                   </FormGroup>
                 </FormControl>
-                {errors.IndicadorTasaVariable && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.IndicadorTasaVariable}
-                  </FormHelperText>
-                )}
               </Grid>
               <Grid item xs={4} container justifyContent="center">
                 <FormControl component="fieldset">
@@ -530,11 +537,6 @@ export const PasInstrumento = () => {
                     />
                   </FormGroup>
                 </FormControl>
-                {errors.IndicadorCapitalizable && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.IndicadorCapitalizable}
-                  </FormHelperText>
-                )}
               </Grid>
               <Grid item xs={4} container justifyContent="center">
                 <FormControl component="fieldset">
@@ -557,11 +559,6 @@ export const PasInstrumento = () => {
                     />
                   </FormGroup>
                 </FormControl>
-                {errors.IndicadorGenerico && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.IndicadorGenerico}
-                  </FormHelperText>
-                )}
               </Grid>
               <Grid item xs={12} container justifyContent="center">
                 <TextField
@@ -648,19 +645,27 @@ export const PasInstrumento = () => {
                   size="small"
                   disabled
                 ></TextField>
-                {errors.Usuario && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.Usuario}
-                  </FormHelperText>
-                )}
               </Grid>
+              {/* Se agregaron los botones 
+              Regresar, Agregar y Actualizar 
+              con el formato actual */}
               <Grid item xs={12} container justifyContent="end">
-                <Button onClick={handleSubmit} variant="contained">
-                  Agregar
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  onClick={() => {
+                    usehistory.push(`./PasInstrumentoView`);
+                  }}
+                >
+                  Regresar
                 </Button>
-              </Grid>
-              <Grid item xs={12} mt={2}>
-                <Divider />
+                <Button
+                  variant="contained"
+                  onClick={handleSubmit}
+                  disabled={errors.error ? true : false}
+                >
+                  {rowUpdate ? "Actualizar" : "Agregar"}
+                </Button>
               </Grid>
             </Grid>
           </Box>

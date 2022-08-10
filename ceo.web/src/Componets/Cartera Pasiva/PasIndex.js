@@ -11,10 +11,12 @@ import PasOrigenFondos from "./PasOrigenFondos";
 import store from "../../Store/Index";
 import { PasAportanteView } from "./PasAportanteView";
 import { PasAportante } from "./PasAportante";
-import PasTasaPlazo from "./PasTasaPlazo";
-import PasTasaPlazoView from "./PasTasaPlazoView";
-import PasAutorizado from "./PasAutorizado";
-import PasAutorizadoView from "./PasAutorizadoView";
+import { PasTasaPlazoView } from "./PasTasaPlazoView";
+import { PasAutorizado } from "./PasAutorizado";
+import { PasAutorizadoView } from "./PasAutorizadoView";
+import { PasTasaPlazo } from "./PasTasaPlazo";
+import { PasMaestroView } from "./PasMaestroView";
+import { PasMaestro } from "./PasMaestro";
 
 export const PasIndex = () => {
   return (
@@ -62,7 +64,7 @@ export const PasIndex = () => {
         ></Route>
         <Route
           exact
-          path="/Dashboard/pasindex/PasTasaPlazo/:isNew"
+          path="/Dashboard/pasindex/PasTasaPlazo"
           component={PasTasaPlazo}
         ></Route>
         <Route
@@ -70,15 +72,25 @@ export const PasIndex = () => {
           path="/Dashboard/pasindex/PasTasaPlazoView"
           component={PasTasaPlazoView}
         ></Route>
-        <Route
+        {/* <Route
           exact
-          path="/Dashboard/pasindex/PasAutorizado/:isNew"
+          path="/Dashboard/pasindex/PasAutorizado/"
           component={PasAutorizado}
         ></Route>
         <Route
           exact
           path="/Dashboard/pasindex/PasAutorizadoView"
           component={PasAutorizadoView}
+        ></Route> */}
+        <Route
+          exact
+          path="/Dashboard/pasindex/PasMaestroView"
+          component={PasMaestroView}
+        ></Route>
+        <Route
+          exact
+          path="/Dashboard/pasindex/PasMaestro"
+          component={PasMaestro}
         ></Route>
       </Provider>
     </Switch>
