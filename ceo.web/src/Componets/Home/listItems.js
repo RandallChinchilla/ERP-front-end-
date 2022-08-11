@@ -1509,7 +1509,7 @@ export default function NestedList() {
           </ListItemButton>
         </List>
       </Collapse>
-      <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
+      {/* <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
@@ -1523,7 +1523,7 @@ export default function NestedList() {
             </NavLink>
           </ListItemButton>
         </List>
-      </Collapse>
+      </Collapse> */}
       <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
