@@ -86,7 +86,7 @@ export const PasMaestroView = () => {
           userLoggedToken
         ).then((res) => {
           if (res.isSuccess) {
-            dispatch(delAction(rowDelete.CodigoPortafolio, "CodigoPortafolio"));
+            dispatch(delAction(rowDelete.NumeroInversion, "NumeroInversion"));
             alert("El maestro fue eliminado");
           } else {
             alert("El maestro no fue eliminado");

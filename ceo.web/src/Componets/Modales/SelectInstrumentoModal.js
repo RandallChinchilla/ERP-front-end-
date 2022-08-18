@@ -5,7 +5,7 @@ import { helpHttp } from "../../Helpers/HelpHttp";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
-export const SelectAportanteModal = (props) => {
+export const SelectInstrumentoModal = (props) => {
   const [data, setData] = useState([]);
   const style = {
     position: "absolute",
@@ -20,10 +20,10 @@ export const SelectAportanteModal = (props) => {
   };
 
   const [columns, setColumns] = useState([
-    { title: "Aportante", field: "CodigoAportante" },
+    { title: "CodigoInstrumento", field: "CodigoInstrumento" },
     {
-      title: "Nombre",
-      field: "Nombre",
+      title: "Descripcion",
+      field: "Descripcion",
     },
   ]);
 
@@ -42,7 +42,7 @@ export const SelectAportanteModal = (props) => {
 
   const selectItem = (rowData) => {
     console.log(rowData);
-    props.form.CodigoAportante = rowData.Nombre;
+    props.form.CodigoInstrumento = rowData.Descripcion;
     props.handleClose();
   };
 
@@ -57,7 +57,7 @@ export const SelectAportanteModal = (props) => {
         <Box sx={style}>
           <div>
             <MaterialTable
-              title="Aportante"
+              title="Instrumento"
               columns={columns}
               data={data}
               options={{

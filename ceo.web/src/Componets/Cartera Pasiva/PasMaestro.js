@@ -20,6 +20,7 @@ import { putAction } from "../../Helpers/putHelper";
 import { useForm } from "../../Hooks/useForm";
 import { SelectCross } from "../Listas/SelectCross";
 import { SelectAportanteModal } from "../Modales/SelectAportanteModal";
+import { SelectInstrumentoModal } from "../Modales/SelectInstrumentoModal";
 
 const useStyles = makeStyles(() => ({
   iconos: {
@@ -47,18 +48,14 @@ const validationsForm = (form) => {
     errors.CodigoPortafolio = "Debes seleccionar un portafolio";
     errors.error = true;
   }
-  if (!form.NumeroInversion) {
-    errors.NumeroInversion = "Debes ingresar un número de inversion";
-    errors.error = true;
-  }
-  if (form.CodigoAportante === 0) {
-    errors.CodigoAportante = "Debes seleccionar un aportante";
-    errors.error = true;
-  }
-  if (form.CodigoInstrumento === 0) {
-    errors.CodigoInstrumento = "Debes seleccionar un instrumento";
-    errors.error = true;
-  }
+  // if (form.CodigoAportante === 0) {
+  //   errors.CodigoAportante = "Debes seleccionar un aportante";
+  //   errors.error = true;
+  // }
+  // if (form.CodigoInstrumento === 0) {
+  //   errors.CodigoInstrumento = "Debes seleccionar un instrumento";
+  //   errors.error = true;
+  // }
   if (form.CodigoMoneda === 0) {
     errors.CodigoMoneda = "Debes seleccionar una moneda";
     errors.error = true;
@@ -98,12 +95,20 @@ const validationsForm = (form) => {
       "Debes seleccionar la fecha del último interés acumulado";
     errors.error = true;
   }
-  if (!form.CodigoEstado === 0) {
-    errors.CodigoEstado = "Debes seleccionar un estado";
+  if (!form.TasaNeta) {
+    errors.TasaNeta = "Debes ingresar la tasa neta";
     errors.error = true;
   }
   if (!form.TasaBruta) {
-    errors.TasaBruta = "Debes ingresar un tasa bruta";
+    errors.TasaBruta = "Debes ingresar la tasa bruta";
+    errors.error = true;
+  }
+  if (!form.ValorNominal) {
+    errors.ValorNominal = "Debes ingresar el valor nominal";
+    errors.error = true;
+  }
+  if (!form.CodigoEstado === 0) {
+    errors.CodigoEstado = "Debes seleccionar un estado";
     errors.error = true;
   }
   if (!form.SaldoValorNominal) {
@@ -161,9 +166,12 @@ export const PasMaestro = () => {
   const { rowUpdate } = useLocation();
   const [value, setValue] = useState(new Date());
   let usehistory = useHistory();
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [openAportante, setOpenAportante] = useState(false);
+  const [openInstrumento, setOpenInstrumento] = useState(false);
+  const handleOpenAportante = () => setOpenAportante(true);
+  const handleCloseAportante = () => setOpenAportante(false);
+  const handleOpenInstrumento = () => setOpenInstrumento(true);
+  const handleCloseInstrumento = () => setOpenInstrumento(false);
 
   const initialForm = {
     CodigoEmpresa: userData.codigoEmpresa,
@@ -171,9 +179,9 @@ export const PasMaestro = () => {
     Id: userData.id,
     NombreUsuario: userData.userName,
     CodigoPortafolio: 0,
-    NumeroInversion: "",
-    CodigoAportante: "",
-    CodigoInstrumento: "",
+    NumeroInversion: 0,
+    CodigoAportante: 0,
+    CodigoInstrumento: 0,
     CodigoMoneda: 0,
     Isin: "",
     Serie: "",
@@ -183,8 +191,10 @@ export const PasMaestro = () => {
     FechaUltimoPagoInteres: "",
     FechaProximoPagoInteres: "",
     FechaUltimoInteresAcumulado: "",
-    CodigoEstado: 0,
+    TasaNeta: "",
     TasaBruta: "",
+    ValorNominal: "",
+    CodigoEstado: 0,
     SaldoValorNominal: "",
     PorcentajeValorVenta: "",
     PorcentajeValorMercado: "",
@@ -214,7 +224,7 @@ export const PasMaestro = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (form.CodigoPortafolio === 0) {
+    if (form.NumeroInversion === 0) {
       postAction("PasMaestro/PostPasMaestro", form, userLoggedToken).then(
         (res) => {
           if (res.isSuccess) {
@@ -256,7 +266,7 @@ export const PasMaestro = () => {
                   Maestro
                 </Typography>
               </Grid>
-              <Grid item xs={3} container justifyContent="center">
+              <Grid item xs={6} container justifyContent="center">
                 <TextField
                   id="CodigoEmpresa"
                   name="CodigoEmpresa"
@@ -281,11 +291,6 @@ export const PasMaestro = () => {
                     field="Descripcion"
                   />
                 </FormControl>
-                {errors.CodigoPortafolio && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.CodigoPortafolio}
-                  </FormHelperText>
-                )}
               </Grid>
               <Grid item xs={3} container justifyContent="center">
                 <TextField
@@ -297,16 +302,13 @@ export const PasMaestro = () => {
                   value={form.NumeroInversion}
                   className={styles.inpuntEmpresa}
                   size="small"
+                  disabled
                 ></TextField>
-                {errors.NumeroInversion && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.NumeroInversion}
-                  </FormHelperText>
-                )}
               </Grid>
               <Grid item xs={3}>
                 <TextField
-                  onClick={handleOpen}
+                  fullWidth={true}
+                  onClick={handleOpenAportante}
                   id="CodigoAportante"
                   name="CodigoAportante"
                   label="Aportante"
@@ -324,23 +326,26 @@ export const PasMaestro = () => {
                   className={styles.inpunt}
                 />
               </Grid>
-              <Grid item xs={3} container justifyContent="center">
-                <FormControl size="small" className={styles.listas}>
-                  <SelectCross
-                    form={form}
-                    handleBlur={handleBlur}
-                    handleChange={handleChange}
-                    title="Instrumento"
-                    controller={"PasInstrumento/GetPasInstrumentos"}
-                    name="CodigoInstrumento"
-                    field="Descripcion"
-                  />
-                </FormControl>
-                {errors.CodigoInstrumento && (
-                  <FormHelperText id="my-helper-text" error>
-                    {errors.CodigoInstrumento}
-                  </FormHelperText>
-                )}
+              <Grid item xs={3}>
+                <TextField
+                  fullWidth={true}
+                  onClick={handleOpenInstrumento}
+                  id="CodigoInstrumento"
+                  name="CodigoInstrumento"
+                  label="Instrumento"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={form.CodigoInstrumento}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                  size="small"
+                  className={styles.inpunt}
+                />
               </Grid>
               <Grid item xs={3} container justifyContent="center">
                 <FormControl size="small" className={styles.listas}>
@@ -573,20 +578,19 @@ export const PasMaestro = () => {
                 )}
               </Grid>
               <Grid item xs={3} container justifyContent="center">
-                <FormControl size="small" className={styles.listas}>
-                  <SelectCross
-                    form={form}
-                    handleBlur={handleBlur}
-                    handleChange={handleChange}
-                    title="Estado"
-                    controller={"ParEstado/GetParEstados"}
-                    name="CodigoEstado"
-                    field="Descripcion"
-                  />
-                </FormControl>
-                {errors.CodigoEstado && (
+                <TextField
+                  id="TasaNeta"
+                  name="TasaNeta"
+                  label="Tasa Neta"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={form.TasaNeta}
+                  className={styles.inpuntEmpresa}
+                  size="small"
+                ></TextField>
+                {errors.TasaNeta && (
                   <FormHelperText id="my-helper-text" error>
-                    {errors.CodigoEstado}
+                    {errors.TasaNeta}
                   </FormHelperText>
                 )}
               </Grid>
@@ -604,6 +608,41 @@ export const PasMaestro = () => {
                 {errors.TasaBruta && (
                   <FormHelperText id="my-helper-text" error>
                     {errors.TasaBruta}
+                  </FormHelperText>
+                )}
+              </Grid>
+              <Grid item xs={3} container justifyContent="center">
+                <TextField
+                  id="ValorNominal"
+                  name="ValorNominal"
+                  label="Valor Nominal"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={form.ValorNominal}
+                  className={styles.inpuntEmpresa}
+                  size="small"
+                ></TextField>
+                {errors.ValorNominal && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.ValorNominal}
+                  </FormHelperText>
+                )}
+              </Grid>
+              <Grid item xs={3} container justifyContent="center">
+                <FormControl size="small" className={styles.listas}>
+                  <SelectCross
+                    form={form}
+                    handleBlur={handleBlur}
+                    handleChange={handleChange}
+                    title="Estado"
+                    controller={"ParEstado/GetParEstados"}
+                    name="CodigoEstado"
+                    field="Descripcion"
+                  />
+                </FormControl>
+                {errors.CodigoEstado && (
+                  <FormHelperText id="my-helper-text" error>
+                    {errors.CodigoEstado}
                   </FormHelperText>
                 )}
               </Grid>
@@ -794,7 +833,7 @@ export const PasMaestro = () => {
                   </FormHelperText>
                 )}
               </Grid>
-              <Grid item xs={3} container justifyContent="center">
+              <Grid item xs={6} container justifyContent="center">
                 <TextField
                   id="NombreUsuario"
                   name="NombreUsuario"
@@ -818,6 +857,8 @@ export const PasMaestro = () => {
                   Regresar
                 </Button>
                 <Button
+                  id="AgregarMaestro"
+                  name="AgregarMaestro"
                   variant="contained"
                   onClick={handleSubmit}
                   disabled={errors.error ? true : false}
@@ -830,10 +871,16 @@ export const PasMaestro = () => {
         </Paper>
       </Grid>
       <SelectAportanteModal
-        open={open}
-        handleClose={handleClose}
+        open={openAportante}
+        handleClose={handleCloseAportante}
         controller="PasAportante/GetPasAportantes"
         form={form}
+      />
+      <SelectInstrumentoModal
+      open={openInstrumento}
+      handleClose={handleCloseInstrumento}
+      controller="PasInstrumento/GetPasInstrumentos"
+      form={form}
       />
     </div>
   );
