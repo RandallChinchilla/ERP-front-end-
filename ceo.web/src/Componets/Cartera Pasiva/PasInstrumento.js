@@ -112,10 +112,8 @@ const validationsForm = (form) => {
 };
 
 export const PasInstrumento = () => {
-  console.log("first");
   const userData = JSON.parse(localStorage.getItem("userLogged"));
   const styles = useStyles();
-  console.log(`first`);
 
   const { rowUpdate } = useLocation();
   let usehistory = useHistory();
@@ -136,9 +134,9 @@ export const PasInstrumento = () => {
     TasaNeta: "",
     Divisor: "",
     Multiplicador: "",
-    IndicadorTasaVariable: "",
-    IndicadorCapitalizable: "",
-    IndicadorGenerico: "",
+    IndicadorTasaVariable: false,
+    IndicadorCapitalizable: false,
+    IndicadorGenerico: false,
     CodigoMoneda: 0,
     CodigoPeriodicidadPagoInteres: 0,
     CodigoPeriodicidadRevisionTasa: 0,
@@ -147,7 +145,6 @@ export const PasInstrumento = () => {
 
   useEffect(() => {
     if (rowUpdate) {
-      console.log(rowUpdate);
       setForm(rowUpdate);
     } else {
       setForm(initialForm);
@@ -502,7 +499,6 @@ export const PasInstrumento = () => {
                     <FormControlLabel
                       control={
                         <Checkbox
-                          id="IndicadorTasaVariable"
                           name="IndicadorTasaVariable"
                           checked={form.IndicadorTasaVariable || false}
                           onChange={handleChecked}
@@ -523,7 +519,6 @@ export const PasInstrumento = () => {
                     <FormControlLabel
                       control={
                         <Checkbox
-                          id="IndicadorCapitalizable"
                           name="IndicadorCapitalizable"
                           onChange={handleChecked}
                           onBlur={handleBlur}
@@ -544,7 +539,6 @@ export const PasInstrumento = () => {
                     <FormControlLabel
                       control={
                         <Checkbox
-                          id="IndicadorGenerico"
                           name="IndicadorGenerico"
                           onChange={handleChecked}
                           onBlur={handleBlur}
@@ -553,7 +547,6 @@ export const PasInstrumento = () => {
                       }
                       label="Indicador Génerico"
                       labelPlacement="start"
-                      defaultChecked={form.IndicadorGenerico}
                       className={styles.inpuntEmpresa}
                       size="medium"
                     />
