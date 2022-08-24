@@ -24,14 +24,14 @@ jobs:
       - name: npm install, build, and test
         run: | 
           npm install --prefix /home/runner/work/ERP-front-end-/ERP-front-end-/ceo.web
-          npm run build --if-present --prefix /home/runner/work/ERP-front-end-/ERP-front-end-/ceo.web
-          npm run test --if-present
+          npm --if-present --prefix /home/runner/work/ERP-front-end-/ERP-front-end-/ceo.web run build 
+      
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: build/
 
   deploy:
     runs-on: ubuntu-latest
