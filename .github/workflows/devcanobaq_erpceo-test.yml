@@ -23,8 +23,8 @@ jobs:
 
       - name: npm install, build, and test
         run: | 
-          npm install
-          npm run build --if-present 
+          npm install --prefix /home/runner/work/ERP-front-end-/ERP-front-end-/ceo.web
+          npm run build --if-present --prefix /home/runner/work/ERP-front-end-/ERP-front-end-/ceo.web
           npm run test --if-present
 
       - name: Upload artifact for deployment job
