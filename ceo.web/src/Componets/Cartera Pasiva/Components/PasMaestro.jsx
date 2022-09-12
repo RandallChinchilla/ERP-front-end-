@@ -15,12 +15,12 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { postAction } from "../../Helpers/postHelper";
-import { putAction } from "../../Helpers/putHelper";
-import { useForm } from "../../Hooks/useForm";
-import { SelectCross } from "../Listas/SelectCross";
-import { SelectAportanteModal } from "../Modales/SelectAportanteModal";
-import { SelectInstrumentoModal } from "../Modales/SelectInstrumentoModal";
+import { postAction } from "../../../Helpers/postHelper";
+import { putAction } from "../../../Helpers/putHelper";
+import { useForm } from "../../../Hooks/useForm";
+import { SelectCross } from "../../Listas/SelectCross";
+import { SelectAportanteModal } from "../../Modales/SelectAportanteModal";
+import { SelectInstrumentoModal } from "../../Modales/SelectInstrumentoModal";
 
 const useStyles = makeStyles(() => ({
   iconos: {
@@ -164,7 +164,7 @@ export const PasMaestro = () => {
   const userData = JSON.parse(localStorage.getItem("userLogged"));
   const styles = useStyles();
   const { rowUpdate } = useLocation();
-  const [value, setValue] = useState(new Date());
+  const [, setValue] = useState(new Date());
   let usehistory = useHistory();
   const [openAportante, setOpenAportante] = useState(false);
   const [openInstrumento, setOpenInstrumento] = useState(false);
@@ -877,10 +877,10 @@ export const PasMaestro = () => {
         form={form}
       />
       <SelectInstrumentoModal
-      open={openInstrumento}
-      handleClose={handleCloseInstrumento}
-      controller="PasInstrumento/GetPasInstrumentos"
-      form={form}
+        open={openInstrumento}
+        handleClose={handleCloseInstrumento}
+        controller="PasInstrumento/GetPasInstrumentos"
+        form={form}
       />
     </div>
   );

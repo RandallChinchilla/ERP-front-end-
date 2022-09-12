@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { delAction, noAction, readAllAction } from "../../Actions/Index";
-import { deleteAction } from "../../Helpers/deleteHelper";
-import { helpHttp } from "../../Helpers/HelpHttp";
+import { delAction, noAction, readAllAction } from "../../../Actions/Index";
+import { deleteAction } from "../../../Helpers/deleteHelper";
+import { helpHttp } from "../../../Helpers/HelpHttp";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 const controller = "PasAportante/GetPasAportantes";

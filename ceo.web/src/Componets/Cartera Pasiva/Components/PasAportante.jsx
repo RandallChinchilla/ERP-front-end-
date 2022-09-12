@@ -10,14 +10,14 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/system";
-import { useForm } from "../../Hooks/useForm";
-import { SelectCross } from "../Listas/SelectCross";
+import { useForm } from "../../../Hooks/useForm";
+import { SelectCross } from "../../Listas/SelectCross";
 import { useHistory, useLocation } from "react-router-dom";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { postAction } from "../../Helpers/postHelper";
-import { putAction } from "../../Helpers/putHelper";
+import { postAction } from "../../../Helpers/postHelper";
+import { putAction } from "../../../Helpers/putHelper";
 import PasAutorizadoView from "./PasAutorizadoView";
 
 const useStyles = makeStyles(() => ({

@@ -21,7 +21,7 @@ import AhoTipo from "../Ahorros/AhoTipo";
 import Autenticacion from "../Autenticacion/Autenticacion";
 import FacMaestro from "../Cajas/FacMaestro";
 import FacMaestroView from "../Cajas/FacMaestroView";
-import { PasIndex } from "../Cartera Pasiva/PasIndex";
+import { PasIndex } from "../Cartera Pasiva/Routes/PasIndex";
 import CliAportante from "../Clientes/CliAportante";
 import { CliMaestro } from "../Clientes/CliMaestro";
 import ClieMaestroView from "../Clientes/CliMaestroView";

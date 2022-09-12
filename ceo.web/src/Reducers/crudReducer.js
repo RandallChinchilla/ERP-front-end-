@@ -1,4 +1,3 @@
-import { noAction } from "../Actions/Index.js";
 import {
   CREATE_DATA,
   DELETE_DATA,
@@ -28,7 +27,7 @@ export function crudReducer(state = initialState, action) {
       };
     }
     case UPDATE_DATA: {
-      console.log(action.payload);
+      // console.log(action.payload);
 
       let newData = state.db.map((el) =>
         el[action.nameId] === action.payload[action.nameId]
@@ -41,7 +40,7 @@ export function crudReducer(state = initialState, action) {
       };
     }
     case DELETE_DATA: {
-      console.log(action.nameId);
+      // console.log(action.nameId);
 
       let newData = state.db.filter(
         (el) => el[action.nameId] !== action.payload

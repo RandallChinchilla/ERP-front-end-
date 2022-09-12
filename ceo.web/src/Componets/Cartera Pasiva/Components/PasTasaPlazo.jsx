@@ -11,15 +11,14 @@ import FormControl from "@mui/material/FormControl";
 import Modal from "@mui/material/Modal";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
-import { useForm } from "../../Hooks/useForm";
+import { useForm } from "../../../Hooks/useForm";
 import { useHistory, useLocation } from "react-router-dom";
-import { SelectCross } from "../Listas/SelectCross";
+import { SelectCross } from "../../Listas/SelectCross";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { postAction } from "../../Helpers/postHelper";
-import { putAction } from "../../Helpers/putHelper";
-
+import { postAction } from "../../../Helpers/postHelper";
+import { putAction } from "../../../Helpers/putHelper";
 
 const useStyles = makeStyles(() => ({
   iconos: {
@@ -83,7 +82,7 @@ export const PasTasaPlazo = () => {
 
   const initialForm = {
     CodigoEmpresa: userData.codigoEmpresa,
-    NombreEmpresa: userData.nombreEmpresa,     
+    NombreEmpresa: userData.nombreEmpresa,
     CodigoTipo: 0,
     FechaHora: "",
     Tasa: "",
@@ -93,45 +92,45 @@ export const PasTasaPlazo = () => {
     Usuario: userData.userName,
   };
   //Se agregaron las funciones de Crear y Editar
-    useEffect(() => {
-      if (rowUpdate) {
-        console.log(rowUpdate);
-        setForm(rowUpdate);
-      } else {
-        setForm(initialForm);
-      }
-    }, [rowUpdate]);
-  
-    const { form, errors, handleChange, handleBlur, setForm } = useForm(
-      initialForm,
-      validationsForm
-    );
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      if (form.CodigoTipo === 0) {
-        postAction("PasTasaPlazo/PostPasTasaPlazo", form, userLoggedToken).then(
-          (res) => {
-            if (res.isSuccess) {
-              setForm(initialForm);
-              return alert("La tasa plazo fue creado con exito");
-            } else {
-              return alert("La tasa plazo no fue creado");
-            }
+  useEffect(() => {
+    if (rowUpdate) {
+      console.log(rowUpdate);
+      setForm(rowUpdate);
+    } else {
+      setForm(initialForm);
+    }
+  }, [rowUpdate]);
+
+  const { form, errors, handleChange, handleBlur, setForm } = useForm(
+    initialForm,
+    validationsForm
+  );
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (form.CodigoTipo === 0) {
+      postAction("PasTasaPlazo/PostPasTasaPlazo", form, userLoggedToken).then(
+        (res) => {
+          if (res.isSuccess) {
+            setForm(initialForm);
+            return alert("La tasa plazo fue creado con exito");
+          } else {
+            return alert("La tasa plazo no fue creado");
           }
-        );
-      } else {
-        putAction("PasTasaPlazo/PutPasTasaPlazo", form, userLoggedToken).then(
-          (res) => {
-            if (res.isSuccess) {
-              return alert("El aportente fue actualizado con exito");
-            } else {
-              return alert("El registro no fue actualizado");
-            }
+        }
+      );
+    } else {
+      putAction("PasTasaPlazo/PutPasTasaPlazo", form, userLoggedToken).then(
+        (res) => {
+          if (res.isSuccess) {
+            return alert("El aportente fue actualizado con exito");
+          } else {
+            return alert("El registro no fue actualizado");
           }
-        );
-      }
-    };
+        }
+      );
+    }
+  };
 
   // const [value, setValue] = useState(new Date());
 
@@ -150,7 +149,7 @@ export const PasTasaPlazo = () => {
                 mb={5}
               >
                 <Typography component="h1" variant="h6" noWrap>
-                Tasa Plazo
+                  Tasa Plazo
                 </Typography>
               </Grid>
               <Grid item xs={6} container justifyContent="center">

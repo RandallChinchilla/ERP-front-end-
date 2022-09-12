@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useGetData } from "../../Hooks/useGetData";
 import MaterialTable from "material-table";
 import { useHistory } from "react-router";
 import {
@@ -12,14 +11,14 @@ import {
   Typography,
 } from "@mui/material";
 import { makeStyles, StylesContext } from "@material-ui/styles";
-import { SelectCross } from "../Listas/SelectCross";
-import { useForm } from "../../Hooks/useForm";
+import { SelectCross } from "../../Listas/SelectCross";
+import { useForm } from "../../../Hooks/useForm";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { putAction } from "../../Helpers/putHelper";
+import { putAction } from "../../../Helpers/putHelper";
 import { Button } from "@material-ui/core";
-import { postAction } from "../../Helpers/postHelper";
+import { postAction } from "../../../Helpers/postHelper";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createAction,
@@ -27,9 +26,9 @@ import {
   noAction,
   readAllAction,
   updateAction,
-} from "../../Actions/Index";
+} from "../../../Actions/Index";
 import { initializeConnect } from "react-redux/es/components/connect";
-import { deleteAction } from "../../Helpers/deleteHelper";
+import { deleteAction } from "../../../Helpers/deleteHelper";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));

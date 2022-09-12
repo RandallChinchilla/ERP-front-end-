@@ -10,9 +10,9 @@ import {
 import FormControl from "@mui/material/FormControl";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
-import { postAction } from "../../Helpers/postHelper";
-import { useForm } from "../../Hooks/useForm";
-import { SelectCross } from "../Listas/SelectCross";
+import { postAction } from "../../../Helpers/postHelper";
+import { useForm } from "../../../Hooks/useForm";
+import { SelectCross } from "../../Listas/SelectCross";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -20,7 +20,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useHistory, useLocation } from "react-router-dom";
-import { putAction } from "../../Helpers/putHelper";
+import { putAction } from "../../../Helpers/putHelper";
 
 const useStyles = makeStyles(() => ({
   iconos: {

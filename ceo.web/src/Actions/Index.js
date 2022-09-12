@@ -3,6 +3,7 @@ import {
   DELETE_DATA,
   NO_DATA,
   READ_ALL_DATA,
+  UPDATE_ALERT,
   UPDATE_DATA,
 } from "../Types/Index.js";
 
@@ -23,3 +24,5 @@ export const delAction = (id, nameId) => ({
 });
 
 export const noAction = () => ({ type: NO_DATA });
+
+export const updateAlert = (data) => ({ type: UPDATE_ALERT, payload: data });

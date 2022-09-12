@@ -1,94 +1,95 @@
-import React, { useEffect, useState } from "react";
-import { useGetData } from "../../Hooks/useGetData";
 import MaterialTable from "material-table";
-import { useHistory } from "react-router";
-import { helpHttp } from "../../Helpers/HelpHttp";
-import { useDispatch, useSelector } from "react-redux";
-import { delAction, noAction, readAllAction } from "../../Actions/Index";
-import { deleteAction } from "../../Helpers/deleteHelper";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { delAction, noAction, readAllAction } from "../../../Actions/Index";
+import { deleteAction } from "../../../Helpers/deleteHelper";
+import { helpHttp } from "../../../Helpers/HelpHttp";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
-const controller = "PasInstrumento/GetPasInstrumentos";
+const controller = "PasMaestro/GetPasMaestros";
 const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
 
-export const PasInstrumentoView = () => {
-  const { useState } = React;
+export const PasMaestroView = () => {
   let usehistory = useHistory();
-  //window.localStorage.removeItem("editPasInstrumento");
-
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const { db } = state.crud;
 
-  const [columns, setColumns] = useState([
+  const [columns] = useState([
     {
       title: "Código Empresa",
-      field: "CodigoEmpresa",
+      field: "CodigoEmpresaNavigation.CodigoEmpresa",
     },
     {
-      title: "Empresa",
+      title: "Nombre Empresa",
       field: "CodigoEmpresaNavigation.Nombre",
-      id: "CodigoEmpresaNavigation.CodigoEmpresa",
+    },
+    {
+      title: "Código Portafolio",
+      field: "CodigoPortafolio",
+    },
+    {
+      title: "Número Inversion",
+      field: "NumeroInversion",
+    },
+    {
+      title: "Código Aportante",
+      field: "CodigoAportante",
     },
     {
       title: "Código Instrumento",
       field: "CodigoInstrumento",
     },
     {
-      title: "Descripción",
-      field: "Descripcion",
-    },
-    {
       title: "Moneda",
       field: "CodigoMoneda",
     },
     {
-      title: "Periodicidad Pago Interés",
-      field: "CodigoNavigation.Descripcion",
-      id: "CodigoNavigation.CodigoPeriodicidad",
+      title: "Estado",
+      field: "CodigoEstado",
     },
     {
-      title: "Periodicidad Revisión Tasa",
-      field: "CodigoNavigation.Descripcion",
-      id: "CodigoNavigation.CodigoPeriodicidad",
+      title: "Saldo Nominal",
+      field: "SaldoValorNominal",
     },
   ]);
 
   let url = `${baseUrl}${controller}`;
-
   useEffect(() => {
     helpHttp()
       .get(url)
       .then((res) => {
         if (!res.err) {
+          //console.log(res);
           dispatch(readAllAction(res));
         } else {
+          //console.log(res);
           dispatch(noAction());
         }
       });
   }, [url, useDispatch]);
 
-  //+++++++update row in the table+++++++++
   const updateState = (rowUpdate, isNew) => {
-    //console.log(rowUpdate);
     if (isNew) {
-      usehistory.push(`./PasInstrumento`);
+      usehistory.push(`./PasMaestro`);
     } else {
-      usehistory.push({ pathname: "./PasInstrumento", rowUpdate });
+      usehistory.push({ pathname: "./PasMaestro", rowUpdate });
     }
   };
-  //  se agrego el componente de eliminar
+
   const deleteItem = (rowDelete) => {
     deleteAction(
-      "PasInstrumento/DeletePasInstrumento",
+      "PasMaestro/DeletePasMaestro",
       rowDelete,
       userLoggedToken
     ).then((res) => {
       if (res.isSuccess) {
-        dispatch(delAction(rowDelete.CodigoInstrumento, "CodigoInstrumento"));
-        alert("El instrumento fue eliminado");
+        dispatch(delAction(rowDelete.NumeroInversion, "NumeroInversion"));
+        alert("El maestro fue eliminado");
       } else {
-        alert("El instrumento no fue eliminado");
+        alert("El maestro no fue eliminado");
       }
     });
   };
@@ -96,7 +97,7 @@ export const PasInstrumentoView = () => {
   return (
     <div>
       <MaterialTable
-        title="Catálogo Instrumentos"
+        title="Maestro"
         columns={columns}
         data={db}
         options={{
@@ -113,22 +114,22 @@ export const PasInstrumentoView = () => {
         actions={[
           {
             icon: "edit",
-            tooltip: "Editar Instrumentos",
+            tooltip: "Editar Maestro",
             onClick: (event, rowData) => updateState(rowData, false),
           },
           {
             icon: "delete",
-            tooltip: "Borrar Instrumentos",
+            tooltip: "Borrar Maestro",
             onClick: (event, rowData) => deleteItem(rowData),
           },
           {
             icon: "add",
-            tooltip: "Nuevo Instrumento",
+            tooltip: "Agregar Maestro",
             isFreeAction: true,
             onClick: (event, rowData) => updateState(rowData, true),
           },
         ]}
-      />
+      ></MaterialTable>
     </div>
   );
 };

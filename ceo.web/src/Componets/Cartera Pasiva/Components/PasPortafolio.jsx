@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import MaterialTable from "material-table";
-import { putAction } from "../../Helpers/putHelper";
-import { postAction } from "../../Helpers/postHelper";
+import { putAction } from "../../../Helpers/putHelper";
+import { postAction } from "../../../Helpers/postHelper";
 import { useDispatch } from "react-redux";
-import { helpHttp } from "../../Helpers/HelpHttp";
 import { useSelector } from "react-redux";
 import {
   createAction,
@@ -11,18 +10,20 @@ import {
   noAction,
   readAllAction,
   updateAction,
-} from "../../Actions/Index";
-import { deleteAction } from "../../Helpers/deleteHelper";
+} from "../../../Actions/Index";
+
+import { helpHttp } from "../../../Helpers/HelpHttp";
+import { deleteAction } from "../../../Helpers/deleteHelper";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
 /**
- * Este componente realiza el CRUD sobre OrigenFondos su estado inicial es modificado
+ * Este componente realiza el CRUD sobre PasPortafolio su estado inicial es modificado
  * mediante Redux
  * @returns
  */
 
-const ParOrigenFondos = () => {
+const PasPortafolio = () => {
   const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
   const userData = JSON.parse(localStorage.getItem("userLogged"));
   const { useState } = React;
@@ -53,12 +54,29 @@ const ParOrigenFondos = () => {
       editable: "never",
     },
     {
-      title: "Código Origen Fondos",
-      field: "CodigoOrigenFondos",
+      title: "Código Portafolio",
+      field: "CodigoPortafolio",
       initialEditValue: 0,
       editable: "never",
     },
     { title: "Descripción", field: "Descripcion" },
+    {
+      title: "Indicador Regulado",
+      field: "IndicadorRegulado",
+      editComponent: (props) => {
+        return (
+          <input
+            type="checkbox"
+            value={props.value}
+            onChange={(e) => props.onChange(e.target.checked)}
+          />
+        );
+      },
+      render: (rowdata) => (
+        <input type="checkbox" checked={rowdata.booleanValue} />
+      ),
+    },
+    { title: "Código Centro Costo", field: "CodigoCentroCosto" },
   ]);
 
   /**
@@ -67,12 +85,13 @@ const ParOrigenFondos = () => {
    * de datos retornados por la Api.
    */
 
-  let url = `${baseUrl}PasOrigenFondo/GetPasOrigenFondos`;
+  let url = `${baseUrl}PasPortafolio/GetPasPortafolios`;
   useEffect(() => {
     helpHttp()
       .get(url)
       .then((res) => {
         if (!res.err) {
+          console.log(res);
           dispatch(readAllAction(res));
         } else {
           dispatch(noAction());
@@ -88,20 +107,18 @@ const ParOrigenFondos = () => {
    */
   const addFondos = (rowAdd) => {
     // console.log(rowAdd);
-    postAction(
-      "PasOrigenFondo/PostPasOrigenFondo",
-      rowAdd,
-      userLoggedToken
-    ).then((res) => {
-      console.log(res);
-      if (res.IsSuccess) {
+    postAction("PasPortafolio/PostPasPortafolio", rowAdd, userLoggedToken).then(
+      (res) => {
         console.log(res);
-        dispatch(createAction(res.Result));
-        return alert(res.Message);
-      } else {
-        return alert(res.Message);
+        if (res.IsSuccess) {
+          console.log(res);
+          dispatch(createAction(res.Result));
+          return alert(res.Message);
+        } else {
+          return alert(res.Message);
+        }
       }
-    });
+    );
   };
   /**
    * Esta funcion realiza la conexion con el Api, actualiza un registro y actualiza
@@ -111,12 +128,12 @@ const ParOrigenFondos = () => {
   const updateState = (rowUpdate) => {
     //console.log(rowUpdate);
     putAction(
-      "PasOrigenFondo/PutPasOrigenFondo",
+      "PasPortafolio/PutPasPortafolio",
       rowUpdate,
       userLoggedToken
     ).then((res) => {
       if (res.isSuccess) {
-        dispatch(updateAction(rowUpdate, "CodigoOrigenFondos"));
+        dispatch(updateAction(rowUpdate, "CodigoPortafolio"));
         return alert(res.message);
       } else {
         dispatch(noAction());
@@ -133,12 +150,12 @@ const ParOrigenFondos = () => {
   const deleteState = (rowDelete) => {
     console.log(rowDelete);
     deleteAction(
-      "PasOrigenFondo/DeletePasOrigenFondo",
+      "PasPortafolio/DeletePasPortafolio",
       rowDelete,
       userLoggedToken
     ).then((res) => {
       if (res.isSuccess) {
-        dispatch(delAction(rowDelete.CodigoOrigenFondos, "CodigoOrigenFondos"));
+        dispatch(delAction(rowDelete.CodigoPortafolio, "CodigoPortafolio"));
         return alert(res.message);
       } else {
         dispatch(noAction());
@@ -150,7 +167,7 @@ const ParOrigenFondos = () => {
   return (
     <div>
       <MaterialTable
-        title=" Catálogo Origen Fondos"
+        title=" Catálogo Portafolio"
         columns={columns}
         data={db}
         options={{
@@ -196,4 +213,4 @@ const ParOrigenFondos = () => {
   );
 };
 
-export default ParOrigenFondos;
+export default PasPortafolio;

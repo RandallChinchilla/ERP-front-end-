@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useGetData } from "../../Hooks/useGetData";
 import MaterialTable from "material-table";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { delAction, noAction, readAllAction } from "../../Actions/Index";
-import { deleteAction } from "../../Helpers/deleteHelper";
-import { helpHttp } from "../../Helpers/HelpHttp";
+import { delAction, noAction, readAllAction } from "../../../Actions/Index";
+import { deleteAction } from "../../../Helpers/deleteHelper";
+import { helpHttp } from "../../../Helpers/HelpHttp";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 const controller = "PasTasaPlazo/GetPasTasaPlazos";
@@ -28,21 +27,21 @@ export const PasTasaPlazoView = () => {
       field: "CodigoEmpresaNavigation.Nombre",
       id: "CodigoEmpresaNavigation.CodigoEmpresa",
     },
-    { 
-      title: "Código Tipo", 
-      field: "CodigoTipo"
+    {
+      title: "Código Tipo",
+      field: "CodigoTipo",
     },
     {
       title: "Fecha",
       field: "FechaHora",
     },
-    { 
-      title: "Tasa Bruta", 
-      field: "Tasa"
+    {
+      title: "Tasa Bruta",
+      field: "Tasa",
     },
-    { 
-      title: "Estado", 
-      field: "CodigoEstado"
+    {
+      title: "Estado",
+      field: "CodigoEstado",
     },
   ]);
 

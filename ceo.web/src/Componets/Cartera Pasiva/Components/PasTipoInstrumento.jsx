@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import MaterialTable from "material-table";
-import { putAction } from "../../Helpers/putHelper";
-import { postAction } from "../../Helpers/postHelper";
+import { putAction } from "../../../Helpers/putHelper";
+import { postAction } from "../../../Helpers/postHelper";
 import { useDispatch } from "react-redux";
-import { helpHttp } from "../../Helpers/HelpHttp";
+import { helpHttp } from "../../../Helpers/HelpHttp";
 import { useSelector } from "react-redux";
 import {
   createAction,
@@ -11,27 +11,27 @@ import {
   noAction,
   readAllAction,
   updateAction,
-} from "../../Actions/Index";
-import { deleteAction } from "../../Helpers/deleteHelper";
+} from "../../../Actions/Index";
+import { deleteAction } from "../../../Helpers/deleteHelper";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
 /**
- * Este componente realiza el CRUD sobre OrigenAportante su estado inicial es modificado
+ * Este componente realiza el CRUD sobre PasTipoInstrumento su estado inicial es modificado
  * mediante Redux
  * @returns
  */
 
-const ParOrigenAportante = () => {
+const PasTipoInstrumento = () => {
   const { useState } = React;
   // const styles = useStyles();
   const [error, seterror] = useState(null);
+  const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+  const userData = JSON.parse(localStorage.getItem("userLogged"));
 
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const { db } = state.crud;
-  const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
-  const userData = JSON.parse(localStorage.getItem("userLogged"));
 
   /**
    * Creamos las columnas que va a tener la tabla y asignamos
@@ -53,12 +53,13 @@ const ParOrigenAportante = () => {
       editable: "never",
     },
     {
-      title: "Código Origen Aportante",
-      field: "CodigoOrigenAportante",
+      title: "Código Tipo Instrumento",
+      field: "CodigoTipo",
       initialEditValue: 0,
       editable: "never",
     },
     { title: "Descripción", field: "Descripcion" },
+    // { title: "Usuario", field: "Id" },
   ]);
 
   /**
@@ -67,7 +68,7 @@ const ParOrigenAportante = () => {
    * de datos retornados por la Api.
    */
 
-  let url = `${baseUrl}PasOrigenAportante/GetPasOrigenAportantes`;
+  let url = `${baseUrl}PasTipoInstrumento/GetPasTipoInstrumentos`;
   useEffect(() => {
     helpHttp()
       .get(url)
@@ -89,7 +90,7 @@ const ParOrigenAportante = () => {
   const addFondos = (rowAdd) => {
     // console.log(rowAdd);
     postAction(
-      "PasOrigenAportante/PostPasOrigenAportante",
+      "PasTipoInstrumento/PostPasTipoInstrumento",
       rowAdd,
       userLoggedToken
     ).then((res) => {
@@ -111,12 +112,12 @@ const ParOrigenAportante = () => {
   const updateState = (rowUpdate) => {
     //console.log(rowUpdate);
     putAction(
-      "PasOrigenAportante/PutPasOrigenAportante",
+      "PasTipoInstrumento/PutPasTipoInstrumento",
       rowUpdate,
       userLoggedToken
     ).then((res) => {
       if (res.isSuccess) {
-        dispatch(updateAction(rowUpdate, "CodigoOrigenAportante"));
+        dispatch(updateAction(rowUpdate, "CodigoTipo"));
         return alert(res.message);
       } else {
         dispatch(noAction());
@@ -133,14 +134,12 @@ const ParOrigenAportante = () => {
   const deleteState = (rowDelete) => {
     console.log(rowDelete);
     deleteAction(
-      "PasOrigenAportante/DeletePasOrigenAportante",
+      "PasTipoInstrumento/DeletePasTipoInstrumento",
       rowDelete,
       userLoggedToken
     ).then((res) => {
       if (res.isSuccess) {
-        dispatch(
-          delAction(rowDelete.CodigoOrigenAportante, "CodigoOrigenAportante")
-        );
+        dispatch(delAction(rowDelete.CodigoTipo, "CodigoTipo"));
         return alert(res.message);
       } else {
         dispatch(noAction());
@@ -152,7 +151,7 @@ const ParOrigenAportante = () => {
   return (
     <div>
       <MaterialTable
-        title=" Catálogo Origen Aportante"
+        title=" Catálogo Tipo Instrumento"
         columns={columns}
         data={db}
         options={{
@@ -198,4 +197,4 @@ const ParOrigenAportante = () => {
   );
 };
 
-export default ParOrigenAportante;
+export default PasTipoInstrumento;
