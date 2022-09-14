@@ -15,11 +15,10 @@ import { blue } from "@mui/material/colors";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import { Box } from "@mui/system";
-import React, { useContext } from "react";
+import React from "react";
 import { useData } from "../../Hooks/useData";
 import { useForm } from "../../Hooks/useForm";
 import { useGetData } from "../../Hooks/useGetData";
-import { helpHttp } from "../../Helpers/HelpHttp";
 
 const useStyles = makeStyles((theme) => ({
   iconos: {
@@ -67,37 +66,12 @@ export default function Autenticacion() {
     RememberMe: true,
   };
 
-  // const { setAut } = useContext(AutContext);
   const styles = useStyles();
   const { form, errors, handleChange, handleBlur } = useForm(
     initialForm,
     validationsForm
   );
   const { response, handleSubmitLogin } = useData(form);
-  // setAut(response);
-  // console.log(response);
-
-  // const handleSubmitLogin = (e) => {
-  //   e.preventDefault();
-  //   const baseUrl = process.env.REACT_APP_BASE_URL;
-  //   console.log(form);
-  //   let url = `${baseUrl}Account/CreateToken`;
-  //   let token = "";
-  //   const response = "";
-  //   let options = {
-  //     headers: {
-  //       //Autorization: `Bearer ${token}`,
-  //       "content-type": "application/json",
-  //     },
-  //     body: form,
-  //   };
-  //   helpHttp()
-  //     .post(url, options)
-  //     .then((res) => {
-  //       console.log(res);
-
-  //     });
-  // };
 
   const { Data, Error } = useGetData("ParEmpresa/GetParEmpresas");
 
@@ -221,6 +195,11 @@ export default function Autenticacion() {
                   Ingresar
                 </Button>
               </FormControl>
+              <Grid mt={5}>
+                <Typography variant="caption" display="block" gutterBottom>
+                  Versión 1.1 DMDIntersoft 2022
+                </Typography>
+              </Grid>
             </Grid>
           </Box>
         </Paper>
