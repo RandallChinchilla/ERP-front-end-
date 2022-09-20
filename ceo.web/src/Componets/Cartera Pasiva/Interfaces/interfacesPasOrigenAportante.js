@@ -1,4 +1,4 @@
-const userData = JSON.parse(localStorage.getItem("userLogged"));
+const userData = JSON.parse(localStorage.getItem("userLogged")) | "";
 
 /**
  * Contexto con el cual interactua el componente PasOrigenAportante
