@@ -15,7 +15,7 @@ import {
     Modal,
   } from "@mui/material";
   import React, { useState } from "react";
-  import { useGetData } from "../../Hooks/useGetData";
+  import { useGetData } from "../../../Hooks/useGetData";
   import { Delete, Edit, Visibility } from "@material-ui/icons";
   import { makeStyles } from "@material-ui/core";
   import { red, blue, green } from "@mui/material/colors";

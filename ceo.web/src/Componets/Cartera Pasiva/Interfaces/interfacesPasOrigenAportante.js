@@ -5,7 +5,7 @@
  * Contexto con el cual interactua el componente PasOrigenAportante
  */
 
-export const columnsPasOrigenAportante = [
+ export const columnsPasOrigenAportante = [
   {
     title: "Código Empresa",
     field: "CodigoEmpresa",
@@ -45,3 +45,6 @@ export const tableStyle = {
     fontSize: 13,
   },
 };
+
+
+

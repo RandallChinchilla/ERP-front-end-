@@ -15,10 +15,10 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
 import { Link, NavLink } from "react-router-dom";
-import { useGetData } from "../../Hooks/useGetData";
-import { useForm } from "../../Hooks/useForm";
+import { useGetData } from "../../../Hooks/useGetData";
+import { useForm } from "../../../Hooks/useForm";
 import { blue } from "@mui/material/colors";
-import SelectEstado from "../Listas/SelectEstado";
+import SelectEstado from "../../Listas/SelectEstado";
 
 const useStyles = makeStyles((theme) => ({
   iconos: {
@@ -227,7 +227,6 @@ const validationsForm = (form) => {
            InputLabelProps={{
            shrink: true,
            }}
-           id="FechaIngreso"
            name="FechaIngreso"
            label="Fecha de ingreso"
            onChange={handleChange}
@@ -248,7 +247,6 @@ const validationsForm = (form) => {
            InputLabelProps={{
            shrink: true,
            }}
-           id="FechaSalida"
            name="FechaSalida"
            label="Fecha de salida"
            onChange={handleChange}
@@ -269,7 +267,6 @@ const validationsForm = (form) => {
            InputLabelProps={{
            shrink: true,
            }}
-           id="FechaExpPassword"
            name="FechaExpPassword"
            label="Fecha expiración de contraseña"
            onChange={handleChange}
