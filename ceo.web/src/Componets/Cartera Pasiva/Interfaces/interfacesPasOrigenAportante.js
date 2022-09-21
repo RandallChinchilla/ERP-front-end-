@@ -1,21 +1,22 @@
-const userData = JSON.parse(localStorage.getItem("userLogged"));
+// const userData = JSON.parse(localStorage.getItem("userLogged"));
+// console.log(userData);
 
 /**
  * Contexto con el cual interactua el componente PasOrigenAportante
  */
 
-export const columnsPasOrigenAportante = [
+ export const columnsPasOrigenAportante = [
   {
     title: "Código Empresa",
     field: "CodigoEmpresa",
-    initialEditValue: userData.codigoEmpresa,
+    initialEditValue: 1,
     editable: "never",
   },
   {
     title: "Nombre",
     field: "CodigoEmpresaNavigation.Nombre",
     id: "CodigoEmpresaNavigation.CodigoEmpresa",
-    initialEditValue: userData.nombreEmpresa,
+    initialEditValue: "DmdInterSoft",
     editable: "never",
   },
   {
@@ -44,3 +45,6 @@ export const tableStyle = {
     fontSize: 13,
   },
 };
+
+
+

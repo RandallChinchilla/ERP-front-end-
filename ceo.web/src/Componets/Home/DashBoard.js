@@ -17,7 +17,6 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { Route, Switch } from "react-router-dom";
 import { ActIndex } from "../ActivosFijos/ActIndex";
-import AhoTipo from "../Ahorros/AhoTipo";
 import Autenticacion from "../Autenticacion/Autenticacion";
 import FacMaestro from "../Cajas/FacMaestro";
 import FacMaestroView from "../Cajas/FacMaestroView";
@@ -79,11 +78,7 @@ import ParMoneda from "../Parametros/ParMoneda";
 import ParMonedaView from "../Parametros/ParMonedaView";
 import ParTipoIdentificacion from "../Parametros/ParTipoIdentificacion";
 import ParTipoIdentificacionView from "../Parametros/ParTipoIdentificacionView";
-import RRHEstado from "../Recursos Humanos/RRHEstado";
-import RRHFormaDePago from "../Recursos Humanos/RRHFormaDePago";
-import RRHFormaDePagoView from "../Recursos Humanos/RRHFormaDePagoView";
-import RRHISR from "../Recursos Humanos/RRHISR";
-import RRHISRView from "../Recursos Humanos/RRHISRView";
+import { RRHIndex } from "../Recursos Humanos/Routes/RRHIndex";
 import RegTipoDependenciaAcreedor from "../Regulador/RegTipoDependenciaAcreedor";
 import RegTipoEmpresa from "../Regulador/RegTipoEmpresa";
 import RegTipoOperacionObligaciones from "../Regulador/RegTipoOperacionObligaciones";
@@ -91,9 +86,14 @@ import RegTipoPersona from "../Regulador/RegTipoPersona";
 import RegTipoRelacionComercial from "../Regulador/RegTipoRelacionComercial";
 import RegTipoTasa from "../Regulador/RegTipoTasa";
 import reportTest from "../Reportes/reportTest";
-import SegUsuario from "../Seguidad/SegUsuario";
-import SegUsuarioView from "../Seguidad/SegUsuarioView";
 import NestedList from "./listItems";
+import RRHEstado from "../Recursos Humanos/Components/RRHEstado";
+import RRHFormaDePago from "../Recursos Humanos/Components/RRHFormaDePago";
+import RRHFormaDePagoView from "../Recursos Humanos/Components/RRHFormaDePagoView";
+import RRHISRView from "../Recursos Humanos/Components/RRHISRView";
+import RRHISR from "../Recursos Humanos/Components/RRHISR";
+import { AhoIndex } from "../Ahorros/Routes/AhoIndex";
+import { SegIndex } from "../Seguidad/Routes/SegIndex";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -290,16 +290,6 @@ function DashboardContent() {
             ></Route>
             <Route
               exact
-              path="/Dashboard/segusuario"
-              component={SegUsuario}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/segusuarioview"
-              component={SegUsuarioView}
-            ></Route>
-            <Route
-              exact
               path="/Dashboard/parmoneda"
               component={ParMoneda}
             ></Route>
@@ -450,6 +440,9 @@ function DashboardContent() {
             ></Route>
             <Route path="/Dashboard/ActIndex" component={ActIndex} />
             <Route path="/Dashboard/PasIndex" component={PasIndex} />
+            <Route path="/Dashboard/RRHIndex" component={RRHIndex} />
+            <Route path="/Dashboard/AhoIndex" component={AhoIndex} />
+            <Route path="/Dashboard/SegIndex" component={SegIndex} />
 
             <Route
               exact
@@ -593,7 +586,6 @@ function DashboardContent() {
               path="/Dashboard/reportTest"
               component={reportTest}
             ></Route>
-            <Route exact path="/Dashboard/AhoTipo" component={AhoTipo}></Route>
 
             <Route
               exact

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import { red, blue, green } from "@mui/material/colors";
-import { useGetData } from "../../Hooks/useGetData";
+import { useGetData } from "../../../Hooks/useGetData";
 import MaterialTable from "material-table";
-import { putAction } from "../../Helpers/putHelper";
-import { deleteAction } from "../../Helpers/deleteHelper";
-import { postAction } from "../../Helpers/postHelper";  
+import { putAction } from "../../../Helpers/putHelper";
+import { deleteAction } from "../../../Helpers/deleteHelper";
+import { postAction } from "../../../Helpers/postHelper";  
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 

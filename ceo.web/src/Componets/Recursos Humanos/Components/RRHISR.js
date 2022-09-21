@@ -13,11 +13,11 @@ import { Box } from "@mui/system";
 import MaterialTable from "material-table";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { postAction } from "../../Helpers/postHelper";
-import { useForm } from "../../Hooks/useForm";
-import { useGetData } from "../../Hooks/useGetData";
-import SelectEstado from "../Listas/SelectEstado";
-import { SelectCross } from "../Listas/SelectCross";
+import { postAction } from "../../../Helpers/postHelper";
+import { useForm } from "../../../Hooks/useForm";
+import { useGetData } from "../../../Hooks/useGetData";
+import SelectEstado from "../../Listas/SelectEstado";
+import { SelectCross } from "../../Listas/SelectCross";
 
 
 const useStyles = makeStyles(() => ({

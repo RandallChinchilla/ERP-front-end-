@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGetData } from "../../Hooks/useGetData";
+import { useGetData } from "../../../Hooks/useGetData";
 import MaterialTable from "material-table";
 import { useHistory } from "react-router";
 
