@@ -1,0 +1,18 @@
+[
+  {
+    "type": "input",
+    "name": "nombreEmpresa",
+    "placeholder": "F",
+    "label": "Empresa",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      },
+      {
+        "type": "minLength",
+        "value": 5
+      }
+    ]
+  }
+]
