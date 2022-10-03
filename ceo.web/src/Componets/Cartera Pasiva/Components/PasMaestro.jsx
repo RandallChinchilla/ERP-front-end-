@@ -357,6 +357,7 @@ export const PasMaestro = () => {
                     controller={"ParMonedum/GetParMonedas"}
                     name="CodigoMoneda"
                     field="Descripcion"
+                    disabled
                   />
                 </FormControl>
                 {errors.CodigoMoneda && (
@@ -375,6 +376,7 @@ export const PasMaestro = () => {
                   value={form.Isin}
                   className={styles.inpuntEmpresa}
                   size="small"
+                  disabled
                 ></TextField>
                 {errors.Isin && (
                   <FormHelperText id="my-helper-text" error>
@@ -392,6 +394,7 @@ export const PasMaestro = () => {
                   value={form.Serie}
                   className={styles.inpuntEmpresa}
                   size="small"
+                  disabled
                 ></TextField>
                 {errors.Serie && (
                   <FormHelperText id="my-helper-text" error>
@@ -409,6 +412,7 @@ export const PasMaestro = () => {
                       setValue(newvalue);
                       form.FechaEmision = newvalue;
                     }}
+                    disabled
                     onBlur={handleBlur}
                     value={form.FechaEmision}
                     renderInput={(params) => (
@@ -441,6 +445,7 @@ export const PasMaestro = () => {
                       setValue(newvalue);
                       form.FechaVencimiento = newvalue;
                     }}
+                    disabled
                     onBlur={handleBlur}
                     value={form.FechaVencimiento}
                     renderInput={(params) => (
@@ -473,6 +478,7 @@ export const PasMaestro = () => {
                     controller={"ParPeriodicidad/GetParPeriodicidades"}
                     name="CodigoPeriodicidad"
                     field="Descripcion"
+                    disabled
                   />
                 </FormControl>
                 {errors.CodigoPeriodicidad && (
@@ -491,6 +497,7 @@ export const PasMaestro = () => {
                       setValue(newvalue);
                       form.FechaUltimoPagoInteres = newvalue;
                     }}
+                    disabled
                     onBlur={handleBlur}
                     value={form.FechaUltimoPagoInteres}
                     renderInput={(params) => (
@@ -523,6 +530,7 @@ export const PasMaestro = () => {
                       setValue(newvalue);
                       form.FechaProximoPagoInteres = newvalue;
                     }}
+                    disabled
                     onBlur={handleBlur}
                     value={form.FechaProximoPagoInteres}
                     renderInput={(params) => (
@@ -555,6 +563,7 @@ export const PasMaestro = () => {
                       setValue(newvalue);
                       form.FechaUltimoInteresAcumulado = newvalue;
                     }}
+                    disabled
                     onBlur={handleBlur}
                     value={form.FechaUltimoInteresAcumulado}
                     renderInput={(params) => (
@@ -587,6 +596,7 @@ export const PasMaestro = () => {
                   value={form.TasaNeta}
                   className={styles.inpuntEmpresa}
                   size="small"
+                  disabled
                 ></TextField>
                 {errors.TasaNeta && (
                   <FormHelperText id="my-helper-text" error>
@@ -604,6 +614,7 @@ export const PasMaestro = () => {
                   value={form.TasaBruta}
                   className={styles.inpuntEmpresa}
                   size="small"
+                  disabled
                 ></TextField>
                 {errors.TasaBruta && (
                   <FormHelperText id="my-helper-text" error>
