@@ -43,6 +43,17 @@ export const SelectInstrumentoModal = (props) => {
   const selectItem = (rowData) => {
     console.log(rowData);
     props.form.CodigoInstrumento = rowData.Descripcion;
+    props.form.CodigoMoneda = rowData.CodigoMoneda;
+    props.form.Isin = rowData.Isin;
+    props.form.Serie = rowData.Serie;
+    props.form.FechaEmision = rowData.FechaEmision;
+    props.form.FechaProximoPagoInteres = rowData.FechaProximoPagoInteres;
+    props.form.FechaUltimoInteresAcumulado = rowData.FechaUltimoPagoInteres;
+    props.form.FechaVencimiento = rowData.FechaVencimiento;
+    props.form.FechaUltimoPagoInteres = rowData.FechaUltimoPagoInteres;
+    props.form.TasaNeta = rowData.TasaNeta;
+    props.form.TasaBruta = rowData.TasaBruta;
+    props.form.CodigoPeriodicidad = rowData.CodigoPeriodicidadPagoInteres;
     props.handleClose();
   };
 

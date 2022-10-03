@@ -1,0 +1,298 @@
+[
+  { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+  {
+    "type": "text",
+    "name": "nombreEmpresa",
+    "label": "Empresa",
+    "value": "",
+    "xs": 3,
+    "disabled": true,
+    "validations": []
+  },
+  {
+    "type": "text",
+    "name": "CodigoInstrumento",
+    "label": "Código Instrumeto",
+    "value": 0,
+    "xs": 3,
+    "disabled": true,
+    "validations": []
+  },
+  {
+    "type": "text",
+    "name": "Descripcion",
+    "label": "Descripción",
+    "value": "",
+    "xs": 6,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Isin",
+    "label": "Isin",
+    "value": 0,
+    "xs": 6,
+    "disabled": true,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Serie",
+    "label": "Serie",
+    "value": 0,
+    "xs": 6,
+    "disabled": true,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaEmision",
+    "label": "Fecha Emisión",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaVencimiento",
+    "label": "Fecha Vencimiento",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaUltimoPagoInteres",
+    "label": "Fecha Último Pago Interés",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaProximoPagoInteres",
+    "label": "Fecha Próximo Pago Interés",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "TasaBruta",
+    "label": "Tasa Bruta",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "TasaNeta",
+    "label": "Tasa Neta",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoDivisor",
+    "label": "Divisor Tasa",
+    "value": "",
+    "xs": 3,
+    "controller": "ParMonedum/GetParMonedas",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ],
+    "data": [
+      { "CodigoDivisor": 1, "Descripcion": "360" },
+      { "CodigoDivisor": 2, "Descripcion": "365" },
+      { "CodigoDivisor": 3, "Descripcion": "Actual" }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoMultiplicador",
+    "label": "Multiplicador Tasa",
+    "value": "",
+    "xs": 3,
+    "controller": "ParMonedum/GetParMonedas",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ],
+    "data": [
+      { "CodigoMultiplicador": 1, "Descripcion": "360" },
+      { "CodigoMultiplicador": 2, "Descripcion": "365" },
+      { "CodigoMultiplicador": 3, "Descripcion": "Actual" }
+    ]
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorTasaVariable",
+    "label": "Indicador Tasa Variable",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorCapitalizable",
+    "label": "Indicador Capitalizable",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorGenerico",
+    "label": "Indicador Genérico",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorBloqueo",
+    "label": "Permite Bloqueo",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "text",
+    "name": "MontoMinimo",
+    "label": "Monto Mínimno",
+    "value": "",
+    "xs": 6,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "MontoMaximo",
+    "label": "Monto Máximo",
+    "value": "",
+    "xs": 6,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Observaciones",
+    "label": "Observaciones",
+    "value": "",
+    "xs": 12,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoMoneda",
+    "label": "Moneda",
+    "value": "",
+    "xs": 3,
+    "controller": "ParMonedum/GetParMonedas",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "nameId": "CodigoPeriodicidadPagoInteres",
+    "name": "CodigoPeriodicidad",
+    "label": "Periodicidad Pago Interés",
+    "value": "",
+    "xs": 3,
+    "controller": "ParPeriodicidad/GetParPeriodicidades",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "nameId": "CodigoPeriodicidadRevisionTasa",
+    "name": "CodigoPeriodicidad",
+    "label": "Periodicidad Revisión Tasa",
+    "value": "",
+    "xs": 3,
+    "controller": "ParPeriodicidad/GetParPeriodicidades",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Usuario",
+    "label": "Usuario",
+    "value": "",
+    "xs": 3,
+    "disabled": true,
+    "validations": []
+  }
+]

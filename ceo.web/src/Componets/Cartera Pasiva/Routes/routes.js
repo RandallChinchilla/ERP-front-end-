@@ -10,6 +10,7 @@ import { PasTasaPlazo } from "../Components/PasTasaPlazo";
 import { PasTasaPlazoView } from "../Components/PasTasaPlazoView";
 import PasTipoInstrumento from "../Components/PasTipoInstrumento";
 import PasOrigenAportante from "../Components/PasOrigenAportante";
+// import { PasInstrumentoUH } from "../Components/PasInstrumentoUH";
 
 export const routes = [
   {
@@ -32,6 +33,10 @@ export const routes = [
     path: "/Dashboard/pasindex/PasInstrumento",
     component: PasInstrumento,
   },
+  // {
+  //   path: "/Dashboard/pasindex/PasInstrumentoUH",
+  //   component: PasInstrumentoUH,
+  // },
   {
     path: "/Dashboard/pasindex/PasInstrumentoView",
     component: PasInstrumentoView,

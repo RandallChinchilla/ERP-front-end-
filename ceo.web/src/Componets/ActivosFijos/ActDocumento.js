@@ -16,8 +16,7 @@ import { useForm } from "../../Hooks/useForm";
 import { SelectCross } from "../Listas/SelectCross";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns"
-
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 const useStyles = makeStyles(() => ({
   iconos: {
@@ -71,15 +70,14 @@ const ActDocumento = () => {
   const handleClose = () => setOpen(false);
 
   const initialForm = {
-    CodigoEmpresa: rowEdit ? rowEdit.CodigoEmpresa: userData.codigoEmpresa,
-    NombreEmpresa: rowEdit ? rowEdit.NombreEmpresa: userData.nombreEmpresa,     
+    CodigoEmpresa: rowEdit ? rowEdit.CodigoEmpresa : userData.codigoEmpresa,
+    NombreEmpresa: rowEdit ? rowEdit.NombreEmpresa : userData.nombreEmpresa,
     CodigoActivo: rowEdit ? rowEdit.CodigoActivo : "",
     FechaHora: rowEdit ? rowEdit.FechaHora : "",
     NombreDocumento: rowEdit ? rowEdit.NombreDocumento : "",
     UrlDocumento: rowEdit ? rowEdit.UrlDocumento : "",
     Usuario: rowEdit ? rowEdit.Usuario : userData.userName,
   };
-
 
   const style = {
     position: "absolute",
@@ -93,7 +91,7 @@ const ActDocumento = () => {
     p: 4,
   };
 
-  const { form, errors, handleChange, handleBlur, setForm } = useForm(
+  const { form, errors, handleChange, handleBlur, setForm } = useFormv(
     initialForm,
     validationsForm
   );
@@ -143,7 +141,7 @@ const ActDocumento = () => {
                 mb={5}
               >
                 <Typography component="h1" variant="h6" noWrap>
-                Documentos
+                  Documentos
                 </Typography>
               </Grid>
               <Grid item xs={6} container justifyContent="center">
@@ -266,7 +264,9 @@ const ActDocumento = () => {
                 )}
               </Grid>
               <Grid item xs={12} container justifyContent="end">
-                <Button onClick={addRow} variant="contained">Agregar</Button>
+                <Button onClick={addRow} variant="contained">
+                  Agregar
+                </Button>
               </Grid>
               <Grid item xs={12} mt={2}>
                 <Divider />
@@ -282,11 +282,10 @@ const ActDocumento = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-        </Box>
+        <Box sx={style}></Box>
       </Modal>
     </div>
   );
 };
 
-  export default ActDocumento;
+export default ActDocumento;

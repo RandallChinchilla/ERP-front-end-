@@ -854,6 +854,33 @@ export const PasMaestro = () => {
                     usehistory.push(`./PasMaestroView`);
                   }}
                 >
+                  Transacción
+                </Button>
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  onClick={() => {
+                    usehistory.push(`./PasMaestroView`);
+                  }}
+                >
+                  Interés
+                </Button>
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  onClick={() => {
+                    usehistory.push(`./PasMaestroView`);
+                  }}
+                >
+                  Enviar Tabla Interés
+                </Button>
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  onClick={() => {
+                    usehistory.push(`./PasMaestroView`);
+                  }}
+                >
                   Regresar
                 </Button>
                 <Button

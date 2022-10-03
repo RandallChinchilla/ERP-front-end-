@@ -1075,9 +1075,7 @@ export default function NestedList() {
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHMaestroView">
-              <ListItemText className={classes.text}>
-                Maestro
-              </ListItemText>
+              <ListItemText className={classes.text}>Maestro</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -1086,9 +1084,7 @@ export default function NestedList() {
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHMaestroLogView">
-              <ListItemText className={classes.text}>
-                Maestro Log
-              </ListItemText>
+              <ListItemText className={classes.text}>Maestro Log</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -1533,7 +1529,7 @@ export default function NestedList() {
               })}
             >
               <ListItemText className={classes.text}>
-                Cliete Aportante
+                Cliente Aportante
               </ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1646,6 +1642,23 @@ export default function NestedList() {
               })}
             >
               <ListItemText className={classes.text}>Maestro</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/pasindex/PasInstrumentoUH"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>
+                react-hook-form
+              </ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -1842,11 +1855,13 @@ export default function NestedList() {
                 color: isActive ? "inherit" : "inherit",
               })}
             >
-              <ListItemText className={classes.text}>Transacciones</ListItemText>
+              <ListItemText className={classes.text}>
+                Transacciones
+              </ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
       </Collapse>
-    </List>  
+    </List>
   );
 }
