@@ -91,7 +91,7 @@ const ActDocumento = () => {
     p: 4,
   };
 
-  const { form, errors, handleChange, handleBlur, setForm } = useFormv(
+  const { form, errors, handleChange, handleBlur, setForm } = useForm(
     initialForm,
     validationsForm
   );
