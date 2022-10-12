@@ -125,8 +125,8 @@ const validationsForm = (form) => {
       "Debes ingresar el porcentaje del valor de mercado";
     errors.error = true;
   }
-  if (!form.AmortizacionAcumalada) {
-    errors.AmortizacionAcumlada = "Debes ingresar la amortización acumulada";
+  if (!form.AmortizacionAcumulada) {
+    errors.AmortizacionAcumulada = "Debes ingresar la amortización acumulada";
     errors.error = true;
   }
   if (!form.ValuacionAcumulada) {

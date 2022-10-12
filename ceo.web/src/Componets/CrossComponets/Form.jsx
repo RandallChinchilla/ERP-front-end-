@@ -5,9 +5,7 @@ import { Box, Grid, Paper, Typography } from "@mui/material";
 import {
   Button,
   Checkbox,
-  FormControl,
   FormControlLabel,
-  FormGroup,
   FormHelperText,
   TextField,
 } from "@mui/material";
@@ -18,6 +16,9 @@ import { makeStyles } from "@material-ui/core";
 import { postAction } from "../../Helpers/postHelper";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAlert } from "../../Actions/Index";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 const initialValues = {};
 const requiredFields = {};
@@ -43,7 +44,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const Form = ({ formJson, title, urlApi }) => {
+export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const { alert } = state.alert;
@@ -69,13 +70,15 @@ export const Form = ({ formJson, title, urlApi }) => {
   initialValues.Usuario = userData.userName;
   initialValues.CodigoEmpresa = userData.codigoEmpresa;
 
+  console.log(rowUpdate);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
   } = useForm({
-    defaultValues: initialValues,
+    defaultValues: rowUpdate ? rowUpdate : initialValues,
     resolver: yupResolver(validationschema),
   });
 
@@ -143,6 +146,7 @@ export const Form = ({ formJson, title, urlApi }) => {
                       controller,
                       fieldName,
                       data,
+                      inputFormat,
                     }) => {
                       switch (type) {
                         case "text":
@@ -174,22 +178,29 @@ export const Form = ({ formJson, title, urlApi }) => {
                         case "date":
                           return (
                             <Grid
-                              key={name}
                               item
                               xs={xs}
                               className={styles.grid}
+                              key={name}
                             >
-                              <TextField
-                                id={name}
-                                label={label}
-                                {...register(name)}
-                                type="date"
-                                className={styles.textfield}
-                                InputLabelProps={{
-                                  shrink: true,
-                                }}
-                                size="small"
-                              />
+                              <LocalizationProvider
+                                dateAdapter={AdapterDateFns}
+                              >
+                                <Controller
+                                  name={name}
+                                  control={control}
+                                  render={({ field }) => (
+                                    <DesktopDatePicker
+                                      label={label}
+                                      inputFormat={inputFormat}
+                                      {...field}
+                                      renderInput={(params) => (
+                                        <TextField size="small" {...params} />
+                                      )}
+                                    />
+                                  )}
+                                ></Controller>
+                              </LocalizationProvider>
                               {errors[name] && (
                                 <FormHelperText id="my-helper-text" error>
                                   {errors[name]["message"]}
@@ -206,22 +217,27 @@ export const Form = ({ formJson, title, urlApi }) => {
                               container
                               justifyContent="center"
                             >
-                              <FormControl component="fieldset">
-                                <FormGroup>
+                              <Controller
+                                key={name}
+                                name={name}
+                                control={control}
+                                render={({ field }) => (
                                   <FormControlLabel
                                     control={
                                       <Checkbox
-                                        checked={initialValues[value]}
+                                        onChange={(e) =>
+                                          field.onChange(e.target.checked)
+                                        }
+                                        checked={field.value}
                                       />
                                     }
                                     label={label}
-                                    {...register(name)}
                                     labelPlacement="start"
                                     className={styles.textfield}
                                     size="medium"
                                   />
-                                </FormGroup>
-                              </FormControl>
+                                )}
+                              ></Controller>
                             </Grid>
                           );
                         case "select":
