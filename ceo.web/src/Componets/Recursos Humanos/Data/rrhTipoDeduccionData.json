@@ -1,0 +1,128 @@
+[
+    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+    {
+      "type": "text",
+      "name": "nombreEmpresa",
+      "label": "Empresa",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "CodigoTipoDeduccion",
+      "label": "Código Tipo Deducción",
+      "value": 0,
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "Descripcion",
+      "label": "Descripción",
+      "value": "",
+      "xs": 6,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "date",
+      "name": "FechaVencimiento",
+      "label": "Fecha Vencimiento",
+      "value": "",
+      "size": "small",
+      "inputFormat": "dd/MM/yyyy",
+      "xs": 3,
+      "validations": [
+        {
+           "type": "required"
+        }
+        ]
+    },
+    {
+      "type": "checkbox",
+      "name": "IndicadorMontoFijo",
+      "label": "Indicador Monto Fijo",
+      "value": false,
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "Monto",
+      "label": "Monto",
+      "value": "",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Porcentaje",
+      "label": "Porcentaje",
+      "value": "",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "IndicadorIndividual",
+      "label": "Indicador Individual",
+      "value": "",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "CodigoTransaccion",
+      "label": "Código Transacción",
+      "value": "",
+      "xs": 3,
+      "controller": "ParCodigotransaccion/GetParCodigoTransacciones",
+      "fieldName": "Descripcion",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "CodigoEstado",
+      "label": "Estado",
+      "value": "",
+      "xs": 6,
+      "controller": "ParEstado/GetParEstados",
+      "fieldName": "Descripcion",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Usuario",
+      "label": "Usuario",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    }
+  ]

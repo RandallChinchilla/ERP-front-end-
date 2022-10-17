@@ -45,6 +45,3 @@ export const tableStyle = {
     fontSize: 13,
   },
 };
-
-
-

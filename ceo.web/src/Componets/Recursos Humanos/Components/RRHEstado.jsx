@@ -1,6 +1,6 @@
 import React from "react";
 import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { columnsPasTipoInstrumento, routesPasTipoInstrumentoApi } from "../Interfaces/interfacePasTipoInstrumento";
+import { columnsRRHEstado, routesRRHEstadoApi } from "../Interfaces/interfaceRRHEstado";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -8,17 +8,17 @@ import { columnsPasTipoInstrumento, routesPasTipoInstrumentoApi } from "../Inter
  * @returns CrudTableBasic
  */
 
-const PasTipoInstrumento = () => {
+const RRHEstado = () => {
   return (
     <div>
       <CrudTableBasic
-        columns={columnsPasTipoInstrumento}
-        apiRoutes={routesPasTipoInstrumentoApi}
-        field="CodigoTipo"
-        title="Catálogo Tipo Instrumento"
+        columns={columnsRRHEstado}
+        apiRoutes={routesRRHEstadoApi}
+        field="CodigoEstado"
+        title="Catálogo Estado"
       />
     </div>
   );
 };
 
-export default PasTipoInstrumento;
+export default RRHEstado;

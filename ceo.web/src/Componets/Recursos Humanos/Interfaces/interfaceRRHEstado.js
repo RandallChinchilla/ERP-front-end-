@@ -1,10 +1,10 @@
 //const userData = JSON.parse(localStorage.getItem("userLogged"));
 
 /**
- * Contexto con el cual interactua el componente RRHCentroMedico
+ * Contexto con el cual interactua el componente RRHEstado
  */
 
-export const columnsRRHCentroMedico = [
+ export const columnsRRHEstado = [
     {
         title: "Código Empresa",
         field: "CodigoEmpresa",
@@ -19,20 +19,19 @@ export const columnsRRHCentroMedico = [
         editable: "never",
       },
       {
-        title: "Código Centro Médico",
-        field: "CodigoCentroMedico",
+        title: "Código Estado",
+        field: "CodigoEstado",
         initialEditValue: 0,
         editable: "never",
       },
       { title: "Descripción", field: "Descripcion" },
-      { title: "Estado", field: "CodigoEstado" },
 ];
 
-export const routesRRHCentroMedicoApi = {
-  get: "RrhCentroMedico/GetRrhCentrosMedicos",
-  add: "RrhCentroMedico/PostRrhCentroMedico",
-  update: "RrhCentroMedico/PutRrhCentroMedico",
-  delete: "RrhCentroMedico/DeleteRrhCentroMedico",
+export const routesRRHEstadoApi = {
+  get: "RrhEstado/GetRrhEstados",
+  add: "RrhEstado/PostRrhEstado",
+  update: "RrhEstado/PutRrhEstadoo",
+  delete: "RrhEstado/DeleteRrhEstado",
 };
 
 export const tableStyle = {
