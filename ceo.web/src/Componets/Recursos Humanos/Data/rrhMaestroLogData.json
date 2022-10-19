@@ -1,0 +1,350 @@
+[
+    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+    {
+      "type": "text",
+      "name": "nombreEmpresa",
+      "label": "Empresa",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "NumeroEmpleado",
+      "label": "Número Empleado",
+      "value": 0,
+      "xs": 3,
+      "disabled": true,
+      "validations": []
+    },
+    {
+        "type": "date",
+        "name": "Fecha",
+        "label": "Fecha",
+        "value": "",
+        "size": "small",
+        "inputFormat": "dd/MM/yyyy",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "select",
+        "nameId": "CodigoPaisTipoId",
+        "name": "CodigoPais",
+        "label": "País Id",
+        "value": "",
+        "xs": 3,
+        "controller": "ParPais/GetParPaises",
+        "fieldName": "Nombre",
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "select",
+        "name": "CodigoTipoIdentificacion",
+        "label": "Tipo de Identificación",
+        "value": "",
+        "xs": 3,
+        "controller": "ParTipoidentificacion/GetParTiposIdentificacion",
+        "fieldName": "Descripcion",
+        "disabled": true,
+        "validations": []
+    },
+    {
+      "type": "text",
+      "name": "NumeroId",
+      "label": "Número Id",
+      "value": "",
+      "xs": 3,
+      "disabled": true,
+      "validations": []
+    },
+    {
+        "type": "text",
+        "name": "Apellido1",
+        "label": "Primer Apellido",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "text",
+        "name": "Apellido2",
+        "label": "Segundo Apellido",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "text",
+        "name": "Nombre",
+        "label": "Nombre",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+      "type": "date",
+      "name": "FechaNacimiento",
+      "label": "Fecha Nacimiento",
+      "value": "",
+      "size": "small",
+      "inputFormat": "dd/MM/yyyy",
+      "xs": 3,
+      "disabled": true,
+      "validations": []
+    },
+    {
+        "type": "text",
+        "name": "CodigoSexo",
+        "label": "Sexo",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+      "type": "select",
+      "name": "CodigoEstadoCivil",
+      "label": "Estado Civil",
+      "value": "",
+      "xs": 3,
+      "controller": "ParEstadoCivil/GetParEstadosCiviles",
+      "fieldName": "Descripcion",
+      "disabled": true,
+      "validations": []
+    },
+    {
+        "type": "text",
+        "name": "NombreConyugue",
+        "label": "Nombre Conyugue",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "text",
+        "name": "IdSeguroSocial",
+        "label": "#Seguro Social",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "date",
+        "name": "FechaIngreso",
+        "label": "Fecha Ingreso",
+        "value": "",
+        "size": "small",
+        "inputFormat": "dd/MM/yyyy",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "date",
+        "name": "FechaSalida",
+        "label": "Fecha Salida",
+        "value": "",
+        "size": "small",
+        "inputFormat": "dd/MM/yyyy",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "select",
+        "name": "CodigoMotivoSalida",
+        "label": "Motivo Salida",
+        "value": "",
+        "xs": 3,
+        "controller": "RrhMotivoSalida/GetRrhMotivosSalida",
+        "fieldName": "Descripcion",
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "select",
+        "nameId": "CodigoPais",
+        "name": "CodigoPais",
+        "label": "País",
+        "value": "",
+        "xs": 3,
+        "controller": "ParPais/GetParPaises",
+        "fieldName": "Nombre",
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "select",
+        "name": "CodigoProvincia",
+        "label": "Provincia",
+        "value": "",
+        "xs": 3,
+        "controller": "ParProvincium/GetParProvincias",
+        "fieldName": "Descripcion",
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "select",
+        "name": "CodigoCanton",
+        "label": "Cantón",
+        "value": "",
+        "xs": 3,
+        "controller": "ParCanton/GetParCantones",
+        "fieldName": "Descripcion",
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "select",
+        "name": "CodigoDistrito",
+        "label": "Distrito",
+        "value": "",
+        "xs": 3,
+        "controller": "ParDistrito/GetParDistritos",
+        "fieldName": "Descripcion",
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "text",
+        "name": "Direccion",
+        "label": "Dirección",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "select",
+        "name": "CodigoPuesto",
+        "label": "Puesto",
+        "value": "",
+        "xs": 3,
+        "controller": "RrhPuesto/GetRrhPuestos",
+        "fieldName": "Descripcion",
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "select",
+        "name": "CodigoDepartamento",
+        "label": "Departamento",
+        "value": "",
+        "xs": 3,
+        "controller": "ParDepartamento/GetParDepartamentos",
+        "fieldName": "Descripcion",
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "text",
+        "name": "SalarioMensual",
+        "label": "Salario Mensual",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "text",
+        "name": "DireccionCorreoOficina",
+        "label": "Correo Oficina",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "text",
+        "name": "DireccionCorreoPersonal",
+        "label": "Correo Personal",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "text",
+        "name": "TelefonoOficina",
+        "label": "Teléfono Oficina",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "text",
+        "name": "ExtensionInterna",
+        "label": "Extensión Interna",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "text",
+        "name": "TelefonoCelular",
+        "label": "Teléfono Celular",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "text",
+        "name": "TelefonoHabitacion",
+        "label": "Teléfono Habitación",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "text",
+        "name": "VacacionesPendientes",
+        "label": "Vacaciones Pendientes",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },
+    {
+        "type": "text",
+        "name": "Observaciones",
+        "label": "Observaciones",
+        "value": "",
+        "xs": 3,
+        "disabled": true,
+        "validations": []
+    },   
+    {
+      "type": "select",
+      "name": "CodigoEstado",
+      "label": "Estado",
+      "value": "",
+      "xs": 3,
+      "controller": "ParEstado/GetParEstados",
+      "fieldName": "Descripcion",
+      "disabled": true,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "Usuario",
+      "label": "Usuario",
+      "value": "",
+      "xs": 3,
+      "disabled": true,
+      "validations": []
+    }
+  ]

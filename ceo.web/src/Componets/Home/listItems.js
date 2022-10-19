@@ -925,72 +925,10 @@ export default function NestedList() {
           <ExpandMore style={{ color: "white" }} />
         )}
       </ListItemButton>
-
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>
-              Aplicar Planilla
-            </ListItemText>
-          </ListItemButton>
-        </List>
-      </Collapse>
-
-      <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>
-              Configurar Planilla
-            </ListItemText>
-          </ListItemButton>
-        </List>
-      </Collapse>
-
-      <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Funcionario</ListItemText>
-          </ListItemButton>
-        </List>
-      </Collapse>
-
-      <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>
-              Acción Personal
-            </ListItemText>
-          </ListItemButton>
-        </List>
-      </Collapse>
-
-      <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Tipo Planilla</ListItemText>
-          </ListItemButton>
-        </List>
-      </Collapse>
-
-      <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Forma Pago</ListItemText>
-          </ListItemButton>
-        </List>
-      </Collapse>
-
-      <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText className={classes.text}>Tipo Deducción</ListItemText>
-          </ListItemButton>
-        </List>
-      </Collapse>
-      <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHISRView">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHISRView">
               <ListItemText className={classes.text}>ISR</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1008,7 +946,7 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHFormaDePagoView">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHFormaPagoView">
               <ListItemText className={classes.text}>
                 Forma De Pago
               </ListItemText>
@@ -1019,9 +957,9 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHTipoPlantilla">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHTipoPlanillaView">
               <ListItemText className={classes.text}>
-                Tipo Plantilla
+                Tipo Planilla
               </ListItemText>
             </NavLink>
           </ListItemButton>

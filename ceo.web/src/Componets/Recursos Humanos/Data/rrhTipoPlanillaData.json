@@ -1,0 +1,56 @@
+[
+    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+    {
+      "type": "text",
+      "name": "nombreEmpresa",
+      "label": "Empresa",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "CodigoTipoPlanilla",
+      "label": "Código Tipo Planilla",
+      "value": 0,
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "Descripcion",
+      "label": "Descripción",
+      "value": "",
+      "xs": 6,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+        "type": "select",
+        "name": "CodigoFormaPago",
+        "label": "Código Forma Pago",
+        "value": "",
+        "xs": 6,
+        "controller": "RrhFormaPago/GetRrhFormasPago",
+        "fieldName": "Descripcion",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "Usuario",
+      "label": "Usuario",
+      "value": "",
+      "xs": 12,
+      "disabled": true,
+      "validations": []
+    }
+  ]

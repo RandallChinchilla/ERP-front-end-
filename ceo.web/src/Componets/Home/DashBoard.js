@@ -88,8 +88,6 @@ import RegTipoTasa from "../Regulador/RegTipoTasa";
 import reportTest from "../Reportes/reportTest";
 import NestedList from "./listItems";
 import RRHEstado from "../Recursos Humanos/Components/RRHEstado";
-import RRHFormaDePago from "../Recursos Humanos/Components/RRHFormaDePago";
-import RRHFormaDePagoView from "../Recursos Humanos/Components/RRHFormaDePagoView";
 import RRHISRView from "../Recursos Humanos/Components/RRHISRView";
 import RRHISR from "../Recursos Humanos/Components/RRHISR";
 import { AhoIndex } from "../Ahorros/Routes/AhoIndex";
@@ -611,16 +609,6 @@ function DashboardContent() {
               exact
               path="/Dashboard/RRHEstado"
               component={RRHEstado}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/RRHFormaDePago/:isNew"
-              component={RRHFormaDePago}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/RRHFormaDePagoView"
-              component={RRHFormaDePagoView}
             ></Route>
           </Switch>
         </Box>

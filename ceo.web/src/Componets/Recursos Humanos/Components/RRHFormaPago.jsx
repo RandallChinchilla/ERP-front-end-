@@ -1,8 +1,8 @@
 import React from "react";
-import formJson from "../Data/rrhMaestroLogData.json";
+import formJson from "../Data/rrhFormaPagoData.json";
 import { Form } from "../../CrossComponets/Form";
 import { useLocation } from "react-router-dom";
-import { routesRRHMaestroLogApi } from "../Interfaces/interfaceRRHMaestroLog";
+import { routesRRHFormaPagoApi } from "../Interfaces/interfaceRRHFormaPago";
 
 /**
  * Este componente renderiza un componente dinamico a partir del componenete Form,, el cual nos permite
@@ -15,13 +15,13 @@ import { routesRRHMaestroLogApi } from "../Interfaces/interfaceRRHMaestroLog";
  * @title Titulo del formulario
  * @returns CrudTableform
  */
-export const RRHMaestroLog = () => {
+export const RRHFormaPago = () => {
   const { rowUpdate } = useLocation();
   return (
     <Form
       formJson={formJson}
-      title="Maestro Log"
-      urlApi={routesRRHMaestroLogApi}
+      title="Forma Pago"
+      urlApi={routesRRHFormaPagoApi}
       rowUpdate={rowUpdate}
     />
   );
