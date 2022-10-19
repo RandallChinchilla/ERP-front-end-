@@ -1,0 +1,42 @@
+[
+  {
+    "type": "text",
+    "typeInput": "text",
+    "name": "Username",
+    "label": "Usuario",
+    "value": "",
+    "xs": 12,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "typeInput": "password",
+    "name": "Password",
+    "label": "Contraseña",
+    "value": "",
+    "xs": 12,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoEmpresa",
+    "label": "Empresa",
+    "value": "",
+    "xs": 12,
+    "controller": "ParEmpresa/GetParEmpresas",
+    "fieldName": "Nombre",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  }
+]

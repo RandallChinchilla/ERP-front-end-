@@ -31,7 +31,10 @@ import SelectCanton from "../Listas/SelectCanton";
 import SelectProvincia from "../Listas/SelectProvincia";
 import { useParams } from "react-router-dom";
 import { putAction } from "../../Helpers/putHelper";
-import { useData } from "../../Hooks/useData";
+import {
+  useAutentication,
+  useData,
+} from "../../../src/Componets/Autenticacion/Hooks/useAutentication";
 
 const useStyles = makeStyles((theme) => ({
   iconos: {
@@ -178,7 +181,7 @@ export const CliMaestro = () => {
     initialForm,
     validationsForm
   );
-  const { response, handleUpdate, handleAdd } = useData(
+  const { response, handleUpdate, handleAdd } = useAutentication(
     form,
     "CliMaestro/PutCliMaestro"
   );

@@ -48,14 +48,7 @@ const validationsForm = (form) => {
     errors.CodigoPortafolio = "Debes seleccionar un portafolio";
     errors.error = true;
   }
-  // if (form.CodigoAportante === 0) {
-  //   errors.CodigoAportante = "Debes seleccionar un aportante";
-  //   errors.error = true;
-  // }
-  // if (form.CodigoInstrumento === 0) {
-  //   errors.CodigoInstrumento = "Debes seleccionar un instrumento";
-  //   errors.error = true;
-  // }
+
   if (form.CodigoMoneda === 0) {
     errors.CodigoMoneda = "Debes seleccionar una moneda";
     errors.error = true;
