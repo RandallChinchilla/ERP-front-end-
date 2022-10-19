@@ -18,7 +18,10 @@ import { Link, NavLink } from "react-router-dom";
 import { useForm } from "../../Hooks/useForm";
 import { blue } from "@mui/material/colors";
 import { useParams } from "react-router-dom";
-import { useData } from "../../Hooks/useData";
+import {
+  useAutentication,
+  useData,
+} from "../../../src/Componets/Autenticacion/Hooks/useAutentication";
 import SelectMoneda from "../Listas/SelectMoneda";
 import SelectTipoImpuesto from "../Listas/SelectTipoImpuesto";
 import SelectUnidadMedida from "../Listas/SelectUnidadMedida";
@@ -126,9 +129,7 @@ const InvMaestro = () => {
   const dataInitial = {};
 
   const initialForm = {
-    CodigoEmpresa: rowEdit
-      ? rowEdit.CodigoEmpresaNavigation.Nombre
-      : "",
+    CodigoEmpresa: rowEdit ? rowEdit.CodigoEmpresaNavigation.Nombre : "",
     CodigoArticulo: rowEdit ? rowEdit.CodigoArticulo : "",
     Descripcion: rowEdit ? rowEdit.Descripcion : "",
     FechaUltimaCompra: rowEdit ? rowEdit.FechaUltimaCompra : "",
@@ -155,7 +156,7 @@ const InvMaestro = () => {
     initialForm,
     validationsForm
   );
-  const { response, handleUpdate, handleAdd } = useData(
+  const { response, handleUpdate, handleAdd } = useAutentication(
     form,
     "IvtMaestro/PutIvtMaestro"
   );
@@ -165,9 +166,6 @@ const InvMaestro = () => {
       <Paper elevation={3} className={styles.paper}>
         <Box container sx={{ maxWidth: "100%" }}>
           <Grid container spacing={2} justifyContent="center" pl={5} pr={5}>
-            
-            
-            
             <Grid item xs={12} container justifyContent="center" mt={5} mb={5}>
               <Typography component="h1" variant="h6" noWrap>
                 Inventario Maestro
@@ -227,7 +225,7 @@ const InvMaestro = () => {
             <Grid item xs={3} container justifyContent="center">
               <TextField
                 type="datetime-local"
-                InputLabelProps={{shrink: true,}}
+                InputLabelProps={{ shrink: true }}
                 id="FechaUltimaCompra"
                 name="FechaUltimaCompra"
                 label="Fecha Última Compra"
@@ -236,8 +234,8 @@ const InvMaestro = () => {
                 value={form.FechaUltimaCompra}
                 className={styles.inpuntEmpresa}
                 size="small"
-                ></TextField>
-                {errors.FechaUltimaCompra && (
+              ></TextField>
+              {errors.FechaUltimaCompra && (
                 <FormHelperText id="my-helper-text" error>
                   {errors.FechaUltimaCompra}
                 </FormHelperText>
@@ -246,7 +244,7 @@ const InvMaestro = () => {
             <Grid item xs={3} container justifyContent="center">
               <TextField
                 type="datetime-local"
-                InputLabelProps={{shrink: true,}}
+                InputLabelProps={{ shrink: true }}
                 id="FechaUltimaVenta"
                 name="FechaUltimaVenta"
                 label="Fecha Última Venta"
@@ -255,8 +253,8 @@ const InvMaestro = () => {
                 value={form.FechaUltimaVenta}
                 className={styles.inpuntEmpresa}
                 size="small"
-                ></TextField>
-                {errors.FechaUltimaVenta && (
+              ></TextField>
+              {errors.FechaUltimaVenta && (
                 <FormHelperText id="my-helper-text" error>
                   {errors.FechaUltimaVenta}
                 </FormHelperText>
@@ -358,8 +356,8 @@ const InvMaestro = () => {
                 className={styles.inpuntEmpresa}
                 size="small"
               ></TextField>
-              </Grid>
-              <Grid item xs={4} container justifyContent="center">
+            </Grid>
+            <Grid item xs={4} container justifyContent="center">
               <TextField
                 id="PrecioVenta"
                 name="PrecioVenta"
@@ -375,8 +373,8 @@ const InvMaestro = () => {
                   {errors.PrecioVenta}
                 </FormHelperText>
               )}
-              </Grid>
-              <Grid item xs={2} container justifyContent="center">
+            </Grid>
+            <Grid item xs={2} container justifyContent="center">
               <FormControl size="small" className={styles.listas}>
                 <SelectCodigoLinea
                   form={form}
@@ -389,8 +387,8 @@ const InvMaestro = () => {
                   {errors.CodigoLinea}
                 </FormHelperText>
               )}
-              </Grid>
-              <Grid item xs={2} container justifyContent="center">
+            </Grid>
+            <Grid item xs={2} container justifyContent="center">
               <FormControl size="small" className={styles.listas}>
                 <SelectTipoImpuesto
                   form={form}
@@ -403,8 +401,8 @@ const InvMaestro = () => {
                   {errors.CodigoTipoImpuesto}
                 </FormHelperText>
               )}
-              </Grid>
-              <Grid item xs={2} container justifyContent="center">
+            </Grid>
+            <Grid item xs={2} container justifyContent="center">
               <FormControl size="small" className={styles.listas}>
                 <SelectMoneda
                   form={form}
@@ -417,7 +415,7 @@ const InvMaestro = () => {
                   {errors.CodigoMoneda}
                 </FormHelperText>
               )}
-              </Grid>
+            </Grid>
             <Grid item xs={2} container justifyContent="center">
               <FormControl size="small" className={styles.listas}>
                 <SelectUnidadMedida
@@ -433,7 +431,7 @@ const InvMaestro = () => {
               )}
             </Grid>
 
-              <Grid item xs={6} container justifyContent="center">
+            <Grid item xs={6} container justifyContent="center">
               <TextField
                 id="Id"
                 name="Id"
@@ -449,8 +447,8 @@ const InvMaestro = () => {
                   {errors.Id}
                 </FormHelperText>
               )}
-              </Grid>
-              <Grid item xs={6} container justifyContent="center">
+            </Grid>
+            <Grid item xs={6} container justifyContent="center">
               <TextField
                 id="UserName"
                 name="UserName"
@@ -466,17 +464,11 @@ const InvMaestro = () => {
                   {errors.UserName}
                 </FormHelperText>
               )}
-              </Grid>
-
-
-
-
-
-
-              </Grid>
-              </Box>
-              </Paper>
-              </Grid>
+            </Grid>
+          </Grid>
+        </Box>
+      </Paper>
+    </Grid>
   );
 };
 
