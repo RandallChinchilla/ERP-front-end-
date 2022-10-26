@@ -17,10 +17,14 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { postAction } from "../../../Helpers/postHelper";
 import { putAction } from "../../../Helpers/putHelper";
-import { useForm } from "../../../Hooks/useForm";
 import { SelectCross } from "../../Listas/SelectCross";
 import { SelectAportanteModal } from "../../Modales/SelectAportanteModal";
 import { SelectInstrumentoModal } from "../../Modales/SelectInstrumentoModal";
+import * as Yup from "yup";
+import formJson from "../Data/pasMaestroData.json";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm, Controller } from "react-hook-form";
+import { SelectList } from "../../CrossComponets/SelectList";
 
 const useStyles = makeStyles(() => ({
   iconos: {
@@ -35,126 +39,45 @@ const useStyles = makeStyles(() => ({
   listas: {
     width: "100%",
   },
-  inpuntEmpresa: { width: "100%" },
+  textfield: { width: "100%" },
   gridContainer: { paddingRight: 5, paddingLeft: 5 },
   button: { margin: "1px" },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+  },
 }));
 
 const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
 
-const validationsForm = (form) => {
-  let errors = {};
-  if (form.CodigoPortafolio === 0) {
-    errors.CodigoPortafolio = "Debes seleccionar un portafolio";
-    errors.error = true;
-  }
-
-  if (form.CodigoMoneda === 0) {
-    errors.CodigoMoneda = "Debes seleccionar una moneda";
-    errors.error = true;
-  }
-  if (!form.Isin) {
-    errors.Isin = "Debes ingresar un Isin";
-    errors.error = true;
-  }
-  if (!form.Serie) {
-    errors.Serie = "Debes ingresar una serie";
-    errors.error = true;
-  }
-  if (!form.FechaEmision) {
-    errors.FechaEmision = "Debes seleccionar la fecha de emisión";
-    errors.error = true;
-  }
-  if (!form.FechaVencimiento) {
-    errors.FechaVencimiento = "Debes seleccionar la fecha de vencimiento";
-    errors.error = true;
-  }
-  if (!form.CodigoPeriodicidad === 0) {
-    errors.CodigoPeriodicidad = "Debes seleccionar una periodicidad";
-    errors.error = true;
-  }
-  if (!form.FechaUltimoPagoInteres) {
-    errors.FechaUltimoPagoInteres =
-      "Debes seleccionar la fecha del último pago de interés";
-    errors.error = true;
-  }
-  if (!form.FechaProximoPagoInteres) {
-    errors.FechaProximoPagoInteres =
-      "Debes seleccionar la fecha del próximo pago de interés";
-    errors.error = true;
-  }
-  if (!form.FechaUltimoInteresAcumulado) {
-    errors.FechaUltimoInteresAcumulado =
-      "Debes seleccionar la fecha del último interés acumulado";
-    errors.error = true;
-  }
-  if (!form.TasaNeta) {
-    errors.TasaNeta = "Debes ingresar la tasa neta";
-    errors.error = true;
-  }
-  if (!form.TasaBruta) {
-    errors.TasaBruta = "Debes ingresar la tasa bruta";
-    errors.error = true;
-  }
-  if (!form.ValorNominal) {
-    errors.ValorNominal = "Debes ingresar el valor nominal";
-    errors.error = true;
-  }
-  if (!form.CodigoEstado === 0) {
-    errors.CodigoEstado = "Debes seleccionar un estado";
-    errors.error = true;
-  }
-  if (!form.SaldoValorNominal) {
-    errors.SaldoValorNominal = "Debes ingresar el saldo nominal";
-    errors.error = true;
-  }
-  if (!form.PorcentajeValorVenta) {
-    errors.PorcentajeValorVenta =
-      "Debes ingresar el porcentaje del valor de venta";
-    errors.error = true;
-  }
-  if (!form.PorcentajeValorMercado) {
-    errors.PorcentajeValorMercado =
-      "Debes ingresar el porcentaje del valor de mercado";
-    errors.error = true;
-  }
-  if (!form.AmortizacionAcumulada) {
-    errors.AmortizacionAcumulada = "Debes ingresar la amortización acumulada";
-    errors.error = true;
-  }
-  if (!form.ValuacionAcumulada) {
-    errors.ValuacionAcumulada = "Debes ingresar la valoración acumulada";
-    errors.error = true;
-  }
-  if (!form.ValorMercado) {
-    errors.ValorMercado = "Debes ingresar el valor del mercado";
-    errors.error = true;
-  }
-  if (!form.ValorContable) {
-    errors.ValorContable = "Debes ingresar el valor contable";
-    errors.error = true;
-  }
-  if (!form.DiasInteresPorPagar) {
-    errors.DiasInteresPorPagar = "Debes ingresar los días acumulados";
-    errors.error = true;
-  }
-  if (!form.InteresPorPagar) {
-    errors.InteresPorPagar = "Debes ingresar el interés por pagar";
-    errors.error = true;
-  }
-  if (!form.Tir) {
-    errors.Tir = "Debes ingresar el TIR";
-    errors.error = true;
-  }
-  if (!form.DiasInteresVencimiento) {
-    errors.DiasInteresVencimiento = "Debes ingresar los días al vencimiento";
-    errors.error = true;
-  }
-  return errors;
-};
+const initialValues = {};
+const requiredFields = {};
 
 export const PasMaestro = () => {
-  const userData = JSON.parse(localStorage.getItem("userLogged"));
+  for (const input of formJson) {
+    initialValues[input.name] = input.value;
+    let shema = Yup.string();
+
+    for (const rule of input.validations) {
+      if (rule.type === "required") {
+        shema = shema.required("Este campo es requerido");
+      }
+    }
+    requiredFields[input.name] = shema;
+  }
+
+  const validationshema = Yup.object({ ...requiredFields });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm({
+    defaultValues: initialValues,
+    resolver: yupResolver(validationshema),
+  });
+  
+
+  //const userData = JSON.parse(localStorage.getItem("userLogged"));
   const styles = useStyles();
   const { rowUpdate } = useLocation();
   const [, setValue] = useState(new Date());
@@ -165,81 +88,50 @@ export const PasMaestro = () => {
   const handleCloseAportante = () => setOpenAportante(false);
   const handleOpenInstrumento = () => setOpenInstrumento(true);
   const handleCloseInstrumento = () => setOpenInstrumento(false);
+  // useEffect(() => {
+  //   if (rowUpdate) {
+  //     console.log(rowUpdate);
+  //     setForm(rowUpdate);
+  //   } else {
+  //     setForm(initialForm);
+  //   }
+  // }, [rowUpdate]);
 
-  const initialForm = {
-    CodigoEmpresa: userData.codigoEmpresa,
-    NombreEmpresa: userData.nombreEmpresa,
-    Id: userData.id,
-    NombreUsuario: userData.userName,
-    CodigoPortafolio: 0,
-    NumeroInversion: 0,
-    CodigoAportante: 0,
-    CodigoInstrumento: 0,
-    CodigoMoneda: 0,
-    Isin: "",
-    Serie: "",
-    FechaEmision: "",
-    FechaVencimiento: "",
-    CodigoPeriodicidad: 0,
-    FechaUltimoPagoInteres: "",
-    FechaProximoPagoInteres: "",
-    FechaUltimoInteresAcumulado: "",
-    TasaNeta: "",
-    TasaBruta: "",
-    ValorNominal: "",
-    CodigoEstado: 0,
-    SaldoValorNominal: "",
-    PorcentajeValorVenta: "",
-    PorcentajeValorMercado: "",
-    AmortizacionAcumulada: "",
-    ValuacionAcumulada: "",
-    ValorMercado: "",
-    ValorContable: "",
-    DiasInteresPorPagar: "",
-    InteresPorPagar: "",
-    Tir: "",
-    DiasInteresVencimiento: "",
+  // const { form, handleChange, handleBlur, setForm } = useForm(
+  //   initialForm,
+  //   validationsForm
+  // );
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (form.NumeroInversion === 0) {
+  //     postAction("PasMaestro/PostPasMaestro", form, userLoggedToken).then(
+  //       (res) => {
+  //         if (res.isSuccess) {
+  //           setForm(initialForm);
+  //           return alert("El maestro fue creado con exito");
+  //         } else {
+  //           return alert("El maestro no fue creado");
+  //         }
+  //       }
+  //     );
+  //   } else {
+  //     putAction("PasMaestro/PutPasMaestro", form, userLoggedToken).then(
+  //       (res) => {
+  //         if (res.isSuccess) {
+  //           return alert("El maestro fue actualizado con exito");
+  //         } else {
+  //           return alert("El maestro no fue actualizado");
+  //         }
+  //       }
+  //     );
+  //   }
+  // };
+  const onSubmit = (data) => {
+    // handleSubmitLogin(data);
+    console.log(data)
   };
 
-  useEffect(() => {
-    if (rowUpdate) {
-      console.log(rowUpdate);
-      setForm(rowUpdate);
-    } else {
-      setForm(initialForm);
-    }
-  }, [rowUpdate]);
-
-  const { form, errors, handleChange, handleBlur, setForm } = useForm(
-    initialForm,
-    validationsForm
-  );
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (form.NumeroInversion === 0) {
-      postAction("PasMaestro/PostPasMaestro", form, userLoggedToken).then(
-        (res) => {
-          if (res.isSuccess) {
-            setForm(initialForm);
-            return alert("El maestro fue creado con exito");
-          } else {
-            return alert("El maestro no fue creado");
-          }
-        }
-      );
-    } else {
-      putAction("PasMaestro/PutPasMaestro", form, userLoggedToken).then(
-        (res) => {
-          if (res.isSuccess) {
-            return alert("El maestro fue actualizado con exito");
-          } else {
-            return alert("El maestro no fue actualizado");
-          }
-        }
-      );
-    }
-  };
 
   return (
     <div>
@@ -259,7 +151,123 @@ export const PasMaestro = () => {
                   Maestro
                 </Typography>
               </Grid>
-              <Grid item xs={6} container justifyContent="center">
+              <form
+              className={styles.form}
+              noValidate
+              onSubmit={handleSubmit(onSubmit)}
+              >
+                 <Grid
+                  container
+                  spacing={2}
+                  justifyContent="center"
+                  pl={5}
+                  pr={5}
+                >
+                  {formJson.map(
+                    ({
+                      type,
+                      typeInput,
+                      name,
+                      placeholder,
+                      label,
+                      xs,
+                      controller,
+                      fieldName,
+                      data,
+                      inputFormat,
+                    }) => {
+                      switch(type) {
+                        case "text":
+                          return(
+                            <Grid
+                            key={name}
+                            item
+                            xs={xs}
+                            container
+                            justifyContent="center"
+                            >
+                              <TextField
+                              label={label}
+                              {...register(name)}
+                              type={typeInput}
+                              placeholder={placeholder}
+                              size="small"
+                              // fullWidth="true"
+                              className={styles.textfield}
+                              />
+                              {errors[name] && (
+                              <FormHelperText id="my-helper-text" error>
+                                {errors[name]["message"]}
+                              </FormHelperText>
+                            )}
+                            </Grid>
+                          );
+                          case "select":
+                            return (
+                              <Controller
+                                key={name}
+                                name={name}
+                                control={control}
+                                render={({ field }) => (
+                                  <SelectList
+                                  name={name}
+                                  label={label}
+                                  field={field}
+                                  controller={controller}
+                                  fieldName={fieldName}
+                                  xs={xs}
+                                  errors={errors}
+                                  dataJson={data}/>
+                                )}
+                              ></Controller>
+                            );
+                            case "date":
+                              return (
+                                <Grid
+                                  item
+                                  xs={xs}
+                                  className={styles.grid}
+                                  key={name}
+                                >
+                                  <LocalizationProvider
+                                    dateAdapter={AdapterDateFns}
+                                  >
+                                    <Controller
+                                      name={name}
+                                      control={control}
+                                      render={({ field }) => (
+                                        <DesktopDatePicker
+                                          label={label}
+                                          inputFormat={inputFormat}
+                                          {...field}
+                                          renderInput={(params) => (
+                                            <TextField size="small" {...params} />
+                                          )}
+                                        />
+                                      )}
+                                    ></Controller>
+                                  </LocalizationProvider>
+                                  {errors[name] && (
+                                    <FormHelperText id="my-helper-text" error>
+                                      {errors[name]["message"]}
+                                    </FormHelperText>
+                                  )}
+                                </Grid>
+                              );
+                      }
+                    })}
+                  <Grid item xs={12} container justifyContent="end">
+                    <Button color="secondary" variant="contained">
+                      Regresar
+                    </Button>
+                    <Button color="primary" type="submit" variant="contained">
+                      Agregar
+                    </Button>
+                  </Grid>
+                </Grid>
+                
+              </form>
+              {/* <Grid item xs={6} container justifyContent="center">
                 <TextField
                   id="CodigoEmpresa"
                   name="CodigoEmpresa"
@@ -896,23 +904,11 @@ export const PasMaestro = () => {
                 >
                   {rowUpdate ? "Actualizar" : "Agregar"}
                 </Button>
-              </Grid>
+              </Grid> */}
             </Grid>
           </Box>
         </Paper>
       </Grid>
-      <SelectAportanteModal
-        open={openAportante}
-        handleClose={handleCloseAportante}
-        controller="PasAportante/GetPasAportantes"
-        form={form}
-      />
-      <SelectInstrumentoModal
-        open={openInstrumento}
-        handleClose={handleCloseInstrumento}
-        controller="PasInstrumento/GetPasInstrumentos"
-        form={form}
-      />
     </div>
   );
 };

@@ -18,7 +18,7 @@ export const columnsAhoTipo = [
         initialEditValue: "DmdInterSoft", //userData.nombreEmpresa,
         editable: "never",
       },
-      { title: "Código Tipo Ahorro", field: "CodigoTipo" },
+      { title: "Código Tipo Ahorro", field: "CodigoTipo", initialEditValue: 0, editable: "never", },
       { title: "Descripción", field: "Descripcion" },
 ];
 
