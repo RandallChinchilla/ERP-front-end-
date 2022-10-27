@@ -928,6 +928,17 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHMaestroTab">
+              <ListItemText className={classes.text}>
+                Aplicar Planilla
+              </ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
             <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHISRView">
               <ListItemText className={classes.text}>ISR</ListItemText>
             </NavLink>

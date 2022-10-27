@@ -141,7 +141,6 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
                       placeholder,
                       label,
                       disabled,
-                      value,
                       xs,
                       controller,
                       fieldName,

@@ -51,12 +51,10 @@ export const CrudTableBasic = (props) => {
    * @param {rowAdd} Parametro que contiene los datos que vamos a agregar
    */
   const addRow = (rowAdd) => {
-    // console.log(rowAdd);
+    console.log(rowAdd);
     postAction(props.apiRoutes.add, rowAdd, userLoggedToken).then((res) => {
-      console.log(res);
       let message = "";
       if (res.IsSuccess) {
-        console.log(res);
         dispatch(createAction(res.Result));
         dispatch(
           updateAlert({
@@ -88,14 +86,15 @@ export const CrudTableBasic = (props) => {
     //console.log(rowUpdate);
     putAction(props.apiRoutes.update, rowUpdate, userLoggedToken).then(
       (res) => {
-        if (res.isSuccess) {
+        console.log(res);
+        if (res.IsSuccess) {
           dispatch(updateAction(rowUpdate, props.field));
           dispatch(
             updateAlert({
               ...alert,
               open: true,
               severity: "success",
-              message: res.message,
+              message: res.Message,
             })
           );
         } else {
@@ -105,7 +104,7 @@ export const CrudTableBasic = (props) => {
               ...alert,
               open: true,
               severity: "success",
-              message: res.message,
+              message: res.Message,
             })
           );
         }
@@ -122,14 +121,14 @@ export const CrudTableBasic = (props) => {
     console.log(rowDelete);
     deleteAction(props.apiRoutes.delete, rowDelete, userLoggedToken).then(
       (res) => {
-        if (res.isSuccess) {
+        if (res.IsSuccess) {
           dispatch(delAction(rowDelete[props.field], props.field));
           dispatch(
             updateAlert({
               ...alert,
               open: true,
               severity: "success",
-              message: res.message,
+              message: res.Message,
             })
           );
         } else {
@@ -139,7 +138,7 @@ export const CrudTableBasic = (props) => {
               ...alert,
               open: true,
               severity: "error",
-              message: res.message,
+              message: res.Message,
             })
           );
         }
@@ -148,41 +147,44 @@ export const CrudTableBasic = (props) => {
   };
 
   return (
-    <div>
-      <MaterialTable
-        title={props.title}
-        columns={props.columns}
-        data={db}
-        options={tableStyle}
-        editable={{
-          onRowAdd: (newData) =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                addRow(newData);
-                resolve();
-              }, 1000);
-            }),
-          onRowUpdate: (newData, oldData) =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                const dataUpdate = [...db];
-                const index = oldData.tableData.id;
-                dataUpdate[index] = newData;
-                resolve();
-                updateRow(dataUpdate[index]);
-              }, 1000);
-            }),
-          onRowDelete: (oldData) =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                const dataDelete = [...db];
-                const index = oldData.tableData.id;
-                deleteRow(dataDelete[index]);
-                resolve();
-              }, 1000);
-            }),
-        }}
-      />
-    </div>
+    <MaterialTable
+      key={props.title}
+      title={props.title}
+      columns={props.columns}
+      data={db}
+      options={tableStyle}
+      editable={{
+        isEditable: () => props.isEditable,
+        isDeletable: () => props.isDeletable,
+        onRowAdd: props.isAdd
+          ? (newData) =>
+              new Promise((resolve, reject) => {
+                setTimeout(() => {
+                  addRow(newData);
+                  resolve();
+                }, 1000);
+              })
+          : undefined,
+        onRowUpdate: (newData, oldData) =>
+          new Promise((resolve, reject) => {
+            setTimeout(() => {
+              const dataUpdate = [...db];
+              const index = oldData.tableData.id;
+              dataUpdate[index] = newData;
+              resolve();
+              updateRow(dataUpdate[index]);
+            }, 1000);
+          }),
+        onRowDelete: (oldData) =>
+          new Promise((resolve, reject) => {
+            setTimeout(() => {
+              const dataDelete = [...db];
+              const index = oldData.tableData.id;
+              deleteRow(dataDelete[index]);
+              resolve();
+            }, 1000);
+          }),
+      }}
+    />
   );
 };

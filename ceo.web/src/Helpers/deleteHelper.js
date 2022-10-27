@@ -16,19 +16,4 @@ export async function deleteAction(controller, model, token) {
   response = helpHttp().del(url, options);
 
   return response;
-  // try {
-  //   const response = await axios({
-  //     method: "delete",
-  //     url: `${baseUrl}${controller}`,
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-
-  //     data: model,
-  //   });
-  //   console.log(response);
-  //   return response;
-  // } catch (error) {
-  //   return error.response;
-  // }
 }

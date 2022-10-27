@@ -20,7 +20,7 @@ export const RRHIndex = () => {
             }}
           />
         ))}
-        <Notification/>
+        <Notification />
       </Provider>
     </Switch>
   );
