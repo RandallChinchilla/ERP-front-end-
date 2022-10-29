@@ -4,28 +4,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 
 import {
-  createAction,
   delAction,
   noAction,
   readAllAction,
-  updateAction,
   updateAlert,
 } from "../../Actions/Index";
 import { deleteAction } from "../../Helpers/deleteHelper";
 import { helpHttp } from "../../Helpers/HelpHttp";
-import { postAction } from "../../Helpers/postHelper";
-import { putAction } from "../../Helpers/putHelper";
+import { useGetData } from "../../Hooks/useGetData";
 import { tableStyle } from "../Cartera Pasiva/Interfaces/interfacesPasOrigenAportante";
 
-const baseUrl = process.env.REACT_APP_BASE_URL;
-const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+// const baseUrl = process.env.REACT_APP_BASE_URL;
+//const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
 
-export const CrudTableForm = (props) => {
+export const CrudTableForm = ({ columns, apiRoutes, field, title }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { db } = state.crud;
+  //const { db } = state.crud;
+  const { usertoken } = state.user;
   const { alert } = state.alert;
-  const [error, seterror] = useState(null);
+  //const [data, setData] = useState([]);
+  //const [error, seterror] = useState(null);
   let usehistory = useHistory();
 
   /**
@@ -33,20 +32,29 @@ export const CrudTableForm = (props) => {
    * readAllAction el cual crea el estado inicial que contiene la lista
    * de datos retornados por la Api.
    */
+  // let url = `${baseUrl}${props.apiRoutes.get}`;
+  // useEffect(() => {
+  //   helpHttp()
+  //     .get(url)
+  //     .then((res) => {
+  //       console.log(res);
+  //       if (res.err) return null;
+  //       setData(res);
+  //       // if (!res.err) {
+  //       //   //dispatch(readAllAction(res));
+  //       //   console.log(res);
+  //       //   setData(res);
+  //       // } else {
+  //       //   // dispatch(noAction());
+  //       //   //seterror(res);
+  //       // }
+  //     });
+  // }, [url]);
 
-  let url = `${baseUrl}${props.apiRoutes.get}`;
-  useEffect(() => {
-    helpHttp()
-      .get(url)
-      .then((res) => {
-        if (!res.err) {
-          dispatch(readAllAction(res));
-        } else {
-          dispatch(noAction());
-          seterror(res);
-        }
-      });
-  }, [url, useDispatch]);
+  const { Data, Error } = useGetData(apiRoutes.get);
+  if (Error) return null;
+  if (!Data) return null;
+  console.log(Data);
 
   /**
    * Esta funcion agrega o actualiza una fila a la tabla
@@ -57,9 +65,9 @@ export const CrudTableForm = (props) => {
 
   const updateRow = (rowUpdate, isNew) => {
     if (isNew) {
-      usehistory.push(props.apiRoutes.navigation);
+      usehistory.push(apiRoutes.navigation);
     } else {
-      usehistory.push({ pathname: props.apiRoutes.navigation, rowUpdate });
+      usehistory.push({ pathname: apiRoutes.navigation, rowUpdate });
     }
   };
 
@@ -70,41 +78,39 @@ export const CrudTableForm = (props) => {
    */
   const deleteRow = (rowDelete) => {
     console.log(rowDelete);
-    deleteAction(props.apiRoutes.delete, rowDelete, userLoggedToken).then(
-      (res) => {
-        if (res.isSuccess) {
-          dispatch(delAction(rowDelete[props.field], props.field));
-          dispatch(
-            updateAlert({
-              ...alert,
-              open: true,
-              severity: "success",
-              message: res.message,
-            })
-          );
-        } else {
-          dispatch(noAction());
-          dispatch(
-            updateAlert({
-              ...alert,
-              open: true,
-              severity: "error",
-              message: res.message,
-            })
-          );
-        }
+    deleteAction(apiRoutes.delete, rowDelete, usertoken).then((res) => {
+      if (res.isSuccess) {
+        dispatch(delAction(rowDelete[field], field));
+        dispatch(
+          updateAlert({
+            ...alert,
+            open: true,
+            severity: "success",
+            message: res.message,
+          })
+        );
+      } else {
+        dispatch(noAction());
+        dispatch(
+          updateAlert({
+            ...alert,
+            open: true,
+            severity: "error",
+            message: res.message,
+          })
+        );
       }
-    );
+    });
   };
 
-  console.log(db);
+  //console.log(db);
 
   return (
     <div>
       <MaterialTable
-        title={props.title}
-        columns={props.columns}
-        data={db}
+        title={title}
+        columns={columns}
+        data={Data}
         options={tableStyle}
         actions={[
           {

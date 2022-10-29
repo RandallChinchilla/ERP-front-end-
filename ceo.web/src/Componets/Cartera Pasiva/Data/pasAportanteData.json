@@ -1,463 +1,467 @@
 [
-    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
-    {
-      "type": "text",
-      "name": "nombreEmpresa",
-      "label": "Empresa",
-      "value": "",
-      "xs": 3,
-      "disabled": true,
-      "validations": []
-    },
-    {
-      "type": "select",
-      "name": "CodigoOrigenAportante",
-      "label": "Tipo Aportante",
-      "value": "",
-      "xs": 3,
-      "controller": "PasOrigenAportante/GetPasOrigenAportantes",
-      "fieldName": "Descripcion",
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "Nombre",
-      "label": "Nombre Aportante",
-      "value": "",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoPais",
-        "label": "País",
-        "value": "",
-        "xs": 3,
-        "controller": "ParPais/GetParPaises",
-        "fieldName": "Nombre",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-      },
+  { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+  {
+    "type": "text",
+    "name": "nombreEmpresa",
+    "label": "Empresa",
+    "value": "",
+    "xs": 3,
+    "disabled": true,
+    "validations": []
+  },
+  {
+    "type": "select",
+    "name": "CodigoOrigenAportante",
+    "label": "Tipo Aportante",
+    "value": "",
+    "xs": 3,
+    "controller": "PasOrigenAportante/GetPasOrigenAportantes",
+    "fieldName": "Descripcion",
+    "validations": [
       {
-        "type": "select",
-        "name": "CodigoProvincia",
-        "label": "Provincia",
-        "value": "",
-        "xs": 3,
-        "controller": "ParProvincium/GetParProvincias",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-      },
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Nombre",
+    "label": "Nombre Aportante",
+    "value": "",
+    "xs": 3,
+    "validations": [
       {
-        "type": "select",
-        "name": "CodigoCanton",
-        "label": "Cantón",
-        "value": "",
-        "xs": 3,
-        "controller": "ParCanton/GetParCantones",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-      },
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoPais",
+    "nameId": "CodigoPaisAportante",
+    "label": "País",
+    "value": "",
+    "xs": 3,
+    "controller": "ParPais/GetParPaises",
+    "fieldName": "Nombre",
+    "validations": [
       {
-        "type": "select",
-        "name": "CodigoDistrito",
-        "label": "Distrito",
-        "value": "",
-        "xs": 3,
-        "controller": "ParDistrito/GetParDistritos",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-      },
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoProvincia",
+    "nameId": "CodigoProvinciaAportante",
+    "label": "Provincia",
+    "value": "",
+    "xs": 3,
+    "controller": "ParProvincium/GetParProvincias",
+    "fieldName": "Descripcion",
+    "validations": [
       {
-      "type": "text",
-      "name": "EMailAportante",
-      "label": "Correo",
-      "value": "",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "TelefonoFijo",
-      "label": "Teléfono Fijo",
-      "value": "",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "text",
-        "name": "TelefonoCelular",
-        "label": "Celular",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoOrigenFondos",
-        "label": "Origen de fondos",
-        "value": "",
-        "xs": 3,
-        "controller": "PasOrigenFondo/GetPasOrigenFondos",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },     
-    {
-        "type": "text",
-        "name": "NombreEncargado",
-        "label": "Nombre Encargado",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "Apellido1Encargado",
-        "label": "Primer Apellido",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "Apellido2Encargado",
-        "label": "Segundo Apellido",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoTipoIdentificacion",
-        "label": "Tipo Identificación",
-        "value": "",
-        "xs": 3,
-        "controller": "ParTipoidentificacion/GetParTiposIdentificacion",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "NumeroId",
-        "label": "Número Id",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "date",
-      "name": "FechaVencimientoId",
-      "label": "Fecha Vencimiento",
-      "value": "",
-      "size": "small",
-      "inputFormat": "dd/MM/yyyy",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "date",
-        "name": "FechaNacimiento",
-        "label": "Fecha Nacimiento",
-        "value": "",
-        "size": "small",
-        "inputFormat": "dd/MM/yyyy",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoPais",
-        "label": "País Nacimeinto",
-        "value": "",
-        "xs": 3,
-        "controller": "ParPais/GetParPaises",
-        "fieldName": "Nombre",
-        "nameId":"CodigoPaisNacimientoEncargado",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoPais",
-        "nameId":"CodigoPaisNacionalidadEncargado",
-        "label": "Nacionalidad",
-        "value": "",
-        "xs": 3,
-        "controller": "ParPais/GetParPaises",
-        "fieldName": "Nombre",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoPais",
-        "nameId":"CodigoPaisEncargado",
-        "label": "Pais",
-        "value": "",
-        "xs": 3,
-        "controller": "ParPais/GetParPaises",
-        "fieldName": "Nombre",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoProvincia",
-        "nameId":"CodigoProvinciaEncargado",
-        "label": "Provincia",
-        "value": "",
-        "xs": 3,
-        "controller": "ParProvincium/GetParProvincias",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-      },
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoCanton",
+    "nameId": "CodigoCantonAportante",
+    "label": "Cantón",
+    "value": "",
+    "xs": 3,
+    "controller": "ParCanton/GetParCantones",
+    "fieldName": "Descripcion",
+    "validations": [
       {
-        "type": "select",
-        "name": "CodigoCanton",
-        "nameId":"CodigoCantonEncargado",
-        "label": "Cantón",
-        "value": "",
-        "xs": 3,
-        "controller": "ParCanton/GetParCantones",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-      },
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoDistrito",
+    "nameId": "CodigoDistritoAportante",
+    "label": "Distrito",
+    "value": "",
+    "xs": 3,
+    "controller": "ParDistrito/GetParDistritos",
+    "fieldName": "Descripcion",
+    "validations": [
       {
-        "type": "select",
-        "name": "CodigoDistrito",
-        "nameId":"CodigoDistritoEncargado",
-        "label": "Distrito",
-        "value": "",
-        "xs": 3,
-        "controller": "ParDistrito/GetParDistritos",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "text",
-      "name": "DireccionDomicilio",
-      "label": "Dirección Domicilio",
-      "value": "",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "date",
-        "name": "FechaNombramiento",
-        "label": "Fecha Nombramiento",
-        "value": "",
-        "size": "small",
-        "inputFormat": "dd/MM/yyyy",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "text",
-      "name": "EMailEncargado",
-      "label": "eMail",
-      "value": "",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "text",
-        "name": "TelefonoFijoEncargado",
-        "label": "Teléfono",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "TelefonoCelularEncargado",
-        "label": "Celular",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "date",
-        "name": "FechaOrdenacionConsagracion",
-        "label": "Fecha Ordenación/Consagración",
-        "value": "",
-        "size": "small",
-        "inputFormat": "dd/MM/yyyy",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoDiocesis",
-        "label": "Diocesis",
-        "value": "",
-        "xs": 3,
-        "controller": "ParDiocesis/GetListaParDiocesis",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "Congregacion",
-        "label": "Congregación",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "date",
-        "name": "FechaIngreso",
-        "label": "Fecha Ingreso",
-        "value": "",
-        "size": "small",
-        "inputFormat": "dd/MM/yyyy",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "select",
-      "name": "CodigoEstado",
-      "label": "Estado",
-      "value": "",
-      "xs": 3,
-      "controller": "ParEstado/GetParEstados",
-      "fieldName": "Descripcion",
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "Usuario",
-      "label": "Usuario",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    }
-  ]
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "EMailAportante",
+    "label": "Correo",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "TelefonoFijo",
+    "label": "Teléfono Fijo",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "TelefonoCelular",
+    "label": "Celular",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoOrigenFondos",
+    "label": "Origen de fondos",
+    "value": "",
+    "xs": 3,
+    "controller": "PasOrigenFondo/GetPasOrigenFondos",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "NombreEncargado",
+    "label": "Nombre Encargado",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Apellido1Encargado",
+    "label": "Primer Apellido",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Apellido2Encargado",
+    "label": "Segundo Apellido",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoTipoIdentificacion",
+    "label": "Tipo Identificación",
+    "value": "",
+    "xs": 3,
+    "controller": "ParTipoidentificacion/GetParTiposIdentificacion",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "NumeroId",
+    "label": "Número Id",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaVencimientoId",
+    "label": "Fecha Vencimiento",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaNacimiento",
+    "label": "Fecha Nacimiento",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoPais",
+    "label": "País Nacimeinto",
+    "value": "",
+    "xs": 3,
+    "controller": "ParPais/GetParPaises",
+    "fieldName": "Nombre",
+    "nameId": "CodigoPaisNacimientoEncargado",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoPais",
+    "nameId": "CodigoPaisNacionalidadEncargado",
+    "label": "Nacionalidad",
+    "value": "",
+    "xs": 3,
+    "controller": "ParPais/GetParPaises",
+    "fieldName": "Nombre",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoPais",
+    "nameId": "CodigoPaisEncargado",
+    "label": "Pais",
+    "value": "",
+    "xs": 3,
+    "controller": "ParPais/GetParPaises",
+    "fieldName": "Nombre",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoProvincia",
+    "nameId": "CodigoProvinciaEncargado",
+    "label": "Provincia",
+    "value": "",
+    "xs": 3,
+    "controller": "ParProvincium/GetParProvincias",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoCanton",
+    "nameId": "CodigoCantonEncargado",
+    "label": "Cantón",
+    "value": "",
+    "xs": 3,
+    "controller": "ParCanton/GetParCantones",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoDistrito",
+    "nameId": "CodigoDistritoEncargado",
+    "label": "Distrito",
+    "value": "",
+    "xs": 3,
+    "controller": "ParDistrito/GetParDistritos",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "DireccionDomicilio",
+    "label": "Dirección Domicilio",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaNombramiento",
+    "label": "Fecha Nombramiento",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "EMailEncargado",
+    "label": "eMail",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "TelefonoFijoEncargado",
+    "label": "Teléfono",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "TelefonoCelularEncargado",
+    "label": "Celular",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaOrdenacionConsagracion",
+    "label": "Fecha Ordenación/Consagración",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoDiocesis",
+    "label": "Diocesis",
+    "value": "",
+    "xs": 3,
+    "controller": "ParDiocesis/GetListaParDiocesis",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Congregacion",
+    "label": "Congregación",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaIngreso",
+    "label": "Fecha Ingreso",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoEstado",
+    "label": "Estado",
+    "value": "",
+    "xs": 3,
+    "controller": "ParEstado/GetParEstados",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Usuario",
+    "label": "Usuario",
+    "value": "",
+    "xs": 6,
+    "disabled": true,
+    "validations": []
+  }
+]

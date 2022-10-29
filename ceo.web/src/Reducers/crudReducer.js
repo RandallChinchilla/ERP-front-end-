@@ -7,7 +7,7 @@ import {
 } from "../Types/Index.js";
 
 export const initialState = {
-  db: [],
+  // db: [],
 };
 
 export function crudReducer(state = initialState, action) {
@@ -16,7 +16,8 @@ export function crudReducer(state = initialState, action) {
       //console.log(action.payload);
       return {
         ...state,
-        db: action.payload.map((data) => data),
+        // db: action.payload.map((data) => data),
+        db: action.payload,
       };
     }
     case CREATE_DATA: {

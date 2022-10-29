@@ -1,6 +1,8 @@
 import {
   CREATE_DATA,
   DELETE_DATA,
+  GET_TOKEN,
+  GET_USER,
   NO_DATA,
   READ_ALL_DATA,
   UPDATE_ALERT,
@@ -24,5 +26,6 @@ export const delAction = (id, nameId) => ({
 });
 
 export const noAction = () => ({ type: NO_DATA });
-
 export const updateAlert = (data) => ({ type: UPDATE_ALERT, payload: data });
+export const getUser = (data) => ({ type: GET_USER, payload: data });
+export const getToken = (data) => ({ type: GET_TOKEN, payload: data });

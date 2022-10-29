@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { helpHttp } from "../Helpers/HelpHttp";
 const baseUrl = process.env.REACT_APP_BASE_URL;
-const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+const userLoggedToken = "898972347523jhklqhflqjkwhjlhj"; //JSON.parse(localStorage.getItem("userLoggedToken"));
 
 export const useGetData = (controller, model) => {
   const [Data, setData] = useState([]);

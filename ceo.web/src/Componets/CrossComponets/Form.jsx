@@ -19,6 +19,7 @@ import { updateAlert } from "../../Actions/Index";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { useHistory } from "react-router-dom";
 
 const initialValues = {};
 const requiredFields = {};
@@ -47,10 +48,9 @@ const useStyles = makeStyles(() => ({
 export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { alert } = state.alert;
+  const { alert, user } = state;
   const styles = useStyles();
-  const userData = JSON.parse(localStorage.getItem("userLogged"));
-  const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+  let usehistory = useHistory();
 
   for (const input of formJson) {
     initialValues[input.nameId ? input.nameId : input.name] = input.value;
@@ -66,9 +66,9 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
   }
   const validationschema = Yup.object({ ...requiredFields });
 
-  initialValues.nombreEmpresa = userData.nombreEmpresa;
-  initialValues.Usuario = userData.userName;
-  initialValues.CodigoEmpresa = userData.codigoEmpresa;
+  initialValues.nombreEmpresa = user.userdata.NombreEmpresa;
+  initialValues.Usuario = user.userdata.UserName;
+  initialValues.CodigoEmpresa = user.userdata.CodigoEmpresa;
 
   console.log(rowUpdate);
 
@@ -85,7 +85,7 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
   const [date, setDate] = useState("");
 
   const onSubmit = (data) => {
-    postAction(urlApi.post, data, userLoggedToken).then((res) => {
+    postAction(urlApi.post, data, user.usertoken).then((res) => {
       if (res.IsSuccess) {
         dispatch(
           updateAlert({
@@ -265,7 +265,13 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
                     }
                   )}
                   <Grid item xs={12} container justifyContent="end">
-                    <Button color="secondary" variant="contained">
+                    <Button
+                      color="secondary"
+                      variant="contained"
+                      onClick={() => {
+                        usehistory.push(urlApi.navigationBack);
+                      }}
+                    >
                       Regresar
                     </Button>
                     <Button color="primary" type="submit" variant="contained">

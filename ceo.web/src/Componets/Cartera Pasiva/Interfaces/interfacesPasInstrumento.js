@@ -38,6 +38,7 @@ export const routesPasInstrumentoApi = {
   update: "PasInstrumento/PutPasInstrumento",
   delete: "PasInstrumento/DeletePasInstrumento",
   navigation: "./PasInstrumento",
+  navigationBack: "./PasInstrumentoView",
 };
 
 export const tableStyle = {

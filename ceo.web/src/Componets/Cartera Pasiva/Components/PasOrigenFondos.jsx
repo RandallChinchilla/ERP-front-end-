@@ -1,6 +1,9 @@
 import React from "react";
 import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { columnsPasOrigenFondos, routesPasOrigenFondosApi } from "../Interfaces/interfacePasOrigenFondos";
+import {
+  columnsPasOrigenFondos,
+  routesPasOrigenFondosApi,
+} from "../Interfaces/interfacePasOrigenFondos";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +19,9 @@ const PasOrigenFondos = () => {
         apiRoutes={routesPasOrigenFondosApi}
         field="CodigoOrigenFondos"
         title="Catálogo Origen Fondos"
+        isEditable={true}
+        isDeletable={true}
+        isAdd={true}
       />
     </div>
   );

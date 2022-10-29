@@ -14,6 +14,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { postAction } from "../../../Helpers/postHelper";
 import { putAction } from "../../../Helpers/putHelper";
@@ -165,12 +166,14 @@ export const PasMaestro = () => {
   const handleCloseAportante = () => setOpenAportante(false);
   const handleOpenInstrumento = () => setOpenInstrumento(true);
   const handleCloseInstrumento = () => setOpenInstrumento(false);
+  const state = useSelector((state) => state);
+  const { alert, user } = state;
 
   const initialForm = {
-    CodigoEmpresa: userData.codigoEmpresa,
-    NombreEmpresa: userData.nombreEmpresa,
-    Id: userData.id,
-    NombreUsuario: userData.userName,
+    CodigoEmpresa: user.userdata.CodigoEmpresa,
+    NombreEmpresa: user.userdata.NombreEmpresa,
+    Id: user.userdata.Id,
+    NombreUsuario: user.userdata.UserName,
     CodigoPortafolio: 0,
     NumeroInversion: 0,
     CodigoAportante: 0,
@@ -218,7 +221,7 @@ export const PasMaestro = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (form.NumeroInversion === 0) {
-      postAction("PasMaestro/PostPasMaestro", form, userLoggedToken).then(
+      postAction("PasMaestro/PostPasMaestro", form, user.usertoken).then(
         (res) => {
           if (res.isSuccess) {
             setForm(initialForm);
@@ -229,7 +232,7 @@ export const PasMaestro = () => {
         }
       );
     } else {
-      putAction("PasMaestro/PutPasMaestro", form, userLoggedToken).then(
+      putAction("PasMaestro/PutPasMaestro", form, user.usertoken).then(
         (res) => {
           if (res.isSuccess) {
             return alert("El maestro fue actualizado con exito");
@@ -266,7 +269,7 @@ export const PasMaestro = () => {
                   label="Empresa"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={userData.nombreEmpresa}
+                  value={user.userdata.NombreEmpresa}
                   className={styles.inpuntEmpresa}
                   size="small"
                   disabled
@@ -844,7 +847,7 @@ export const PasMaestro = () => {
                   label="Usuario"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={userData.userName}
+                  value={user.userdata.UserName}
                   className={styles.inpuntEmpresa}
                   size="small"
                   disabled

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 import { helpHttp } from "../../../Helpers/HelpHttp";
 import { useDispatch, useSelector } from "react-redux";
-import { updateAlert } from "../../../Actions/Index";
+import { getToken, getUser, updateAlert } from "../../../Actions/Index";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
@@ -14,6 +14,7 @@ export const useAutentication = () => {
   const dispatch = useDispatch();
   const { alert } = state.alert;
 
+  console.log(state);
   const handleSubmitLogin = (data) => {
     let url = `${baseUrl}Account/CreateToken`;
     let token = "";
@@ -37,6 +38,8 @@ export const useAutentication = () => {
           );
           return;
         }
+        //dispatch(getToken({ ...user, usertoken: res.token }));
+        dispatch(getToken(res.token));
         let url = `${baseUrl}Account/Login`;
         token = res.token;
         options = {
@@ -49,12 +52,7 @@ export const useAutentication = () => {
         helpHttp()
           .post(url, options)
           .then((resLogin) => {
-            console.log(resLogin);
-            setResponse(true);
-            window.localStorage.setItem(
-              "userLogged",
-              JSON.stringify(resLogin.Result)
-            );
+            dispatch(getUser(resLogin.Result));
             usehistory.push("./Dashboard");
           });
       });

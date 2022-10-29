@@ -19,6 +19,9 @@ const PasOrigenAportante = () => {
         apiRoutes={routesPasOrigenAportanteApi}
         field="CodigoOrigenAportante"
         title="Catálogo Origen Aportante"
+        isEditable={true}
+        isDeletable={true}
+        isAdd={true}
       />
     </div>
   );

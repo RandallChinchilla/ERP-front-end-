@@ -1,143 +1,142 @@
 [
-    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
-    {
-      "type": "text",
-      "name": "nombreEmpresa",
-      "label": "Empresa",
-      "value": "",
-      "xs": 3,
-      "disabled": true,
-      "validations": []
-    },
-    {
-      "type": "text",
-      "name": "CodigoAportante",
-      "label": "Aportante",
-      "value": 0,
-      "xs": 3,
-      "disabled": true,
-      "validations": []
-    },
-    {
-      "type": "text",
-      "name": "CodigoTipoIdentificacion",
-      "label": "Tipo Identificación",
-      "value": 0,
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "NumeroId",
-      "label": "Número Id",
-      "value": "",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "Nombre",
-      "label": "Nombre",
-      "value": "",
-      "xs": 4,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "Apellido1",
-      "label": "Primer Apellido",
-      "value": "",
-      "xs": 4,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "text",
-        "name": "Apellido2",
-        "label": "Segundo Apellido",
-        "value": "",
-        "xs": 4,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },     
-    {
-      "type": "date",
-      "name": "FechaVencimientoId",
-      "label": "Fecha Vencimiento",
-      "value": "",
-      "size": "small",
-      "inputFormat": "dd/MM/yyyy",
-      "xs": 4,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "EMail",
-      "label": "Correo Electrónico",
-      "value": "",
-      "xs": 4,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "TelefonoCelular",
-      "label": "Teléfono Celular",
-      "value": "",
-      "xs": 4,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "select",
-      "name": "CodigoEstado",
-      "label": "Estado",
-      "value": "",
-      "xs": 6,
-      "controller": "ParEstado/GetParEstados",
-      "fieldName": "Descripcion",
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "Usuario",
-      "label": "Usuario",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    }
-  ]
-  
+  { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+  {
+    "type": "text",
+    "name": "nombreEmpresa",
+    "label": "Empresa",
+    "value": "",
+    "xs": 3,
+    "disabled": true,
+    "validations": []
+  },
+  {
+    "type": "text",
+    "name": "CodigoAportante",
+    "label": "Aportante",
+    "value": 0,
+    "xs": 3,
+    "disabled": true,
+    "validations": []
+  },
+  {
+    "type": "text",
+    "name": "CodigoTipoIdentificacion",
+    "label": "Tipo Identificación",
+    "value": 0,
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "NumeroId",
+    "label": "Número Id",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Nombre",
+    "label": "Nombre",
+    "value": "",
+    "xs": 4,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Apellido1",
+    "label": "Primer Apellido",
+    "value": "",
+    "xs": 4,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Apellido2",
+    "label": "Segundo Apellido",
+    "value": "",
+    "xs": 4,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaVencimientoId",
+    "label": "Fecha Vencimiento",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 4,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "EMail",
+    "label": "Correo Electrónico",
+    "value": "",
+    "xs": 4,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "TelefonoCelular",
+    "label": "Teléfono Celular",
+    "value": "",
+    "xs": 4,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoEstado",
+    "label": "Estado",
+    "value": "",
+    "xs": 6,
+    "controller": "ParEstado/GetParEstados",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Usuario",
+    "label": "Usuario",
+    "value": "",
+    "xs": 6,
+    "disabled": true,
+    "validations": []
+  }
+]

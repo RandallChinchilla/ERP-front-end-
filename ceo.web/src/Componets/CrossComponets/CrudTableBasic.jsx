@@ -16,13 +16,14 @@ import { putAction } from "../../Helpers/putHelper";
 import { tableStyle } from "../Cartera Pasiva/Interfaces/interfacesPasOrigenAportante";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
-const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+//const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
 
 export const CrudTableBasic = (props) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const { db } = state.crud;
   const { alert } = state.alert;
+  const { usertoken } = state.user;
   const [error, seterror] = useState(null);
 
   /**
@@ -38,6 +39,7 @@ export const CrudTableBasic = (props) => {
       .then((res) => {
         if (!res.err) {
           dispatch(readAllAction(res));
+          //setTodoList(res);
         } else {
           dispatch(noAction());
           seterror(res);
@@ -52,7 +54,7 @@ export const CrudTableBasic = (props) => {
    */
   const addRow = (rowAdd) => {
     console.log(rowAdd);
-    postAction(props.apiRoutes.add, rowAdd, userLoggedToken).then((res) => {
+    postAction(props.apiRoutes.add, rowAdd, usertoken).then((res) => {
       let message = "";
       if (res.IsSuccess) {
         dispatch(createAction(res.Result));
@@ -84,32 +86,30 @@ export const CrudTableBasic = (props) => {
    */
   const updateRow = (rowUpdate) => {
     //console.log(rowUpdate);
-    putAction(props.apiRoutes.update, rowUpdate, userLoggedToken).then(
-      (res) => {
-        console.log(res);
-        if (res.IsSuccess) {
-          dispatch(updateAction(rowUpdate, props.field));
-          dispatch(
-            updateAlert({
-              ...alert,
-              open: true,
-              severity: "success",
-              message: res.Message,
-            })
-          );
-        } else {
-          dispatch(noAction());
-          dispatch(
-            updateAlert({
-              ...alert,
-              open: true,
-              severity: "success",
-              message: res.Message,
-            })
-          );
-        }
+    putAction(props.apiRoutes.update, rowUpdate, usertoken).then((res) => {
+      console.log(res);
+      if (res.IsSuccess) {
+        dispatch(updateAction(rowUpdate, props.field));
+        dispatch(
+          updateAlert({
+            ...alert,
+            open: true,
+            severity: "success",
+            message: res.Message,
+          })
+        );
+      } else {
+        dispatch(noAction());
+        dispatch(
+          updateAlert({
+            ...alert,
+            open: true,
+            severity: "success",
+            message: res.Message,
+          })
+        );
       }
-    );
+    });
   };
 
   /**
@@ -119,31 +119,29 @@ export const CrudTableBasic = (props) => {
    */
   const deleteRow = (rowDelete) => {
     console.log(rowDelete);
-    deleteAction(props.apiRoutes.delete, rowDelete, userLoggedToken).then(
-      (res) => {
-        if (res.IsSuccess) {
-          dispatch(delAction(rowDelete[props.field], props.field));
-          dispatch(
-            updateAlert({
-              ...alert,
-              open: true,
-              severity: "success",
-              message: res.Message,
-            })
-          );
-        } else {
-          dispatch(noAction());
-          dispatch(
-            updateAlert({
-              ...alert,
-              open: true,
-              severity: "error",
-              message: res.Message,
-            })
-          );
-        }
+    deleteAction(props.apiRoutes.delete, rowDelete, usertoken).then((res) => {
+      if (res.IsSuccess) {
+        dispatch(delAction(rowDelete[props.field], props.field));
+        dispatch(
+          updateAlert({
+            ...alert,
+            open: true,
+            severity: "success",
+            message: res.Message,
+          })
+        );
+      } else {
+        dispatch(noAction());
+        dispatch(
+          updateAlert({
+            ...alert,
+            open: true,
+            severity: "error",
+            message: res.Message,
+          })
+        );
       }
-    );
+    });
   };
 
   return (

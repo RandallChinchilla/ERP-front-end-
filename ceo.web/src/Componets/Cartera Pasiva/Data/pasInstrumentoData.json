@@ -138,7 +138,7 @@
   },
   {
     "type": "select",
-    "name": "CodigoDivisor",
+    "name": "Divisor",
     "label": "Divisor Tasa",
     "value": "",
     "xs": 3,
@@ -150,14 +150,14 @@
       }
     ],
     "data": [
-      { "CodigoDivisor": 1, "Descripcion": "360" },
-      { "CodigoDivisor": 2, "Descripcion": "365" },
-      { "CodigoDivisor": 3, "Descripcion": "Actual" }
+      { "Divisor": 1, "Descripcion": "360" },
+      { "Divisor": 2, "Descripcion": "365" },
+      { "Divisor": 3, "Descripcion": "Actual" }
     ]
   },
   {
     "type": "select",
-    "name": "CodigoMultiplicador",
+    "name": "Multiplicador",
     "label": "Multiplicador Tasa",
     "value": "",
     "xs": 3,
@@ -169,9 +169,9 @@
       }
     ],
     "data": [
-      { "CodigoMultiplicador": 1, "Descripcion": "360" },
-      { "CodigoMultiplicador": 2, "Descripcion": "365" },
-      { "CodigoMultiplicador": 3, "Descripcion": "Actual" }
+      { "Multiplicador": 1, "Descripcion": "360" },
+      { "Multiplicador": 2, "Descripcion": "365" },
+      { "Multiplicador": 3, "Descripcion": "Actual" }
     ]
   },
   {
