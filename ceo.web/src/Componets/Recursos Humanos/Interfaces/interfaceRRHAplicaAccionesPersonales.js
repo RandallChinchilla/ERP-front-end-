@@ -12,14 +12,3 @@ export const routesRRHAplicaAccionesPersonales = {
   update: "RrhAplicaAccionPersonal/PutRrhAplicaAccionesPersonales",
   delete: "RrhAplicaAccionPersonal/DeleteRrhAplicaAccionesPersonales",
 };
-
-export const tableStyle = {
-  rowStyle: {
-    fontSize: 12,
-  },
-  headerStyle: {
-    backgroundColor: "#898883",
-    color: "#FFF",
-    fontSize: 13,
-  },
-};

@@ -1,0 +1,29 @@
+[
+  { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+  {
+    "type": "select",
+    "name": "CodigoTipoDeduccion",
+    "label": "Tipo de deducción",
+    "value": "",
+    "xs": 6,
+    "controller": "RrhTipoDeduccion/GetRrhTiposDeduccion",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Monto",
+    "label": "Monto",
+    "value": "",
+    "xs": 6,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  }
+]

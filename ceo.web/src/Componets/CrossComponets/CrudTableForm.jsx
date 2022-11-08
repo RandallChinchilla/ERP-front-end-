@@ -32,29 +32,10 @@ export const CrudTableForm = ({ columns, apiRoutes, field, title }) => {
    * readAllAction el cual crea el estado inicial que contiene la lista
    * de datos retornados por la Api.
    */
-  // let url = `${baseUrl}${props.apiRoutes.get}`;
-  // useEffect(() => {
-  //   helpHttp()
-  //     .get(url)
-  //     .then((res) => {
-  //       console.log(res);
-  //       if (res.err) return null;
-  //       setData(res);
-  //       // if (!res.err) {
-  //       //   //dispatch(readAllAction(res));
-  //       //   console.log(res);
-  //       //   setData(res);
-  //       // } else {
-  //       //   // dispatch(noAction());
-  //       //   //seterror(res);
-  //       // }
-  //     });
-  // }, [url]);
 
   const { Data, Error } = useGetData(apiRoutes.get);
   if (Error) return null;
   if (!Data) return null;
-  console.log(Data);
 
   /**
    * Esta funcion agrega o actualiza una fila a la tabla
@@ -103,10 +84,10 @@ export const CrudTableForm = ({ columns, apiRoutes, field, title }) => {
     });
   };
 
-  //console.log(db);
-
   return (
-    <div>
+    <div key={title}>
+      {console.log(Data)}
+
       <MaterialTable
         title={title}
         columns={columns}

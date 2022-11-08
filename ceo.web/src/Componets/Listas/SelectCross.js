@@ -45,7 +45,7 @@ export const SelectCross = ({
         value={nameId ? form[nameId] : form[name]}
         disabled={disabled}
       >
-        <MenuItem value="0">Eliege una opción...</MenuItem>
+        <MenuItem value="0">Selecciona una opción...</MenuItem>
         {data &&
           options.map((item) => (
             <MenuItem key={item[name]} value={item[name]}>

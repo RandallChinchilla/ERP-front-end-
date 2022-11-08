@@ -18,16 +18,19 @@ export const useGetData = (controller, model) => {
   };
 
   useEffect(() => {
-    helpHttp()
-      .get(url, options)
-      .then((res) => {
-        if (!res.err) {
-          setData(res);
-        } else {
-          setError(res.err);
-        }
-      });
-  }, [controller]);
+    const getData = async () => {
+      helpHttp()
+        .get(url, options)
+        .then((res) => {
+          if (res.err) {
+            setError(res.err);
+          } else {
+            setData(res);
+          }
+        });
+    };
+    getData();
+  }, []);
   return { Data, Error, setData };
 };
 

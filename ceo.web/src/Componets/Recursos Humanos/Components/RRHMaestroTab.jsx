@@ -1,6 +1,3 @@
-import * as React from "react";
-import Tabs from "@mui/material/Tabs";
-import Box from "@mui/material/Box";
 import {
   AppBar,
   Grid,
@@ -9,18 +6,26 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import { themeCustom, useStyles } from "../Styles/styleRHHMaestroTab";
+import Box from "@mui/material/Box";
+import Tabs from "@mui/material/Tabs";
 import PropTypes from "prop-types";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import {
-  columnsRRHTabempleados,
-  routesRRHMaestroApi,
-} from "../Interfaces/interfaceRRHMaestro";
+import * as React from "react";
+import { CrudTable } from "../../CrossComponets/CrudTable";
+import { Form } from "../../CrossComponets/Form";
 import {
   columnsRRHAplicaAccionesPersonales,
   routesRRHAplicaAccionesPersonales,
 } from "../Interfaces/interfaceRRHAplicaAccionesPersonales";
-import { useSelector } from "react-redux";
+import {
+  columnsRRHTabempleados,
+  routesRRHMaestroApi,
+} from "../Interfaces/interfaceRRHMaestro";
+import { themeCustom, useStyles } from "../Styles/styleRHHMaestroTab";
+import formJson from "../Data/rrhDeduccionesTab.json";
+import {
+  columnsRRHAplicaDeducciones,
+  routesRRHAplicaDeducciones,
+} from "../Interfaces/interfaceRRHAplicaDeducciones";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -90,7 +95,7 @@ export const RRHMaestroTab = () => {
             </Grid>
             <Grid item xs={12} container>
               <TabPanel value={value} index={0}>
-                <CrudTableBasic
+                <CrudTable
                   columns={columnsRRHTabempleados}
                   apiRoutes={routesRRHMaestroApi}
                   title="Empleados"
@@ -101,7 +106,7 @@ export const RRHMaestroTab = () => {
                 />
               </TabPanel>
               <TabPanel value={value} index={1}>
-                <CrudTableBasic
+                <CrudTable
                   columns={columnsRRHAplicaAccionesPersonales}
                   apiRoutes={routesRRHAplicaAccionesPersonales}
                   title="Horas Extras"
@@ -112,7 +117,15 @@ export const RRHMaestroTab = () => {
                 />
               </TabPanel>
               <TabPanel value={value} index={2}>
-                Item Three
+                <CrudTable
+                  columns={columnsRRHAplicaDeducciones}
+                  apiRoutes={routesRRHAplicaDeducciones}
+                  title="Deducciones"
+                  isEditable={true}
+                  isDeletable={false}
+                  isAdd={false}
+                  field="NumeroEmpleado"
+                />
               </TabPanel>
               <TabPanel value={value} index={3}>
                 Item Three

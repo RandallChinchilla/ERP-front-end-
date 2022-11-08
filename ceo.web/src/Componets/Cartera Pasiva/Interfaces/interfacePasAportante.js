@@ -5,8 +5,7 @@ export const columnsPasAportante = [
   },
   {
     title: "Empresa",
-    field: "CodigoEmpresaNavigation.Nombre",
-    id: "CodigoEmpresaNavigation.CodigoEmpresa",
+    field: "NombreEmpresa",
   },
   {
     title: "Nombre Aportante",

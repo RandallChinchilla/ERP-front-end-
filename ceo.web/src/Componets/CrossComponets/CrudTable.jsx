@@ -1,51 +1,36 @@
 import MaterialTable from "material-table";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createAction,
   delAction,
   noAction,
-  readAllAction,
   updateAction,
   updateAlert,
 } from "../../Actions/Index";
 import { deleteAction } from "../../Helpers/deleteHelper";
-import { helpHttp } from "../../Helpers/HelpHttp";
 import { postAction } from "../../Helpers/postHelper";
 import { putAction } from "../../Helpers/putHelper";
-import { tableStyle } from "../Cartera Pasiva/Interfaces/interfacesPasOrigenAportante";
+import { useGetData } from "../../Hooks/useGetData";
+import { tableStyle } from "../Recursos Humanos/Styles/styleRHHMaestroTab";
 
-const baseUrl = process.env.REACT_APP_BASE_URL;
-//const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
-
-export const CrudTableBasic = (props) => {
+export const CrudTable = ({
+  columns,
+  apiRoutes,
+  field,
+  title,
+  isEditable,
+  isDeletable,
+  isAdd,
+}) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { db } = state.crud;
   const { alert } = state.alert;
   const { usertoken } = state.user;
-  const [error, seterror] = useState(null);
 
-  /**
-   * Realizamos la peticion GET al Api y ejecutamos el action
-   * readAllAction el cual crea el estado inicial que contiene la lista
-   * de datos retornados por la Api.
-   */
-
-  let url = `${baseUrl}${props.apiRoutes.get}`;
-  useEffect(() => {
-    helpHttp()
-      .get(url)
-      .then((res) => {
-        if (!res.err) {
-          dispatch(readAllAction(res));
-          //setTodoList(res);
-        } else {
-          dispatch(noAction());
-          seterror(res);
-        }
-      });
-  }, [url, useDispatch]);
+  const { Data, Error } = useGetData(apiRoutes.get);
+  if (Error) return null;
+  if (!Data) return null;
 
   /**
    * Esta funcion realiza la conexion con el Api, agrega un registro y actualiza
@@ -54,7 +39,7 @@ export const CrudTableBasic = (props) => {
    */
   const addRow = (rowAdd) => {
     console.log(rowAdd);
-    postAction(props.apiRoutes.add, rowAdd, usertoken).then((res) => {
+    postAction(apiRoutes.add, rowAdd, usertoken).then((res) => {
       let message = "";
       if (res.IsSuccess) {
         dispatch(createAction(res.Result));
@@ -86,10 +71,9 @@ export const CrudTableBasic = (props) => {
    */
   const updateRow = (rowUpdate) => {
     //console.log(rowUpdate);
-    putAction(props.apiRoutes.update, rowUpdate, usertoken).then((res) => {
-      console.log(res);
+    putAction(apiRoutes.update, rowUpdate, usertoken).then((res) => {
       if (res.IsSuccess) {
-        dispatch(updateAction(rowUpdate, props.field));
+        //dispatch(updateAction(rowUpdate, field));
         dispatch(
           updateAlert({
             ...alert,
@@ -111,7 +95,6 @@ export const CrudTableBasic = (props) => {
       }
     });
   };
-
   /**
    * Esta funcion realiza la conexion con el Api, elimina un registro y actualiza
    * el estado inicial por medio del dispatch y la acción delAction
@@ -119,9 +102,9 @@ export const CrudTableBasic = (props) => {
    */
   const deleteRow = (rowDelete) => {
     console.log(rowDelete);
-    deleteAction(props.apiRoutes.delete, rowDelete, usertoken).then((res) => {
+    deleteAction(apiRoutes.delete, rowDelete, usertoken).then((res) => {
       if (res.IsSuccess) {
-        dispatch(delAction(rowDelete[props.field], props.field));
+        dispatch(delAction(rowDelete[field], field));
         dispatch(
           updateAlert({
             ...alert,
@@ -145,16 +128,16 @@ export const CrudTableBasic = (props) => {
   };
 
   return (
-    <div key={props.title}>
+    <div key={title}>
       <MaterialTable
-        title={props.title}
-        columns={props.columns}
-        data={db}
+        title={title}
+        columns={columns}
+        data={Data}
         options={tableStyle}
         editable={{
-          isEditable: () => props.isEditable,
-          isDeletable: () => props.isDeletable,
-          onRowAdd: props.isAdd
+          isEditable: () => isEditable,
+          isDeletable: () => isDeletable,
+          onRowAdd: isAdd
             ? (newData) =>
                 new Promise((resolve, reject) => {
                   setTimeout(() => {
@@ -166,7 +149,7 @@ export const CrudTableBasic = (props) => {
           onRowUpdate: (newData, oldData) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                const dataUpdate = [...db];
+                const dataUpdate = [...Data];
                 const index = oldData.tableData.id;
                 dataUpdate[index] = newData;
                 resolve();
@@ -176,14 +159,14 @@ export const CrudTableBasic = (props) => {
           onRowDelete: (oldData) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
-                const dataDelete = [...db];
+                const dataDelete = [...Data];
                 const index = oldData.tableData.id;
                 deleteRow(dataDelete[index]);
                 resolve();
               }, 1000);
             }),
         }}
-      />
+      ></MaterialTable>
     </div>
   );
 };
