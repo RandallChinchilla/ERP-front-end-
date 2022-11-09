@@ -1,10 +1,10 @@
 //const userData = JSON.parse(localStorage.getItem("userLogged"));
 
 /**
- * Contexto con el cual interactua el componente RRHCentroMedico
+ * Contexto con el cual interactua el componente ParPeriodicidad
  */
 
-export const columnsRRHCentroMedico = [
+ export const columnsParPeriodicidad = [
     {
         title: "Código Empresa",
         field: "CodigoEmpresa",
@@ -19,23 +19,20 @@ export const columnsRRHCentroMedico = [
         editable: "never",
       },
       {
-        title: "Código Centro Médico",
-        field: "CodigoCentroMedico",
+        title: "Periodicidad",
+        field: "CodigoPeriodicidad",
         initialEditValue: 0,
         editable: "never",
       },
+      { title: "Meses", field: "CantidadMeses" },
       { title: "Descripción", field: "Descripcion" },
-      {
-        title: "Estado",
-        field: "CodigoEstado",
-      }
 ];
 
-export const routesRRHCentroMedicoApi = {
-  get: "RrhCentroMedico/GetRrhCentrosMedicos",
-  add: "RrhCentroMedico/PostRrhCentroMedico",
-  update: "RrhCentroMedico/PutRrhCentroMedico",
-  delete: "RrhCentroMedico/DeleteRrhCentroMedico",
+export const routesParPeriodicidadApi = {
+  get: "ParPeriodicidad/GetParPeriodicidades",
+  add: "ParPeriodicidad/PostParPeriodicidad",
+  update: "ParPeriodicidad/PutParPeriodicidad",
+  delete: "ParPeriodicidad/DeleteParPeriodicidad",
 };
 
 export const tableStyle = {

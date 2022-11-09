@@ -1,0 +1,111 @@
+[
+    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+    {
+      "type": "text",
+      "name": "nombreEmpresa",
+      "label": "Empresa",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "NumeroEmpleado",
+      "label": "Número Empleado",
+      "value": 0,
+      "xs": 3,
+      "disabled": true,
+      "validations": []
+    },
+    {
+        "type": "select",
+        "name": "CodigoPais",
+        "label": "País",
+        "value": "",
+        "xs": 3,
+        "controller": "ParPais/GetParPaises",
+        "fieldName": "Nombre",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "select",
+        "name": "CodigoTipoIdentificacion",
+        "label": "Tipo Identificación",
+        "value": "",
+        "xs": 4,
+        "controller": "ParTipoidentificacion/GetParTiposIdentificacion",
+        "fieldName": "Descripcion",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "NumeroId",
+      "label": "Número Id",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Nombre",
+      "label": "Nombre",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "date",
+      "name": "FechaNacimiento",
+      "label": "Fecha Nacimiento",
+      "value": "",
+      "size": "small",
+      "inputFormat": "dd/MM/yyyy",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "CodigoParentezco",
+      "label": "Parentezco",
+      "value": "",
+      "xs": 3,
+      "controller": "ParParentezco/GetParParentezcos",
+      "fieldName": "Descripcion",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Usuario",
+      "label": "Usuario",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    }
+  ]
+  

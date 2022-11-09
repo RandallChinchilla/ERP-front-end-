@@ -1,8 +1,8 @@
 import React from "react";
-import formJson from "../Data/ahoMaestroData.json";
+import formJson from "../Data/parTipoCambioData.json";
 import { Form } from "../../CrossComponets/Form";
 import { useLocation } from "react-router-dom";
-import { routesAhoMaestroApi } from "../Interfaces/interfaceAhoMaestro";
+import { routesParTipoCambioApi } from "../Interfaces/interfaceParTipoCambio";
 
 /**
  * Este componente renderiza un componente dinamico a partir del componenete Form,, el cual nos permite
@@ -15,13 +15,13 @@ import { routesAhoMaestroApi } from "../Interfaces/interfaceAhoMaestro";
  * @title Titulo del formulario
  * @returns CrudTableform
  */
-export const AhoMaestro = () => {
+export const ParTipoCambio = () => {
   const { rowUpdate } = useLocation();
   return (
     <Form
       formJson={formJson}
-      title="Maestro"
-      urlApi={routesAhoMaestroApi}
+      title="Tipo Cambio"
+      urlApi={routesParTipoCambioApi}
       rowUpdate={rowUpdate}
     />
   );

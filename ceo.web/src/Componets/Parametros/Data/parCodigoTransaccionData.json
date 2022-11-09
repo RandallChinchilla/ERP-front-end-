@@ -1,0 +1,237 @@
+[
+    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+    {
+      "type": "text",
+      "name": "nombreEmpresa",
+      "label": "Empresa",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+        "type": "select",
+        "name": "CodigoModulo",
+        "label": "Modulo",
+        "value": "",
+        "xs": 3,
+        "controller": "ParModulo/GetParModulos",
+        "fieldName": "Descripcion",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "select",
+        "name": "CodigoTransaccion",
+        "label": "Transacción",
+        "value": "",
+        "xs": 3,
+        "controller": "ParCodigotransaccion/GetParCodigoTransacciones",
+        "fieldName": "Descripcion",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "Descripcion",
+      "label": "Descripción",
+      "value": "",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+        "type": "checkbox",
+        "name": "IndicadorAutomatica",
+        "label": "Automática",
+        "value": false,
+        "xs": 3,
+        "validations": []
+    },
+    {
+        "type": "checkbox",
+        "name": "IndicadorImprimeRecibo",
+        "label": "Imprime Recibo",
+        "value": false,
+        "xs": 3,
+        "validations": []
+    },
+    {
+        "type": "checkbox",
+        "name": "IndicadorIngresaTransferencia",
+        "label": "Ingresa Transferencia",
+        "value": false,
+        "xs": 3,
+        "validations": []
+    },
+    {
+        "type": "checkbox",
+        "name": "IndicadorGeneraFacturaElectronica",
+        "label": "Genera Factura Electrónica",
+        "value": false,
+        "xs": 3,
+        "validations": []
+    },
+    {
+        "type": "checkbox",
+        "name": "IndicadorGeneraDebitoElectronico",
+        "label": "Genera Débito Electrónico",
+        "value": false,
+        "xs": 3,
+        "validations": []
+    },
+    {
+        "type": "checkbox",
+        "name": "IndicadorGeneraCreditoElectronico",
+        "label": "Genera Crédito Electrónico",
+        "value": false,
+        "xs": 3,
+        "validations": []
+    },
+    {
+        "type": "checkbox",
+        "name": "IndicadorDebitoCuentaProducto",
+        "label": "Utiliza Cuenta Producto Débito",
+        "value": false,
+        "xs": 3,
+        "validations": []
+    },
+    {
+      "type": "text",
+      "name": "TipoCuentaDebito",
+      "label": "Tipo Cuenta Débito",
+      "value": "",
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "NumeroCuentaDebito",
+      "label": "Cuenta Contable Débito",
+      "value": "",
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "checkbox",
+      "name": "IndicadorCreditoCuentaProducto",
+      "label": "Utiliza Cuenta Producto Crédito",
+      "value": false,
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "TipoCuentaCredito",
+      "label": "Tipo Cuenta Crédito",
+      "value": "",
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "NumeroCuentaCredito",
+      "label": "Cuenta Contable Crédito",
+      "value": "",
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "checkbox",
+      "name": "IndicadorIngresaEfectivo",
+      "label": "Ingresa Efectivo",
+      "value": false,
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "checkbox",
+      "name": "IndicadorEgresaEfectivo",
+      "label": "Egresa Efectivo",
+      "value": false,
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "checkbox",
+      "name": "IndicadorIngresaDocumentoValor",
+      "label": "Ingresa Documento Valor",
+      "value": false,
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "checkbox",
+      "name": "IndicadorAfectaSaldoMaestro",
+      "label": "Afecta Saldo Maestro",
+      "value": false,
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "checkbox",
+      "name": "IndicadorDisminuyeSaldoMaestro",
+      "label": "Disminuye Saldo Maestro",
+      "value": false,
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "checkbox",
+      "name": "IndicadorAfectaInteres",
+      "label": "Afecta Interés",
+      "value": false,
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "checkbox",
+      "name": "IndicadorDisminuyeInteres",
+      "label": "Disminuye Interés",
+      "value": false,
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "checkbox",
+      "name": "IndicadorGeneraCheque",
+      "label": "GeneraCheque",
+      "value": false,
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "checkbox",
+      "name": "IndicadorTarjeta",
+      "label": "Acepta Tarjeta DB/CR",
+      "value": false,
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "checkbox",
+      "name": "IndicadorRequiereAutorizacion",
+      "label": "Requiere Autorización",
+      "value": false,
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "Usuario",
+      "label": "Usuario",
+      "value": "",
+      "xs": 3,
+      "disabled": true,
+      "validations": []
+    }
+  ]  

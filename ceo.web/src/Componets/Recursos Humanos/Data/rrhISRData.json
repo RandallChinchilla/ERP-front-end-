@@ -1,0 +1,350 @@
+[
+    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+    {
+      "type": "text",
+      "name": "nombreEmpresa",
+      "label": "Empresa",
+      "value": "",
+      "xs": 12,
+      "disabled": true,
+      "validations": []
+    },
+    {
+        "type": "text",
+        "name": "Consecutivo",
+        "label": "Consecutivo",
+        "value": 0,
+        "xs": 6,
+        "disabled": true,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "date",
+        "name": "FechaHora",
+        "label": "Fecha Hora",
+        "value": "",
+        "size": "small",
+        "inputFormat": "dd/MM/yyyy",
+        "xs": 6,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "LimiteInicial1",
+        "label": "Limite Inicial 1",
+        "value": "",
+        "xs": 4,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "LimiteFinal1",
+        "label": "Limite Final 1",
+        "value": "",
+        "xs": 4,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "Porcentaje1",
+        "label": "Porcentaje 1",
+        "value": "",
+        "xs": 4,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "LimiteInicial2",
+        "label": "Limite Inicial 2",
+        "value": "",
+        "xs": 4,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "LimiteFinal2",
+        "label": "Limite Final ",
+        "value": "",
+        "xs": 4,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "Porcentaje2",
+        "label": "Porcentaje 2",
+        "value": "",
+        "xs": 4,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "LimiteInicial4",
+        "label": "Limite Inicial 4",
+        "value": "",
+        "xs": 4,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "LimiteFinal4",
+        "label": "Limite Final 4",
+        "value": "",
+        "xs": 4,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "Porcentaje4",
+      "label": "Porcentaje 4",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+        "type": "text",
+        "name": "LimiteInicial4",
+        "label": "Limite Inicial 4",
+        "value": "",
+        "xs": 4,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "LimiteFinal4",
+        "label": "Limite Final 4",
+        "value": "",
+        "xs": 4,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "Porcentaje4",
+      "label": "Porcentaje 4",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "LimiteInicial5",
+      "label": "Limite Inicial 5",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "LimiteFinal5",
+      "label": "Limite Final 5",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Porcentaje5",
+      "label": "Porcentaje 5",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "LimiteInicial6",
+      "label": "Limite Inicial 6",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "LimiteFinal6",
+      "label": "Limite Final 6",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Porcentaje6",
+      "label": "Porcentaje 6",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "LimiteInicial7",
+      "label": "Limite Inicial 7",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "LimiteFinal7",
+      "label": "Limite Final 7",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Porcentaje7",
+      "label": "Porcentaje 7",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "LimiteInicial8",
+      "label": "Limite Inicial 8",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "LimiteFinal8",
+      "label": "Limite Final 8",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Porcentaje8",
+      "label": "Porcentaje 8",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "CodigoEstado",
+      "label": "Estado",
+      "value": "",
+      "xs": 6,
+      "controller": "ParEstado/GetParEstados",
+      "fieldName": "Descripcion",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Usuario",
+      "label": "Usuario",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    }
+  ]  

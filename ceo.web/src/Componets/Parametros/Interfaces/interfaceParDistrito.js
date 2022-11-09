@@ -1,10 +1,10 @@
 //const userData = JSON.parse(localStorage.getItem("userLogged"));
 
 /**
- * Contexto con el cual interactua el componente RRHCentroMedico
+ * Contexto con el cual interactua el componente ParDistrito
  */
 
-export const columnsRRHCentroMedico = [
+ export const columnsParDistrito = [
     {
         title: "Código Empresa",
         field: "CodigoEmpresa",
@@ -18,24 +18,18 @@ export const columnsRRHCentroMedico = [
         initialEditValue: "DmdInterSoft", //userData.nombreEmpresa,
         editable: "never",
       },
-      {
-        title: "Código Centro Médico",
-        field: "CodigoCentroMedico",
-        initialEditValue: 0,
-        editable: "never",
-      },
+      { title: "Código País", field: "CodigoPais" },
+      { title: "Código Provincia", field: "CodigoProvincia" },
+      { title: "Código Cantón", field: "CodigoCanton" },
+      { title: "Código Distrito", field: "CodigoDistrito" },
       { title: "Descripción", field: "Descripcion" },
-      {
-        title: "Estado",
-        field: "CodigoEstado",
-      }
 ];
 
-export const routesRRHCentroMedicoApi = {
-  get: "RrhCentroMedico/GetRrhCentrosMedicos",
-  add: "RrhCentroMedico/PostRrhCentroMedico",
-  update: "RrhCentroMedico/PutRrhCentroMedico",
-  delete: "RrhCentroMedico/DeleteRrhCentroMedico",
+export const routesParDistritoApi = {
+  get: "ParDistrito/GetParDistritos",
+  add: "ParDistrito/PostParDistrito",
+  update: "ParDistrito/PutParDistrito",
+  delete: "ParDistrito/DeleteParDistrito",
 };
 
 export const tableStyle = {

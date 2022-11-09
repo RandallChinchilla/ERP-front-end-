@@ -1,0 +1,111 @@
+[
+    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+    {
+      "type": "text",
+      "name": "nombreEmpresa",
+      "label": "Empresa",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+        "type": "date",
+        "name": "FechaHora",
+        "label": "Fecha Hora",
+        "value": "",
+        "size": "small",
+        "inputFormat": "dd/MM/yyyy",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "select",
+        "name": "CodigoMoneda",
+        "label": "Moneda",
+        "value": "",
+        "xs": 3,
+        "controller": "ParMonedum/GetParMonedas",
+        "fieldName": "Descripcion",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "TipoCambioCompra",
+      "label": "Compra",
+      "value": "",
+      "xs": 6,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "TipoCambioVenta",
+      "label": "Venta",
+      "value": "",
+      "xs": 6,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "TipoCambioCompraVentanilla",
+      "label": "Compra Ventanilla",
+      "value": "",
+      "xs": 6,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+        "type": "text",
+        "name": "TipoCambioVentaVentanilla",
+        "label": "Venta Ventanilla",
+        "value": "",
+        "xs": 6,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "select",
+      "name": "CodigoEstado",
+      "label": "Estado",
+      "value": "",
+      "xs": 6,
+      "controller": "ParEstado/GetParEstados",
+      "fieldName": "Descripcion",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Usuario",
+      "label": "Usuario",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    }
+  ]  

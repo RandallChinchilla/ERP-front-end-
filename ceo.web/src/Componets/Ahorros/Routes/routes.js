@@ -1,12 +1,14 @@
 import { AhoMaestro } from "../Componentes/AhoMaestro";
-import { AhoMaestroView } from "../Componentes/AhoMaestroView";
+import AhoMaestroView from "../Componentes/AhoMaestroView";
 import { AhoProducto } from "../Componentes/AhoProducto";
 import { AhoProductoLog } from "../Componentes/AhoProductoLog";
-import { AhoProductoLogView } from "../Componentes/AhoProductoLogView";
-import { AhoProductoView } from "../Componentes/AhoProductoView";
+import AhoProductoLogView from "../Componentes/AhoProductoLogView";
+import AhoProductoView from "../Componentes/AhoProductoView";
+import { AhoTasa } from "../Componentes/AhoTasa";
+import AhoTasaView from "../Componentes/AhoTasaView";
 import AhoTipo from "../Componentes/AhoTipo";
 import { AhoTransaccion } from "../Componentes/AhoTransaccion";
-import { AhoTransaccionView } from "../Componentes/AhoTransaccionView";
+import AhoTransaccionView from "../Componentes/AhoTransaccionView";
 
 export const routes =[
     {
@@ -44,5 +46,13 @@ export const routes =[
     {
         path: "/Dashboard/AhoIndex/AhoTipo",
         component: AhoTipo,
-    },               
+    },
+    {
+        path: "/Dashboard/AhoIndex/AhoTasa",
+        component: AhoTasa,
+    },
+    {
+        path: "/Dashboard/AhoIndex/AhoTasaView",
+        component: AhoTasaView,
+    },                   
 ]

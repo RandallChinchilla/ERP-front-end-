@@ -1,10 +1,10 @@
 //const userData = JSON.parse(localStorage.getItem("userLogged"));
 
 /**
- * Contexto con el cual interactua el componente RRHCentroMedico
+ * Contexto con el cual interactua el componente ParParentezco
  */
 
-export const columnsRRHCentroMedico = [
+ export const columnsParParentezco = [
     {
         title: "Código Empresa",
         field: "CodigoEmpresa",
@@ -19,23 +19,19 @@ export const columnsRRHCentroMedico = [
         editable: "never",
       },
       {
-        title: "Código Centro Médico",
-        field: "CodigoCentroMedico",
+        title: "Parentezco",
+        field: "CodigoParentezco",
         initialEditValue: 0,
         editable: "never",
       },
       { title: "Descripción", field: "Descripcion" },
-      {
-        title: "Estado",
-        field: "CodigoEstado",
-      }
 ];
 
-export const routesRRHCentroMedicoApi = {
-  get: "RrhCentroMedico/GetRrhCentrosMedicos",
-  add: "RrhCentroMedico/PostRrhCentroMedico",
-  update: "RrhCentroMedico/PutRrhCentroMedico",
-  delete: "RrhCentroMedico/DeleteRrhCentroMedico",
+export const routesParParentezcoApi = {
+  get: "ParParentezco/GetParParentezcos",
+  add: "ParParentezco/PostParParentezco",
+  update: "ParParentezco/PutParParentezco",
+  delete: "ParParentezco/DeleteParParentezco",
 };
 
 export const tableStyle = {

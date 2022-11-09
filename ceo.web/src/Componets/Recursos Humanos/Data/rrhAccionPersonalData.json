@@ -1,0 +1,120 @@
+[
+  { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+  {
+    "type": "text",
+    "name": "nombreEmpresa",
+    "label": "Empresa",
+    "value": "",
+    "xs": 6,
+    "disabled": true,
+    "validations": []
+  },
+  {
+    "type": "text",
+    "name": "CodigoTipoAccion",
+    "label": "Código Tipo Accion",
+    "value": 0,
+    "xs": 3,
+    "disabled": true,
+    "validations": []
+  },
+  {
+    "type": "text",
+    "name": "Descripcion",
+    "label": "Descripción",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorMontoFijo",
+    "label": "Aplica Monto Fijo",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorPorcentajeSalario",
+    "label": "Porcentaje",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorIndividual",
+    "label": "Individual",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorLiquidaEmpleado",
+    "label": "Liquida Empleado",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+      "type": "checkbox",
+      "name": "IndicadorDisminuyeVacaciones",
+      "label": "Disminuye Vacaciones",
+      "value": false,
+      "xs": 3,
+      "validations": []
+  },
+  {
+      "type": "checkbox",
+      "name": "IndicadorAfectaSalario",
+      "label": "Afecta Salario",
+      "value": false,
+      "xs": 3,
+      "validations": []
+  },
+  {
+      "type": "checkbox",
+      "name": "IndicadorAumentaSalario",
+      "label": "Aumenta Salario",
+      "value": false,
+      "xs": 3,
+      "validations": []
+  },
+  {
+      "type": "checkbox",
+      "name": "IndicadorPermiteAplicarRetroactivo",
+      "label": "Aplica Retroactivo",
+      "value": false,
+      "xs": 3,
+      "validations": []
+  },
+  {
+    "type": "select",
+    "name": "CodigoMoneda",
+    "label": "Moneda",
+    "value": "",
+    "xs": 6,
+    "controller": "ParMonedum/GetParMonedas",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Usuario",
+    "label": "Usuario",
+    "value": "",
+    "xs": 6,
+    "disabled": true,
+    "validations": []
+  }
+]

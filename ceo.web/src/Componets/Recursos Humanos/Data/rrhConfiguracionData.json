@@ -1,0 +1,108 @@
+[
+    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+    {
+      "type": "text",
+      "name": "nombreEmpresa",
+      "label": "Empresa",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+        "type": "date",
+        "name": "FechaHora",
+        "label": "Fecha Hora",
+        "value": "",
+        "size": "small",
+        "inputFormat": "dd/MM/yyyy",
+        "xs": 6,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "PorcentajePatronalSeguro",
+      "label": "% Seguro Social Patrono",
+      "value": "",
+      "xs": 3,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "PorcentajeEmpleadoSeguro",
+      "label": "% Seguro Social Empleado",
+      "value": "",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "PorcentajeAguinaldo",
+      "label": "% Aguinaldo Anual",
+      "value": "",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "PorcentajeCesantia",
+      "label": "% Cesantía Anual",
+      "value": "",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "CreditoISRHijo",
+      "label": "Crédito ISR Hijo",
+      "value": "",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "CreditoISRConyugue",
+      "label": "Crédito ISR Conyugue",
+      "value": "",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+        "type": "select",
+        "name": "CodigoEstado",
+        "label": "Estado",
+        "value": "",
+        "xs": 6,
+        "controller": "ParEstado/GetParEstados",
+        "fieldName": "Descripcion",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    }
+  ]

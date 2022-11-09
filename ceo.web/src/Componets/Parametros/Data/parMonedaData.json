@@ -1,0 +1,77 @@
+[
+    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+    {
+      "type": "text",
+      "name": "nombreEmpresa",
+      "label": "Empresa",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+        "type": "select",
+        "name": "CodigoMoneda",
+        "label": "Moneda",
+        "value": "",
+        "xs": 6,
+        "controller": "ParMonedum/GetParMonedas",
+        "fieldName": "Descripcion",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "Descripcion",
+      "label": "Descripción",
+      "value": "",
+      "xs": 6,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+        "type": "checkbox",
+        "name": "IndicadorMonedaLocal",
+        "label": "Indicador Moneda Local",
+        "value": false,
+        "xs": 3,
+        "validations": []
+    },
+    {
+        "type": "checkbox",
+        "name": "IndicadorMonedaReferencia",
+        "label": "Indicado Moneda Referencia",
+        "value": false,
+        "xs": 3,
+        "validations": []
+    },
+    {
+        "type": "select",
+        "name": "CodigoInternacional",
+        "label": "Código Internacional",
+        "value": "",
+        "xs": 6,
+        "controller": "ParMonedum/GetParMonedas",
+        "fieldName": "Descripcion",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "Usuario",
+      "label": "Usuario",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    }
+  ]  
