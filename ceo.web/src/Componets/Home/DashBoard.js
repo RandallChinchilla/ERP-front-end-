@@ -66,18 +66,6 @@ import InvSectorEconomico from "../Inversiones/InvSectorEconomico";
 import InvTipo from "../Inversiones/InvTipo";
 import InvTipoCustodia from "../Inversiones/InvTipoCustodia";
 import InvTipoFondo from "../Inversiones/InvTipoFondo";
-import ParCodigoTransaccion from "../Parametros/ParCodigoTransaccion";
-import ParCodigoTransaccionView from "../Parametros/ParCodigoTransaccionView";
-import ParDiocesis from "../Parametros/ParDiocesis";
-import ParDistrito from "../Parametros/ParDistrito";
-import ParEmisorTarjeta from "../Parametros/ParEmisorTarjeta";
-import ParEmpresa from "../Parametros/ParEmpresa";
-import ParEmpresaView from "../Parametros/ParEmpresaView";
-import ParEstadoCivil from "../Parametros/ParEstadoCivil";
-import ParMoneda from "../Parametros/ParMoneda";
-import ParMonedaView from "../Parametros/ParMonedaView";
-import ParTipoIdentificacion from "../Parametros/ParTipoIdentificacion";
-import ParTipoIdentificacionView from "../Parametros/ParTipoIdentificacionView";
 import { RRHIndex } from "../Recursos Humanos/Routes/RRHIndex";
 import RegTipoDependenciaAcreedor from "../Regulador/RegTipoDependenciaAcreedor";
 import RegTipoEmpresa from "../Regulador/RegTipoEmpresa";
@@ -87,11 +75,9 @@ import RegTipoRelacionComercial from "../Regulador/RegTipoRelacionComercial";
 import RegTipoTasa from "../Regulador/RegTipoTasa";
 import reportTest from "../Reportes/reportTest";
 import NestedList from "./listItems";
-import RRHEstado from "../Recursos Humanos/Components/RRHEstado";
-import RRHISRView from "../Recursos Humanos/Components/RRHISRView";
-import RRHISR from "../Recursos Humanos/Components/RRHISR";
 import { AhoIndex } from "../Ahorros/Routes/AhoIndex";
 import { SegIndex } from "../Seguidad/Routes/SegIndex";
+import { ParIndex } from "../Parametros/Routes/ParIndex";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -258,11 +244,6 @@ function DashboardContent() {
           <Switch>
             <Route
               exact
-              path="/Dashboard/parempresa"
-              component={ParEmpresa}
-            ></Route>
-            <Route
-              exact
               path="/Dashboard/climaestro/:isNew"
               component={CliMaestro}
             ></Route>
@@ -273,11 +254,6 @@ function DashboardContent() {
             ></Route>
             <Route
               exact
-              path="/Dashboard/parempresaview"
-              component={ParEmpresaView}
-            ></Route>
-            <Route
-              exact
               path="/Dashboard/cxpproveedor"
               component={CxpProveedor}
             ></Route>
@@ -285,36 +261,6 @@ function DashboardContent() {
               exact
               path="/Dashboard/cxpproveedorview"
               component={CxpProveedorView}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/parmoneda"
-              component={ParMoneda}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/parmonedaview"
-              component={ParMonedaView}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/partipoidentificacion"
-              component={ParTipoIdentificacion}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/partipoidentificacionview"
-              component={ParTipoIdentificacionView}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/parcodigotransaccion"
-              component={ParCodigoTransaccion}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/parcodigotransaccionview"
-              component={ParCodigoTransaccionView}
             ></Route>
             <Route
               exact
@@ -441,6 +387,7 @@ function DashboardContent() {
             <Route path="/Dashboard/RRHIndex" component={RRHIndex} />
             <Route path="/Dashboard/AhoIndex" component={AhoIndex} />
             <Route path="/Dashboard/SegIndex" component={SegIndex} />
+            <Route path="/Dashboard/ParIndex" component={ParIndex} />
 
             <Route
               exact
@@ -571,44 +518,8 @@ function DashboardContent() {
             ></Route>
             <Route
               exact
-              path="/Dashboard/ParEstadoCivil"
-              component={ParEstadoCivil}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/ParDistrito"
-              component={ParDistrito}
-            ></Route>
-            <Route
-              exact
               path="/Dashboard/reportTest"
               component={reportTest}
-            ></Route>
-
-            <Route
-              exact
-              path="/Dashboard/ParDiocesis"
-              component={ParDiocesis}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/RRHISRView"
-              component={RRHISRView}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/RRHISR/:isNew"
-              component={RRHISR}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/ParEmisorTarjeta"
-              component={ParEmisorTarjeta}
-            ></Route>
-            <Route
-              exact
-              path="/Dashboard/RRHEstado"
-              component={RRHEstado}
             ></Route>
           </Switch>
         </Box>

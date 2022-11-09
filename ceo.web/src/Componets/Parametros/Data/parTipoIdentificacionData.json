@@ -1,0 +1,106 @@
+[
+    {
+        "type": "select",
+        "name": "CodigoTipoIdentificacion",
+        "label": "Tipo Identificación",
+        "value": 0,
+        "xs": 6,
+        "controller": "ParTipoidentificacion/GetParTiposIdentificacion",
+        "fieldName": "Descripcion",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "Descripcion",
+      "label": "Descripción",
+      "value": "",
+      "xs": 6,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Formato",
+      "label": "Formato",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Longitud",
+      "label": "Longitud",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+        "type": "checkbox",
+        "name": "IndicadorFisica",
+        "label": "Fisica",
+        "value": false,
+        "xs": 4,
+        "validations": []
+    },
+    {
+        "type": "date",
+        "name": "FechaUltimaModificacion",
+        "label": "Última Modificación",
+        "value": "",
+        "size": "small",
+        "inputFormat": "dd/MM/yyyy",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "UsuarioModifica",
+        "label": "Usuario Modifica",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "Cantidad Modificaciones",
+        "label": "Cantidad Modificaciones",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "CodigoFacturaElectronica",
+      "label": "Codigo Factura Electronica",
+      "value": "",
+      "xs": 3,
+      "validations": []
+    }
+  ]  

@@ -25,7 +25,10 @@ export const columnsRRHCentroMedico = [
         editable: "never",
       },
       { title: "Descripción", field: "Descripcion" },
-      { title: "Estado", field: "CodigoEstado" },
+      {
+        title: "Estado",
+        field: "CodigoEstado",
+      }
 ];
 
 export const routesRRHCentroMedicoApi = {

@@ -1,136 +1,29 @@
-import React, { useEffect, useState } from "react";
-import MaterialTable from "material-table";
-import { useHistory } from "react-router";
-import { helpHttp } from "../../../Helpers/HelpHttp";
-import { useDispatch, useSelector } from "react-redux";
-import { delAction, noAction, readAllAction } from "../../../Actions/Index";
-import { deleteAction } from "../../../Helpers/deleteHelper";
+import React from "react";
+import { CrudTableForm } from "../../CrossComponets/CrudTableForm";
+import { columnsAhoMaestro, routesAhoMaestroApi } from "../Interfaces/interfaceAhoMaestro";
 
-const baseUrl = process.env.REACT_APP_BASE_URL;
-const controller = "AhoMaestro/GetAhoMaestros";
-const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
+/**
+ * Este componente renderiza el componente generico CrudTableForm, el cual nos permite
+ * rendereizar una tabla dinamica a partir de las propiedades dadas.
+ * @param columnsAhoMaestro interfas que define las columnas de las tablas
+ * @param routesAhoMaestroApi interfas que define las rutas de las Apis que se ven involucradas
+ * en el CRUD de a tabla gernerada.
+ * @field Nombre del Id de la tabla que nos sirve para manipular el estado de las filas de la tabla.
+ * @title Titulo de la Tabla
+ * @returns CrudTableform
+ */
 
-export const AhoMaestroView = () => {
-  const { useState } = React;
-  let usehistory = useHistory();
-  //window.localStorage.removeItem("editPasInstrumento");
-
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-  const { db } = state.crud;
-
-  const [columns, setColumns] = useState([
-    {
-      title: "Código Empresa",
-      field: "CodigoEmpresa",
-    },
-    {
-      title: "Empresa",
-      field: "CodigoEmpresaNavigation.Nombre",
-      id: "CodigoEmpresaNavigation.CodigoEmpresa",
-    },
-    {
-      title: "Portafolio",
-      field: "CodigoPortafolio",
-    },
-    {
-      title: "Numero Inversión",
-      field: "NumeroInversion",
-    },
-    {
-      title: "Aportante",
-      field: "CodigoAportante",
-    },
-    {
-      title: "Tipo",
-      field: "CodigoTipo",
-    },
-    {
-      title: "Moneda",
-      field: "CodigoMoneda",
-    },
-    {
-      title: "Estado",
-      field: "CodigoEstadoNavigation.Descripcion",
-      id: "CodigoEstadoNavigation.CodigoEstado",
-    },
-  ]);
-
-  let url = `${baseUrl}${controller}`;
-
-  useEffect(() => {
-    helpHttp()
-      .get(url)
-      .then((res) => {
-        if (!res.err) {
-          dispatch(readAllAction(res));
-        } else {
-          dispatch(noAction());
-        }
-      });
-  }, [url, useDispatch]);
-
-  //+++++++update row in the table+++++++++
-  const updateState = (rowUpdate, isNew) => {
-    //console.log(rowUpdate);
-    if (isNew) {
-      usehistory.push(`./AhoMaestro`);
-    } else {
-      usehistory.push({ pathname: "./AhoMaestro", rowUpdate });
-    }
-  };
-  //  se agrego el componente de eliminar
-  const deleteItem = (rowDelete) => {
-    deleteAction(
-      "AhoMaestro/DeleteAhoMaestro",
-      rowDelete,
-      userLoggedToken
-    ).then((res) => {
-      if (res.isSuccess) {
-        dispatch(delAction(rowDelete.NumeroInversion, "NumeroInversion"));
-        alert("El maestro fue eliminado");
-      } else {
-        alert("El maestro no fue eliminado");
-      }
-    });
-  };
-
+const AhoMaestroView = () => {
   return (
     <div>
-      <MaterialTable
+      <CrudTableForm
+        columns={columnsAhoMaestro}
+        apiRoutes={routesAhoMaestroApi}
+        field="NumeroInversion"
         title="Catálogo Maestro"
-        columns={columns}
-        data={db}
-        options={{
-          rowStyle: {
-            fontSize: 12,
-          },
-          headerStyle: {
-            backgroundColor: "#898883",
-            color: "#FFF",
-            fontSize: 13,
-          },
-          exportButton: true,
-        }}
-        actions={[
-          {
-            icon: "edit",
-            tooltip: "Editar Maestro",
-            onClick: (event, rowData) => updateState(rowData, false),
-          },
-          {
-            icon: "delete",
-            tooltip: "Borrar Maestro",
-            onClick: (event, rowData) => deleteItem(rowData),
-          },
-          {
-            icon: "add",
-            tooltip: "Nuevo Maestro",
-            isFreeAction: true,
-            onClick: (event, rowData) => updateState(rowData, true),
-          },
-        ]}
       />
     </div>
   );
 };
+
+export default AhoMaestroView;
