@@ -86,8 +86,6 @@ export const CrudTableForm = ({ columns, apiRoutes, field, title }) => {
 
   return (
     <div key={title}>
-      {console.log(Data)}
-
       <MaterialTable
         title={title}
         columns={columns}

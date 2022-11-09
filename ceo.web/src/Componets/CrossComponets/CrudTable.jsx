@@ -32,6 +32,8 @@ export const CrudTable = ({
   if (Error) return null;
   if (!Data) return null;
 
+  console.log(Data);
+
   /**
    * Esta funcion realiza la conexion con el Api, agrega un registro y actualiza
    * el estado inicial por medio del dispatch y la acción createAction

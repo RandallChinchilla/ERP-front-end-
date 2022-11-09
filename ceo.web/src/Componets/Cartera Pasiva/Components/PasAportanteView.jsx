@@ -17,7 +17,6 @@ import {
  */
 
 const PasAportanteView = () => {
-  console.log("hola perra....");
   return (
     <div>
       <CrudTableForm
