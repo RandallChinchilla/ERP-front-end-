@@ -1,94 +1,99 @@
 [
-    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
-    {
-      "type": "text",
-      "name": "nombreEmpresa",
-      "label": "Empresa",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    },
-    {
-      "type": "text",
-      "name": "CodigoTipo",
-      "label": "Tipo",
-      "value": 0,
-      "xs": 3,
-      "disabled": true,
-      "validations": []
-    },
-    {
-      "type": "date",
-      "name": "FechaHora",
-      "label": "Fecha Hora",
-      "value": "",
-      "size": "small",
-      "inputFormat": "dd/MM/yyyy",
-      "xs": 3,
-      "validations": [
-        {
-           "type": "required"
-        }
-        ]
-      },
-    {
-      "type": "text",
-      "name": "Tasa",
-      "label": "Tasa Bruta",
-      "value": "",
-      "xs": 6,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "TasaMaxima",
-      "label": "Tasa Bruta Máxima",
-      "value": "",
-      "xs": 6,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "PorcentajeISR",
-      "label": "Porcentaje ISR",
-      "value": "",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "select",
-      "name": "CodigoEstado",
-      "label": "Estado",
-      "value": "",
-      "xs": 3,
-      "controller": "ParEstado/GetParEstados",
-      "fieldName": "Descripcion",
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "Usuario",
-      "label": "Usuario",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    }
-  ]
+  { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+  {
+    "type": "text",
+    "name": "nombreEmpresa",
+    "label": "Empresa",
+    "value": "",
+    "xs": 6,
+    "disabled": true,
+    "validations": []
+  },
+  {
+    "type": "select",
+    "name": "CodigoTipo",
+    "label": "Estado",
+    "value": "",
+    "xs": 3,
+    "controller": "PasTipoInstrumento/GetPasTipoinstrumentos",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaHora",
+    "label": "Fecha Hora",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Tasa",
+    "label": "Tasa Bruta",
+    "value": "",
+    "xs": 6,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "TasaMaxima",
+    "label": "Tasa Bruta Máxima",
+    "value": "",
+    "xs": 6,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "PorcentajeISR",
+    "label": "Porcentaje ISR",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoEstado",
+    "label": "Estado",
+    "value": "",
+    "xs": 3,
+    "controller": "ParEstado/GetParEstados",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Usuario",
+    "label": "Usuario",
+    "value": "",
+    "xs": 6,
+    "disabled": true,
+    "validations": []
+  }
+]

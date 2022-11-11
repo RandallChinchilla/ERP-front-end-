@@ -2,7 +2,6 @@ import MaterialTable from "material-table";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-
 import {
   delAction,
   noAction,
@@ -14,16 +13,16 @@ import { helpHttp } from "../../Helpers/HelpHttp";
 import { useGetData } from "../../Hooks/useGetData";
 import { tableStyle } from "../Cartera Pasiva/Interfaces/interfacesPasOrigenAportante";
 
-// const baseUrl = process.env.REACT_APP_BASE_URL;
 //const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
 
 export const CrudTableForm = ({ columns, apiRoutes, field, title }) => {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  //const { db } = state.crud;
+  const { db } = state.crud;
   const { usertoken } = state.user;
   const { alert } = state.alert;
-  //const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   //const [error, seterror] = useState(null);
   let usehistory = useHistory();
 
@@ -33,9 +32,21 @@ export const CrudTableForm = ({ columns, apiRoutes, field, title }) => {
    * de datos retornados por la Api.
    */
 
-  const { Data, Error } = useGetData(apiRoutes.get);
-  if (Error) return null;
-  if (!Data) return null;
+  let url = `${baseUrl}${apiRoutes.get}`;
+  useEffect(() => {
+    helpHttp()
+      .get(url)
+      .then((res) => {
+        if (res.err) return null;
+        dispatch(readAllAction(res));
+      });
+  }, [url, useDispatch]);
+
+  // const { Data, Error } = useGetData(apiRoutes.get);
+  // if (Error) return null;
+  // if (!Data) return null;
+
+  // console.log(Data);
 
   /**
    * Esta funcion agrega o actualiza una fila a la tabla
@@ -58,16 +69,20 @@ export const CrudTableForm = ({ columns, apiRoutes, field, title }) => {
    * @param {*} rowDelete
    */
   const deleteRow = (rowDelete) => {
-    console.log(rowDelete);
-    deleteAction(apiRoutes.delete, rowDelete, usertoken).then((res) => {
-      if (res.isSuccess) {
+    const rowdelete = {
+      Id: rowDelete[field],
+      CodigoEmpresa: rowDelete.CodigoEmpresa,
+    };
+
+    deleteAction(apiRoutes.delete, rowdelete, usertoken).then((res) => {
+      if (res.IsSuccess) {
         dispatch(delAction(rowDelete[field], field));
         dispatch(
           updateAlert({
             ...alert,
             open: true,
             severity: "success",
-            message: res.message,
+            message: res.Message,
           })
         );
       } else {
@@ -77,7 +92,7 @@ export const CrudTableForm = ({ columns, apiRoutes, field, title }) => {
             ...alert,
             open: true,
             severity: "error",
-            message: res.message,
+            message: res.Message,
           })
         );
       }
@@ -89,22 +104,22 @@ export const CrudTableForm = ({ columns, apiRoutes, field, title }) => {
       <MaterialTable
         title={title}
         columns={columns}
-        data={Data}
+        data={db}
         options={tableStyle}
         actions={[
           {
             icon: "edit",
-            tooltip: "Editar Instrumentos",
+            tooltip: "Editar",
             onClick: (event, rowData) => updateRow(rowData, false),
           },
           {
             icon: "delete",
-            tooltip: "Borrar Instrumentos",
+            tooltip: "Borrar",
             onClick: (event, rowData) => deleteRow(rowData),
           },
           {
             icon: "add",
-            tooltip: "Nuevo Instrumento",
+            tooltip: "Nuevo",
             isFreeAction: true,
             onClick: (event, rowData) => updateRow(rowData, true),
           },

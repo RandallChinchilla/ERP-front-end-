@@ -14,7 +14,7 @@ export const useAutentication = () => {
   const dispatch = useDispatch();
   const { alert } = state.alert;
 
-  console.log(state);
+  console.log(alert);
   const handleSubmitLogin = (data) => {
     let url = `${baseUrl}Account/CreateToken`;
     let token = "";

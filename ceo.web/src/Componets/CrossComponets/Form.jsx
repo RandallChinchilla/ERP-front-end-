@@ -51,6 +51,7 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
   const { alert, user } = state;
   const styles = useStyles();
   let usehistory = useHistory();
+  const [value, setValue] = useState(new Date().toISOString().slice(0, 10));
 
   for (const input of formJson) {
     initialValues[input.nameId ? input.nameId : input.name] = input.value;
@@ -86,18 +87,18 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
 
   const onSubmit = (data) => {
     postAction(urlApi.post, data, user.usertoken).then((res) => {
+      console.log(res);
       if (res.IsSuccess) {
+        usehistory.push(urlApi.navigationBack);
+      } else {
         dispatch(
           updateAlert({
             ...alert,
             open: true,
-            severity: "success",
+            severity: "error",
             message: res.Message,
           })
         );
-      } else {
-        console.log("Instrumento no pudo ser creado");
-        console.log(res);
       }
     });
   };
@@ -192,7 +193,14 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
                                     <DesktopDatePicker
                                       label={label}
                                       inputFormat={inputFormat}
-                                      {...field}
+                                      onChange={(newvalue) => {
+                                        field.onChange(
+                                          new Date(newvalue).toISOString()
+                                          // .slice(0, 10)
+                                        );
+                                      }}
+                                      value={field.value}
+                                      // {...field}
                                       renderInput={(params) => (
                                         <TextField size="small" {...params} />
                                       )}

@@ -9,19 +9,19 @@ import { routes } from "./routes";
 export const RRHIndex = () => {
   return (
     <Switch>
-      <Provider store={store}>
-        {routes.map((route) => (
-          <Route
-            key={route.path}
-            exact
-            path={route.path}
-            render={() => {
-              return <route.component />;
-            }}
-          />
-        ))}
-        <Notification />
-      </Provider>
+      {/* <Provider store={store}> */}
+      {routes.map((route) => (
+        <Route
+          key={route.path}
+          exact
+          path={route.path}
+          render={() => {
+            return <route.component />;
+          }}
+        />
+      ))}
+      <Notification />
+      {/* </Provider> */}
     </Switch>
   );
 };

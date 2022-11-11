@@ -5,7 +5,7 @@ const baseUrl = process.env.REACT_APP_BASE_URL;
 const userLoggedToken = "898972347523jhklqhflqjkwhjlhj"; //JSON.parse(localStorage.getItem("userLoggedToken"));
 
 export const useGetData = (controller, model) => {
-  const [Data, setData] = useState([]);
+  const [Data, setData] = useState();
   const [Error, setError] = useState(null);
 
   let url = new URL(`${baseUrl}${controller}`);
