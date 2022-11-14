@@ -22,7 +22,7 @@ const PasAportanteView = () => {
       <CrudTableForm
         columns={columnsPasAportante}
         apiRoutes={routesPasAportanteApi}
-        field="CodigoOrigenAportante"
+        field="CodigoAportante"
         title="Catálogo Aportante"
       />
     </div>

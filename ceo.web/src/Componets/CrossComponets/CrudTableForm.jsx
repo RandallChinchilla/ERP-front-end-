@@ -17,10 +17,11 @@ import { tableStyle } from "../Cartera Pasiva/Interfaces/interfacesPasOrigenApor
 
 export const CrudTableForm = ({ columns, apiRoutes, field, title }) => {
   const baseUrl = process.env.REACT_APP_BASE_URL;
+  const userLoggedToken = localStorage.getItem("mytoken");
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const { db } = state.crud;
-  const { usertoken } = state.user;
+  //const { usertoken } = state.user;
   const { alert } = state.alert;
   // const [data, setData] = useState([]);
   //const [error, seterror] = useState(null);
@@ -38,6 +39,7 @@ export const CrudTableForm = ({ columns, apiRoutes, field, title }) => {
       .get(url)
       .then((res) => {
         if (res.err) return null;
+        console.log(res);
         dispatch(readAllAction(res));
       });
   }, [url, useDispatch]);
@@ -74,7 +76,7 @@ export const CrudTableForm = ({ columns, apiRoutes, field, title }) => {
       CodigoEmpresa: rowDelete.CodigoEmpresa,
     };
 
-    deleteAction(apiRoutes.delete, rowdelete, usertoken).then((res) => {
+    deleteAction(apiRoutes.delete, rowdelete, userLoggedToken).then((res) => {
       if (res.IsSuccess) {
         dispatch(delAction(rowDelete[field], field));
         dispatch(

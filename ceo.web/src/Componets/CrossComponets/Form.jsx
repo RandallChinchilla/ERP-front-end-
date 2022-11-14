@@ -46,12 +46,15 @@ const useStyles = makeStyles(() => ({
 }));
 
 export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
+  const userLogged = JSON.parse(localStorage.getItem("myuser"));
+  const userLoggedToken = localStorage.getItem("mytoken");
+
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { alert, user } = state;
+  const { alert } = state.alert;
   const styles = useStyles();
   let usehistory = useHistory();
-  const [value, setValue] = useState(new Date().toISOString().slice(0, 10));
+  // const [value, setValue] = useState(new Date().toISOString().slice(0, 10));
 
   for (const input of formJson) {
     initialValues[input.nameId ? input.nameId : input.name] = input.value;
@@ -67,9 +70,9 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
   }
   const validationschema = Yup.object({ ...requiredFields });
 
-  initialValues.nombreEmpresa = user.userdata.NombreEmpresa;
-  initialValues.Usuario = user.userdata.UserName;
-  initialValues.CodigoEmpresa = user.userdata.CodigoEmpresa;
+  initialValues.nombreEmpresa = userLogged.NombreEmpresa;
+  initialValues.Usuario = userLogged.UserName;
+  initialValues.CodigoEmpresa = userLogged.CodigoEmpresa;
 
   console.log(rowUpdate);
 
@@ -86,7 +89,7 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
   const [date, setDate] = useState("");
 
   const onSubmit = (data) => {
-    postAction(urlApi.post, data, user.usertoken).then((res) => {
+    postAction(urlApi.post, data, userLoggedToken).then((res) => {
       console.log(res);
       if (res.IsSuccess) {
         usehistory.push(urlApi.navigationBack);

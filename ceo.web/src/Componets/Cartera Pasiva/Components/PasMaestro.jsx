@@ -155,7 +155,8 @@ const validationsForm = (form) => {
 };
 
 export const PasMaestro = () => {
-  const userData = JSON.parse(localStorage.getItem("userLogged"));
+  const userData = JSON.parse(localStorage.getItem("myuser"));
+  const userLoggedToken = localStorage.getItem("mytoken");
   const styles = useStyles();
   const { rowUpdate } = useLocation();
   const [, setValue] = useState(new Date());
@@ -170,10 +171,10 @@ export const PasMaestro = () => {
   const { alert, user } = state;
 
   const initialForm = {
-    CodigoEmpresa: user.userdata.CodigoEmpresa,
-    NombreEmpresa: user.userdata.NombreEmpresa,
-    Id: user.userdata.Id,
-    NombreUsuario: user.userdata.UserName,
+    CodigoEmpresa: userData.CodigoEmpresa,
+    NombreEmpresa: userData.NombreEmpresa,
+    Id: userData.Id,
+    NombreUsuario: userData.UserName,
     CodigoPortafolio: 0,
     NumeroInversion: 0,
     CodigoAportante: 0,
@@ -221,7 +222,7 @@ export const PasMaestro = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (form.NumeroInversion === 0) {
-      postAction("PasMaestro/PostPasMaestro", form, user.usertoken).then(
+      postAction("PasMaestro/PostPasMaestro", form, userLoggedToken).then(
         (res) => {
           if (res.isSuccess) {
             setForm(initialForm);
@@ -232,7 +233,7 @@ export const PasMaestro = () => {
         }
       );
     } else {
-      putAction("PasMaestro/PutPasMaestro", form, user.usertoken).then(
+      putAction("PasMaestro/PutPasMaestro", form, userLoggedToken).then(
         (res) => {
           if (res.isSuccess) {
             return alert("El maestro fue actualizado con exito");
@@ -269,7 +270,7 @@ export const PasMaestro = () => {
                   label="Empresa"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={user.userdata.NombreEmpresa}
+                  value={userData.NombreEmpresa}
                   className={styles.inpuntEmpresa}
                   size="small"
                   disabled
@@ -847,7 +848,7 @@ export const PasMaestro = () => {
                   label="Usuario"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={user.userdata.UserName}
+                  value={userData.UserName}
                   className={styles.inpuntEmpresa}
                   size="small"
                   disabled

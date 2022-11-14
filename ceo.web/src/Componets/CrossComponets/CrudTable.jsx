@@ -23,10 +23,11 @@ export const CrudTable = ({
   isDeletable,
   isAdd,
 }) => {
+  const userLoggedToken = localStorage.getItem("mytoken");
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const { alert } = state.alert;
-  const { usertoken } = state.user;
+  //const { usertoken } = state.user;
 
   const { Data, Error } = useGetData(apiRoutes.get);
   if (Error) return null;
@@ -41,7 +42,7 @@ export const CrudTable = ({
    */
   const addRow = (rowAdd) => {
     console.log(rowAdd);
-    postAction(apiRoutes.add, rowAdd, usertoken).then((res) => {
+    postAction(apiRoutes.add, rowAdd, userLoggedToken).then((res) => {
       let message = "";
       if (res.IsSuccess) {
         dispatch(createAction(res.Result));
@@ -73,7 +74,7 @@ export const CrudTable = ({
    */
   const updateRow = (rowUpdate) => {
     //console.log(rowUpdate);
-    putAction(apiRoutes.update, rowUpdate, usertoken).then((res) => {
+    putAction(apiRoutes.update, rowUpdate, userLoggedToken).then((res) => {
       if (res.IsSuccess) {
         //dispatch(updateAction(rowUpdate, field));
         dispatch(
@@ -104,7 +105,7 @@ export const CrudTable = ({
    */
   const deleteRow = (rowDelete) => {
     console.log(rowDelete);
-    deleteAction(apiRoutes.delete, rowDelete, usertoken).then((res) => {
+    deleteAction(apiRoutes.delete, rowDelete, userLoggedToken).then((res) => {
       if (res.IsSuccess) {
         dispatch(delAction(rowDelete[field], field));
         dispatch(
