@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import formJson from "../Cartera Pasiva/Data/pasDataAportante.json";
 import * as Yup from "yup";
 import { Box, Grid, Paper, Typography } from "@mui/material";
 import {
@@ -12,7 +11,6 @@ import {
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SelectList } from "./SelectList";
-import { makeStyles } from "@material-ui/core";
 import { postAction } from "../../Helpers/postHelper";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAlert } from "../../Actions/Index";
@@ -20,32 +18,13 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { useHistory } from "react-router-dom";
+import { putAction } from "../../Helpers/putHelper";
+import { useStyles } from "./Styles/crossStylesComponent";
 
 const initialValues = {};
 const requiredFields = {};
 
-const useStyles = makeStyles(() => ({
-  iconos: {
-    cursor: "pointer",
-  },
-  inputMaterial: {
-    marginRight: 3,
-  },
-  paper: {
-    width: 1200,
-  },
-  listas: {
-    width: "100%",
-  },
-  textfield: { width: "100%" },
-  gridContainer: { paddingRight: 5, paddingLeft: 5 },
-  button: { margin: "1px" },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-  },
-}));
-
-export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
+export const Form = ({ formJson, title, urlApi, rowUpdate, showAddbutton }) => {
   const userLogged = JSON.parse(localStorage.getItem("myuser"));
   const userLoggedToken = localStorage.getItem("mytoken");
 
@@ -54,7 +33,7 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
   const { alert } = state.alert;
   const styles = useStyles();
   let usehistory = useHistory();
-  // const [value, setValue] = useState(new Date().toISOString().slice(0, 10));
+  const [update, setUpdate] = useState(false);
 
   for (const input of formJson) {
     initialValues[input.nameId ? input.nameId : input.name] = input.value;
@@ -73,6 +52,7 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
   initialValues.nombreEmpresa = userLogged.NombreEmpresa;
   initialValues.Usuario = userLogged.UserName;
   initialValues.CodigoEmpresa = userLogged.CodigoEmpresa;
+  initialValues.Id = userLogged.Id;
 
   console.log(rowUpdate);
 
@@ -89,7 +69,10 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
   const [date, setDate] = useState("");
 
   const onSubmit = (data) => {
-    postAction(urlApi.post, data, userLoggedToken).then((res) => {
+    let response = rowUpdate
+      ? putAction(urlApi.update, data)
+      : postAction(urlApi.post, data, userLoggedToken);
+    response.then((res) => {
       console.log(res);
       if (res.IsSuccess) {
         usehistory.push(urlApi.navigationBack);
@@ -194,6 +177,7 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
                                   control={control}
                                   render={({ field }) => (
                                     <DesktopDatePicker
+                                      disabled={disabled}
                                       label={label}
                                       inputFormat={inputFormat}
                                       onChange={(newvalue) => {
@@ -203,7 +187,6 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
                                         );
                                       }}
                                       value={field.value}
-                                      // {...field}
                                       renderInput={(params) => (
                                         <TextField size="small" {...params} />
                                       )}
@@ -238,7 +221,7 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
                                         onChange={(e) =>
                                           field.onChange(e.target.checked)
                                         }
-                                        checked={field.value}
+                                        checked={Boolean(field.value)}
                                       />
                                     }
                                     label={label}
@@ -266,6 +249,7 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
                                   xs={xs}
                                   errors={errors[nameId ? nameId : name]}
                                   dataJson={data}
+                                  disabled={disabled}
                                 />
                               )}
                             ></Controller>
@@ -286,7 +270,7 @@ export const Form = ({ formJson, title, urlApi, rowUpdate }) => {
                       Regresar
                     </Button>
                     <Button color="primary" type="submit" variant="contained">
-                      Agregar
+                      {rowUpdate ? "Actualizar" : "Agregar"}
                     </Button>
                   </Grid>
                 </Grid>

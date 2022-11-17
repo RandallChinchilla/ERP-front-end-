@@ -1,34 +1,59 @@
+import { Deleterow } from "../../CrossComponets/Deleterow";
+import { Editrow } from "../../CrossComponets/Editrow";
+
 export const columnsPasInstrumento = [
+  // {
+  //   headerName: "Acciones",
+  //   field: "actions",
+  //   type: "actions",
+  //   width: 80,
+  //   renderCell: (params) => [
+  //     <Editrow rowUpdate={params.row} navigation="./PasInstrumento" />,
+  //     <Deleterow
+  //       rowDelete={params.row}
+  //       deleteApi="PasInstrumento/DeletePasInstrumento"
+  //       field="CodigoInstrumento"
+  //       params={params}
+  //     />,
+  //   ],
+  // },
   {
-    title: "Código Empresa",
-    field: "CodigoEmpresa",
-  },
-  {
-    title: "Empresa",
-    field: "CodigoEmpresaNavigation.Nombre",
-    id: "CodigoEmpresaNavigation.CodigoEmpresa",
-  },
-  {
-    title: "Código Instrumento",
+    headerName: "Código Instrumento",
     field: "CodigoInstrumento",
+    width: 250,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Descripción",
+    headerName: "Descripción",
     field: "Descripcion",
+    width: 250,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Moneda",
+    headerName: "Moneda",
     field: "CodigoMoneda",
+    width: 250,
+    headerAlign: "center",
+    align: "center",
+    valueGetter: (params) => params.row.Codigo.Descripcion,
   },
   {
-    title: "Periodicidad Pago Interés",
-    field: "CodigoNavigation.Descripcion",
-    id: "CodigoNavigation.CodigoPeriodicidad",
+    headerName: "Periodicidad Pago Interés",
+    field: "CodigoPeriodicidadPagoInteres",
+    width: 250,
+    headerAlign: "center",
+    align: "center",
+    valueGetter: (params) => params.row.CodigoNavigation.Descripcion,
   },
   {
-    title: "Periodicidad Revisión Tasa",
-    field: "CodigoNavigation.Descripcion",
-    id: "CodigoNavigation.CodigoPeriodicidad",
+    headerName: "Periodicidad Revisión Tasa",
+    field: "CodigoPeriodicidadRevisionTasa",
+    width: 250,
+    headerAlign: "center",
+    align: "center",
+    valueGetter: (params) => params.row.Codigo1.Descripcion,
   },
 ];
 
@@ -39,15 +64,4 @@ export const routesPasInstrumentoApi = {
   delete: "PasInstrumento/DeletePasInstrumento",
   navigation: "./PasInstrumento",
   navigationBack: "./PasInstrumentoView",
-};
-
-export const tableStyle = {
-  rowStyle: {
-    fontSize: 12,
-  },
-  headerStyle: {
-    backgroundColor: "#898883",
-    color: "#FFF",
-    fontSize: 13,
-  },
 };

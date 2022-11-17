@@ -1,13 +1,13 @@
 export const columnsPasAutorizado = [
-  {
-    title: "Código Empresa",
-    field: "CodigoEmpresa",
-  },
-  {
-    title: "Empresa",
-    field: "CodigoEmpresaNavigation.Nombre",
-    id: "CodigoEmpresaNavigation.CodigoEmpresa",
-  },
+  // {
+  //   title: "Código Empresa",
+  //   field: "CodigoEmpresa",
+  // },
+  // {
+  //   title: "Empresa",
+  //   field: "CodigoEmpresaNavigation.Nombre",
+  //   id: "CodigoEmpresaNavigation.CodigoEmpresa",
+  // },
   {
     title: "Tipo Identificación",
     field: "CodigoTipoIdentificacion",

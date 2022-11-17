@@ -1,28 +1,44 @@
+import { Editrow } from "../../CrossComponets/Editrow";
+import { Deleterow } from "../../CrossComponets/Deleterow";
+
 export const columnsPasTasaPlazo = [
   {
-    title: "Código Empresa",
-    field: "CodigoEmpresa",
+    headerName: "Acciones",
+    field: "actions",
+    type: "actions",
+    width: 80,
+    renderCell: (params) => [
+      <Editrow rowUpdate={params.row} navigation="./PasTasaPlazo" />,
+      // <Deleterow row={params.row} />,
+    ],
   },
   {
-    title: "Empresa",
-    field: "CodigoEmpresaNavigation.Nombre",
-    id: "CodigoEmpresaNavigation.CodigoEmpresa",
-  },
-  {
-    title: "Código Tipo",
+    headerName: "Código Tipo",
     field: "CodigoTipo",
+    width: 250,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Fecha",
+    headerName: "Fecha",
     field: "FechaHora",
+    width: 250,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Tasa Bruta",
+    headerName: "Tasa Bruta",
     field: "Tasa",
+    width: 250,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Estado",
+    headerName: "Estado",
     field: "CodigoEstado",
+    width: 250,
+    headerAlign: "center",
+    align: "center",
   },
 ];
 
@@ -33,15 +49,4 @@ export const routesPasTasaPlazoApi = {
   delete: "PasTasaPlazo/DeletePasTasaPlazo",
   navigation: "./PasTasaPlazo",
   navigationBack: "./PasTasaPlazoView",
-};
-
-export const tableStyle = {
-  rowStyle: {
-    fontSize: 12,
-  },
-  headerStyle: {
-    backgroundColor: "#898883",
-    color: "#FFF",
-    fontSize: 13,
-  },
 };

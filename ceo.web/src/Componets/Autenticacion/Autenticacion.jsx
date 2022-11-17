@@ -197,7 +197,7 @@ export default function Autenticacion() {
                 </Grid>
                 <Grid mt={5}>
                   <Typography variant="caption" display="block" gutterBottom>
-                    Versión 1.4 DMDIntersoft 2022
+                    Versión 1.5 DMDIntersoft 2022
                   </Typography>
                 </Grid>
               </Grid>

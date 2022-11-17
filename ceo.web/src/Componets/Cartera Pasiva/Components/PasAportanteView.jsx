@@ -1,5 +1,5 @@
 import React from "react";
-import { CrudTableForm } from "../../CrossComponets/CrudTableForm";
+import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
 import {
   columnsPasAportante,
   routesPasAportanteApi,
@@ -19,7 +19,7 @@ import {
 const PasAportanteView = () => {
   return (
     <div>
-      <CrudTableForm
+      <CrudTableFormNew
         columns={columnsPasAportante}
         apiRoutes={routesPasAportanteApi}
         field="CodigoAportante"

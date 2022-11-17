@@ -1,14 +1,6 @@
 [
   { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
-  {
-    "type": "text",
-    "name": "nombreEmpresa",
-    "label": "Empresa",
-    "value": "",
-    "xs": 6,
-    "disabled": true,
-    "validations": []
-  },
+
   {
     "type": "select",
     "name": "CodigoTipo",
@@ -17,6 +9,7 @@
     "xs": 3,
     "controller": "PasTipoInstrumento/GetPasTipoinstrumentos",
     "fieldName": "Descripcion",
+    "disabled": true,
     "validations": [
       {
         "type": "required"
@@ -31,6 +24,7 @@
     "size": "small",
     "inputFormat": "dd/MM/yyyy",
     "xs": 3,
+    "disabled": true,
     "validations": [
       {
         "type": "required"
@@ -42,7 +36,8 @@
     "name": "Tasa",
     "label": "Tasa Bruta",
     "value": "",
-    "xs": 6,
+    "xs": 3,
+    "disabled": true,
     "validations": [
       {
         "type": "required"
@@ -54,7 +49,8 @@
     "name": "TasaMaxima",
     "label": "Tasa Bruta Máxima",
     "value": "",
-    "xs": 6,
+    "xs": 3,
+    "disabled": true,
     "validations": [
       {
         "type": "required"
@@ -63,10 +59,11 @@
   },
   {
     "type": "text",
-    "name": "PorcentajeISR",
+    "name": "PorcentajeIsr",
     "label": "Porcentaje ISR",
     "value": "",
     "xs": 3,
+    "disabled": true,
     "validations": [
       {
         "type": "required"
@@ -81,6 +78,7 @@
     "xs": 3,
     "controller": "ParEstado/GetParEstados",
     "fieldName": "Descripcion",
+    "disabled": true,
     "validations": [
       {
         "type": "required"
@@ -94,6 +92,12 @@
     "value": "",
     "xs": 6,
     "disabled": true,
+    "validations": []
+  },
+  {
+    "type": "",
+    "name": "Id",
+    "value": "",
     "validations": []
   }
 ]

@@ -1,6 +1,10 @@
 import React from "react";
 import { CrudTableForm } from "../../CrossComponets/CrudTableForm";
-import { columnsPasTasaPlazo, routesPasTasaPlazoApi } from "../Interfaces/interfacePasTasaPlazo";
+import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
+import {
+  columnsPasTasaPlazo,
+  routesPasTasaPlazoApi,
+} from "../Interfaces/interfacePasTasaPlazo";
 
 /**
  * Este componente renderiza el componente generico CrudTableForm, el cual nos permite
@@ -16,10 +20,10 @@ import { columnsPasTasaPlazo, routesPasTasaPlazoApi } from "../Interfaces/interf
 const PasTasaPlazoView = () => {
   return (
     <div>
-      <CrudTableForm
+      <CrudTableFormNew
         columns={columnsPasTasaPlazo}
         apiRoutes={routesPasTasaPlazoApi}
-        field="CodigoTipo"
+        field="FechaHora"
         title="Catálogo Tasa Plazo"
       />
     </div>

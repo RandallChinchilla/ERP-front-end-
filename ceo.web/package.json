@@ -16,6 +16,7 @@
     "@mui/material": "^5.0.2",
     "@mui/styled-engine-sc": "^5.0.0",
     "@mui/styles": "^5.5.0",
+    "@mui/x-data-grid": "^5.17.11",
     "@mui/x-date-pickers": "^5.0.8",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
