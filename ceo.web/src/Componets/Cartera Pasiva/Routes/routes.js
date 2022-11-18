@@ -12,6 +12,7 @@ import PasTasaPlazoView from "../Components/PasTasaPlazoView";
 import { PasTasaPlazo } from "../Components/PasTasaPlazo";
 import PasAportanteView from "../Components/PasAportanteView";
 import { PasAportante } from "../Components/PasAportante";
+import { PasMaestroNewBck } from "../Components/PasMaestroNewBck";
 // import { PasInstrumentoUH } from "../Components/PasInstrumentoUH";
 
 export const routes = [
@@ -62,6 +63,10 @@ export const routes = [
   {
     path: "/Dashboard/pasindex/PasMaestro",
     component: PasMaestro,
+  },
+  {
+    path: "/Dashboard/pasindex/PasMaestroNewBck",
+    component: PasMaestroNewBck,
   },
   {
     path: "/Dashboard/pasindex/PasAutorizadoView",

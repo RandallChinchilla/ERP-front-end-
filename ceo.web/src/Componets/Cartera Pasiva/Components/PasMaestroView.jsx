@@ -1,5 +1,5 @@
 import React from "react";
-import { CrudTableForm } from "../../CrossComponets/CrudTableForm";
+import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
 import {
   columnsPasMaestro,
   routesPasMaestroApi,
@@ -19,7 +19,7 @@ import {
 export const PasMaestroView = () => {
   return (
     <div>
-      <CrudTableForm
+      <CrudTableFormNew
         columns={columnsPasMaestro}
         apiRoutes={routesPasMaestroApi}
         field="NumeroInversion"

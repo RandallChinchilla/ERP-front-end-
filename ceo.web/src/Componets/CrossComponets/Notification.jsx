@@ -10,6 +10,8 @@ export const Notification = () => {
   const dispatch = useDispatch();
   const { alert } = state.alert;
 
+  console.log(alert);
+
   const handleClose = (reason) => {
     if (reason === "clickaway") return;
     dispatch(updateAlert({ ...alert, open: false }));

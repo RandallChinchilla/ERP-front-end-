@@ -1,39 +1,53 @@
 export const columnsPasMaestro = [
   {
-    title: "Código Empresa",
-    field: "CodigoEmpresaNavigation.CodigoEmpresa",
-  },
-  {
-    title: "Nombre Empresa",
-    field: "CodigoEmpresaNavigation.Nombre",
-  },
-  {
-    title: "Código Portafolio",
+    headerName: "Código Portafolio",
     field: "CodigoPortafolio",
+    width: 150,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Número Inversion",
+    headerName: "Número Inversion",
     field: "NumeroInversion",
+    width: 150,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Código Aportante",
+    headerName: "Código Aportante",
     field: "CodigoAportante",
+    width: 150,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Código Instrumento",
+    headerName: "Código Instrumento",
     field: "CodigoInstrumento",
+    width: 200,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Moneda",
+    headerName: "Moneda",
+    field: "Nombre",
+    width: 100,
+    headerAlign: "center",
+    align: "center",
     field: "CodigoMoneda",
   },
   {
-    title: "Estado",
+    headerName: "Estado",
     field: "CodigoEstado",
+    width: 100,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Saldo Nominal",
+    headerName: "Saldo Nominal",
     field: "SaldoValorNominal",
+    width: 300,
+    headerAlign: "center",
+    align: "center",
   },
 ];
 
@@ -43,15 +57,5 @@ export const routesPasMaestroApi = {
   update: "PasMaestro/PutPasMaestro",
   delete: "PasMaestro/DeletePasMaestro",
   navigation: "./PasMaestro",
-};
-
-export const tableStyle = {
-  rowStyle: {
-    fontSize: 12,
-  },
-  headerStyle: {
-    backgroundColor: "#898883",
-    color: "#FFF",
-    fontSize: 13,
-  },
+  navigationBack: "./PasMaestroView",
 };

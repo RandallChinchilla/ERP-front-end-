@@ -15,11 +15,9 @@ export const initialState = {
 export function notificationReducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_ALERT: {
-      // console.log(action.payload);
       return { ...state, alert: action.payload };
     }
     default:
-      // console.log(action.payload);
       return state;
   }
 }

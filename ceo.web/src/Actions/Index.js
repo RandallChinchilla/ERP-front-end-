@@ -7,6 +7,7 @@ import {
   READ_ALL_DATA,
   UPDATE_ALERT,
   UPDATE_DATA,
+  UPDATE_MODAL,
 } from "../Types/Index.js";
 
 export const createAction = (data) => ({ type: CREATE_DATA, payload: data });
@@ -27,5 +28,6 @@ export const delAction = (id, nameId) => ({
 
 export const noAction = () => ({ type: NO_DATA });
 export const updateAlert = (data) => ({ type: UPDATE_ALERT, payload: data });
+export const updateModal = (data) => ({ type: UPDATE_MODAL, payload: data });
 export const getUser = (data) => ({ type: GET_USER, payload: data });
 export const getToken = (data) => ({ type: GET_TOKEN, payload: data });

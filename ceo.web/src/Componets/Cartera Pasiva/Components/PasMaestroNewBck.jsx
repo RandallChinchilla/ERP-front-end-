@@ -3,6 +3,7 @@ import {
   Button,
   FormHelperText,
   Grid,
+  InputAdornment,
   Paper,
   TextField,
   Typography,
@@ -18,6 +19,12 @@ import formJson from "../Data/pasMaestroData.json";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
 import { SelectList } from "../../CrossComponets/SelectList";
+import SearchIcon from "@mui/icons-material/Search";
+//import { SelectAportanteModal } from "../../Modales/SelectAportanteModal";
+import {
+  columnsPasAportanteModal,
+  routesPasAportanteApi,
+} from "../Interfaces/interfacePasAportante";
 
 const useStyles = makeStyles(() => ({
   iconos: {
@@ -40,12 +47,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const userLoggedToken = JSON.parse(localStorage.getItem("userLoggedToken"));
-
 const initialValues = {};
 const requiredFields = {};
 
 export const PasMaestroNewBck = () => {
+  const userLogged = JSON.parse(localStorage.getItem("myuser"));
+  const userLoggedToken = localStorage.getItem("mytoken");
   for (const input of formJson) {
     initialValues[input.name] = input.value;
     let shema = Yup.string();
@@ -59,11 +66,16 @@ export const PasMaestroNewBck = () => {
   }
 
   const validationshema = Yup.object({ ...requiredFields });
+  initialValues.nombreEmpresa = userLogged.NombreEmpresa;
+  initialValues.Usuario = userLogged.UserName;
+  initialValues.CodigoEmpresa = userLogged.CodigoEmpresa;
+  initialValues.Id = userLogged.Id;
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
+    setValue,
   } = useForm({
     defaultValues: initialValues,
     resolver: yupResolver(validationshema),
@@ -71,13 +83,15 @@ export const PasMaestroNewBck = () => {
 
   const styles = useStyles();
   const { rowUpdate } = useLocation();
-  const [, setValue] = useState(new Date());
   let usehistory = useHistory();
-  const [openAportante, setOpenAportante] = useState(false);
+  const [open, setOpen] = useState(false);
   const [openInstrumento, setOpenInstrumento] = useState(false);
-  const handleOpenAportante = () => setOpenAportante(true);
-  const handleCloseAportante = () => setOpenAportante(false);
-  const handleOpenInstrumento = () => setOpenInstrumento(true);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  // const handleOpenInstrumento = () => setOpenInstrumento(true);
+  const handleOpenInstrumento = () => {
+    console.log("modal open");
+  };
   const handleCloseInstrumento = () => setOpenInstrumento(false);
 
   const onSubmit = (data) => {
@@ -127,8 +141,43 @@ export const PasMaestroNewBck = () => {
                       fieldName,
                       data,
                       inputFormat,
+                      disabled,
                     }) => {
                       switch (type) {
+                        case "textSearch":
+                          return (
+                            <Grid
+                              key={name}
+                              item
+                              xs={xs}
+                              container
+                              justifyContent="center"
+                            >
+                              <Controller
+                                key={name}
+                                name={name}
+                                control={control}
+                                render={({ field }) => (
+                                  <TextField
+                                    className={styles.textfield}
+                                    onClick={handleOpen}
+                                    label={label}
+                                    {...field}
+                                    value={field.value}
+                                    InputProps={{
+                                      endAdornment: (
+                                        <InputAdornment position="start">
+                                          <SearchIcon />
+                                        </InputAdornment>
+                                      ),
+                                    }}
+                                    size="small"
+                                  />
+                                )}
+                              ></Controller>
+                            </Grid>
+                          );
+
                         case "text":
                           return (
                             <Grid
@@ -144,8 +193,8 @@ export const PasMaestroNewBck = () => {
                                 type={typeInput}
                                 placeholder={placeholder}
                                 size="small"
-                                // fullWidth="true"
                                 className={styles.textfield}
+                                disabled={disabled}
                               />
                               {errors[name] && (
                                 <FormHelperText id="my-helper-text" error>
@@ -192,7 +241,12 @@ export const PasMaestroNewBck = () => {
                                     <DesktopDatePicker
                                       label={label}
                                       inputFormat={inputFormat}
-                                      {...field}
+                                      onChange={(newvalue) => {
+                                        field.onChange(
+                                          new Date(newvalue).toISOString()
+                                        );
+                                      }}
+                                      value={field.value}
                                       renderInput={(params) => (
                                         <TextField size="small" {...params} />
                                       )}
@@ -224,6 +278,14 @@ export const PasMaestroNewBck = () => {
           </Box>
         </Paper>
       </Grid>
+      {/* <SelectAportanteModal
+        columns={columnsPasAportanteModal}
+        routeApi={routesPasAportanteApi.get}
+        open={open}
+        handleClose={handleClose}
+        setValue={setValue}
+        field="CodigoAportante"
+      /> */}
     </div>
   );
 };

@@ -36,6 +36,20 @@ export const columnsPasAportante = [
   },
 ];
 
+export const columnsPasAportanteModal = [
+  {
+    headerName: "Aportante",
+    field: "CodigoAportante",
+  },
+  {
+    headerName: "Nombre Aportante",
+    field: "Nombre",
+    width: 300,
+    headerAlign: "center",
+    align: "center",
+  },
+];
+
 export const routesPasAportanteApi = {
   get: "PasAportante/GetPasAportantes",
   post: "PasAportante/PostPasAportante",
@@ -44,14 +58,3 @@ export const routesPasAportanteApi = {
   navigation: "./PasAportante",
   navigationBack: "./PasAportanteView",
 };
-
-// export const tableStyle = {
-//   rowStyle: {
-//     fontSize: 12,
-//   },
-//   headerStyle: {
-//     backgroundColor: "#898883",
-//     color: "#FFF",
-//     fontSize: 13,
-//   },
-// };

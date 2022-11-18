@@ -14,8 +14,8 @@ function App() {
       <Switch>
         <Provider store={store}>
           <Route exact path="/" component={Autenticacion} />
-          <Notification />
           <Route path="/dashboard" component={Dashboard} />
+          <Notification />
         </Provider>
       </Switch>
     </Router>

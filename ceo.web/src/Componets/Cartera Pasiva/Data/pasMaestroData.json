@@ -1,372 +1,410 @@
 [
-    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
-    {
-      "type": "text",
-      "name": "nombreEmpresa",
-      "label": "Empresa",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    },
-    {
-      "type": "text",
-      "name": "CodigoPortafolio",
-      "label": "Portafolio",
-      "value": 0,
-      "xs": 3,
-      "disabled": true,
-      "validations": []
-    },
-    {
-      "type": "text",
-      "name": "NumeroInversion",
-      "label": "Número Inversión",
-      "value": "",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "text",
-        "name": "CodigoAportante",
-        "label": "Aportante",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "CodigoInstrumento",
-        "label": "Instrumento",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoMoneda",
-        "label": "Moneda",
-        "value": "",
-        "xs": 3,
-        "controller": "ParMonedum/GetParMonedas",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "text",
-      "name": "Isin",
-      "label": "Isin",
-      "value": 0,
-      "xs": 3,
-      "disabled": true,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "Serie",
-      "label": "Serie",
-      "value": 0,
-      "xs": 3,
-      "disabled": true,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "date",
-      "name": "FechaEmision",
-      "label": "Fecha Emisión",
-      "value": "",
-      "size": "small",
-      "inputFormat": "dd/MM/yyyy",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "date",
-      "name": "FechaVencimiento",
-      "label": "Fecha Vencimiento",
-      "value": "",
-      "size": "small",
-      "inputFormat": "dd/MM/yyyy",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoPeriodicidad",
-        "label": "Periodicidad",
-        "value": "",
-        "xs": 3,
-        "controller": "ParPeriodicidad/GetParPeriodicidades",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "date",
-      "name": "FechaUltimoPagoInteres",
-      "label": "Fecha Último Pago Interés",
-      "value": "",
-      "size": "small",
-      "inputFormat": "dd/MM/yyyy",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "date",
-      "name": "FechaProximoPagoInteres",
-      "label": "Fecha Próximo Pago Interés",
-      "value": "",
-      "size": "small",
-      "inputFormat": "dd/MM/yyyy",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "date",
-        "name": "FechaUltimoInteresAcumulado",
-        "label": "Ultimo Interés Acumulado",
-        "value": "",
-        "size": "small",
-        "inputFormat": "dd/MM/yyyy",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "text",
-      "name": "TasaNeta",
-      "label": "Tasa Neta",
-      "value": "",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "text",
-        "name": "TasaBruta",
-        "label": "Tasa Bruta",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "ValorNominal",
-        "label": "Valor Nominal",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "select",
-      "name": "CodigoEstado",
-      "label": "Estado",
-      "value": "",
-      "xs": 3,
-      "controller": "ParEstado/GetParEstados",
-      "fieldName": "Descripcion",
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "text",
-        "name": "SaldoValorNominal",
-        "label": "Saldo Nominal",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "PorcentajeValorVenta",
-        "label": "Porcentaje Valor Venta",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "PorcentajeValorMercado",
-        "label": "Porcentaje Valor Mercado",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "AmortizacionAcumulada",
-        "label": "Amortización Acumulada",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "ValuacionAcumulada",
-        "label": "Valoración Acumulada",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "ValorMercado",
-        "label": "Valor Mercado",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "ValorContable",
-        "label": "Valor Contable",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "DiasInteresPorPagar",
-        "label": "Días Acumulados",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "InteresPorPagar",
-        "label": "Interés Por Pagar",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "Tir",
-        "label": "TIR",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "DiasInteresVencimiento",
-        "label": "Días al vencimiento",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "text",
-      "name": "Usuario",
-      "label": "Usuario",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    }
-  ]  
+  { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+  {
+    "type": "text",
+    "name": "nombreEmpresa",
+    "label": "Empresa",
+    "value": "",
+    "xs": 6,
+    "disabled": true,
+    "validations": []
+  },
+  {
+    "type": "text",
+    "name": "CodigoPortafolio",
+    "label": "Portafolio",
+    "value": 0,
+    "xs": 3,
+    "disabled": true,
+    "validations": []
+  },
+  {
+    "type": "text",
+    "name": "NumeroInversion",
+    "label": "Número Inversión",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "textSearch",
+    "nameId": "CodigoAportante",
+    "name": "Nombre",
+    "label": "Aportante",
+    "value": "",
+    "xs": 3,
+    "columnsModal": [
+      {
+        "title": "Aportante",
+        "field": "CodigoAportante"
+      },
+      {
+        "title": "Nombre Aportante",
+        "field": "Nombre"
+      }
+    ],
+    "setModalFields": [],
+    "apiRouteModal": "PasAportante/GetPasAportantes",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "textSearch",
+    "nameId": "CodigoInstrumento",
+    "name": "Descripcion",
+    "label": "Instrumento",
+    "value": "",
+    "xs": 3,
+    "columnsModal": [
+      {
+        "title": "Cod. Instrumento",
+        "field": "CodigoInstrumento"
+      },
+      {
+        "title": "Descripción",
+        "field": "Descripcion"
+      }
+    ],
+    "setModalFields": [
+      { "name": "CodigoMoneda" },
+      { "name": "Isin" },
+      { "name": "Serie" },
+      { "name": "FechaEmision" },
+      { "name": "FechaProximoPagoInteres" },
+      { "name": "FechaUltimoInteresAcumulado" },
+      { "name": "FechaVencimiento" },
+      { "name": "FechaUltimoPagoInteres" },
+      { "name": "TasaNeta" },
+      { "name": "TasaBruta" },
+      { "name": "CodigoPeriodicidadPagoInteres" }
+    ],
+    "apiRouteModal": "PasInstrumento/GetPasInstrumentos",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoMoneda",
+    "label": "Moneda",
+    "value": "",
+    "xs": 3,
+    "controller": "ParMonedum/GetParMonedas",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Isin",
+    "label": "Isin",
+    "value": 0,
+    "xs": 3,
+    "disabled": true,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Serie",
+    "label": "Serie",
+    "value": 0,
+    "xs": 3,
+    "disabled": true,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaEmision",
+    "label": "Fecha Emisión",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaVencimiento",
+    "label": "Fecha Vencimiento",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoPeriodicidad",
+    "label": "Periodicidad",
+    "value": "",
+    "xs": 3,
+    "controller": "ParPeriodicidad/GetParPeriodicidades",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaUltimoPagoInteres",
+    "label": "Fecha Último Pago Interés",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaProximoPagoInteres",
+    "label": "Fecha Próximo Pago Interés",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaUltimoInteresAcumulado",
+    "label": "Ultimo Interés Acumulado",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "TasaNeta",
+    "label": "Tasa Neta",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "TasaBruta",
+    "label": "Tasa Bruta",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "ValorNominal",
+    "label": "Valor Nominal",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoEstado",
+    "label": "Estado",
+    "value": "",
+    "xs": 3,
+    "controller": "ParEstado/GetParEstados",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "SaldoValorNominal",
+    "label": "Saldo Nominal",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "PorcentajeValorVenta",
+    "label": "Porcentaje Valor Venta",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "PorcentajeValorMercado",
+    "label": "Porcentaje Valor Mercado",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "AmortizacionAcumulada",
+    "label": "Amortización Acumulada",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "ValuacionAcumulada",
+    "label": "Valoración Acumulada",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "ValorMercado",
+    "label": "Valor Mercado",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "ValorContable",
+    "label": "Valor Contable",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "DiasInteresPorPagar",
+    "label": "Días Acumulados",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "InteresPorPagar",
+    "label": "Interés Por Pagar",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Tir",
+    "label": "TIR",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "DiasInteresVencimiento",
+    "label": "Días al vencimiento",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Usuario",
+    "label": "Usuario",
+    "value": "",
+    "xs": 6,
+    "disabled": true,
+    "validations": []
+  }
+]

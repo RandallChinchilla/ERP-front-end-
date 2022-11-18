@@ -5,7 +5,16 @@ import { helpHttp } from "../../Helpers/HelpHttp";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
-export const SelectAportanteModal = (props) => {
+export const TableModal = ({
+  columnsModal,
+  routeApi,
+  open,
+  handleClose,
+  setValue,
+  field,
+  name,
+  setModalFields,
+}) => {
   const [data, setData] = useState([]);
   const style = {
     position: "absolute",
@@ -19,15 +28,7 @@ export const SelectAportanteModal = (props) => {
     p: 4,
   };
 
-  const [columns, setColumns] = useState([
-    { title: "Aportante", field: "CodigoAportante" },
-    {
-      title: "Nombre",
-      field: "Nombre",
-    },
-  ]);
-
-  let url = `${baseUrl}${props.controller}`;
+  let url = `${baseUrl}${routeApi}`;
   useEffect(() => {
     helpHttp()
       .get(url)
@@ -38,19 +39,23 @@ export const SelectAportanteModal = (props) => {
           //setError(res.err);
         }
       });
-  }, [props.url]);
+  }, [routeApi]);
 
   const selectItem = (rowData) => {
     console.log(rowData);
-    props.form.CodigoAportante = rowData.Nombre;
-    props.handleClose();
+    setValue(field, rowData[field]);
+    setModalFields.forEach((element) => {
+      setValue(element.name, rowData[element.name]);
+    });
+
+    handleClose();
   };
 
   return (
     <div>
       <Modal
-        open={props.open}
-        onClose={props.handleClose}
+        open={open}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -58,7 +63,7 @@ export const SelectAportanteModal = (props) => {
           <div>
             <MaterialTable
               title="Aportante"
-              columns={columns}
+              columns={columnsModal}
               data={data}
               options={{
                 rowStyle: {

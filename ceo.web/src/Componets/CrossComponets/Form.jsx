@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import { Box, Grid, InputAdornment, Paper, Typography } from "@mui/material";
 import {
   Button,
   Checkbox,
@@ -13,13 +13,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { SelectList } from "./SelectList";
 import { postAction } from "../../Helpers/postHelper";
 import { useDispatch, useSelector } from "react-redux";
-import { updateAlert } from "../../Actions/Index";
+import { updateAlert, updateModal } from "../../Actions/Index";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { useHistory } from "react-router-dom";
 import { putAction } from "../../Helpers/putHelper";
 import { useStyles } from "./Styles/crossStylesComponent";
+import SearchIcon from "@mui/icons-material/Search";
+import { TableModal } from "./TableModal";
 
 const initialValues = {};
 const requiredFields = {};
@@ -31,9 +33,14 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, showAddbutton }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const { alert } = state.alert;
+  // const { modal } = state.modal;
   const styles = useStyles();
   let usehistory = useHistory();
   const [update, setUpdate] = useState(false);
+  const [openModal, setOpenModal] = useState([
+    { open: false, columnsModa: [], apiRoute: "", name: "", nameId: "" },
+  ]);
+  const handleClose = () => setOpenModal(false);
 
   for (const input of formJson) {
     initialValues[input.nameId ? input.nameId : input.name] = input.value;
@@ -54,13 +61,12 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, showAddbutton }) => {
   initialValues.CodigoEmpresa = userLogged.CodigoEmpresa;
   initialValues.Id = userLogged.Id;
 
-  console.log(rowUpdate);
-
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
+    setValue,
   } = useForm({
     defaultValues: rowUpdate ? rowUpdate : initialValues,
     resolver: yupResolver(validationschema),
@@ -86,6 +92,24 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, showAddbutton }) => {
           })
         );
       }
+    });
+  };
+
+  const handleOpenModal = (
+    columnsModal,
+    apiRoute,
+    name,
+    nameId,
+    setModalFields
+  ) => {
+    console.log(setModalFields);
+    setOpenModal({
+      open: true,
+      columnsModal,
+      apiRoute: apiRoute,
+      name: name,
+      nameId: nameId,
+      setModalFields,
     });
   };
 
@@ -133,8 +157,52 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, showAddbutton }) => {
                       fieldName,
                       data,
                       inputFormat,
+                      columnsModal,
+                      apiRouteModal,
+                      setModalFields,
                     }) => {
                       switch (type) {
+                        case "textSearch":
+                          return (
+                            <Grid
+                              key={nameId}
+                              item
+                              xs={xs}
+                              container
+                              justifyContent="center"
+                            >
+                              <Controller
+                                key={nameId}
+                                name={nameId}
+                                control={control}
+                                render={({ field }) => (
+                                  <TextField
+                                    className={styles.textfield}
+                                    onClick={() =>
+                                      handleOpenModal(
+                                        columnsModal,
+                                        apiRouteModal,
+                                        name,
+                                        nameId,
+                                        setModalFields
+                                      )
+                                    }
+                                    label={label}
+                                    {...field}
+                                    value={field.value}
+                                    InputProps={{
+                                      endAdornment: (
+                                        <InputAdornment position="start">
+                                          <SearchIcon />
+                                        </InputAdornment>
+                                      ),
+                                    }}
+                                    size="small"
+                                  ></TextField>
+                                )}
+                              ></Controller>
+                            </Grid>
+                          );
                         case "text":
                           return (
                             <Grid
@@ -279,6 +347,18 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, showAddbutton }) => {
           </Box>
         </Paper>
       </Grid>
+      {openModal.open && (
+        <TableModal
+          columnsModal={openModal.columnsModal}
+          routeApi={openModal.apiRoute}
+          open={openModal.open}
+          handleClose={handleClose}
+          setValue={setValue}
+          field={openModal.nameId}
+          name={openModal.name}
+          setModalFields={openModal.setModalFields}
+        />
+      )}
     </div>
   );
 };
