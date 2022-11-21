@@ -54,6 +54,7 @@ export const CrudTableFormNew = ({ columns, apiRoutes, field, title }) => {
         sx={datagridSx}
         title={title}
         rows={data}
+        //columns={columns}
         columns={columns.concat([
           {
             headerName: "Acciones",
@@ -62,10 +63,12 @@ export const CrudTableFormNew = ({ columns, apiRoutes, field, title }) => {
             width: 80,
             renderCell: (params) => [
               <Editrow
+                key={`edit-${params.row[field]}`}
                 rowUpdate={params.row}
                 navigation={apiRoutes.navigation}
               />,
               <Deleterow
+                key={`delete-${params.row[field]}`}
                 rowDelete={params.row}
                 deleteApi={apiRoutes.delete}
                 field={field}
@@ -75,7 +78,7 @@ export const CrudTableFormNew = ({ columns, apiRoutes, field, title }) => {
             ],
           },
         ])}
-        getRowId={(db) => db[field]}
+        getRowId={(data) => data[field]}
         pageSize={50}
         rowsPerPageOptions={[50]}
         experimentalFeatures={{ newEditingApi: true }}

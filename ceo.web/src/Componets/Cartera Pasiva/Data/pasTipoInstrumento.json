@@ -1,0 +1,21 @@
+[
+  { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+  {
+    "type": "text",
+    "name": "CodigoTipo",
+    "label": "Tipo",
+    "value": 0,
+    "xs": 3,
+    "disabled": true,
+    "validations": []
+  },
+  {
+    "type": "text",
+    "name": "Descripcion",
+    "label": "Descripción",
+    "value": "",
+    "xs": 9,
+    "disabled": false,
+    "validations": []
+  }
+]

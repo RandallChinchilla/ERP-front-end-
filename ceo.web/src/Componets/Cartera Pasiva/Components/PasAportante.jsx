@@ -2,7 +2,10 @@ import React from "react";
 import formJson from "../Data/pasAportanteData.json";
 import { Form } from "../../CrossComponets/Form";
 import { useLocation } from "react-router-dom";
-import { routesPasAportanteApi } from "../Interfaces/interfacePasAportante";
+import {
+  routesPasAportanteApi,
+  typeMode,
+} from "../Interfaces/interfacePasAportante";
 
 /**
  * Este componente renderiza un componente dinamico a partir del componenete Form,, el cual nos permite
@@ -23,6 +26,7 @@ export const PasAportante = () => {
       title="Aportante"
       urlApi={routesPasAportanteApi}
       rowUpdate={rowUpdate}
+      typeMode={typeMode}
     />
   );
 };

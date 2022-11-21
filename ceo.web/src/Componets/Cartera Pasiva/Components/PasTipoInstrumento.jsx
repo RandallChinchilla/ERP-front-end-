@@ -1,30 +1,21 @@
 import React from "react";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
+import { Form } from "../../CrossComponets/Form";
 import {
-  columnsPasTipoInstrumento,
   routesPasTipoInstrumentoApi,
+  typeMode,
 } from "../Interfaces/interfacePasTipoInstrumento";
+import formJson from "../Data/pasTipoInstrumento.json";
+import { useLocation } from "react-router-dom";
 
-/**
- * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
- * realiazar un crud sobre un componente material-table
- * @returns CrudTableBasic
- */
-
-const PasTipoInstrumento = () => {
+export const PasTipoInstrumento = () => {
+  const { rowUpdate } = useLocation();
   return (
-    <div>
-      <CrudTableBasic
-        columns={columnsPasTipoInstrumento}
-        apiRoutes={routesPasTipoInstrumentoApi}
-        field="CodigoTipo"
-        title="Catálogo Tipo Instrumento"
-        isEditable={true}
-        isDeletable={true}
-        isAdd={true}
-      />
-    </div>
+    <Form
+      formJson={formJson}
+      title="Catálogo tipo Instrumento"
+      urlApi={routesPasTipoInstrumentoApi}
+      rowUpdate={rowUpdate}
+      typeMode={typeMode}
+    />
   );
 };
-
-export default PasTipoInstrumento;

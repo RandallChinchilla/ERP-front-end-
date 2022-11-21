@@ -220,7 +220,7 @@
     "type": "text",
     "name": "TasaNeta",
     "label": "Tasa Neta",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "validations": [
       {
@@ -232,7 +232,7 @@
     "type": "text",
     "name": "TasaBruta",
     "label": "Tasa Bruta",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "validations": [
       {
@@ -244,7 +244,7 @@
     "type": "text",
     "name": "ValorNominal",
     "label": "Valor Nominal",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "validations": [
       {
@@ -256,10 +256,11 @@
     "type": "select",
     "name": "CodigoEstado",
     "label": "Estado",
-    "value": "",
+    "value": 1,
     "xs": 3,
     "controller": "ParEstado/GetParEstados",
     "fieldName": "Descripcion",
+    "disabled": true,
     "validations": [
       {
         "type": "required"
@@ -270,7 +271,7 @@
     "type": "text",
     "name": "SaldoValorNominal",
     "label": "Saldo Nominal",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "validations": [
       {
@@ -282,7 +283,7 @@
     "type": "text",
     "name": "PorcentajeValorVenta",
     "label": "Porcentaje Valor Venta",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "validations": [
       {
@@ -294,7 +295,7 @@
     "type": "text",
     "name": "PorcentajeValorMercado",
     "label": "Porcentaje Valor Mercado",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "validations": [
       {
@@ -306,7 +307,7 @@
     "type": "text",
     "name": "AmortizacionAcumulada",
     "label": "Amortización Acumulada",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "validations": [
       {
@@ -318,7 +319,7 @@
     "type": "text",
     "name": "ValuacionAcumulada",
     "label": "Valoración Acumulada",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "validations": [
       {
@@ -330,7 +331,7 @@
     "type": "text",
     "name": "ValorMercado",
     "label": "Valor Mercado",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "validations": [
       {
@@ -342,7 +343,7 @@
     "type": "text",
     "name": "ValorContable",
     "label": "Valor Contable",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "validations": [
       {
@@ -354,7 +355,7 @@
     "type": "text",
     "name": "DiasInteresPorPagar",
     "label": "Días Acumulados",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "validations": [
       {
@@ -366,7 +367,7 @@
     "type": "text",
     "name": "InteresPorPagar",
     "label": "Interés Por Pagar",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "validations": [
       {
@@ -378,7 +379,7 @@
     "type": "text",
     "name": "Tir",
     "label": "TIR",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "validations": [
       {
@@ -390,7 +391,7 @@
     "type": "text",
     "name": "DiasInteresVencimiento",
     "label": "Días al vencimiento",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "validations": [
       {

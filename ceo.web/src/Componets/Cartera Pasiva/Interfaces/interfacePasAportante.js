@@ -14,6 +14,13 @@ export const columnsPasAportante = [
     align: "center",
   },
   {
+    headerName: "Código Interno",
+    field: "CodigoInterno",
+    width: 200,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
     headerName: "Teléfono",
     field: "TelefonoCelular",
     width: 200,
@@ -57,4 +64,8 @@ export const routesPasAportanteApi = {
   delete: "PasAportante/DeletePasAportante",
   navigation: "./PasAportante",
   navigationBack: "./PasAportanteView",
+};
+
+export const typeMode = {
+  onlyread: false,
 };

@@ -2,7 +2,10 @@ import React from "react";
 import formJson from "../Data/pasTazaPlazoData.json";
 import { Form } from "../../CrossComponets/Form";
 import { useLocation } from "react-router-dom";
-import { routesPasTasaPlazoApi } from "../Interfaces/interfacePasTasaPlazo";
+import {
+  routesPasTasaPlazoApi,
+  typeMode,
+} from "../Interfaces/interfacePasTasaPlazo";
 
 /**
  * Este componente renderiza un componente dinamico a partir del componenete Form,, el cual nos permite
@@ -23,6 +26,7 @@ export const PasTasaPlazo = () => {
       title="Tasa Plazo"
       urlApi={routesPasTasaPlazoApi}
       rowUpdate={rowUpdate}
+      typeMode={typeMode}
     />
   );
 };

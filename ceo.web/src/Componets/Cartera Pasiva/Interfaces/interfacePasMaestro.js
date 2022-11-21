@@ -59,3 +59,7 @@ export const routesPasMaestroApi = {
   navigation: "./PasMaestro",
   navigationBack: "./PasMaestroView",
 };
+
+export const typeMode = {
+  onlyread: false,
+};

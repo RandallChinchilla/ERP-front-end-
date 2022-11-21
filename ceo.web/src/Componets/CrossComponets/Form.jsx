@@ -26,14 +26,13 @@ import { TableModal } from "./TableModal";
 const initialValues = {};
 const requiredFields = {};
 
-export const Form = ({ formJson, title, urlApi, rowUpdate, showAddbutton }) => {
+export const Form = ({ formJson, title, urlApi, rowUpdate, typeMode }) => {
   const userLogged = JSON.parse(localStorage.getItem("myuser"));
   const userLoggedToken = localStorage.getItem("mytoken");
-
+  const [date, setDate] = useState(new Date());
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const { alert } = state.alert;
-  // const { modal } = state.modal;
   const styles = useStyles();
   let usehistory = useHistory();
   const [update, setUpdate] = useState(false);
@@ -71,8 +70,6 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, showAddbutton }) => {
     defaultValues: rowUpdate ? rowUpdate : initialValues,
     resolver: yupResolver(validationschema),
   });
-
-  const [date, setDate] = useState("");
 
   const onSubmit = (data) => {
     let response = rowUpdate
@@ -220,7 +217,11 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, showAddbutton }) => {
                                 className={styles.textfield}
                                 placeholder={placeholder}
                                 size="small"
-                                disabled={disabled}
+                                disabled={
+                                  typeMode.onlyread && rowUpdate
+                                    ? typeMode.onlyread
+                                    : disabled
+                                }
                               />
                               {errors[name] && (
                                 <FormHelperText id="my-helper-text" error>
@@ -245,19 +246,22 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, showAddbutton }) => {
                                   control={control}
                                   render={({ field }) => (
                                     <DesktopDatePicker
-                                      disabled={disabled}
                                       label={label}
                                       inputFormat={inputFormat}
                                       onChange={(newvalue) => {
                                         field.onChange(
                                           new Date(newvalue).toISOString()
-                                          // .slice(0, 10)
                                         );
                                       }}
-                                      value={field.value}
+                                      value={field.value ? field.value : date}
                                       renderInput={(params) => (
                                         <TextField size="small" {...params} />
                                       )}
+                                      disabled={
+                                        typeMode.onlyread && rowUpdate
+                                          ? typeMode.onlyread
+                                          : disabled
+                                      }
                                     />
                                   )}
                                 ></Controller>
@@ -317,7 +321,11 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, showAddbutton }) => {
                                   xs={xs}
                                   errors={errors[nameId ? nameId : name]}
                                   dataJson={data}
-                                  disabled={disabled}
+                                  disabled={
+                                    typeMode.onlyread && rowUpdate
+                                      ? typeMode.onlyread
+                                      : disabled
+                                  }
                                 />
                               )}
                             ></Controller>
@@ -337,9 +345,11 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, showAddbutton }) => {
                     >
                       Regresar
                     </Button>
-                    <Button color="primary" type="submit" variant="contained">
-                      {rowUpdate ? "Actualizar" : "Agregar"}
-                    </Button>
+                    {typeMode.onlyread && rowUpdate ? null : (
+                      <Button color="primary" type="submit" variant="contained">
+                        {rowUpdate ? "Actualizar" : "Agregar"}
+                      </Button>
+                    )}
                   </Grid>
                 </Grid>
               </form>

@@ -4,12 +4,12 @@
   {
     "type": "select",
     "name": "CodigoTipo",
-    "label": "Estado",
+    "label": "Producto",
     "value": "",
     "xs": 3,
     "controller": "PasTipoInstrumento/GetPasTipoinstrumentos",
     "fieldName": "Descripcion",
-    "disabled": true,
+    "disabled": false,
     "validations": [
       {
         "type": "required"
@@ -34,10 +34,10 @@
   {
     "type": "text",
     "name": "Tasa",
-    "label": "Tasa Bruta",
+    "label": "Tasa",
     "value": "",
     "xs": 3,
-    "disabled": true,
+    "disabled": false,
     "validations": [
       {
         "type": "required"
@@ -47,10 +47,10 @@
   {
     "type": "text",
     "name": "TasaMaxima",
-    "label": "Tasa Bruta Máxima",
+    "label": "Tasa Máxima",
     "value": "",
     "xs": 3,
-    "disabled": true,
+    "disabled": false,
     "validations": [
       {
         "type": "required"
@@ -61,7 +61,7 @@
     "type": "text",
     "name": "PorcentajeIsr",
     "label": "Porcentaje ISR",
-    "value": "",
+    "value": 0,
     "xs": 3,
     "disabled": true,
     "validations": [
@@ -74,7 +74,7 @@
     "type": "select",
     "name": "CodigoEstado",
     "label": "Estado",
-    "value": "",
+    "value": "1",
     "xs": 3,
     "controller": "ParEstado/GetParEstados",
     "fieldName": "Descripcion",

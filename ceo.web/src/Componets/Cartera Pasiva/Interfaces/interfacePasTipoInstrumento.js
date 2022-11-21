@@ -6,42 +6,31 @@
  */
 
 export const columnsPasTipoInstrumento = [
-  // {
-  //   headerName: "Código Empresa",
-  //   field: "CodigoEmpresa",
-  //   initialEditValue: 1,
-  //   editable: "never",
-  // },
-  // {
-  //   headerName: "Nombre",
-  //   field: "CodigoEmpresaNavigation.Nombre",
-  //   id: "CodigoEmpresaNavigation.CodigoEmpresa",
-  //   initialEditValue: "DmdInterSoft",
-  //   editable: "never",
-  // },
   {
     headerName: "Tipo",
     field: "CodigoTipo",
-    initialEditValue: 0,
-    editable: false,
+    width: 250,
+    headerAlign: "center",
+    align: "center",
   },
-  { headerName: "Descripción", field: "Descripcion", editable: true },
+  {
+    headerName: "Descripción",
+    field: "Descripcion",
+    width: 800,
+    headerAlign: "center",
+    align: "center",
+  },
 ];
 
 export const routesPasTipoInstrumentoApi = {
   get: "PasTipoInstrumento/GetPasTipoInstrumentos",
-  add: "PasTipoInstrumento/PostPasTipoInstrumento",
+  post: "PasTipoInstrumento/PostPasTipoInstrumento",
   update: "PasTipoInstrumento/PutPasTipoInstrumento",
   delete: "PasTipoInstrumento/DeletePasTipoInstrumento",
+  navigation: "./PasTipoInstrumento",
+  navigationBack: "./PasTipoInstrumentoView",
 };
 
-export const tableStyle = {
-  rowStyle: {
-    fontSize: 12,
-  },
-  headerStyle: {
-    backgroundColor: "#898883",
-    color: "#FFF",
-    fontSize: 13,
-  },
+export const typeMode = {
+  onlyread: false,
 };

@@ -2,21 +2,6 @@ import { Deleterow } from "../../CrossComponets/Deleterow";
 import { Editrow } from "../../CrossComponets/Editrow";
 
 export const columnsPasInstrumento = [
-  // {
-  //   headerName: "Acciones",
-  //   field: "actions",
-  //   type: "actions",
-  //   width: 80,
-  //   renderCell: (params) => [
-  //     <Editrow rowUpdate={params.row} navigation="./PasInstrumento" />,
-  //     <Deleterow
-  //       rowDelete={params.row}
-  //       deleteApi="PasInstrumento/DeletePasInstrumento"
-  //       field="CodigoInstrumento"
-  //       params={params}
-  //     />,
-  //   ],
-  // },
   {
     headerName: "Código Instrumento",
     field: "CodigoInstrumento",
@@ -64,4 +49,8 @@ export const routesPasInstrumentoApi = {
   delete: "PasInstrumento/DeletePasInstrumento",
   navigation: "./PasInstrumento",
   navigationBack: "./PasInstrumentoView",
+};
+
+export const typeMode = {
+  onlyread: false,
 };

@@ -457,10 +457,22 @@
   },
   {
     "type": "text",
+    "name": "CodigoInterno",
+    "label": "Codigo Interno",
+    "value": 0,
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
     "name": "Usuario",
     "label": "Usuario",
     "value": "",
-    "xs": 6,
+    "xs": 3,
     "disabled": true,
     "validations": []
   }

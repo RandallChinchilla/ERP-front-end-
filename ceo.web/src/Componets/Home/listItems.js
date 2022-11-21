@@ -1051,7 +1051,9 @@ export default function NestedList() {
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHConfiguracionView">
-              <ListItemText className={classes.text}>Configuración</ListItemText>
+              <ListItemText className={classes.text}>
+                Configuración
+              </ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -1060,7 +1062,9 @@ export default function NestedList() {
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHAccionPersonalView">
-              <ListItemText className={classes.text}>Acción Personal</ListItemText>
+              <ListItemText className={classes.text}>
+                Acción Personal
+              </ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -1068,8 +1072,13 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHDeduccionEmpleadoView">
-              <ListItemText className={classes.text}>Deducción Empleado</ListItemText>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/RRHIndex/RRHDeduccionEmpleadoView"
+            >
+              <ListItemText className={classes.text}>
+                Deducción Empleado
+              </ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -1125,7 +1134,10 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParIndex/ParTipoIdentificacionView">
+            <NavLink
+              tag={Link}
+              to="/Dashboard/ParIndex/ParTipoIdentificacionView"
+            >
               <ListItemText className={classes.text}>
                 Tipo de Identificación
               </ListItemText>
@@ -1136,7 +1148,10 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParIndex/ParCodigoTransaccionView">
+            <NavLink
+              tag={Link}
+              to="/Dashboard/ParIndex/ParCodigoTransaccionView"
+            >
               <ListItemText className={classes.text}>
                 Códigos Transacción
               </ListItemText>
@@ -1195,9 +1210,7 @@ export default function NestedList() {
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink tag={Link} to="/Dashboard/ParIndex/ParParentezco">
-              <ListItemText className={classes.text}>
-                Parentezco
-              </ListItemText>
+              <ListItemText className={classes.text}>Parentezco</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -1206,9 +1219,7 @@ export default function NestedList() {
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink tag={Link} to="/Dashboard/ParIndex/ParTipoCambioView">
-              <ListItemText className={classes.text}>
-                Tipo Cambio
-              </ListItemText>
+              <ListItemText className={classes.text}>Tipo Cambio</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -1546,7 +1557,7 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/Dashboard/PasIndex/PasTipoInstrumento"
+              to="/Dashboard/PasIndex/PasTipoInstrumentoView"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}
@@ -1878,9 +1889,7 @@ export default function NestedList() {
                 color: isActive ? "inherit" : "inherit",
               })}
             >
-              <ListItemText className={classes.text}>
-                  Tasa
-              </ListItemText>
+              <ListItemText className={classes.text}>Tasa</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>

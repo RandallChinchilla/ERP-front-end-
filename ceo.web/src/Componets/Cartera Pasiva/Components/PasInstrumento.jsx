@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import formJson from "../Data/pasInstrumentoData.json";
 import { Form } from "../../CrossComponets/Form";
-import { routesPasInstrumentoApi } from "../Interfaces/interfacesPasInstrumento";
+import {
+  routesPasInstrumentoApi,
+  typeMode,
+} from "../Interfaces/interfacesPasInstrumento";
 import { useLocation } from "react-router-dom";
 import { helpHttp } from "../../../Helpers/HelpHttp";
 
@@ -24,6 +27,7 @@ export const PasInstrumento = () => {
       title="INSTRUMENTO"
       urlApi={routesPasInstrumentoApi}
       rowUpdate={rowUpdate}
+      typeMode={typeMode}
     />
   );
 };
