@@ -107,7 +107,7 @@ export const CrudTableForm = ({ columns, apiRoutes, field, title }) => {
         title={title}
         columns={columns}
         data={db}
-        options={tableStyle}
+        // options={tableStyle}
         actions={[
           {
             icon: "edit",

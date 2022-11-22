@@ -153,7 +153,7 @@ export const CrudTableBasic = (props) => {
         title={props.title}
         columns={props.columns}
         data={db}
-        options={tableStyle}
+        // options={tableStyle}
         editable={{
           isEditable: () => props.isEditable,
           isDeletable: () => props.isDeletable,

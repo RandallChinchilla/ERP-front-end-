@@ -1,5 +1,6 @@
 import React from "react";
 import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
+import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
 import {
   columnsPasOrigenFondos,
   routesPasOrigenFondosApi,
@@ -11,20 +12,17 @@ import {
  * @returns CrudTableBasic
  */
 
-const PasOrigenFondos = () => {
+const PasOrigenFondosView = () => {
   return (
     <div>
-      <CrudTableBasic
+      <CrudTableFormNew
         columns={columnsPasOrigenFondos}
         apiRoutes={routesPasOrigenFondosApi}
         field="CodigoOrigenFondos"
         title="Catálogo Origen Fondos"
-        isEditable={true}
-        isDeletable={true}
-        isAdd={true}
       />
     </div>
   );
 };
 
-export default PasOrigenFondos;
+export default PasOrigenFondosView;

@@ -7,41 +7,30 @@
 
 export const columnsPasOrigenFondos = [
   {
-    title: "Código Empresa",
-    field: "CodigoEmpresa",
-    initialEditValue: 1,
-    editable: "never",
-  },
-  {
-    title: "Nombre",
-    field: "CodigoEmpresaNavigation.Nombre",
-    id: "CodigoEmpresaNavigation.CodigoEmpresa",
-    initialEditValue: "DmdInterSoft",
-    editable: "never",
-  },
-  {
-    title: "Código Origen Fondos",
+    headerName: "Código Origen Fondos",
     field: "CodigoOrigenFondos",
-    initialEditValue: 0,
-    editable: "never",
+    width: 250,
+    headerAlign: "center",
+    align: "center",
   },
-  { title: "Descripción", field: "Descripcion" },
+  {
+    headerName: "Descripción",
+    field: "Descripcion",
+    width: 800,
+    headerAlign: "center",
+    align: "center",
+  },
 ];
 
 export const routesPasOrigenFondosApi = {
   get: "PasOrigenFondo/GetPasOrigenFondos",
-  add: "PasOrigenFondo/PostPasOrigenFondo",
+  post: "PasOrigenFondo/PostPasOrigenFondo",
   update: "PasOrigenFondo/PutPasOrigenFondo",
   delete: "PasOrigenFondo/DeletePasOrigenFondo",
+  navigation: "./PasOrigenFondo",
+  navigationBack: "./PasOrigenFondosView",
 };
 
-export const tableStyle = {
-  rowStyle: {
-    fontSize: 12,
-  },
-  headerStyle: {
-    backgroundColor: "#898883",
-    color: "#FFF",
-    fontSize: 13,
-  },
+export const typeMode = {
+  onlyread: false,
 };

@@ -1589,7 +1589,7 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/Dashboard/PasIndex/PasOrigenFondos"
+              to="/Dashboard/PasIndex/PasOrigenFondosView"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}

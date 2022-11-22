@@ -5,6 +5,7 @@ export const columnsPasMaestro = [
     width: 150,
     headerAlign: "center",
     align: "center",
+    valueGetter: (params) => params.row.Codigo3.Descripcion,
   },
   {
     headerName: "Número Inversion",
@@ -16,9 +17,10 @@ export const columnsPasMaestro = [
   {
     headerName: "Código Aportante",
     field: "CodigoAportante",
-    width: 150,
+    width: 350,
     headerAlign: "center",
     align: "center",
+    valueGetter: (params) => params.row.Codigo.Nombre,
   },
   {
     headerName: "Código Instrumento",
@@ -26,6 +28,7 @@ export const columnsPasMaestro = [
     width: 200,
     headerAlign: "center",
     align: "center",
+    valueGetter: (params) => params.row.CodigoNavigation.Descripcion,
   },
   {
     headerName: "Moneda",
@@ -34,6 +37,7 @@ export const columnsPasMaestro = [
     headerAlign: "center",
     align: "center",
     field: "CodigoMoneda",
+    valueGetter: (params) => params.row.Codigo1.Descripcion,
   },
   {
     headerName: "Estado",
@@ -41,11 +45,12 @@ export const columnsPasMaestro = [
     width: 100,
     headerAlign: "center",
     align: "center",
+    valueGetter: (params) => params.row.CodigoEstadoNavigation.Descripcion,
   },
   {
     headerName: "Saldo Nominal",
     field: "SaldoValorNominal",
-    width: 300,
+    width: 150,
     headerAlign: "center",
     align: "center",
   },

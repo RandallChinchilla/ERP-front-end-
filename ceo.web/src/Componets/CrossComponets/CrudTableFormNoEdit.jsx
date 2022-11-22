@@ -68,7 +68,7 @@ export const CrudTableFormNoEdit = (props) => {
         title={props.title}
         columns={props.columns}
         data={db}
-        options={tableStyle}
+        // options={tableStyle}
         actions={[
           {
             icon: "visibility",

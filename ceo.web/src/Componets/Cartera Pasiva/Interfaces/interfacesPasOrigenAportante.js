@@ -7,42 +7,30 @@
 
 export const columnsPasOrigenAportante = [
   {
-    title: "Código Empresa",
-    field: "CodigoEmpresa",
-    initialEditValue: 1,
-    editable: "never",
-  },
-  {
-    title: "Nombre",
-    field: "CodigoEmpresaNavigation.Nombre",
-    id: "CodigoEmpresaNavigation.CodigoEmpresa",
-    initialEditValue: "DmdInterSoft",
-    editable: "never",
-  },
-  {
-    title: "Código Origen Aportante",
+    headerName: "Código Origen Aportante",
     field: "CodigoOrigenAportante",
-    initialEditValue: 0,
-    editable: "never",
+    width: 250,
+    headerAlign: "center",
+    align: "center",
   },
-  { title: "Descripción", field: "Descripcion" },
+  {
+    headerName: "Descripción",
+    field: "Descripcion",
+    width: 800,
+    headerAlign: "center",
+    align: "center",
+  },
 ];
 
 export const routesPasOrigenAportanteApi = {
   get: "PasOrigenAportante/GetPasOrigenAportantes",
-  add: "PasOrigenAportante/PostPasOrigenAportante",
+  post: "PasOrigenAportante/PostPasOrigenAportante",
   update: "PasOrigenAportante/PutPasOrigenAportante",
   delete: "PasOrigenAportante/DeletePasOrigenAportante",
+  navigation: "./PasOrigenAportante",
+  navigationBack: "./PasOrigenAportanteView",
 };
 
-export const tableStyle = {
-  rowStyle: {
-    fontSize: 12,
-  },
-  headerStyle: {
-    backgroundColor: "#898883",
-    color: "#FFF",
-    fontSize: 13,
-    width: "100%",
-  },
+export const typeMode = {
+  onlyread: false,
 };

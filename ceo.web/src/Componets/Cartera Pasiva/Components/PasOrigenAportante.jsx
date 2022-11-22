@@ -1,30 +1,19 @@
 import React from "react";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import {
-  columnsPasOrigenAportante,
-  routesPasOrigenAportanteApi,
-} from "../Interfaces/interfacesPasOrigenAportante";
+import { Form } from "../../CrossComponets/Form";
+import { typeMode } from "../Interfaces/interfacePasTipoInstrumento";
+import formJson from "../Data/pasOrigenAportante.json";
+import { useLocation } from "react-router-dom";
+import { routesPasOrigenAportanteApi } from "../Interfaces/interfacesPasOrigenAportante";
 
-/**
- * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
- * realiazar un crud sobre un componente material-table
- * @returns CrudTableBasic
- */
-
-const PasOrigenAportante = () => {
+export const PasOrigenAportante = () => {
+  const { rowUpdate } = useLocation();
   return (
-    <div>
-      <CrudTableBasic
-        columns={columnsPasOrigenAportante}
-        apiRoutes={routesPasOrigenAportanteApi}
-        field="CodigoOrigenAportante"
-        title="Catálogo Origen Aportante"
-        isEditable={true}
-        isDeletable={true}
-        isAdd={true}
-      />
-    </div>
+    <Form
+      formJson={formJson}
+      title="Catálogo Origen Aportante"
+      urlApi={routesPasOrigenAportanteApi}
+      rowUpdate={rowUpdate}
+      typeMode={typeMode}
+    />
   );
 };
-
-export default PasOrigenAportante;
