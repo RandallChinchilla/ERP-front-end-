@@ -1,0 +1,309 @@
+[
+    {
+      "type": "text",
+      "name": "NumeroTransaccion",
+      "label": "# Transacción",
+      "value": 0,
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+      "type": "textSearch",
+      "nameId": "NumeroInversion",
+      "name": "NumeroInversion",
+      "label": "# Inversión",
+      "value": "",
+      "xs": 6,
+      "columnsModal": [
+        {
+          "title": "# Inversión",
+          "field": "NumeroInversion"
+        },
+        {
+          "title": "Aportante",
+          "field": "Codigo.CodigoAportante"
+        },
+        {
+          "title": "Nombre Aportante",
+          "field": "Codigo.Nombre"
+        }
+      ],
+      "setModalFields": [],
+      "apiRouteModal": "PasMaestro/GetPasMaestros",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+        "type": "select",
+        "name": "CodigoTransaccion",
+        "label": "Código Transacción",
+        "value": "",
+        "xs": 3,
+        "controller": "ParCodigotransaccion/GetParCodigoTransacciones",
+        "fieldName": "Descripcion",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "select",
+        "name": "CodigoMoneda",
+        "label": "Moneda",
+        "value": "",
+        "xs": 3,
+        "controller": "ParMonedum/GetParMonedas",
+        "fieldName": "Descripcion",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "MontoEfectivo",
+      "label": "Monto Efectivo",
+      "value": "",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "MontoCheque",
+      "label": "Monto Cheque",
+      "value": "",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "NumeroBanco",
+      "label": "Banco",
+      "value": "",
+      "xs": 3,
+      "controller": "ParBanco/GetParBancos",
+      "fieldName": "Descripcion",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+        "type": "text",
+        "name": "NumeroCheque",
+        "label": "# Cheque",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "MontoTarjeta",
+        "label": "Monto Tarjeta",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "NumeroTarjeta",
+        "label": "# Tarjeta",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "select",
+      "name": "CodigoEmisor",
+      "label": "Emisor Tarjeta",
+      "value": "",
+      "xs": 3,
+      "controller": "ParEmisorTarjeta/GetParEmisorTarjetas",
+      "fieldName": "Descripcion",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+        "type": "text",
+        "name": "MontoOtros",
+        "label": "Monto Otros",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "TipoCambio",
+        "label": "Tipo Cambio",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "Referencia",
+        "label": "Referencia",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "date",
+      "name": "FechaIngreso",
+      "label": "Fecha Ingreso",
+      "value": "",
+      "size": "small",
+      "inputFormat": "dd/MM/yyyy",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "date",
+      "name": "FechaEfectiva",
+      "label": "Fecha Efectiva",
+      "value": "",
+      "size": "small",
+      "inputFormat": "dd/MM/yyyy",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "date",
+      "name": "FechaReversion",
+      "label": "Fecha Reversión",
+      "value": "",
+      "size": "small",
+      "inputFormat": "dd/MM/yyyy",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "NumeroAsiento",
+      "label": "# Asiento",
+      "value": "",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "MontoPrincipal",
+      "label": "Principal",
+      "value": "",
+      "xs": 3,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+        "type": "text",
+        "name": "Precio",
+        "label": "Precio",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "Observaciones",
+        "label": "Observaciones",
+        "value": "",
+        "xs": 6,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "Usuario",
+      "label": "Usuario",
+      "value": "",
+      "xs": 4,
+      "disabled": true,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "IdUsuarioReversa",
+      "label": "Usuario Reversa",
+      "value": "",
+      "xs": 4,
+      "disabled": true,
+      "validations": []
+  },
+  {
+    "type": "text",
+    "name": "IdUsuarioAutoriza",
+    "label": "Usuario Autoriza",
+    "value": "",
+    "xs": 4,
+    "disabled": true,
+    "validations": []
+  }
+  ]  

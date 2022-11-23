@@ -14,6 +14,8 @@ import { PasAportante } from "../Components/PasAportante";
 import { PasMaestroNewBck } from "../Components/PasMaestroNewBck";
 import PasTipoInstrumentoView from "../Components/PasTipoInstrumentoView";
 import { PasTipoInstrumento } from "../Components/PasTipoInstrumento";
+import { PasTransaccion } from "../Components/PasTransaccion";
+import PasTransaccionView from "../Components/PasTransaccioneView";
 
 export const routes = [
   {
@@ -79,5 +81,13 @@ export const routes = [
   {
     path: "/Dashboard/pasindex/PasAutorizado",
     component: PasAutorizado,
+  },
+  {
+    path: "/Dashboard/pasindex/PasTransaccion",
+    component: PasTransaccion,
+  },
+  {
+    path: "/Dashboard/pasindex/PasTransaccionView",
+    component: PasTransaccionView,
   },
 ];

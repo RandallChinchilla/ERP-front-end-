@@ -1,6 +1,6 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsAhoProductoLog, routesAhoProductoLogApi } from "../Interfaces/interfaceAhoProductoLog";
+import { columnsPasTransaccion, routesPasTransaccionApi } from "../Interfaces/interfacePasTransaccion";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -8,17 +8,17 @@ import { columnsAhoProductoLog, routesAhoProductoLogApi } from "../Interfaces/in
  * @returns CrudTableBasic
  */
 
-const AhoProductoLogView = () => {
+const PasTransaccionView = () => {
   return (
     <div>
       <CrudTableFormNew
-        columns={columnsAhoProductoLog}
-        apiRoutes={routesAhoProductoLogApi}
-        field="CodigoTipo"
-        title="Catálogo Producto Log"
+        columns={columnsPasTransaccion}
+        apiRoutes={routesPasTransaccionApi}
+        field="NumeroTransaccion"
+        title="Catálogo Transacciones"
       />
     </div>
   );
 };
 
-export default AhoProductoLogView;
+export default PasTransaccionView;
