@@ -1,6 +1,9 @@
 import React from "react";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { columnsAhoTipo, routesAhoTipoApi } from "../Interfaces/interfaceAhoTipo";
+import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
+import {
+  columnsAhoTipo,
+  routesAhoTipoApi,
+} from "../Interfaces/interfaceAhoTipo";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -11,7 +14,7 @@ import { columnsAhoTipo, routesAhoTipoApi } from "../Interfaces/interfaceAhoTipo
 const AhoTipo = () => {
   return (
     <div>
-      <CrudTableBasic
+      <CrudTableFormNew
         columns={columnsAhoTipo}
         apiRoutes={routesAhoTipoApi}
         field="CodigoTipo"

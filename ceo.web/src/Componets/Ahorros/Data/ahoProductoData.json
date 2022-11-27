@@ -1,256 +1,248 @@
 [
-    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
-    {
-      "type": "text",
-      "name": "nombreEmpresa",
-      "label": "Empresa",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    },
-    {
-        "type": "select",
-        "name": "CodigoTipo",
-        "label": "Tipo de Ahorro",
-        "value": "",
-        "xs": 3,
-        "controller": "AhoTipo/GetAhoTipos",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "text",
-      "name": "Descripcion",
-      "label": "Descripción",
-      "value": "",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoMoneda",
-        "label": "Moneda",
-        "value": "",
-        "xs": 4,
-        "controller": "ParMonedum/GetParMonedas",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "text",
-      "name": "MontoMinimo",
-      "label": "Monto Mínimo",
-      "value": "",
-      "xs": 4,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "MontoMaximo",
-      "label": "Monto Máximo",
-      "value": "",
-      "xs": 4,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "checkbox",
-        "name": "IndicadorTasaVariable",
-        "label": "Indicador Tasa Variable",
-        "value": false,
-        "xs": 4,
-        "validations": []
-    },
-    {
-        "type": "checkbox",
-        "name": "IndicadorPermiteRetiro",
-        "label": "Indicador Permite Retiro",
-        "value": false,
-        "xs": 4,
-        "validations": []
-    },
-    {
-        "type": "checkbox",
-        "name": "IndicadorCapitalizable",
-        "label": "Indicador Capitalizable",
-        "value": false,
-        "xs": 4,
-        "validations": []
-    },
-    {
-        "type": "select",
-        "name": "CodigoPeriodicidad",
-        "label": "Periodicidad",
-        "value": "",
-        "xs": 4,
-        "controller": "ParPeriodicidad/GetParPeriodicidades",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "select",
-        "name": "DivisorInteres",
-        "label": "Divisor de Intereses",
-        "value": "",
-        "xs": 4,
-        "controller": "ParMonedum/GetParMonedas",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ],
-        "data": [
-          { "DivisorInteres": 1, "Descripcion": "360" },
-          { "DivisorInteres": 2, "Descripcion": "365" },
-          { "DivisorInteres": 3, "Descripcion": "Actual" }
-        ]
-    },
-    {
-        "type": "select",
-        "name": "MultiplicadorInteres",
-        "label": "Multiplicador de Interes",
-        "value": "",
-        "xs": 4,
-        "controller": "ParMonedum/GetParMonedas",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ],
-        "data": [
-          { "MultiplicadorInteres": 1, "Descripcion": "360" },
-          { "MultiplicadorInteres": 2, "Descripcion": "365" },
-          { "MultiplicadorInteres": 3, "Descripcion": "Actual" }
-        ]
-    },
-    {
-        "type": "checkbox",
-        "name": "IndicadorPenalizaRetiroAnticipado",
-        "label": "Penaliza Retiros",
-        "value": false,
-        "xs": 2,
-        "validations": []
-    },
-    {
-        "type": "checkbox",
-        "name": "IndicadorPermiteBloqueado",
-        "label": "Permite Bloqueo",
-        "value": false,
-        "xs": 2,
-        "validations": []
-    },
-    {
-        "type": "checkbox",
-        "name": "IndicadorLiquidasSoloInteres",
-        "label": "Liquida solo Interés",
-        "value": false,
-        "xs": 2,
-        "validations": []
-    },
-    {
-        "type": "checkbox",
-        "name": "IndicadorGeneraContrato",
-        "label": "Genera Contrato",
-        "value": false,
-        "xs": 2,
-        "validations": []
-    },
-    {
-        "type": "checkbox",
-        "name": "IndicadorRevolutivo",
-        "label": "Revolutivo",
-        "value": false,
-        "xs": 2,
-        "validations": []
-    },
-    {
-        "type": "text",
-        "name": "PermanenciaAnnos",
-        "label": "Permanencia Años",
-        "value": "",
-        "xs": 4,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "date",
-      "name": "FechaCreacion",
-      "label": "Fecha Creación",
-      "value": "",
-      "size": "small",
-      "inputFormat": "dd/MM/yyyy",
-      "xs": 4,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "date",
-      "name": "FechaLiquidacion",
-      "label": "Fecha Liquidación",
-      "value": "",
-      "size": "small",
-      "inputFormat": "dd/MM/yyyy",
-      "xs": 4,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoEstado",
-        "label": "Estado",
-        "value": "",
-        "xs": 6,
-        "controller": "ParEstado/GetParEstados",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "text",
-      "name": "Usuario",
-      "label": "Usuario",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    }
-  ]
-  
+  { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+
+  {
+    "type": "select",
+    "name": "CodigoTipo",
+    "label": "Tipo de Ahorro",
+    "value": "",
+    "xs": 3,
+    "controller": "AhoTipo/GetAhoTipos",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Descripcion",
+    "label": "Descripción",
+    "value": "",
+    "xs": 6,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoMoneda",
+    "label": "Moneda",
+    "value": "",
+    "xs": 3,
+    "controller": "ParMonedum/GetParMonedas",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "MontoMinimo",
+    "label": "Monto Mínimo",
+    "value": "",
+    "xs": 6,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "MontoMaximo",
+    "label": "Monto Máximo",
+    "value": "",
+    "xs": 6,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+
+  {
+    "type": "select",
+    "name": "CodigoPeriodicidad",
+    "label": "Periodicidad",
+    "value": "",
+    "xs": 3,
+    "controller": "ParPeriodicidad/GetParPeriodicidades",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "DivisorInteres",
+    "label": "Divisor de Intereses",
+    "value": "",
+    "xs": 3,
+    "controller": "ParMonedum/GetParMonedas",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ],
+    "data": [
+      { "DivisorInteres": 1, "Descripcion": "360" },
+      { "DivisorInteres": 2, "Descripcion": "365" },
+      { "DivisorInteres": 3, "Descripcion": "Actual" }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "MultiplicadorInteres",
+    "label": "Multiplicador de Interes",
+    "value": "",
+    "xs": 3,
+    "controller": "ParMonedum/GetParMonedas",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ],
+    "data": [
+      { "MultiplicadorInteres": 1, "Descripcion": "360" },
+      { "MultiplicadorInteres": 2, "Descripcion": "365" },
+      { "MultiplicadorInteres": 3, "Descripcion": "Actual" }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "PermanenciaAnnos",
+    "label": "Permanencia Años",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaCreacion",
+    "label": "Fecha Creación",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaLiquidacion",
+    "label": "Fecha Liquidación",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoEstado",
+    "label": "Estado",
+    "value": "",
+    "xs": 3,
+    "controller": "ParEstado/GetParEstados",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Usuario",
+    "label": "Usuario",
+    "value": "",
+    "xs": 3,
+    "disabled": true,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorTasaVariable",
+    "label": "Indicador Tasa Variable",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorPermiteRetiro",
+    "label": "Indicador Permite Retiro",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorCapitalizable",
+    "label": "Indicador Capitalizable",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorPenalizaRetiroAnticipado",
+    "label": "Penaliza Retiros",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorPermiteBloqueado",
+    "label": "Permite Bloqueo",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorLiquidasSoloInteres",
+    "label": "Liquida solo Interés",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorGeneraContrato",
+    "label": "Genera Contrato",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorRevolutivo",
+    "label": "Revolutivo",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  }
+]

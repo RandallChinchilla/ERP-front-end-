@@ -2,7 +2,10 @@ import React from "react";
 import formJson from "../Data/ahoTransaccionData.json";
 import { Form } from "../../CrossComponets/Form";
 import { useLocation } from "react-router-dom";
-import { routesAhoTransaccionApi } from "../Interfaces/interfaceAhoTransaccion";
+import {
+  routesAhoTransaccionApi,
+  typeMode,
+} from "../Interfaces/interfaceAhoTransaccion";
 
 /**
  * Este componente renderiza un componente dinamico a partir del componenete Form,, el cual nos permite
@@ -23,6 +26,7 @@ export const AhoTransaccion = () => {
       title="Transacciones"
       urlApi={routesAhoTransaccionApi}
       rowUpdate={rowUpdate}
+      typeMode={typeMode}
     />
   );
 };

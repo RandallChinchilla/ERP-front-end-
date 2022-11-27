@@ -2,7 +2,10 @@ import React from "react";
 import formJson from "../Data/ahoMaestroData.json";
 import { Form } from "../../CrossComponets/Form";
 import { useLocation } from "react-router-dom";
-import { routesAhoMaestroApi } from "../Interfaces/interfaceAhoMaestro";
+import {
+  routesAhoMaestroApi,
+  typeMode,
+} from "../Interfaces/interfaceAhoMaestro";
 
 /**
  * Este componente renderiza un componente dinamico a partir del componenete Form,, el cual nos permite
@@ -23,6 +26,7 @@ export const AhoMaestro = () => {
       title="Maestro"
       urlApi={routesAhoMaestroApi}
       rowUpdate={rowUpdate}
+      typeMode={typeMode}
     />
   );
 };

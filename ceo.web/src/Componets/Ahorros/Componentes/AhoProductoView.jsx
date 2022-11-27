@@ -1,7 +1,9 @@
 import React from "react";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { CrudTableForm } from "../../CrossComponets/CrudTableForm";
-import { columnsAhoProducto, routesAhoProductoApi } from "../Interfaces/interfaceAhoProducto";
+import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
+import {
+  columnsAhoProducto,
+  routesAhoProductoApi,
+} from "../Interfaces/interfaceAhoProducto";
 
 /**
  * Este componente renderiza el componente generico CrudTableForm, el cual nos permite
@@ -17,7 +19,7 @@ import { columnsAhoProducto, routesAhoProductoApi } from "../Interfaces/interfac
 const AhoProductoView = () => {
   return (
     <div>
-      <CrudTableForm
+      <CrudTableFormNew
         columns={columnsAhoProducto}
         apiRoutes={routesAhoProductoApi}
         field="CodigoTipo"

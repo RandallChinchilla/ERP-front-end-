@@ -1,262 +1,252 @@
 [
-    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
-    {
-      "type": "text",
-      "name": "nombreEmpresa",
-      "label": "Empresa",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    },
-    {
-      "type": "text",
-      "name": "NumeroTransaccion",
-      "label": "Número de Transacción",
-      "value": "",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "NumeroInversion",
-      "label": "Número de Inversión",
-      "value": "",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoTransaccion",
-        "label": "Transacción",
-        "value": "",
-        "xs": 3,
-        "controller": "ParCodigotransaccion/GetParCodigoTransacciones",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoMoneda",
-        "label": "Moneda",
-        "value": "",
-        "xs": 3,
-        "controller": "ParMonedum/GetParMonedas",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "text",
-      "name": "MontoEfectivo",
-      "label": "Monto Efectivo",
-      "value": "",
-      "xs": 3,
-      "validations": [
-        {
-          "type": "required"
-        }
-      ]
-    },
-    {
-        "type": "text",
-        "name": "MontoCheque",
-        "label": "Monto Cheque",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "NumeroBanco",
-        "label": "Número de Banco",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "NumeroCheque",
-        "label": "Número de Cheque",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "MontoTarjeta",
-        "label": "Monto de la Tarjeta",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "NumeroTarjeta",
-        "label": "Número de Tarjeta",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "TipoCambio",
-        "label": "Tipo de Cambio",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "select",
-        "name": "CodigoEmisor",
-        "label": "Tipo de Identificación",
-        "value": "",
-        "xs": 3,
-        "controller": "ParEmisorTarjeta/GetParEmisorTarjetas",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "MontoOtros",
-        "label": "Monto Otros",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "Referencia",
-        "label": "Referencia",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "date",
-        "name": "FechaIngreso",
-        "label": "Fecha de Ingreso",
-        "value": "",
-        "size": "small",
-        "inputFormat": "dd/MM/yyyy",
-        "xs": 4,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "date",
-        "name": "FechaEfectiva",
-        "label": "Fecha Efectiva",
-        "value": "",
-        "size": "small",
-        "inputFormat": "dd/MM/yyyy",
-        "xs": 4,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "date",
-        "name": "FechaReversion",
-        "label": "Fecha de Reversión",
-        "value": "",
-        "size": "small",
-        "inputFormat": "dd/MM/yyyy",
-        "xs": 4,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "NumeroAsiento",
-        "label": "Número de Asiento",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-        "type": "text",
-        "name": "Observaciones",
-        "label": "Observaciones",
-        "value": "",
-        "xs": 3,
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
-      "type": "text",
-      "name": "Usuario",
-      "label": "Usuario",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    }
-  ]
-  
+  { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+  {
+    "type": "text",
+    "name": "NumeroTransaccion",
+    "label": "Número de Transacción",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "NumeroInversion",
+    "label": "Número de Inversión",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoTransaccion",
+    "label": "Transacción",
+    "value": "",
+    "xs": 3,
+    "controller": "ParCodigotransaccion/GetParCodigoTransacciones",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoMoneda",
+    "label": "Moneda",
+    "value": "",
+    "xs": 3,
+    "controller": "ParMonedum/GetParMonedas",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "MontoEfectivo",
+    "label": "Monto Efectivo",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "MontoCheque",
+    "label": "Monto Cheque",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "NumeroBanco",
+    "label": "Número de Banco",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "NumeroCheque",
+    "label": "Número de Cheque",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "MontoTarjeta",
+    "label": "Monto de la Tarjeta",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "NumeroTarjeta",
+    "label": "Número de Tarjeta",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "TipoCambio",
+    "label": "Tipo de Cambio",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoEmisor",
+    "label": "Tipo de Identificación",
+    "value": "",
+    "xs": 3,
+    "controller": "ParEmisorTarjeta/GetParEmisorTarjetas",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "MontoOtros",
+    "label": "Monto Otros",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Referencia",
+    "label": "Referencia",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaIngreso",
+    "label": "Fecha de Ingreso",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaEfectiva",
+    "label": "Fecha Efectiva",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "date",
+    "name": "FechaReversion",
+    "label": "Fecha de Reversión",
+    "value": "",
+    "size": "small",
+    "inputFormat": "dd/MM/yyyy",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "NumeroAsiento",
+    "label": "Número de Asiento",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Observaciones",
+    "label": "Observaciones",
+    "value": "",
+    "xs": 3,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Usuario",
+    "label": "Usuario",
+    "value": "",
+    "xs": 3,
+    "disabled": true,
+    "validations": []
+  }
+]

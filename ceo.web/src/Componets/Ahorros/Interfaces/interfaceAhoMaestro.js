@@ -1,55 +1,57 @@
 export const columnsAhoMaestro = [
-    {
-      title: "Código Empresa",
-      field: "CodigoEmpresa",
-    },
-    {
-      title: "Empresa",
-      field: "CodigoEmpresaNavigation.Nombre",
-      id: "CodigoEmpresaNavigation.CodigoEmpresa",
-    },
-    {
-        title: "Portafolio",
-        field: "CodigoPortafolio",
-      },
-      {
-        title: "Numero Inversión",
-        field: "NumeroInversion",
-      },
-      {
-        title: "Aportante",
-        field: "CodigoAportante",
-      },
-      {
-        title: "Tipo",
-        field: "CodigoTipo",
-      },
-      {
-        title: "Moneda",
-        field: "CodigoMoneda",
-      },
-      {
-        title: "Estado",
-        field: "CodigoEstadoNavigation.Descripcion",
-        id: "CodigoEstadoNavigation.CodigoEstado",
-      },
-  ];
-  
-  export const routesAhoMaestroApi = {
-    get: "AhoMaestro/GetAhoMaestros",
-    post: "AhoMaestro/PostAhoMaestro",
-    update: "AhoMaestro/PutAhoMaestro",
-    delete: "AhoMaestro/DeleteAhoMaestro",
-    navigation: "./AhoMaestro",
-  };
-  
-  export const tableStyle = {
-    rowStyle: {
-      fontSize: 12,
-    },
-    headerStyle: {
-      backgroundColor: "#898883",
-      color: "#FFF",
-      fontSize: 13,
-    },
-  };
+  {
+    headerName: "Portafolio",
+    field: "CodigoPortafolio",
+    width: 300,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Numero Inversión",
+    field: "NumeroInversion",
+    width: 300,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Aportante",
+    field: "CodigoAportante",
+    width: 300,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Tipo",
+    field: "CodigoTipo",
+    width: 300,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Moneda",
+    field: "CodigoMoneda",
+    width: 300,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Estado",
+    field: "CodigoEstado",
+    width: 300,
+    headerAlign: "center",
+    align: "center",
+  },
+];
+
+export const routesAhoMaestroApi = {
+  get: "AhoMaestro/GetAhoMaestros",
+  post: "AhoMaestro/PostAhoMaestro",
+  update: "AhoMaestro/PutAhoMaestro",
+  delete: "AhoMaestro/DeleteAhoMaestro",
+  navigation: "./AhoMaestro",
+  navigationBack: "./AhoMaestroView",
+};
+
+export const typeMode = {
+  onlyread: false,
+};

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { readAllAction } from "../../Actions/Index";
 import { helpHttp } from "../../Helpers/HelpHttp";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box, Grid, Typography } from "@mui/material";
@@ -11,9 +9,6 @@ import { Deleterow } from "./Deleterow";
 
 export const CrudTableFormNew = ({ columns, apiRoutes, field, title }) => {
   const baseUrl = process.env.REACT_APP_BASE_URL;
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-  const { db } = state.crud;
   const [data, setData] = useState([]);
 
   /**
@@ -28,12 +23,8 @@ export const CrudTableFormNew = ({ columns, apiRoutes, field, title }) => {
         if (res.err) return null;
         console.log(res);
         setData(res);
-        //dispatch(readAllAction(res));
       });
-  }, [url, useDispatch]);
-
-  console.log(columns);
-  console.log(field);
+  }, [url]);
 
   return (
     <Box
@@ -54,7 +45,6 @@ export const CrudTableFormNew = ({ columns, apiRoutes, field, title }) => {
         sx={datagridSx}
         title={title}
         rows={data}
-        //columns={columns}
         columns={columns.concat([
           {
             headerName: "Acciones",

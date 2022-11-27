@@ -72,6 +72,7 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, typeMode }) => {
   });
 
   const onSubmit = (data) => {
+    console.log(urlApi.post);
     let response = rowUpdate
       ? putAction(urlApi.update, data)
       : postAction(urlApi.post, data, userLoggedToken);

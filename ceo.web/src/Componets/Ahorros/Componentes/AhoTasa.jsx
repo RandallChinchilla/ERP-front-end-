@@ -2,7 +2,7 @@ import React from "react";
 import formJson from "../Data/ahoTasaData.json";
 import { Form } from "../../CrossComponets/Form";
 import { useLocation } from "react-router-dom";
-import { routesAhoTasaApi } from "../Interfaces/interfaceAhoTasa";
+import { routesAhoTasaApi, typeMode } from "../Interfaces/interfaceAhoTasa";
 
 /**
  * Este componente renderiza un componente dinamico a partir del componenete Form,, el cual nos permite
@@ -23,6 +23,7 @@ export const AhoTasa = () => {
       title="Tasas"
       urlApi={routesAhoTasaApi}
       rowUpdate={rowUpdate}
+      typeMode={typeMode}
     />
   );
 };

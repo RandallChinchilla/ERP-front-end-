@@ -1,6 +1,9 @@
 import React from "react";
-import { CrudTableForm } from "../../CrossComponets/CrudTableForm";
-import { columnsAhoMaestro, routesAhoMaestroApi } from "../Interfaces/interfaceAhoMaestro";
+import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
+import {
+  columnsAhoMaestro,
+  routesAhoMaestroApi,
+} from "../Interfaces/interfaceAhoMaestro";
 
 /**
  * Este componente renderiza el componente generico CrudTableForm, el cual nos permite
@@ -16,7 +19,7 @@ import { columnsAhoMaestro, routesAhoMaestroApi } from "../Interfaces/interfaceA
 const AhoMaestroView = () => {
   return (
     <div>
-      <CrudTableForm
+      <CrudTableFormNew
         columns={columnsAhoMaestro}
         apiRoutes={routesAhoMaestroApi}
         field="NumeroInversion"
