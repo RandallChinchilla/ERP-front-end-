@@ -1680,6 +1680,21 @@ export default function NestedList() {
           </ListItemButton>
         </List>
       </Collapse>
+      <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/pasindex/PasTransaccionView"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Transacciones</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
 
       <ListItemButton onClick={handleClickReguladores}>
         <ListItemIcon>

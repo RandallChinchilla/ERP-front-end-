@@ -1,19 +1,18 @@
 import React from "react";
 import { Form } from "../../CrossComponets/Form";
-import formJson from "../Data/ahoProductoLogData.json";
+import formJson from "../Data/pasTransaccionData.json";
 import { useLocation } from "react-router-dom";
-import { routesAhoProductoLogApi, typeMode } from "../Interfaces/interfaceAhoProductoLog";
+import { routesPasTransaccionApi, typeMode } from "../Interfaces/interfacePasTransaccion";
 
-export const AhoProductoLog = () => {
+export const PasTransaccion = () => {
   const { rowUpdate } = useLocation();
   return (
     <Form
       formJson={formJson}
-      title="Catálogo Producto Log"
-      urlApi={routesAhoProductoLogApi}
+      title="Catálogo transacciones"
+      urlApi={routesPasTransaccionApi}
       rowUpdate={rowUpdate}
       typeMode={typeMode}
     />
   );
 };
-

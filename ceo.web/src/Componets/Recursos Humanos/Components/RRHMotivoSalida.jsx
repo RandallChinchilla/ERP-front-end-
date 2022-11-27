@@ -1,6 +1,9 @@
 import React from "react";
 import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { columnsRRHMotivoSalida, routesRRHMotivoSalidaApi } from "../Interfaces/interfaceRRHMotivoSalida";
+import {
+  columnsRRHMotivoSalida,
+  routesRRHMotivoSalidaApi,
+} from "../Interfaces/interfaceRRHMotivoSalida";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
