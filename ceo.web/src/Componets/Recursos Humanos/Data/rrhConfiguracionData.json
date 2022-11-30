@@ -1,14 +1,4 @@
 [
-    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
-    {
-      "type": "text",
-      "name": "nombreEmpresa",
-      "label": "Empresa",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    },
     {
         "type": "date",
         "name": "FechaHora",
@@ -28,15 +18,19 @@
       "name": "PorcentajePatronalSeguro",
       "label": "% Seguro Social Patrono",
       "value": "",
-      "xs": 3,
-      "validations": []
+      "xs": 2,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
     },
     {
       "type": "text",
       "name": "PorcentajeEmpleadoSeguro",
       "label": "% Seguro Social Empleado",
       "value": "",
-      "xs": 3,
+      "xs": 2,
       "validations": [
         {
           "type": "required"
@@ -48,7 +42,7 @@
       "name": "PorcentajeAguinaldo",
       "label": "% Aguinaldo Anual",
       "value": "",
-      "xs": 3,
+      "xs": 2,
       "validations": [
         {
           "type": "required"
@@ -60,7 +54,7 @@
       "name": "PorcentajeCesantia",
       "label": "% Cesantía Anual",
       "value": "",
-      "xs": 3,
+      "xs": 2,
       "validations": [
         {
           "type": "required"
@@ -72,7 +66,7 @@
       "name": "CreditoISRHijo",
       "label": "Crédito ISR Hijo",
       "value": "",
-      "xs": 3,
+      "xs": 2,
       "validations": [
         {
           "type": "required"
@@ -84,7 +78,7 @@
       "name": "CreditoISRConyugue",
       "label": "Crédito ISR Conyugue",
       "value": "",
-      "xs": 3,
+      "xs": 2,
       "validations": [
         {
           "type": "required"

@@ -12,12 +12,12 @@ import { PasAportante } from "../Components/PasAportante";
 import { PasMaestroNewBck } from "../Components/PasMaestroNewBck";
 import PasTipoInstrumentoView from "../Components/PasTipoInstrumentoView";
 import { PasTipoInstrumento } from "../Components/PasTipoInstrumento";
-import PasOrigenFondosView from "../Components/PasOrigenFondosView";
-import { PasOrigenFondo } from "../Components/PasOrigenFondo";
+import { PasTransaccion } from "../Components/PasTransaccion";
+import PasTransaccionView from "../Components/PasTransaccionView";
 import PasOrigenAportanteView from "../Components/PasOrigenAportanteView";
 import { PasOrigenAportante } from "../Components/PasOrigenAportante";
-import { PasTransaccion } from "../Components/PasTransaccion";
-import PasTransaccionView from "../Components/PasTransaccioneView";
+import PasOrigenFondosView from "../Components/PasOrigenFondosView";
+import { PasOrigenFondo } from "../Components/PasOrigenFondo";
 
 export const routes = [
   {

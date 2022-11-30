@@ -1,20 +1,17 @@
 export const columnsRRHFormaPago = [
     {
-      title: "Código Empresa",
-      field: "CodigoEmpresa",
-    },
-    {
-      title: "Empresa",
-      field: "CodigoEmpresaNavigation.Nombre",
-      id: "CodigoEmpresaNavigation.CodigoEmpresa",
-    },
-    {
-      title: "Código Forma Pago",
+      headerName: "Código Forma Pago",
       field: "CodigoFormaPago",
+      width: 550,
+      headerAlign: "center",
+      align: "center",
     },
     {
-      title: "Descripción",
+      headerName: "Descripción",
       field: "Descripcion",
+      width: 550,
+      headerAlign: "center",
+      align: "center",
     },
   ];
   
@@ -24,15 +21,9 @@ export const columnsRRHFormaPago = [
     update: "RrhFormaPago/PutRrhFormaPago",
     delete: "RrhFormaPago/DeleteRrhFormaPago",
     navigation: "./RrhFormaPago",
+    navigationBack: "./RrhFormaPagoView",
   };
   
-  export const tableStyle = {
-    rowStyle: {
-      fontSize: 12,
-    },
-    headerStyle: {
-      backgroundColor: "#898883",
-      color: "#FFF",
-      fontSize: 13,
-    },
-  };  
+  export const typeMode = {
+    onlyread: false,
+  };

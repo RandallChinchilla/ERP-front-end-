@@ -1,20 +1,11 @@
 [
-    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
-    {
-      "type": "text",
-      "name": "nombreEmpresa",
-      "label": "Empresa",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    },
     {
       "type": "text",
       "name": "NumeroDeduccion",
       "label": "Numero Deducción",
-      "value": "",
+      "value": 0,
       "xs": 6,
+      "disabled":true,
       "validations": []
     },
     {
@@ -37,11 +28,7 @@
         "xs": 3,
         "controller": "RrhTipoDeduccion/GetRrhTiposDeduccion",
         "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
+        "validations": []
     },
     {
         "type": "date",
@@ -100,7 +87,7 @@
       "name": "CodigoEstado",
       "label": "Estado",
       "value": "",
-      "xs": 3,
+      "xs": 6,
       "controller": "ParEstado/GetParEstados",
       "fieldName": "Descripcion",
       "validations": [
@@ -114,7 +101,7 @@
       "name": "Usuario",
       "label": "Usuario",
       "value": "",
-      "xs": 3,
+      "xs": 6,
       "disabled": true,
       "validations": []
     }

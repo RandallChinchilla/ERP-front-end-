@@ -1,25 +1,25 @@
-export const columnsRRHPariente = [
+  export const columnsRRHPariente = [
     {
-      title: "Código Empresa",
-      field: "CodigoEmpresa",
-    },
-    {
-      title: "Empresa",
-      field: "Codigo.CodigoEmpresaNavigation.Nombre",
-      id: "Codigo.CodigoEmpresaNavigation.CodigoEmpresa",
-    },
-    {
-      title: "Número Empleado",
+      headerName: "Número Empleado",
       field: "NumeroEmpleado",
+      width: 350,
+      headerAlign: "center",
+      align: "center",
     },
     {
-      title: "Nombre",
+      headerName: "Nombre",
       field: "Nombre",
+      width: 350,
+      headerAlign: "center",
+      align: "center",
     },
     {
-      title: "Parentezco",
-      field: "Codigo.Descripcion",
-      id: "Codigo.CodigoParentezco",
+      headerName: "Parentezco",
+      field: "CodigoParentezco",
+      width: 350,
+      headerAlign: "center",
+      align: "center",
+      valueGetter: (params) => params.row.Codigo.Descripcion,
     },
   ];
   
@@ -29,15 +29,9 @@ export const columnsRRHPariente = [
     update: "RrhPariente/PutRrhPariente",
     delete: "RrhPariente/DeleteRrhPariente",
     navigation: "./RrhPariente",
+    navigationBack: "./RrhParienteView",
   };
   
-  export const tableStyle = {
-    rowStyle: {
-      fontSize: 12,
-    },
-    headerStyle: {
-      backgroundColor: "#898883",
-      color: "#FFF",
-      fontSize: 13,
-    },
+  export const typeMode = {
+    onlyread: false,
   };

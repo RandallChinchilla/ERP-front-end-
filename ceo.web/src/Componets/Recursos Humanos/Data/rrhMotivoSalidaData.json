@@ -1,8 +1,8 @@
 [
     {
       "type": "text",
-      "name": "CodigoTipoPlanilla",
-      "label": "Código Tipo Planilla",
+      "name": "CodigoMotivoSalida",
+      "label": "Código Motivo Salida",
       "value": 0,
       "xs": 6,
       "disabled": true,
@@ -21,25 +21,11 @@
       ]
     },
     {
-        "type": "select",
-        "name": "CodigoFormaPago",
-        "label": "Código Forma Pago",
-        "value": "",
-        "xs": 6,
-        "controller": "RrhFormaPago/GetRrhFormasPago",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
-    },
-    {
       "type": "text",
       "name": "Usuario",
       "label": "Usuario",
       "value": "",
-      "xs": 6,
+      "xs": 12,
       "disabled": true,
       "validations": []
     }

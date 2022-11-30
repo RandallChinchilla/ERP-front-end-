@@ -948,7 +948,7 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHEstado">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHEstadoView">
               <ListItemText className={classes.text}>Estado</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -979,7 +979,7 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHCentroMedico">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHCentroMedicoView">
               <ListItemText className={classes.text}>
                 Centro Médico
               </ListItemText>
@@ -1012,7 +1012,7 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHMotivoSalida">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHMotivoSalidaView">
               <ListItemText className={classes.text}>
                 Motivo Salida
               </ListItemText>

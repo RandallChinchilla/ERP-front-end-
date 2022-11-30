@@ -1,25 +1,18 @@
 import React from "react";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { columnsRRHCentroMedico, routesRRHCentroMedicoApi } from "../Interfaces/interfaceRRHCentroMedico";
+import { Form } from "../../CrossComponets/Form";
+import formJson from "../Data/rrhCentroMedicoData.json";
+import { useLocation } from "react-router-dom";
+import { routesRRHCentroMedicoApi, typeMode } from "../Interfaces/interfaceRRHCentroMedico";
 
-/**
- * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
- * realiazar un crud sobre un componente material-table
- * @returns CrudTableBasic
- */
-
-const RRHCentroMedico = () => {
+export const RRHCentroMedico = () => {
+  const { rowUpdate } = useLocation();
   return (
-    <div>
-      <CrudTableBasic
-        columns={columnsRRHCentroMedico}
-        apiRoutes={routesRRHCentroMedicoApi}
-        field="CodigoCentroMedico"
-        title="Catálogo Centro Médico"
-      />
-    </div>
+    <Form
+      formJson={formJson}
+      title="Catálogo Centro Médico"
+      urlApi={routesRRHCentroMedicoApi}
+      rowUpdate={rowUpdate}
+      typeMode={typeMode}
+    />
   );
 };
-
-export default RRHCentroMedico;
-
