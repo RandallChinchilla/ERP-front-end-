@@ -1,32 +1,31 @@
 export const columnsRRHMaestro = [
   {
-    title: "Código Empresa",
-    field: "CodigoEmpresa",
-  },
-  {
-    title: "Empresa",
-    field: "CodigoEmpresaNavigation.Nombre",
-    id: "CodigoEmpresaNavigation.CodigoEmpresa",
-  },
-  {
-    title: "Número Empleado",
+    headerName: "Número Empleado",
     field: "NumeroEmpleado",
+    width: 275,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Número Id",
-    field: "NumeroId",
-  },
-  {
-    title: "Nombre",
+    headerName: "Nombre",
     field: "Nombre",
+    width: 275,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Primer Apellido",
+    headerName: "Primer Apellido",
     field: "Apellido1",
+    width: 275,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Segundo Apellido",
+    headerName: "Segundo Apellido",
     field: "Apellido2",
+    width: 275,
+    headerAlign: "center",
+    align: "center",
   },
 ];
 
@@ -57,15 +56,9 @@ export const routesRRHMaestroApi = {
   update: "RrhMaestro/PutRrhMaestro",
   delete: "RrhMaestro/DeleteRrhMaestro",
   navigation: "./RrhMaestro",
+  navigationBack: "./RrhMaestroView",
 };
 
-export const tableStyle = {
-  rowStyle: {
-    fontSize: 12,
-  },
-  headerStyle: {
-    backgroundColor: "#898883",
-    color: "#FFF",
-    fontSize: 13,
-  },
+export const typeMode = {
+  onlyread: false,
 };

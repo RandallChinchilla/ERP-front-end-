@@ -1,8 +1,8 @@
 [
     {
       "type": "text",
-      "name": "CodigoTipoPlanilla",
-      "label": "Código Tipo Planilla",
+      "name": "CodigoCentroMedico",
+      "label": "Código Centro Médico",
       "value": 0,
       "xs": 6,
       "disabled": true,
@@ -22,11 +22,11 @@
     },
     {
         "type": "select",
-        "name": "CodigoFormaPago",
-        "label": "Código Forma Pago",
+        "name": "CodigoEstado",
+        "label": "Estado",
         "value": "",
         "xs": 6,
-        "controller": "RrhFormaPago/GetRrhFormasPago",
+        "controller": "ParEstado/GetParEstados",
         "fieldName": "Descripcion",
         "validations": [
           {

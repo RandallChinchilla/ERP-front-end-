@@ -247,6 +247,7 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, typeMode }) => {
                                   render={({ field }) => (
                                     <DesktopDatePicker
                                       label={label}
+                                      className={styles.textfield}
                                       inputFormat={inputFormat}
                                       onChange={(newvalue) => {
                                         field.onChange(

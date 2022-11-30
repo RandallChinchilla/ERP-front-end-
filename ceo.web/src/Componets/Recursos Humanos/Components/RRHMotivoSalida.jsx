@@ -1,24 +1,18 @@
 import React from "react";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { columnsRRHMotivoSalida, routesRRHMotivoSalidaApi } from "../Interfaces/interfaceRRHMotivoSalida";
+import { Form } from "../../CrossComponets/Form";
+import formJson from "../Data/rrhMotivoSalidaData.json";
+import { useLocation } from "react-router-dom";
+import { routesRRHMotivoSalidaApi, typeMode } from "../Interfaces/interfaceRRHMotivoSalida";
 
-/**
- * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
- * realiazar un crud sobre un componente material-table
- * @returns CrudTableBasic
- */
-
-const RRHMotivoSalida = () => {
+export const RRHMotivoSalida = () => {
+  const { rowUpdate } = useLocation();
   return (
-    <div>
-      <CrudTableBasic
-        columns={columnsRRHMotivoSalida}
-        apiRoutes={routesRRHMotivoSalidaApi}
-        field="CodigoMotivoSalida"
-        title="Catálogo Motivo Salida"
-      />
-    </div>
+    <Form
+      formJson={formJson}
+      title="Catálogo Motivo Salida"
+      urlApi={routesRRHMotivoSalidaApi}
+      rowUpdate={rowUpdate}
+      typeMode={typeMode}
+    />
   );
 };
-
-export default RRHMotivoSalida;

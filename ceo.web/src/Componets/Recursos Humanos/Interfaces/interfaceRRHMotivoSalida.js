@@ -1,46 +1,29 @@
-//const userData = JSON.parse(localStorage.getItem("userLogged"));
-
-/**
- * Contexto con el cual interactua el componente RRHMotivoSalida
- */
-
 export const columnsRRHMotivoSalida = [
-    {
-        title: "Código Empresa",
-        field: "CodigoEmpresa",
-        initialEditValue: 1, //userData.codigoEmpresa,
-        editable: "never",
-      },
-      {
-        title: "Nombre",
-        field: "CodigoEmpresaNavigation.Nombre",
-        id: "CodigoEmpresaNavigation.CodigoEmpresa",
-        initialEditValue: "DmdInterSoft",//userData.nombreEmpresa,
-        editable: "never",
-      },
-      {
-        title: "Código Motivo Salida",
-        field: "CodigoMotivoSalida",
-        initialEditValue: 0,
-        editable: "never",
-      },
-      { title: "Descripción", field: "Descripcion" },
+  {
+    headerName: "Código Motivo Salida",
+    field: "CodigoMotivoSalida",
+    width: 550,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Descripción",
+    field: "Descripcion",
+    width: 550,
+    headerAlign: "center",
+    align: "center",
+  },
 ];
 
 export const routesRRHMotivoSalidaApi = {
   get: "RrhMotivoSalida/GetRrhMotivosSalida",
-  add: "RrhMotivoSalida/PostRrhMotivoSalida",
+  post: "RrhMotivoSalida/PostRrhMotivoSalida",
   update: "RrhMotivoSalida/PutRrhMotivoSalida",
   delete: "RrhMotivoSalida/DeleteRrhMotivoSalida",
+  navigation: "./RrhMotivoSalida",
+  navigationBack: "./RrhMotivoSalidaView",
 };
 
-export const tableStyle = {
-  rowStyle: {
-    fontSize: 12,
-  },
-  headerStyle: {
-    backgroundColor: "#898883",
-    color: "#FFF",
-    fontSize: 13,
-  },
+export const typeMode = {
+  onlyread: false,
 };

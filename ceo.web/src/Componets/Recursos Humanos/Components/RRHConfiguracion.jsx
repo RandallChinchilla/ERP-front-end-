@@ -1,28 +1,18 @@
 import React from "react";
-import formJson from "../Data/rrhConfiguracionData.json";
 import { Form } from "../../CrossComponets/Form";
+import formJson from "../Data/rrhConfiguracionData.json";
 import { useLocation } from "react-router-dom";
-import { routesRRHConfiguracionApi } from "../Interfaces/interfaceRRHConfiguracion";
+import { routesRRHConfiguracionApi, typeMode } from "../Interfaces/interfaceRRHConfiguracion";
 
-/**
- * Este componente renderiza un componente dinamico a partir del componenete Form,, el cual nos permite
- * rendereizar un formulario dinamico.
- * @param formJson Json define los elementos que tendra el formulario, este Json tambien define las validaciones
- * que tendra cada elemento, su diseño y el orden en que se mostraran en el formulario.
- * @param urlApi interfas que define las rutas de las Apis que se ven involucradas
- * en el CRUD del formulario renderizado.
- * @rowUpdate Elemento que se selecciona de una tabla para ser actualizdo
- * @title Titulo del formulario
- * @returns CrudTableform
- */
 export const RRHConfiguracion = () => {
   const { rowUpdate } = useLocation();
   return (
     <Form
       formJson={formJson}
-      title="Configuración"
+      title="Catálogo Configuraciones"
       urlApi={routesRRHConfiguracionApi}
       rowUpdate={rowUpdate}
+      typeMode={typeMode}
     />
   );
 };

@@ -1,20 +1,10 @@
 [
-    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
-    {
-      "type": "text",
-      "name": "nombreEmpresa",
-      "label": "Empresa",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    },
     {
       "type": "text",
       "name": "NumeroEmpleado",
       "label": "Número Empleado",
       "value": 0,
-      "xs": 3,
+      "xs": 4,
       "disabled": true,
       "validations": []
     },
@@ -23,7 +13,7 @@
         "name": "CodigoPais",
         "label": "País",
         "value": "",
-        "xs": 3,
+        "xs": 4,
         "controller": "ParPais/GetParPaises",
         "fieldName": "Nombre",
         "validations": [
@@ -77,7 +67,7 @@
       "value": "",
       "size": "small",
       "inputFormat": "dd/MM/yyyy",
-      "xs": 3,
+      "xs": 4,
       "validations": [
         {
           "type": "required"
@@ -89,7 +79,7 @@
       "name": "CodigoParentezco",
       "label": "Parentezco",
       "value": "",
-      "xs": 3,
+      "xs": 6,
       "controller": "ParParentezco/GetParParentezcos",
       "fieldName": "Descripcion",
       "validations": [

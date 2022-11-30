@@ -15,7 +15,8 @@ import { PasMaestroNewBck } from "../Components/PasMaestroNewBck";
 import PasTipoInstrumentoView from "../Components/PasTipoInstrumentoView";
 import { PasTipoInstrumento } from "../Components/PasTipoInstrumento";
 import { PasTransaccion } from "../Components/PasTransaccion";
-import PasTransaccionView from "../Components/PasTransaccioneView";
+import PasTransaccionView from "../Components/PasTransaccionView";
+
 
 export const routes = [
   {

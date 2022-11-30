@@ -1,50 +1,50 @@
 export const columnsRRHMaestroLog = [
-    {
-      title: "Código Empresa",
-      field: "CodigoEmpresa",
-    },
-    {
-      title: "Empresa",
-      field: "CodigoEmpresaNavigation.Nombre",
-      id: "CodigoEmpresaNavigation.CodigoEmpresa",
-    },
-    {
-      title: "Número Empleado",
-      field: "NumeroEmpleado",
-    },
-    {
-      title: "Número Id",
-      field: "NumeroId",
-    },
-    {
-      title: "Nombre",
-      field: "Nombre",
-    },
-    {
-      title: "Primer Apellido",
-      field: "Apellido1",
-    },
-    {
-      title: "Segundo Apellido",
-      field: "Apellido2",
-    },
-  ];
-  
-  export const routesRRHMaestroLogApi = {
-    get: "RrhMaestroLog/GetRrhMaestrosLog",
-    post: "RrhMaestroLog/PostRrhMaestroLog",
-    update: "RrhMaestroLog/PutRrhMaestroLog",
-    delete: "RrhMaestroLog/DeleteRrhMaestroLog",
-    navigation: "./RrhMaestroLog",
-  };
-  
-  export const tableStyle = {
-    rowStyle: {
-      fontSize: 12,
-    },
-    headerStyle: {
-      backgroundColor: "#898883",
-      color: "#FFF",
-      fontSize: 13,
-    },
-  };  
+  {
+    headerName: "Número Empleado",
+    field: "NumeroEmpleado",
+    width: 200,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Número Id",
+    field: "NumeroId",
+    width: 200,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Nombre",
+    field: "Nombre",
+    width: 200,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Primer Apellido",
+    field: "Apellido1",
+    width: 200,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Segundo Apellido",
+    field: "Apellido2",
+    width: 200,
+    headerAlign: "center",
+    align: "center",
+  },
+];
+
+export const routesRRHMaestroLogApi = {
+  get: "RrhMaestroLog/GetRrhMaestrosLog",
+  post: "RrhMaestroLog/PostRrhMaestroLog",
+  update: "RrhMaestroLog/PutRrhMaestroLog",
+  delete: "RrhMaestroLog/DeleteRrhMaestroLog",
+  navigation: "./RrhMaestroLog",
+  navigationBack: "./RrhMaestroLogView",
+};
+
+export const typeMode = {
+  onlyread: true,
+};

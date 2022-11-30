@@ -1,14 +1,4 @@
 [
-    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
-    {
-      "type": "text",
-      "name": "nombreEmpresa",
-      "label": "Empresa",
-      "value": "",
-      "xs": 12,
-      "disabled": true,
-      "validations": []
-    },
     {
         "type": "text",
         "name": "Consecutivo",

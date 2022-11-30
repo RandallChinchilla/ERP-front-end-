@@ -1,50 +1,36 @@
-//const userData = JSON.parse(localStorage.getItem("userLogged"));
-
-/**
- * Contexto con el cual interactua el componente RRHCentroMedico
- */
-
 export const columnsRRHCentroMedico = [
-    {
-        title: "Código Empresa",
-        field: "CodigoEmpresa",
-        initialEditValue: 1,//userData.codigoEmpresa,
-        editable: "never",
-      },
-      {
-        title: "Nombre",
-        field: "CodigoEmpresaNavigation.Nombre",
-        id: "CodigoEmpresaNavigation.CodigoEmpresa",
-        initialEditValue: "DmdInterSoft", //userData.nombreEmpresa,
-        editable: "never",
-      },
-      {
-        title: "Código Centro Médico",
-        field: "CodigoCentroMedico",
-        initialEditValue: 0,
-        editable: "never",
-      },
-      { title: "Descripción", field: "Descripcion" },
-      {
-        title: "Estado",
-        field: "CodigoEstado",
-      }
+  {
+    headerName: "Código Centro Médico",
+    field: "CodigoCentroMedico",
+    width: 350,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Descripción",
+    field: "Descripcion",
+    width: 350,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Estado",
+    field: "CodigoEstado",
+    width: 350,
+    headerAlign: "center",
+    align: "center",
+  },
 ];
 
 export const routesRRHCentroMedicoApi = {
   get: "RrhCentroMedico/GetRrhCentrosMedicos",
-  add: "RrhCentroMedico/PostRrhCentroMedico",
+  post: "RrhCentroMedico/PostRrhCentroMedico",
   update: "RrhCentroMedico/PutRrhCentroMedico",
   delete: "RrhCentroMedico/DeleteRrhCentroMedico",
+  navigation: "./RrhCentroMedico",
+  navigationBack: "./RrhCentroMedicoView",
 };
 
-export const tableStyle = {
-  rowStyle: {
-    fontSize: 12,
-  },
-  headerStyle: {
-    backgroundColor: "#898883",
-    color: "#FFF",
-    fontSize: 13,
-  },
+export const typeMode = {
+  onlyread: false,
 };

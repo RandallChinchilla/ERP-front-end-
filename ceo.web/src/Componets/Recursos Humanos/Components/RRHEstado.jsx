@@ -1,24 +1,18 @@
 import React from "react";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { columnsRRHEstado, routesRRHEstadoApi } from "../Interfaces/interfaceRRHEstado";
+import { Form } from "../../CrossComponets/Form";
+import formJson from "../Data/rrhEstadoData.json";
+import { useLocation } from "react-router-dom";
+import { routesRRHEstadoApi, typeMode} from "../Interfaces/interfaceRRHEstado";
 
-/**
- * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
- * realiazar un crud sobre un componente material-table
- * @returns CrudTableBasic
- */
-
-const RRHEstado = () => {
+export const RRHEstado = () => {
+  const { rowUpdate } = useLocation();
   return (
-    <div>
-      <CrudTableBasic
-        columns={columnsRRHEstado}
-        apiRoutes={routesRRHEstadoApi}
-        field="CodigoEstado"
-        title="Catálogo Estado"
-      />
-    </div>
+    <Form
+      formJson={formJson}
+      title="Catálogo Estado"
+      urlApi={routesRRHEstadoApi}
+      rowUpdate={rowUpdate}
+      typeMode={typeMode}
+    />
   );
 };
-
-export default RRHEstado;

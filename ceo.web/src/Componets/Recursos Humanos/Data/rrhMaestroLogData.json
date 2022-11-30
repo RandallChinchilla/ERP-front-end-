@@ -1,14 +1,4 @@
 [
-    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
-    {
-      "type": "text",
-      "name": "nombreEmpresa",
-      "label": "Empresa",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    },
     {
       "type": "text",
       "name": "NumeroEmpleado",
@@ -332,7 +322,7 @@
       "name": "CodigoEstado",
       "label": "Estado",
       "value": "",
-      "xs": 3,
+      "xs": 6,
       "controller": "ParEstado/GetParEstados",
       "fieldName": "Descripcion",
       "disabled": true,
@@ -343,7 +333,7 @@
       "name": "Usuario",
       "label": "Usuario",
       "value": "",
-      "xs": 3,
+      "xs": 6,
       "disabled": true,
       "validations": []
     }
