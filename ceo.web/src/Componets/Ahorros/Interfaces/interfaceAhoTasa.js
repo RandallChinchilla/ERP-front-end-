@@ -1,22 +1,22 @@
 export const columnsAhoTasa = [
   {
-    headerName: "Tipo",
+    headerName: "Código Tipo Ahorro",
     field: "CodigoTipo",
-    width: 300,
+    width: 350,
     headerAlign: "center",
     align: "center",
   },
   {
     headerName: "Tasa",
     field: "Tasa",
-    width: 300,
+    width: 350,
     headerAlign: "center",
     align: "center",
   },
   {
     headerName: "Tasa Máxima",
     field: "TasaMaxima",
-    width: 300,
+    width: 350,
     headerAlign: "center",
     align: "center",
   },

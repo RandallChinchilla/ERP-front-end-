@@ -25,11 +25,7 @@
     "inputFormat": "dd/MM/yyyy",
     "xs": 3,
     "disabled": true,
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
+    "validations": []
   },
   {
     "type": "text",

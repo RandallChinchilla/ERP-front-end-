@@ -1,44 +1,50 @@
-//const userData = JSON.parse(localStorage.getItem("userLogged"));
-
-/**
- * Contexto con el cual interactua el componente ParDistrito
- */
-
- export const columnsParDistrito = [
-    {
-        title: "Código Empresa",
-        field: "CodigoEmpresa",
-        initialEditValue: 1,//userData.codigoEmpresa,
-        editable: "never",
-      },
-      {
-        title: "Nombre",
-        field: "CodigoEmpresaNavigation.Nombre",
-        id: "CodigoEmpresaNavigation.CodigoEmpresa",
-        initialEditValue: "DmdInterSoft", //userData.nombreEmpresa,
-        editable: "never",
-      },
-      { title: "Código País", field: "CodigoPais" },
-      { title: "Código Provincia", field: "CodigoProvincia" },
-      { title: "Código Cantón", field: "CodigoCanton" },
-      { title: "Código Distrito", field: "CodigoDistrito" },
-      { title: "Descripción", field: "Descripcion" },
+export const columnsParDistrito = [
+  {
+    headerName: "Código País",
+    field: "CodigoPais",
+    width: 225,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Código Provincia",
+    field: "CodigoProvincia",
+    width: 225,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Código Cantón",
+    field: "CodigoCanton",
+    width: 225,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Código Distrito",
+    field: "CodigoDistrito",
+    width: 225,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Descripción",
+    field: "Descripcion",
+    width: 225,
+    headerAlign: "center",
+    align: "center",
+  },
 ];
 
 export const routesParDistritoApi = {
   get: "ParDistrito/GetParDistritos",
-  add: "ParDistrito/PostParDistrito",
+  post: "ParDistrito/PostParDistrito",
   update: "ParDistrito/PutParDistrito",
   delete: "ParDistrito/DeleteParDistrito",
+  navigation: "./ParDistrito",
+  navigationBack: "./ParDistritoView",
 };
 
-export const tableStyle = {
-  rowStyle: {
-    fontSize: 12,
-  },
-  headerStyle: {
-    backgroundColor: "#898883",
-    color: "#FFF",
-    fontSize: 13,
-  },
+export const typeMode = {
+  onlyread: false,
 };

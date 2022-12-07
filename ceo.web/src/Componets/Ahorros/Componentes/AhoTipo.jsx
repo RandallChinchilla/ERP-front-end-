@@ -1,27 +1,18 @@
 import React from "react";
-import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import {
-  columnsAhoTipo,
-  routesAhoTipoApi,
-} from "../Interfaces/interfaceAhoTipo";
+import { Form } from "../../CrossComponets/Form";
+import formJson from "../Data/ahoTipoData.json";
+import { useLocation } from "react-router-dom";
+import { routesAhoTipoApi, typeMode } from "../Interfaces/interfaceAhoTipo";
 
-/**
- * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
- * realiazar un crud sobre un componente material-table
- * @returns CrudTableBasic
- */
-
-const AhoTipo = () => {
+export const AhoTipo = () => {
+  const { rowUpdate } = useLocation();
   return (
-    <div>
-      <CrudTableFormNew
-        columns={columnsAhoTipo}
-        apiRoutes={routesAhoTipoApi}
-        field="CodigoTipo"
-        title="Catálogo Tipo Ahorro"
-      />
-    </div>
+    <Form
+      formJson={formJson}
+      title="Catálogo Tipo Ahorro"
+      urlApi={routesAhoTipoApi}
+      rowUpdate={rowUpdate}
+      typeMode={typeMode}
+    />
   );
 };
-
-export default AhoTipo;

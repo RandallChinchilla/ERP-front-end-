@@ -1,24 +1,18 @@
 import React from "react";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { columnsParDistrito, routesParDistritoApi } from "../Interfaces/interfaceParDistrito";
+import { Form } from "../../CrossComponets/Form";
+import formJson from "../Data/parDistritoData.json";
+import { useLocation } from "react-router-dom";
+import { routesParDistritoApi, typeMode } from "../Interfaces/interfaceParDistrito";
 
-/**
- * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
- * realiazar un crud sobre un componente material-table
- * @returns CrudTableBasic
- */
-
-const ParDistrito = () => {
+export const ParDistrito = () => {
+  const { rowUpdate } = useLocation();
   return (
-    <div>
-      <CrudTableBasic
-        columns={columnsParDistrito}
-        apiRoutes={routesParDistritoApi}
-        field="CodigoPais"
-        title="Catálogo Distrito"
-      />
-    </div>
+    <Form
+      formJson={formJson}
+      title="Catálogo Distrito"
+      urlApi={routesParDistritoApi}
+      rowUpdate={rowUpdate}
+      typeMode={typeMode}
+    />
   );
 };
-
-export default ParDistrito;

@@ -1,20 +1,35 @@
 [
-  { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
   {
-    "type": "text",
-    "name": "CodigoTipo",
-    "label": "Tipo",
-    "value": 0,
-    "xs": 3,
-    "disabled": true,
-    "validations": []
+    "type": "textSearch",
+    "nameId": "CodigoTipo",
+    "name": "Descripcion",
+    "label": "Código Tipo",
+    "value": "",
+    "xs": 4,
+    "columnsModal": [
+      {
+        "title": "Código Tipo",
+        "field": "CodigoTipo"
+      },
+      {
+        "title": "Descripción",
+        "field": "Descripcion"
+      }
+    ],
+    "setModalFields": [],
+    "apiRouteModal": "AhoTipo/GetAhoTipos",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
   },
   {
     "type": "select",
     "name": "CodigoPeriodicidad",
     "label": "Periodicidad",
     "value": "",
-    "xs": 3,
+    "xs": 4,
     "controller": "ParPeriodicidad/GetParPeriodicidades",
     "fieldName": "Descripcion",
     "validations": [
@@ -28,7 +43,7 @@
     "name": "Tasa",
     "label": "Tasa",
     "value": "",
-    "xs": 6,
+    "xs": 4,
     "validations": [
       {
         "type": "required"

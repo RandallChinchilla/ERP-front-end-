@@ -1,24 +1,18 @@
 import React from "react";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { columnsParEmisorTarjeta, routesParEmisorTarjetaApi } from "../Interfaces/interfaceParEmisorTarjeta";
+import { Form } from "../../CrossComponets/Form";
+import formJson from "../Data/parEmisorTarjetaData.json";
+import { useLocation } from "react-router-dom";
+import { routesParEmisorTarjetaApi, typeMode } from "../Interfaces/interfaceParEmisorTarjeta";
 
-/**
- * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
- * realiazar un crud sobre un componente material-table
- * @returns CrudTableBasic
- */
-
-const ParEmisorTarjeta = () => {
+export const ParEmisorTarjeta = () => {
+  const { rowUpdate } = useLocation();
   return (
-    <div>
-      <CrudTableBasic
-        columns={columnsParEmisorTarjeta}
-        apiRoutes={routesParEmisorTarjetaApi}
-        field="CodigoEmisor"
-        title="Catálogo Emisor Tarjeta"
-      />
-    </div>
+    <Form
+      formJson={formJson}
+      title="Catálogo Emisor Tarjeta"
+      urlApi={routesParEmisorTarjetaApi}
+      rowUpdate={rowUpdate}
+      typeMode={typeMode}
+    />
   );
 };
-
-export default ParEmisorTarjeta;

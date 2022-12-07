@@ -1,9 +1,3 @@
-//const userData = JSON.parse(localStorage.getItem("userLogged"));
-
-/**
- * Contexto con el cual interactua el componente AhoTipo
- */
-
 export const columnsAhoTipo = [
   {
     headerName: "Código Tipo Ahorro",

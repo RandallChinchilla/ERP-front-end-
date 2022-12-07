@@ -1,9 +1,6 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import {
-  columnsAhoTasa,
-  routesAhoTasaApi,
-} from "../Interfaces/interfaceAhoTasa";
+import { columnsParDiocesis, routesParDiocesisApi } from "../Interfaces/interfaceParDiocesis";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -11,17 +8,17 @@ import {
  * @returns CrudTableBasic
  */
 
-const AhoTasaView = () => {
+const ParDiocesisView = () => {
   return (
     <div>
       <CrudTableFormNew
-        columns={columnsAhoTasa}
-        apiRoutes={routesAhoTasaApi}
-        field="CodigoTipo"
-        title="Catálogo Tasas"
+        columns={columnsParDiocesis}
+        apiRoutes={routesParDiocesisApi}
+        field="CodigoDiocesis"
+        title="Catálogo Diócesis"
       />
     </div>
   );
 };
 
-export default AhoTasaView;
+export default ParDiocesisView;

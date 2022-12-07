@@ -1,24 +1,18 @@
 import React from "react";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { columnsParDiocesis, routesParDiocesisApi } from "../Interfaces/interfaceParDiocesis";
+import { Form } from "../../CrossComponets/Form";
+import formJson from "../Data/parDiocesisData.json";
+import { useLocation } from "react-router-dom";
+import { routesParDiocesisApi, typeMode } from "../Interfaces/interfaceParDiocesis";
 
-/**
- * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
- * realiazar un crud sobre un componente material-table
- * @returns CrudTableBasic
- */
-
-const ParDiocesis = () => {
+export const ParDiocesis = () => {
+  const { rowUpdate } = useLocation();
   return (
-    <div>
-      <CrudTableBasic
-        columns={columnsParDiocesis}
-        apiRoutes={routesParDiocesisApi}
-        field="CodigoDiocesis"
-        title="Catálogo Diocesis"
-      />
-    </div>
+    <Form
+      formJson={formJson}
+      title="Catálogo Diócesis"
+      urlApi={routesParDiocesisApi}
+      rowUpdate={rowUpdate}
+      typeMode={typeMode}
+    />
   );
 };
-
-export default ParDiocesis;

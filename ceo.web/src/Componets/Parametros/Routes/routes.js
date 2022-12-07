@@ -1,6 +1,3 @@
-import ParDiocesis from "../Components/ParDiocesis";
-import ParDistrito from "../Components/ParDistrito";
-import ParEmisorTarjeta from "../Components/ParEmisorTarjeta";
 import ParEstadoCivil from "../Components/ParEstadoCivil";
 import ParParentezco from "../Components/ParParentezco";
 import ParPeriodicidad from "../Components/ParPeriodicidad";
@@ -14,6 +11,12 @@ import { ParCodigoTransaccion } from "../Components/ParCodigoTransaccion";
 import ParCodigoTransaccionView from "../Components/ParCodigoTransaccionView";
 import { ParEmpresa } from "../Components/ParEmpresa";
 import ParEmpresaView from "../Components/ParEmpresaView";
+import { ParDistrito } from "../Components/ParDistrito";
+import ParDistritoView from "../Components/ParDistritoView";
+import { ParDiocesis } from "../Components/ParDiocesis";
+import ParDiocesisView from "../Components/ParDiocesisView";
+import { ParEmisorTarjeta } from "../Components/ParEmisorTarjeta";
+import ParEmisorTarjetaView from "../Components/ParEmisorTarjetaView";
 
 
 export const routes =[
@@ -30,20 +33,8 @@ export const routes =[
         component: ParTipoCambioView,
     },
     {
-        path: "/Dashboard/ParIndex/ParEmisorTarjeta",
-        component: ParEmisorTarjeta,
-    },
-    {
         path: "/Dashboard/ParIndex/ParPeriodicidad",
         component: ParPeriodicidad,
-    },
-    {
-        path: "/Dashboard/ParIndex/ParDiocesis",
-        component: ParDiocesis,
-    },
-    {
-        path: "/Dashboard/ParIndex/ParDistrito",
-        component: ParDistrito,
     },
     {
         path: "/Dashboard/ParIndex/ParEstadoCivil",
@@ -80,5 +71,29 @@ export const routes =[
     {
         path: "/Dashboard/ParIndex/ParEmpresaView",
         component: ParEmpresaView,
-    },                              
+    },
+    {
+        path: "/Dashboard/ParIndex/ParDiocesis",
+        component: ParDiocesis,
+    },
+    {
+        path: "/Dashboard/ParIndex/ParDistrito",
+        component: ParDistrito,
+    },
+    {
+        path: "/Dashboard/ParIndex/ParEmisorTarjeta",
+        component: ParEmisorTarjeta,
+    },
+    {
+        path: "/Dashboard/ParIndex/ParDiocesisView",
+        component: ParDiocesisView,
+    },
+    {
+        path: "/Dashboard/ParIndex/ParDistritoView",
+        component: ParDistritoView,
+    },
+    {
+        path: "/Dashboard/ParIndex/ParEmisorTarjetaView",
+        component: ParEmisorTarjetaView,
+    },                            
 ]
