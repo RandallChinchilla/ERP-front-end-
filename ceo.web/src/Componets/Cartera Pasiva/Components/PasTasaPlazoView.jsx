@@ -4,6 +4,7 @@ import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
 import {
   columnsPasTasaPlazo,
   routesPasTasaPlazoApi,
+  typeMode,
 } from "../Interfaces/interfacePasTasaPlazo";
 
 /**
@@ -25,6 +26,7 @@ const PasTasaPlazoView = () => {
         apiRoutes={routesPasTasaPlazoApi}
         field="FechaHora"
         title="Catálogo Tasa Plazo"
+        typeMode={typeMode}
       />
     </div>
   );

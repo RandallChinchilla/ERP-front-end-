@@ -3,6 +3,7 @@ import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
 import {
   columnsPasInstrumento,
   routesPasInstrumentoApi,
+  typeMode,
 } from "../Interfaces/interfacesPasInstrumento";
 
 /**
@@ -24,6 +25,7 @@ const PasInstrumentoView = () => {
         apiRoutes={routesPasInstrumentoApi}
         field="CodigoInstrumento"
         title="Catálogo Instrumentos"
+        typeMode={typeMode}
       />
     </div>
   );

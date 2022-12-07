@@ -1,6 +1,10 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsPasTransaccion, routesPasTransaccionApi } from "../Interfaces/interfacePasTransaccion";
+import {
+  columnsPasTransaccion,
+  routesPasTransaccionApi,
+  typeMode,
+} from "../Interfaces/interfacePasTransaccion";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +20,7 @@ const PasTransaccionView = () => {
         apiRoutes={routesPasTransaccionApi}
         field="NumeroTransaccion"
         title="Catálogo Transacciones"
+        typeMode={typeMode}
       />
     </div>
   );

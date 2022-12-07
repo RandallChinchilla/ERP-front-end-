@@ -1,6 +1,10 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsRRHConfiguracion, routesRRHConfiguracionApi } from "../Interfaces/interfaceRRHConfiguracion";
+import {
+  columnsRRHConfiguracion,
+  routesRRHConfiguracionApi,
+  typeMode,
+} from "../Interfaces/interfaceRRHConfiguracion";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +20,7 @@ const RRHConfiguracionView = () => {
         apiRoutes={routesRRHConfiguracionApi}
         field="FechaHora"
         title="Catálogo Configuraciones"
+        typeMode={typeMode}
       />
     </div>
   );

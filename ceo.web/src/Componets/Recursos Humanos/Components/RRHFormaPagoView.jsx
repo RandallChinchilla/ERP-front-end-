@@ -1,6 +1,10 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsRRHFormaPago, routesRRHFormaPagoApi } from "../Interfaces/interfaceRRHFormaPago";
+import {
+  columnsRRHFormaPago,
+  routesRRHFormaPagoApi,
+  typeMode,
+} from "../Interfaces/interfaceRRHFormaPago";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +20,7 @@ const RRHFormaPagoView = () => {
         apiRoutes={routesRRHFormaPagoApi}
         field="CodigoFormaPago"
         title="Catálogo Forma Pago"
+        typeMode={typeMode}
       />
     </div>
   );

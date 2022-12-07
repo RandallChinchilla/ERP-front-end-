@@ -3,6 +3,7 @@ import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
 import {
   columnsPasAportante,
   routesPasAportanteApi,
+  typeMode,
 } from "../Interfaces/interfacePasAportante";
 
 /**
@@ -24,6 +25,7 @@ const PasAportanteView = () => {
         apiRoutes={routesPasAportanteApi}
         field="CodigoAportante"
         title="Catálogo Aportante"
+        typeMode={typeMode}
       />
     </div>
   );

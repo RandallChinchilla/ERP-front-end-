@@ -22,6 +22,7 @@ import { putAction } from "../../Helpers/putHelper";
 import { useStyles } from "./Styles/crossStylesComponent";
 import SearchIcon from "@mui/icons-material/Search";
 import { TableModal } from "./TableModal";
+import { getValue } from "@mui/system";
 
 const initialValues = {};
 const requiredFields = {};
@@ -66,10 +67,14 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, typeMode }) => {
     formState: { errors },
     control,
     setValue,
+    watch,
   } = useForm({
     defaultValues: rowUpdate ? rowUpdate : initialValues,
     resolver: yupResolver(validationschema),
   });
+
+  const form = watch();
+  console.log(form);
 
   const onSubmit = (data) => {
     console.log(urlApi.post);
@@ -147,11 +152,13 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, typeMode }) => {
                       type,
                       name,
                       nameId,
+                      selectFilterName,
                       placeholder,
                       label,
                       disabled,
                       xs,
                       controller,
+                      controllerfilter,
                       fieldName,
                       data,
                       inputFormat,
@@ -318,7 +325,23 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, typeMode }) => {
                                   name={name}
                                   label={label}
                                   field={field}
-                                  controller={controller}
+                                  controller={
+                                    controller === ""
+                                      ? controllerfilter
+                                          .replace(
+                                            "*",
+                                            form[selectFilterName.name1]
+                                          )
+                                          .replace(
+                                            "#",
+                                            form[selectFilterName.name2]
+                                          )
+                                          .replace(
+                                            "!",
+                                            form[selectFilterName.name3]
+                                          )
+                                      : controller
+                                  }
                                   fieldName={fieldName}
                                   xs={xs}
                                   errors={errors[nameId ? nameId : name]}
@@ -328,10 +351,12 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, typeMode }) => {
                                       ? typeMode.onlyread
                                       : disabled
                                   }
+                                  selectFilterName={selectFilterName}
                                 />
                               )}
                             ></Controller>
                           );
+
                         default:
                           break;
                       }

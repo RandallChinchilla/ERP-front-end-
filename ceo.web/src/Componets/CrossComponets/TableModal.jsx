@@ -42,7 +42,6 @@ export const TableModal = ({
   }, [routeApi]);
 
   const selectItem = (rowData) => {
-    console.log(rowData);
     setValue(field, rowData[field]);
     setModalFields.forEach((element) => {
       setValue(element.name, rowData[element.name]);

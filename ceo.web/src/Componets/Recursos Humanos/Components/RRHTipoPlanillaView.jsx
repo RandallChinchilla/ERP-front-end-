@@ -1,6 +1,10 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsRRHTipoPlanilla, routesRRHTipoPlanillaApi } from "../Interfaces/interfaceRRHTipoPlanilla";
+import {
+  columnsRRHTipoPlanilla,
+  routesRRHTipoPlanillaApi,
+  typeMode,
+} from "../Interfaces/interfaceRRHTipoPlanilla";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +20,7 @@ const RRHTipoPlanillaView = () => {
         apiRoutes={routesRRHTipoPlanillaApi}
         field="CodigoTipoPlanilla"
         title="Catálogo Tipo Planilla"
+        typeMode={typeMode}
       />
     </div>
   );

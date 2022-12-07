@@ -1,6 +1,10 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsRRHDeduccionEmpleado, routesRRHDeduccionEmpleadoApi } from "../Interfaces/interfaceRRHDeduccionEmpleado";
+import {
+  columnsRRHDeduccionEmpleado,
+  routesRRHDeduccionEmpleadoApi,
+  typeMode,
+} from "../Interfaces/interfaceRRHDeduccionEmpleado";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +20,7 @@ const RRHDeduccionEmpleadoView = () => {
         apiRoutes={routesRRHDeduccionEmpleadoApi}
         field="NumeroDeduccion"
         title="Catálogo Deducción Empleados"
+        typeMode={typeMode}
       />
     </div>
   );

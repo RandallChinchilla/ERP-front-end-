@@ -3,6 +3,7 @@ import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
 import {
   columnsPasOrigenAportante,
   routesPasOrigenAportanteApi,
+  typeMode,
 } from "../Interfaces/interfacesPasOrigenAportante";
 
 /**
@@ -19,6 +20,7 @@ const PasOrigenAportanteView = () => {
         apiRoutes={routesPasOrigenAportanteApi}
         field="CodigoOrigenAportante"
         title="Catálogo Origen Aportante"
+        typeMode={typeMode}
       />
     </div>
   );

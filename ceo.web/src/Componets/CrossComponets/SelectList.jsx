@@ -26,6 +26,8 @@ export const SelectList = ({
   errors,
   disabled,
   dataJson,
+  getValues,
+  selectFilterName,
 }) => {
   const [data, setData] = useState(null);
   const baseUrl = process.env.REACT_APP_BASE_URL;

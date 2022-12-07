@@ -6,7 +6,14 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { delAction, noAction, updateAlert } from "../../Actions/Index";
 
-export const Deleterow = ({ rowDelete, deleteApi, field, setData, data }) => {
+export const Deleterow = ({
+  rowDelete,
+  deleteApi,
+  field,
+  setData,
+  data,
+  typeMode,
+}) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const { alert } = state.alert;
@@ -42,6 +49,7 @@ export const Deleterow = ({ rowDelete, deleteApi, field, setData, data }) => {
       icon={<DeleteIcon />}
       label="Delete"
       onClick={deleteRow}
+      disabled={typeMode.onlyread}
     />
   );
 };

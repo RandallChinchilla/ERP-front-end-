@@ -1,6 +1,10 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsRRHMaestroLog, routesRRHMaestroLogApi } from "../Interfaces/interfaceRRHMaestroLog";
+import {
+  columnsRRHMaestroLog,
+  routesRRHMaestroLogApi,
+  typeMode,
+} from "../Interfaces/interfaceRRHMaestroLog";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +20,7 @@ const RRHMaestroLogView = () => {
         apiRoutes={routesRRHMaestroLogApi}
         field="NumeroEmpleado"
         title="Catálogo Maestro Log"
+        typeMode={typeMode}
       />
     </div>
   );

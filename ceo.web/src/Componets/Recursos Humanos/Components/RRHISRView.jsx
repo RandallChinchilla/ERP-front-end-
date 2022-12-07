@@ -1,6 +1,10 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsRRHISR, routesRRHISRApi } from "../Interfaces/interfaceRRHISR";
+import {
+  columnsRRHISR,
+  routesRRHISRApi,
+  typeMode,
+} from "../Interfaces/interfaceRRHISR";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +20,7 @@ const RRHISRView = () => {
         apiRoutes={routesRRHISRApi}
         field="Consecutivo"
         title="Catálogo ISR"
+        typeMode={typeMode}
       />
     </div>
   );

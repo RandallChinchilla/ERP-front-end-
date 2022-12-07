@@ -1,6 +1,10 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsRRHMotivoSalida, routesRRHMotivoSalidaApi } from "../Interfaces/interfaceRRHMotivoSalida";
+import {
+  columnsRRHMotivoSalida,
+  routesRRHMotivoSalidaApi,
+  typeMode,
+} from "../Interfaces/interfaceRRHMotivoSalida";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +20,7 @@ const RRHMotivoSalidaView = () => {
         apiRoutes={routesRRHMotivoSalidaApi}
         field="CodigoMotivoSalida"
         title="Catálogo Motivo Salida"
+        typeMode={typeMode}
       />
     </div>
   );

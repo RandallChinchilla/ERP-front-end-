@@ -1,6 +1,10 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsRRHPariente, routesRRHParienteApi } from "../Interfaces/interfaceRRHPariente";
+import {
+  columnsRRHPariente,
+  routesRRHParienteApi,
+  typeMode,
+} from "../Interfaces/interfaceRRHPariente";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +20,7 @@ const RRHParienteView = () => {
         apiRoutes={routesRRHParienteApi}
         field="NumeroEmpleado"
         title="Catálogo Parientes"
+        typeMode={typeMode}
       />
     </div>
   );

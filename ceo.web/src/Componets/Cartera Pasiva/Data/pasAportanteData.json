@@ -40,7 +40,7 @@
     "name": "CodigoPais",
     "nameId": "CodigoPaisAportante",
     "label": "País",
-    "value": "",
+    "value": "0",
     "xs": 3,
     "controller": "ParPais/GetParPaises",
     "fieldName": "Nombre",
@@ -54,11 +54,16 @@
     "type": "select",
     "name": "CodigoProvincia",
     "nameId": "CodigoProvinciaAportante",
+    "selectFilterName": {
+      "name1": "CodigoPaisAportante"
+    },
     "label": "Provincia",
-    "value": "",
+    "value": "0",
     "xs": 3,
-    "controller": "ParProvincium/GetParProvincias",
+    "controller": "",
+    "controllerfilter": "ParProvincium/GetParProvinciaFilter?CodigoPais=*",
     "fieldName": "Descripcion",
+    "disabled": false,
     "validations": [
       {
         "type": "required"
@@ -69,10 +74,15 @@
     "type": "select",
     "name": "CodigoCanton",
     "nameId": "CodigoCantonAportante",
+    "selectFilterName": {
+      "name1": "CodigoPaisAportante",
+      "name2": "CodigoProvinciaAportante"
+    },
     "label": "Cantón",
-    "value": "",
+    "value": "0",
     "xs": 3,
-    "controller": "ParCanton/GetParCantones",
+    "controller": "",
+    "controllerfilter": "ParCanton/GetParCantonesFilter?CodigoPais=*&CodigoProvincia=#",
     "fieldName": "Descripcion",
     "validations": [
       {
@@ -84,10 +94,16 @@
     "type": "select",
     "name": "CodigoDistrito",
     "nameId": "CodigoDistritoAportante",
+    "selectFilterName": {
+      "name1": "CodigoPaisAportante",
+      "name2": "CodigoProvinciaAportante",
+      "name3": "CodigoCantonAportante"
+    },
     "label": "Distrito",
-    "value": "",
+    "value": "0",
     "xs": 3,
-    "controller": "ParDistrito/GetParDistritos",
+    "controller": "",
+    "controllerfilter": "ParDistrito/GetParDistritosFilter?CodigoPais=*&CodigoProvincia=#&CodigoCanton=!",
     "fieldName": "Descripcion",
     "validations": [
       {
@@ -270,7 +286,7 @@
     "name": "CodigoPais",
     "nameId": "CodigoPaisEncargado",
     "label": "Pais",
-    "value": "",
+    "value": "0",
     "xs": 3,
     "controller": "ParPais/GetParPaises",
     "fieldName": "Nombre",
@@ -284,10 +300,14 @@
     "type": "select",
     "name": "CodigoProvincia",
     "nameId": "CodigoProvinciaEncargado",
+    "selectFilterName": {
+      "name1": "CodigoPaisEncargado"
+    },
     "label": "Provincia",
-    "value": "",
+    "value": "0",
     "xs": 3,
-    "controller": "ParProvincium/GetParProvincias",
+    "controller": "",
+    "controllerfilter": "ParProvincium/GetParProvinciaFilter?CodigoPais=*",
     "fieldName": "Descripcion",
     "validations": [
       {
@@ -299,10 +319,15 @@
     "type": "select",
     "name": "CodigoCanton",
     "nameId": "CodigoCantonEncargado",
+    "selectFilterName": {
+      "name1": "CodigoPaisEncargado",
+      "name2": "CodigoProvinciaEncargado"
+    },
     "label": "Cantón",
-    "value": "",
+    "value": "0",
     "xs": 3,
-    "controller": "ParCanton/GetParCantones",
+    "controller": "",
+    "controllerfilter": "ParCanton/GetParCantonesFilter?CodigoPais=*&CodigoProvincia=#",
     "fieldName": "Descripcion",
     "validations": [
       {
@@ -314,10 +339,16 @@
     "type": "select",
     "name": "CodigoDistrito",
     "nameId": "CodigoDistritoEncargado",
+    "selectFilterName": {
+      "name1": "CodigoPaisEncargado",
+      "name2": "CodigoProvinciaEncargado",
+      "name3": "CodigoCantonEncargado"
+    },
     "label": "Distrito",
-    "value": "",
+    "value": "0",
     "xs": 3,
-    "controller": "ParDistrito/GetParDistritos",
+    "controller": "",
+    "controllerfilter": "ParDistrito/GetParDistritosFilter?CodigoPais=*&CodigoProvincia=#&CodigoCanton=!",
     "fieldName": "Descripcion",
     "validations": [
       {

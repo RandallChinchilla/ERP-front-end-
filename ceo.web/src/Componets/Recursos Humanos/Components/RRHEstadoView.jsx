@@ -1,6 +1,10 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsRRHEstado, routesRRHEstadoApi } from "../Interfaces/interfaceRRHEstado";
+import {
+  columnsRRHEstado,
+  routesRRHEstadoApi,
+  typeMode,
+} from "../Interfaces/interfaceRRHEstado";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +20,7 @@ const RRHEstadoView = () => {
         apiRoutes={routesRRHEstadoApi}
         field="CodigoEstado"
         title="Catálogo Estado"
+        typeMode={typeMode}
       />
     </div>
   );

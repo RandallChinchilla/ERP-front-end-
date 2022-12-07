@@ -7,7 +7,13 @@ import { Addrow } from "./Addrow";
 import { Editrow } from "./Editrow";
 import { Deleterow } from "./Deleterow";
 
-export const CrudTableFormNew = ({ columns, apiRoutes, field, title }) => {
+export const CrudTableFormNew = ({
+  columns,
+  apiRoutes,
+  field,
+  title,
+  typeMode,
+}) => {
   const baseUrl = process.env.REACT_APP_BASE_URL;
   const [data, setData] = useState([]);
 
@@ -64,6 +70,7 @@ export const CrudTableFormNew = ({ columns, apiRoutes, field, title }) => {
                 field={field}
                 setData={setData}
                 data={data}
+                typeMode={typeMode}
               />,
             ],
           },

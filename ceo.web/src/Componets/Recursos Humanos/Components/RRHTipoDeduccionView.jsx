@@ -1,6 +1,10 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsRRHTipoDeduccion, routesRRHTipoDeduccionApi } from "../Interfaces/interfaceRRHTipoDeduccion";
+import {
+  columnsRRHTipoDeduccion,
+  routesRRHTipoDeduccionApi,
+  typeMode,
+} from "../Interfaces/interfaceRRHTipoDeduccion";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +20,7 @@ const RRHTipoDeduccionView = () => {
         apiRoutes={routesRRHTipoDeduccionApi}
         field="CodigoTipoDeduccion"
         title="Catálogo Tipo Deducción"
+        typeMode={typeMode}
       />
     </div>
   );

@@ -4,6 +4,7 @@ import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
 import {
   columnsPasOrigenFondos,
   routesPasOrigenFondosApi,
+  typeMode,
 } from "../Interfaces/interfacePasOrigenFondos";
 
 /**
@@ -20,6 +21,7 @@ const PasOrigenFondosView = () => {
         apiRoutes={routesPasOrigenFondosApi}
         field="CodigoOrigenFondos"
         title="Catálogo Origen Fondos"
+        typeMode={typeMode}
       />
     </div>
   );

@@ -3,6 +3,7 @@ import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
 import {
   columnsPasMaestro,
   routesPasMaestroApi,
+  typeMode,
 } from "../Interfaces/interfacePasMaestro";
 
 /**
@@ -24,6 +25,7 @@ export const PasMaestroView = () => {
         apiRoutes={routesPasMaestroApi}
         field="NumeroInversion"
         title="Catálogo Maestro"
+        typeMode={typeMode}
       />
     </div>
   );

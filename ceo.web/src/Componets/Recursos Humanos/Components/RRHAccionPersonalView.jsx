@@ -1,6 +1,10 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsRRHAccionPersonal, routesRRHAccionPersonalApi } from "../Interfaces/interfaceRRHAccionPersonal";
+import {
+  columnsRRHAccionPersonal,
+  routesRRHAccionPersonalApi,
+  typeMode,
+} from "../Interfaces/interfaceRRHAccionPersonal";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +20,7 @@ const RRHAccionPersonalView = () => {
         apiRoutes={routesRRHAccionPersonalApi}
         field="CodigoTipoAccion"
         title="Catálogo Acciones Personales"
+        typeMode={typeMode}
       />
     </div>
   );
