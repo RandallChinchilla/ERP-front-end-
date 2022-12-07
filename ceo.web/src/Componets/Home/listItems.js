@@ -1171,7 +1171,7 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParIndex/ParDistrito">
+            <NavLink tag={Link} to="/Dashboard/ParIndex/ParDistritoView">
               <ListItemText className={classes.text}>Distrito</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1189,7 +1189,7 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParIndex/ParDiocesis">
+            <NavLink tag={Link} to="/Dashboard/ParIndex/ParDiocesisView">
               <ListItemText className={classes.text}>Diocesis</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1198,7 +1198,7 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParIndex/ParEmisorTarjeta">
+            <NavLink tag={Link} to="/Dashboard/ParIndex/ParEmisorTarjetaView">
               <ListItemText className={classes.text}>
                 Emisor Tarjeta
               </ListItemText>
@@ -1822,7 +1822,7 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/Dashboard/AhoIndex/AhoTipo"
+              to="/Dashboard/AhoIndex/AhoTipoView"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}

@@ -9,7 +9,7 @@ export const RRHConfiguracion = () => {
   return (
     <Form
       formJson={formJson}
-      title="Catálogo Configuraciones"
+      title="Catálogo Configuración"
       urlApi={routesRRHConfiguracionApi}
       rowUpdate={rowUpdate}
       typeMode={typeMode}

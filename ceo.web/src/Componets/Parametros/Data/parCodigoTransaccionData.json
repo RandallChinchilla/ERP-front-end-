@@ -1,20 +1,10 @@
 [
-    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
-    {
-      "type": "text",
-      "name": "nombreEmpresa",
-      "label": "Empresa",
-      "value": "",
-      "xs": 6,
-      "disabled": true,
-      "validations": []
-    },
     {
         "type": "select",
         "name": "CodigoModulo",
         "label": "Modulo",
         "value": "",
-        "xs": 3,
+        "xs": 4,
         "controller": "ParModulo/GetParModulos",
         "fieldName": "Descripcion",
         "validations": [
@@ -24,25 +14,24 @@
         ]
     },
     {
-        "type": "select",
-        "name": "CodigoTransaccion",
-        "label": "Transacción",
-        "value": "",
-        "xs": 3,
-        "controller": "ParCodigotransaccion/GetParCodigoTransacciones",
-        "fieldName": "Descripcion",
-        "validations": [
-          {
-            "type": "required"
-          }
-        ]
+      "type": "text",
+      "name": "CodigoTransaccion",
+      "label": "Transacción",
+      "value": 0,
+      "xs": 4,
+      "disabled":true,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
     },
     {
       "type": "text",
       "name": "Descripcion",
       "label": "Descripción",
       "value": "",
-      "xs": 3,
+      "xs": 4,
       "validations": [
         {
           "type": "required"
@@ -214,7 +203,7 @@
       "name": "IndicadorTarjeta",
       "label": "Acepta Tarjeta DB/CR",
       "value": false,
-      "xs": 3,
+      "xs": 4,
       "validations": []
     },
     {
@@ -222,7 +211,7 @@
       "name": "IndicadorRequiereAutorizacion",
       "label": "Requiere Autorización",
       "value": false,
-      "xs": 3,
+      "xs": 4,
       "validations": []
     },
     {
@@ -230,7 +219,7 @@
       "name": "Usuario",
       "label": "Usuario",
       "value": "",
-      "xs": 3,
+      "xs": 4,
       "disabled": true,
       "validations": []
     }

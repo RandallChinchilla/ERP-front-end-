@@ -16,7 +16,7 @@
         "type": "date",
         "name": "FechaHora",
         "label": "Fecha Hora",
-        "value": "",
+        "value": 0,
         "size": "small",
         "inputFormat": "dd/MM/yyyy",
         "xs": 6,
@@ -30,8 +30,9 @@
         "type": "text",
         "name": "LimiteInicial1",
         "label": "Limite Inicial 1",
-        "value": "",
+        "value": 0,
         "xs": 4,
+        "disabled": true,
         "validations": [
           {
             "type": "required"
@@ -42,7 +43,7 @@
         "type": "text",
         "name": "LimiteFinal1",
         "label": "Limite Final 1",
-        "value": "",
+        "value": 0,
         "xs": 4,
         "validations": [
           {
@@ -54,7 +55,7 @@
         "type": "text",
         "name": "Porcentaje1",
         "label": "Porcentaje 1",
-        "value": "",
+        "value": 0,
         "xs": 4,
         "validations": [
           {
@@ -66,7 +67,7 @@
         "type": "text",
         "name": "LimiteInicial2",
         "label": "Limite Inicial 2",
-        "value": "",
+        "value": 0,
         "xs": 4,
         "validations": [
           {
@@ -77,8 +78,8 @@
     {
         "type": "text",
         "name": "LimiteFinal2",
-        "label": "Limite Final ",
-        "value": "",
+        "label": "Limite Final 2",
+        "value": 0,
         "xs": 4,
         "validations": [
           {
@@ -90,7 +91,7 @@
         "type": "text",
         "name": "Porcentaje2",
         "label": "Porcentaje 2",
-        "value": "",
+        "value": 0,
         "xs": 4,
         "validations": [
           {
@@ -101,8 +102,8 @@
     {
         "type": "text",
         "name": "LimiteInicial4",
-        "label": "Limite Inicial 4",
-        "value": "",
+        "label": "Limite Inicial 3",
+        "value": 0,
         "xs": 4,
         "validations": [
           {
@@ -113,8 +114,8 @@
     {
         "type": "text",
         "name": "LimiteFinal4",
-        "label": "Limite Final 4",
-        "value": "",
+        "label": "Limite Final 3",
+        "value": 0,
         "xs": 4,
         "validations": [
           {
@@ -125,8 +126,8 @@
     {
       "type": "text",
       "name": "Porcentaje4",
-      "label": "Porcentaje 4",
-      "value": "",
+      "label": "Porcentaje 3",
+      "value": 0,
       "xs": 4,
       "validations": [
         {
@@ -138,7 +139,7 @@
         "type": "text",
         "name": "LimiteInicial4",
         "label": "Limite Inicial 4",
-        "value": "",
+        "value": 0,
         "xs": 4,
         "validations": [
           {
@@ -150,7 +151,7 @@
         "type": "text",
         "name": "LimiteFinal4",
         "label": "Limite Final 4",
-        "value": "",
+        "value": 0,
         "xs": 4,
         "validations": [
           {
@@ -162,7 +163,7 @@
       "type": "text",
       "name": "Porcentaje4",
       "label": "Porcentaje 4",
-      "value": "",
+      "value": 0,
       "xs": 4,
       "validations": [
         {
@@ -174,7 +175,7 @@
       "type": "text",
       "name": "LimiteInicial5",
       "label": "Limite Inicial 5",
-      "value": "",
+      "value": 0,
       "xs": 4,
       "validations": [
         {
@@ -186,7 +187,7 @@
       "type": "text",
       "name": "LimiteFinal5",
       "label": "Limite Final 5",
-      "value": "",
+      "value": 0,
       "xs": 4,
       "validations": [
         {
@@ -198,7 +199,7 @@
       "type": "text",
       "name": "Porcentaje5",
       "label": "Porcentaje 5",
-      "value": "",
+      "value": 0,
       "xs": 4,
       "validations": [
         {
@@ -210,7 +211,7 @@
       "type": "text",
       "name": "LimiteInicial6",
       "label": "Limite Inicial 6",
-      "value": "",
+      "value": 0,
       "xs": 4,
       "validations": [
         {
@@ -222,7 +223,7 @@
       "type": "text",
       "name": "LimiteFinal6",
       "label": "Limite Final 6",
-      "value": "",
+      "value": 0,
       "xs": 4,
       "validations": [
         {
@@ -234,7 +235,7 @@
       "type": "text",
       "name": "Porcentaje6",
       "label": "Porcentaje 6",
-      "value": "",
+      "value": 0,
       "xs": 4,
       "validations": [
         {
@@ -246,7 +247,7 @@
       "type": "text",
       "name": "LimiteInicial7",
       "label": "Limite Inicial 7",
-      "value": "",
+      "value": 0,
       "xs": 4,
       "validations": [
         {
@@ -258,7 +259,7 @@
       "type": "text",
       "name": "LimiteFinal7",
       "label": "Limite Final 7",
-      "value": "",
+      "value": 0,
       "xs": 4,
       "validations": [
         {
@@ -270,7 +271,7 @@
       "type": "text",
       "name": "Porcentaje7",
       "label": "Porcentaje 7",
-      "value": "",
+      "value": 0,
       "xs": 4,
       "validations": [
         {
@@ -282,7 +283,7 @@
       "type": "text",
       "name": "LimiteInicial8",
       "label": "Limite Inicial 8",
-      "value": "",
+      "value": 0,
       "xs": 4,
       "validations": [
         {
@@ -294,7 +295,7 @@
       "type": "text",
       "name": "LimiteFinal8",
       "label": "Limite Final 8",
-      "value": "",
+      "value": 0,
       "xs": 4,
       "validations": [
         {
@@ -306,7 +307,7 @@
       "type": "text",
       "name": "Porcentaje8",
       "label": "Porcentaje 8",
-      "value": "",
+      "value": 0,
       "xs": 4,
       "validations": [
         {
@@ -318,7 +319,7 @@
       "type": "select",
       "name": "CodigoEstado",
       "label": "Estado",
-      "value": "",
+      "value": "1",
       "xs": 6,
       "controller": "ParEstado/GetParEstados",
       "fieldName": "Descripcion",

@@ -1,6 +1,6 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsRRHConfiguracion, routesRRHConfiguracionApi } from "../Interfaces/interfaceRRHConfiguracion";
+import { columnsAhoTipo, routesAhoTipoApi } from "../Interfaces/interfaceAhoTipo";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -8,17 +8,17 @@ import { columnsRRHConfiguracion, routesRRHConfiguracionApi } from "../Interface
  * @returns CrudTableBasic
  */
 
-const RRHConfiguracionView = () => {
+const AhoTipoView = () => {
   return (
     <div>
       <CrudTableFormNew
-        columns={columnsRRHConfiguracion}
-        apiRoutes={routesRRHConfiguracionApi}
-        field="FechaHora"
-        title="Catálogo Configuración"
+        columns={columnsAhoTipo}
+        apiRoutes={routesAhoTipoApi}
+        field="CodigoTipo"
+        title="Catálogo Tipo Ahorro"
       />
     </div>
   );
 };
 
-export default RRHConfiguracionView;
+export default AhoTipoView;

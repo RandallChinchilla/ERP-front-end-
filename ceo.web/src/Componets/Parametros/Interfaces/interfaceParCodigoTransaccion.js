@@ -1,39 +1,29 @@
-
 export const columnsParCodigoTransaccion = [
-    {
-      title: "Código Empresa",
-      field: "CodigoEmpresa",
-    },
-    {
-      title: "Empresa",
-      field: "CodigoEmpresaNavigation.Nombre",
-      id: "CodigoEmpresaNavigation.CodigoEmpresa",
-    },
-    {
-      title: "Transacción",
-      field: "CodigoTransaccion",
-    },
-    {
-      title: "Descripción",
-      field: "Descripcion",
-    },
-  ];
-  
-  export const routesParCodigoTransaccionApi = {
-    get: "ParCodigotransaccion/GetParCodigoTransacciones",
-    post: "ParCodigotransaccion/PostParCodigotransaccion",
-    update: "ParCodigotransaccion/PutParCodigotransaccion",
-    delete: "ParCodigotransaccion/DeleteParCodigotransaccion",
-    navigation: "./ParCodigotransaccion",
-  };
-  
-  export const tableStyle = {
-    rowStyle: {
-      fontSize: 12,
-    },
-    headerStyle: {
-      backgroundColor: "#898883",
-      color: "#FFF",
-      fontSize: 13,
-    },
-  };  
+  {
+    headerName: "Código Transacción",
+    field: "CodigoTransaccion",
+    width: 550,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Descripción",
+    field: "Descripcion",
+    width: 550,
+    headerAlign: "center",
+    align: "center",
+  },
+];
+
+export const routesParCodigoTransaccionApi = {
+  get: "ParCodigotransaccion/GetParCodigoTransacciones",
+  post: "ParCodigotransaccion/PostParCodigotransaccion",
+  update: "ParCodigotransaccion/PutParCodigotransaccion",
+  delete: "ParCodigotransaccion/DeleteParCodigotransaccion",
+  navigation: "./ParCodigotransaccion",
+  navigationBack: "./ParCodigotransaccionView",
+};
+
+export const typeMode = {
+  onlyread: false,
+};

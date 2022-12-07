@@ -1,0 +1,78 @@
+[
+    {
+        "type": "text",
+        "name": "CodigoDistrito",
+        "label": "Código Distrito",
+        "value": 0,
+        "disabled":true,
+        "xs": 6,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "select",
+      "name": "CodigoPais",
+      "label": "País",
+      "value": "",
+      "xs": 4,
+      "controller": "ParPais/GetParPaises",
+      "fieldName": "Nombre",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "CodigoProvincia",
+      "label": "Provincia",
+      "value": "",
+      "xs": 4,
+      "controller": "ParProvincium/GetParProvincias",
+      "fieldName": "Descripcion",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "CodigoCanton",
+      "label": "Cantón",
+      "value": "",
+      "xs": 4,
+      "controller": "ParCanton/GetParCantones",
+      "fieldName": "Descripcion",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Descripcion",
+      "label": "Descripción",
+      "value": "",
+      "xs": 6,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Usuario",
+      "label": "Usuario",
+      "value": "",
+      "xs": 12,
+      "disabled": true,
+      "validations": []
+    }
+  ] 

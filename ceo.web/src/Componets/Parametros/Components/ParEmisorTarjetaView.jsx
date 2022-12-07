@@ -1,6 +1,6 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsRRHConfiguracion, routesRRHConfiguracionApi } from "../Interfaces/interfaceRRHConfiguracion";
+import { columnsParEmisorTarjeta, routesParEmisorTarjetaApi } from "../Interfaces/interfaceParEmisorTarjeta";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -8,17 +8,17 @@ import { columnsRRHConfiguracion, routesRRHConfiguracionApi } from "../Interface
  * @returns CrudTableBasic
  */
 
-const RRHConfiguracionView = () => {
+const ParEmisorTarjetaView = () => {
   return (
     <div>
       <CrudTableFormNew
-        columns={columnsRRHConfiguracion}
-        apiRoutes={routesRRHConfiguracionApi}
-        field="FechaHora"
-        title="Catálogo Configuración"
+        columns={columnsParEmisorTarjeta}
+        apiRoutes={routesParEmisorTarjetaApi}
+        field="CodigoEmisor"
+        title="Catálogo Emisor"
       />
     </div>
   );
 };
 
-export default RRHConfiguracionView;
+export default ParEmisorTarjetaView;

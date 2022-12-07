@@ -6,7 +6,8 @@ import AhoProductoLogView from "../Componentes/AhoProductoLogView";
 import AhoProductoView from "../Componentes/AhoProductoView";
 import { AhoTasa } from "../Componentes/AhoTasa";
 import AhoTasaView from "../Componentes/AhoTasaView";
-import AhoTipo from "../Componentes/AhoTipo";
+import { AhoTipo } from "../Componentes/AhoTipo";
+import AhoTipoView from "../Componentes/AhoTipoView";
 import { AhoTransaccion } from "../Componentes/AhoTransaccion";
 import AhoTransaccionView from "../Componentes/AhoTransaccionView";
 
@@ -46,6 +47,10 @@ export const routes =[
     {
         path: "/Dashboard/AhoIndex/AhoTipo",
         component: AhoTipo,
+    },
+    {
+        path: "/Dashboard/AhoIndex/AhoTipoView",
+        component: AhoTipoView,
     },
     {
         path: "/Dashboard/AhoIndex/AhoTasa",
