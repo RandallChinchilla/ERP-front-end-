@@ -45,7 +45,7 @@ export const CrudTableFormNew = ({
         </Typography>
       </Grid>
       <Grid item xs={12} container justifyContent="left" mt={5} mb={5}>
-        <Addrow routeRedirect={apiRoutes.navigation} />
+        <Addrow routeRedirect={apiRoutes.navigation} typeMode={typeMode} />
       </Grid>
       <DataGrid
         sx={datagridSx}
@@ -62,6 +62,7 @@ export const CrudTableFormNew = ({
                 key={`edit-${params.row[field]}`}
                 rowUpdate={params.row}
                 navigation={apiRoutes.navigation}
+                typeMode={typeMode}
               />,
               <Deleterow
                 key={`delete-${params.row[field]}`}

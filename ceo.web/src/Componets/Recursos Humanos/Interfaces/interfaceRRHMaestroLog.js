@@ -47,4 +47,7 @@ export const routesRRHMaestroLogApi = {
 
 export const typeMode = {
   onlyread: true,
+  deleteButton: true,
+  editeButton: false,
+  addButton: true,
 };

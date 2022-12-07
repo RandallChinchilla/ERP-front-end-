@@ -49,7 +49,7 @@ export const Deleterow = ({
       icon={<DeleteIcon />}
       label="Delete"
       onClick={deleteRow}
-      disabled={typeMode.onlyread}
+      disabled={typeMode.deleteButton}
     />
   );
 };

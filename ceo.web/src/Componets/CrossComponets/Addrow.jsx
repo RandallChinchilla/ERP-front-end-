@@ -3,7 +3,7 @@ import AddIcon from "@mui/icons-material/Add";
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-export const Addrow = ({ routeRedirect }) => {
+export const Addrow = ({ routeRedirect, typeMode }) => {
   let usehistory = useHistory();
   return (
     <div>
@@ -13,6 +13,7 @@ export const Addrow = ({ routeRedirect }) => {
         onClick={() => {
           usehistory.push(routeRedirect);
         }}
+        disabled={typeMode.addButton}
       >
         Agregar
       </Button>
