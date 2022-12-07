@@ -21,3 +21,7 @@ export const routesAhoTipoApi = {
   update: "AhoTipo/PutAhoTipo",
   delete: "AhoTipo/DeleteAhoTipo",
 };
+
+export const typeMode = {
+  onlyread: false,
+};
