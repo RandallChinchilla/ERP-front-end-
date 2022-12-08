@@ -19,7 +19,7 @@ const PasTransaccionView = () => {
         columns={columnsPasTransaccion}
         apiRoutes={routesPasTransaccionApi}
         field="NumeroTransaccion"
-        title="Catálogo Transacciones"
+        title="Catálogo Transacción"
         typeMode={typeMode}
       />
     </div>

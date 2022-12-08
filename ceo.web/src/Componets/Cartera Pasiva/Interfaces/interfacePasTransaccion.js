@@ -104,5 +104,8 @@
   
   export const typeMode = {
     onlyread: false,
+    deleteButton: true,
+    editeButton: false,
+    addButton: false,
   };
   

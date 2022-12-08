@@ -9,7 +9,7 @@ export const PasTransaccion = () => {
   return (
     <Form
       formJson={formJson}
-      title="Catálogo transacciones"
+      title="Catálogo Transacción"
       urlApi={routesPasTransaccionApi}
       rowUpdate={rowUpdate}
       typeMode={typeMode}
