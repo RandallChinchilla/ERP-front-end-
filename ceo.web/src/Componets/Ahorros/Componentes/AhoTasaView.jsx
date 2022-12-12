@@ -3,6 +3,7 @@ import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
 import {
   columnsAhoTasa,
   routesAhoTasaApi,
+  typeMode,
 } from "../Interfaces/interfaceAhoTasa";
 
 /**
@@ -18,7 +19,8 @@ const AhoTasaView = () => {
         columns={columnsAhoTasa}
         apiRoutes={routesAhoTasaApi}
         field="CodigoTipo"
-        title="Catálogo Tasas"
+        title="Catálogo Tasa"
+        typeMode={typeMode}
       />
     </div>
   );

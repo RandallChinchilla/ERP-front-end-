@@ -1,6 +1,6 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsAhoTipo, routesAhoTipoApi } from "../Interfaces/interfaceAhoTipo";
+import { columnsAhoTipo, routesAhoTipoApi, typeMode } from "../Interfaces/interfaceAhoTipo";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +16,7 @@ const AhoTipoView = () => {
         apiRoutes={routesAhoTipoApi}
         field="CodigoTipo"
         title="Catálogo Tipo Ahorro"
+        typeMode={typeMode}
       />
     </div>
   );

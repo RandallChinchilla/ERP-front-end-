@@ -54,5 +54,8 @@ export const routesAhoProductoLogApi = {
 };
 
 export const typeMode = {
-  onlyread: false,
+  onlyread: true,
+  deleteButton: true,
+  editeButton: false,
+  addButton: true,
 };

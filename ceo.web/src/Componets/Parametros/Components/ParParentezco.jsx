@@ -1,24 +1,18 @@
 import React from "react";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { columnsParParentezco, routesParParentezcoApi } from "../Interfaces/interfaceParParentezco";
+import formJson from "../Data/parParentezcoData.json";
+import { Form } from "../../CrossComponets/Form";
+import { useLocation } from "react-router-dom";
+import { routesParParentezcoApi, typeMode } from "../Interfaces/interfaceParParentezco";
 
-/**
- * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
- * realiazar un crud sobre un componente material-table
- * @returns CrudTableBasic
- */
-
-const ParParentezco = () => {
+export const ParParentezco = () => {
+  const { rowUpdate } = useLocation();
   return (
-    <div>
-      <CrudTableBasic
-        columns={columnsParParentezco}
-        apiRoutes={routesParParentezcoApi}
-        field="NumeroEmpleado"
-        title="Catálogo Parentezco"
-      />
-    </div>
+    <Form
+      formJson={formJson}
+      title="Catálogo Parentezco"
+      urlApi={routesParParentezcoApi}
+      rowUpdate={rowUpdate}
+      typeMode={typeMode}
+    />
   );
 };
-
-export default ParParentezco;

@@ -5,6 +5,7 @@ export const columnsAhoTasa = [
     width: 350,
     headerAlign: "center",
     align: "center",
+    valueGetter: (params) => params.row.CodigoNavigation.Descripcion,
   },
   {
     headerName: "Tasa",
@@ -33,4 +34,7 @@ export const routesAhoTasaApi = {
 
 export const typeMode = {
   onlyread: false,
+  deleteButton: false,
+  editeButton: false,
+  addButton: false,
 };

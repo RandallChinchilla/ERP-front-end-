@@ -9,7 +9,7 @@ export const AhoTasa = () => {
   return (
     <Form
       formJson={formJson}
-      title="Catálogo Tasas"
+      title="Catálogo Tasa"
       urlApi={routesAhoTasaApi}
       rowUpdate={rowUpdate}
       typeMode={typeMode}

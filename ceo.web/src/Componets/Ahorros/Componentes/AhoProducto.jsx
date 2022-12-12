@@ -23,7 +23,7 @@ export const AhoProducto = () => {
   return (
     <Form
       formJson={formJson}
-      title="Producto"
+      title="Catálogo Producto"
       urlApi={routesAhoProductoApi}
       rowUpdate={rowUpdate}
       typeMode={typeMode}

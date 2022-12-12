@@ -89,10 +89,11 @@
       "type": "select",
       "name": "CodigoEstado",
       "label": "Estado",
-      "value": "",
+      "value": "1",
       "xs": 6,
       "controller": "ParEstado/GetParEstados",
       "fieldName": "Descripcion",
+      "disabled": true,
       "validations": [
         {
           "type": "required"

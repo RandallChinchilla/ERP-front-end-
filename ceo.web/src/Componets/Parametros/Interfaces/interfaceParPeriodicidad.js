@@ -1,47 +1,36 @@
-//const userData = JSON.parse(localStorage.getItem("userLogged"));
-
-/**
- * Contexto con el cual interactua el componente ParPeriodicidad
- */
-
- export const columnsParPeriodicidad = [
-    {
-        title: "Código Empresa",
-        field: "CodigoEmpresa",
-        initialEditValue: 1,//userData.codigoEmpresa,
-        editable: "never",
-      },
-      {
-        title: "Nombre",
-        field: "CodigoEmpresaNavigation.Nombre",
-        id: "CodigoEmpresaNavigation.CodigoEmpresa",
-        initialEditValue: "DmdInterSoft", //userData.nombreEmpresa,
-        editable: "never",
-      },
-      {
-        title: "Periodicidad",
-        field: "CodigoPeriodicidad",
-        initialEditValue: 0,
-        editable: "never",
-      },
-      { title: "Meses", field: "CantidadMeses" },
-      { title: "Descripción", field: "Descripcion" },
+export const columnsParPeriodicidad = [
+  {
+    headerName: "Código Periodicidad",
+    field: "CodigoPeriodicidad",
+    width: 350,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Meses",
+    field: "CantidadMeses",
+    width: 350,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Descripción",
+    field: "Descripcion",
+    width: 350,
+    headerAlign: "center",
+    align: "center",
+  }
 ];
 
 export const routesParPeriodicidadApi = {
   get: "ParPeriodicidad/GetParPeriodicidades",
-  add: "ParPeriodicidad/PostParPeriodicidad",
+  post: "ParPeriodicidad/PostParPeriodicidad",
   update: "ParPeriodicidad/PutParPeriodicidad",
   delete: "ParPeriodicidad/DeleteParPeriodicidad",
+  navigation: "./ParPeriodicidad",
+  navigationBack: "./ParPeriodicidadView",
 };
 
-export const tableStyle = {
-  rowStyle: {
-    fontSize: 12,
-  },
-  headerStyle: {
-    backgroundColor: "#898883",
-    color: "#FFF",
-    fontSize: 13,
-  },
+export const typeMode = {
+  onlyread: false,
 };

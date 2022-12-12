@@ -1,46 +1,29 @@
-//const userData = JSON.parse(localStorage.getItem("userLogged"));
-
-/**
- * Contexto con el cual interactua el componente ParEstadoCivil
- */
-
- export const columnsParEstadoCivil = [
-    {
-        title: "Código Empresa",
-        field: "CodigoEmpresa",
-        initialEditValue: 1,//userData.codigoEmpresa,
-        editable: "never",
-      },
-      {
-        title: "Nombre",
-        field: "CodigoEmpresaNavigation.Nombre",
-        id: "CodigoEmpresaNavigation.CodigoEmpresa",
-        initialEditValue: "DmdInterSoft", //userData.nombreEmpresa,
-        editable: "never",
-      },
-      {
-        title: "Estado Civil",
-        field: "CodigoEstadoCivil",
-        initialEditValue: 0,
-        editable: "never",
-      },
-      { title: "Descripción", field: "Descripcion" },
+export const columnsParEstadoCivil = [
+  {
+    headerName: "Código Estado Civil",
+    field: "CodigoEstadoCivil",
+    width: 550,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Descripción",
+    field: "Descripcion",
+    width: 550,
+    headerAlign: "center",
+    align: "center",
+  },
 ];
 
 export const routesParEstadoCivilApi = {
   get: "ParEstadoCivil/GetParEstadosCiviles",
-  add: "ParEstadoCivil/PostParEstadoCivil",
+  post: "ParEstadoCivil/PostParEstadoCivil",
   update: "ParEstadoCivil/PutParEstadoCivil",
   delete: "ParEstadoCivil/DeleteParEstadoCivil",
+  navigation: "./ParEstadoCivil",
+  navigationBack: "./ParEstadoCivilView",
 };
 
-export const tableStyle = {
-  rowStyle: {
-    fontSize: 12,
-  },
-  headerStyle: {
-    backgroundColor: "#898883",
-    color: "#FFF",
-    fontSize: 13,
-  },
+export const typeMode = {
+  onlyread: false,
 };

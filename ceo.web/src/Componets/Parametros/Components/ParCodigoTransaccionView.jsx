@@ -1,6 +1,6 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsParCodigoTransaccion, routesParCodigoTransaccionApi } from "../Interfaces/interfaceParCodigoTransaccion";
+import { columnsParCodigoTransaccion, routesParCodigoTransaccionApi, typeMode } from "../Interfaces/interfaceParCodigoTransaccion";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -15,7 +15,8 @@ const ParCodigoTransaccionView = () => {
         columns={columnsParCodigoTransaccion}
         apiRoutes={routesParCodigoTransaccionApi}
         field="CodigoTransaccion"
-        title="Catálogo Transacciones"
+        title="Catálogo Transacción"
+        typeMode={typeMode}
       />
     </div>
   );

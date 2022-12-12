@@ -1,6 +1,3 @@
-import ParEstadoCivil from "../Components/ParEstadoCivil";
-import ParParentezco from "../Components/ParParentezco";
-import ParPeriodicidad from "../Components/ParPeriodicidad";
 import { ParTipoCambio } from "../Components/ParTipoCambio";
 import ParTipoCambioView from "../Components/ParTipoCambioView";
 import { ParMoneda } from "../Components/ParMoneda";
@@ -17,13 +14,15 @@ import { ParDiocesis } from "../Components/ParDiocesis";
 import ParDiocesisView from "../Components/ParDiocesisView";
 import { ParEmisorTarjeta } from "../Components/ParEmisorTarjeta";
 import ParEmisorTarjetaView from "../Components/ParEmisorTarjetaView";
+import { ParEstadoCivil } from "../Components/ParEstadoCivil";
+import ParEstadoCivilView from "../Components/ParEstadoCivilView";
+import { ParPeriodicidad } from "../Components/ParPeriodicidad";
+import ParPeriodicidadView from "../Components/ParPeriodicidadView";
+import { ParParentezco } from "../Components/ParParentezco";
+import ParParetezcoView from "../Components/ParParentezcoView";
 
 
 export const routes =[
-    {
-        path: "/Dashboard/ParIndex/ParParentezco",
-        component: ParParentezco,
-    },
     {
         path: "/Dashboard/ParIndex/ParTipoCambio",
         component: ParTipoCambio,
@@ -31,14 +30,6 @@ export const routes =[
     {
         path: "/Dashboard/ParIndex/ParTipoCambioView",
         component: ParTipoCambioView,
-    },
-    {
-        path: "/Dashboard/ParIndex/ParPeriodicidad",
-        component: ParPeriodicidad,
-    },
-    {
-        path: "/Dashboard/ParIndex/ParEstadoCivil",
-        component: ParEstadoCivil,
     },
     {
         path: "/Dashboard/ParIndex/ParMoneda",
@@ -95,5 +86,29 @@ export const routes =[
     {
         path: "/Dashboard/ParIndex/ParEmisorTarjetaView",
         component: ParEmisorTarjetaView,
-    },                            
+    },
+    {
+        path: "/Dashboard/ParIndex/ParEstadoCivil",
+        component: ParEstadoCivil,
+    },
+    {
+        path: "/Dashboard/ParIndex/ParEstadoCivilView",
+        component: ParEstadoCivilView,
+    },  
+    {
+        path: "/Dashboard/ParIndex/ParPeriodicidad",
+        component: ParPeriodicidad,
+    },
+    {
+        path: "/Dashboard/ParIndex/ParPeriodicidadView",
+        component: ParPeriodicidadView,
+    },
+    {
+        path: "/Dashboard/ParIndex/ParParentezco",
+        component: ParParentezco,
+    },
+    {
+        path: "/Dashboard/ParIndex/ParParentezcoView",
+        component: ParParetezcoView,
+    },                          
 ]

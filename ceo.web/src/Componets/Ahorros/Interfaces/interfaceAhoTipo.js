@@ -2,14 +2,14 @@ export const columnsAhoTipo = [
   {
     headerName: "Código Tipo Ahorro",
     field: "CodigoTipo",
-    width: 300,
+    width: 550,
     headerAlign: "center",
     align: "center",
   },
   {
     headerName: "Descripción",
     field: "Descripcion",
-    width: 300,
+    width: 550,
     headerAlign: "center",
     align: "center",
   },
@@ -17,11 +17,16 @@ export const columnsAhoTipo = [
 
 export const routesAhoTipoApi = {
   get: "AhoTipo/GetAhoTipos",
-  add: "AhoTipo/PostAhoTipo",
+  post: "AhoTipo/PostAhoTipo",
   update: "AhoTipo/PutAhoTipo",
   delete: "AhoTipo/DeleteAhoTipo",
+  navigation: "./AhoTipo",
+  navigationBack: "./AhoTipoView",
 };
 
 export const typeMode = {
   onlyread: false,
+  deleteButton: false,
+  editeButton: false,
+  addButton: false,
 };

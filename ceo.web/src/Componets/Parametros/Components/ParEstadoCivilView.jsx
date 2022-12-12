@@ -1,6 +1,6 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsParEmisorTarjeta, routesParEmisorTarjetaApi, typeMode } from "../Interfaces/interfaceParEmisorTarjeta";
+import { columnsParEstadoCivil, routesParEstadoCivilApi, typeMode } from "../Interfaces/interfaceParEstadoCivil";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -8,18 +8,18 @@ import { columnsParEmisorTarjeta, routesParEmisorTarjetaApi, typeMode } from "..
  * @returns CrudTableBasic
  */
 
-const ParEmisorTarjetaView = () => {
+const ParEstadoCivilView = () => {
   return (
     <div>
       <CrudTableFormNew
-        columns={columnsParEmisorTarjeta}
-        apiRoutes={routesParEmisorTarjetaApi}
-        field="CodigoEmisor"
-        title="Catálogo Emisor Tarjeta"
+        columns={columnsParEstadoCivil}
+        apiRoutes={routesParEstadoCivilApi}
+        field="CodigoEstadoCivil"
+        title="Catálogo Estado Civil"
         typeMode={typeMode}
       />
     </div>
   );
 };
 
-export default ParEmisorTarjetaView;
+export default ParEstadoCivilView;

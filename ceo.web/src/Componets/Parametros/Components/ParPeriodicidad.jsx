@@ -1,24 +1,18 @@
 import React from "react";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { columnsParPeriodicidad, routesParPeriodicidadApi } from "../Interfaces/interfaceParPeriodicidad";
+import formJson from "../Data/parPeriodicidadData.json";
+import { Form } from "../../CrossComponets/Form";
+import { useLocation } from "react-router-dom";
+import { routesParPeriodicidadApi, typeMode } from "../Interfaces/interfaceParPeriodicidad";
 
-/**
- * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
- * realiazar un crud sobre un componente material-table
- * @returns CrudTableBasic
- */
-
-const ParPeriodicidad = () => {
+export const ParPeriodicidad = () => {
+  const { rowUpdate } = useLocation();
   return (
-    <div>
-      <CrudTableBasic
-        columns={columnsParPeriodicidad}
-        apiRoutes={routesParPeriodicidadApi}
-        field="CodigoPeriodicidad"
-        title="Catálogo Periodicidad"
-      />
-    </div>
+    <Form
+      formJson={formJson}
+      title="Catálogo Periodicidad"
+      urlApi={routesParPeriodicidadApi}
+      rowUpdate={rowUpdate}
+      typeMode={typeMode}
+    />
   );
 };
-
-export default ParPeriodicidad;

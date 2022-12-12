@@ -1,6 +1,6 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsParDistrito, routesParDistritoApi } from "../Interfaces/interfaceParDistrito";
+import { columnsParDistrito, routesParDistritoApi, typeMode } from "../Interfaces/interfaceParDistrito";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +16,7 @@ const ParDistritoView = () => {
         apiRoutes={routesParDistritoApi}
         field="CodigoDistrito"
         title="Catálogo Distrito"
+        typeMode={typeMode}
       />
     </div>
   );

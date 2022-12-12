@@ -1,24 +1,18 @@
 import React from "react";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { columnsParEstadoCivil, routesParEstadoCivilApi } from "../Interfaces/interfaceParEstadoCivil";
+import formJson from "../Data/parEstadoCivilData.json";
+import { Form } from "../../CrossComponets/Form";
+import { useLocation } from "react-router-dom";
+import { routesParEstadoCivilApi, typeMode } from "../Interfaces/interfaceParEstadoCivil";
 
-/**
- * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
- * realiazar un crud sobre un componente material-table
- * @returns CrudTableBasic
- */
-
-const ParEstadoCivil = () => {
+export const ParEstadoCivil = () => {
+  const { rowUpdate } = useLocation();
   return (
-    <div>
-      <CrudTableBasic
-        columns={columnsParEstadoCivil}
-        apiRoutes={routesParEstadoCivilApi}
-        field="CodigoEstadoCivil"
-        title="Catálogo Estado Civil"
-      />
-    </div>
+    <Form
+      formJson={formJson}
+      title="Catálogo Estado Civil"
+      urlApi={routesParEstadoCivilApi}
+      rowUpdate={rowUpdate}
+      typeMode={typeMode}
+    />
   );
 };
-
-export default ParEstadoCivil;

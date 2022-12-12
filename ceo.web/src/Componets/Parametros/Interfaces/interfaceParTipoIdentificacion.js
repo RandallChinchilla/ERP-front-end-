@@ -1,30 +1,29 @@
 export const columnsParTipoIdentificacion = [
-    {
-      title: "Tipo de Identificación",
-      field: "CodigoTipoIdentificacion",
-    },
-    {
-      title: "Descripción",
-      field: "Descripcion",
-    },
+  {
+    headerName: "Código Tipo de Identificación",
+    field: "CodigoTipoIdentificacion",
+    width: 550,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    headerName: "Descripción",
+    field: "Descripcion",
+    width: 550,
+    headerAlign: "center",
+    align: "center",
+  },
+];
 
-  ];
-  
-  export const routesParTipoIdentificacionApi = {
-    get: "ParTipoidentificacion/GetParTiposIdentificacion",
-    post: "ParTipoidentificacion/PostParTipoidentificacion",
-    update: "ParTipoidentificacion/PutParTipoidentificacion",
-    delete: "ParTipoidentificacion/DeleteParTipoidentificacion",
-    navigation: "./ParTipoidentificacion",
-  };
-  
-  export const tableStyle = {
-    rowStyle: {
-      fontSize: 12,
-    },
-    headerStyle: {
-      backgroundColor: "#898883",
-      color: "#FFF",
-      fontSize: 13,
-    },
-  };  
+export const routesParTipoIdentificacionApi = {
+  get: "ParTipoidentificacion/GetParTiposIdentificacion",
+  post: "ParTipoIdentificacion/PostParTipoIdentificacion",
+  update: "ParTipoIdentificacion/PutParTipoIdentificacion",
+  delete: "ParTipoIdentificacion/DeleteParTipoIdentificacion",
+  navigation: "./ParTipoIdentificacion",
+  navigationBack: "./ParTipoIdentificacionView",
+};
+
+export const typeMode = {
+  onlyread: false,
+};

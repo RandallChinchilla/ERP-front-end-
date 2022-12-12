@@ -1,6 +1,6 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsParDiocesis, routesParDiocesisApi } from "../Interfaces/interfaceParDiocesis";
+import { columnsParDiocesis, routesParDiocesisApi, typeMode } from "../Interfaces/interfaceParDiocesis";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +16,7 @@ const ParDiocesisView = () => {
         apiRoutes={routesParDiocesisApi}
         field="CodigoDiocesis"
         title="Catálogo Diócesis"
+        typeMode={typeMode}
       />
     </div>
   );

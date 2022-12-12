@@ -1,6 +1,6 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
-import { columnsAhoProductoLog, routesAhoProductoLogApi } from "../Interfaces/interfaceAhoProductoLog";
+import { columnsAhoProductoLog, routesAhoProductoLogApi, typeMode } from "../Interfaces/interfaceAhoProductoLog";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -16,6 +16,7 @@ const AhoProductoLogView = () => {
         apiRoutes={routesAhoProductoLogApi}
         field="CodigoTipo"
         title="Catálogo Producto Log"
+        typeMode={typeMode}
       />
     </div>
   );

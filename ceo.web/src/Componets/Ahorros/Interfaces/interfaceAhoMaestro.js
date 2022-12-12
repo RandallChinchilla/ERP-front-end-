@@ -2,44 +2,49 @@ export const columnsAhoMaestro = [
   {
     headerName: "Portafolio",
     field: "CodigoPortafolio",
-    width: 300,
+    width: 175,
     headerAlign: "center",
     align: "center",
+    valueGetter: (params) => params.row.Codigo2.Descripcion,
   },
   {
     headerName: "Numero Inversión",
     field: "NumeroInversion",
-    width: 300,
+    width: 175,
     headerAlign: "center",
     align: "center",
   },
   {
     headerName: "Aportante",
     field: "CodigoAportante",
-    width: 300,
+    width: 175,
     headerAlign: "center",
     align: "center",
+    valueGetter: (params) => params.row.Codigo.Nombre,
   },
   {
     headerName: "Tipo",
     field: "CodigoTipo",
-    width: 300,
+    width: 175,
     headerAlign: "center",
     align: "center",
+    valueGetter: (params) => params.row.Codigo3.Descripcion,
   },
   {
     headerName: "Moneda",
     field: "CodigoMoneda",
-    width: 300,
+    width: 175,
     headerAlign: "center",
     align: "center",
+    valueGetter: (params) => params.row.CodigoNavigation.Descripcion,
   },
   {
     headerName: "Estado",
     field: "CodigoEstado",
-    width: 300,
+    width: 175,
     headerAlign: "center",
     align: "center",
+    valueGetter: (params) => params.row.CodigoEstadoNavigation.Descripcion,
   },
 ];
 
@@ -53,5 +58,8 @@ export const routesAhoMaestroApi = {
 };
 
 export const typeMode = {
-  onlyread: false,
+  onlyread: true,
+  deleteButton: false,
+  editeButton: false,
+  addButton: false,
 };

@@ -9,7 +9,7 @@ export const ParCodigoTransaccion = () => {
   return (
     <Form
       formJson={formJson}
-      title="Catálogo Transacciones"
+      title="Catálogo Transacción"
       urlApi={routesParCodigoTransaccionApi}
       rowUpdate={rowUpdate}
       typeMode={typeMode}
