@@ -13,7 +13,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { SelectList } from "./SelectList";
 import { postAction } from "../../Helpers/postHelper";
 import { useDispatch, useSelector } from "react-redux";
-import { updateAlert, updateModal } from "../../Actions/Index";
+import { updateAlert } from "../../Actions/Index";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -22,12 +22,10 @@ import { putAction } from "../../Helpers/putHelper";
 import { useStyles } from "./Styles/crossStylesComponent";
 import SearchIcon from "@mui/icons-material/Search";
 import { TableModal } from "./TableModal";
-import { getValue } from "@mui/system";
-
-const initialValues = {};
-const requiredFields = {};
 
 export const Form = ({ formJson, title, urlApi, rowUpdate, typeMode }) => {
+  const initialValues = {};
+  const requiredFields = {};
   const userLogged = JSON.parse(localStorage.getItem("myuser"));
   const userLoggedToken = localStorage.getItem("mytoken");
   const [date, setDate] = useState(new Date());
@@ -54,7 +52,9 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, typeMode }) => {
     }
     requiredFields[input.nameId ? input.nameId : input.name] = schema;
   }
-  const validationschema = Yup.object({ ...requiredFields });
+
+  const validationschema = Yup.object().shape({ ...requiredFields });
+  console.log(validationschema);
 
   initialValues.nombreEmpresa = userLogged.NombreEmpresa;
   initialValues.Usuario = userLogged.UserName;
@@ -74,16 +74,16 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, typeMode }) => {
   });
 
   const form = watch();
-  console.log(form);
 
-  const onSubmit = (data) => {
-    console.log(urlApi.post);
+  const onHSubmit = (data, e) => {
+    e.preventDefault();
     let response = rowUpdate
       ? putAction(urlApi.update, data)
       : postAction(urlApi.post, data, userLoggedToken);
     response.then((res) => {
       console.log(res);
       if (res.IsSuccess) {
+        e.target.reset();
         usehistory.push(urlApi.navigationBack);
       } else {
         dispatch(
@@ -120,7 +120,7 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, typeMode }) => {
     <div>
       <Grid container justifyContent="center">
         <Paper elevation={3} className={styles.paper}>
-          <Box container sx={{ maxWidth: "100%", "& button": { m: 1 } }}>
+          <Box sx={{ maxWidth: "100%", "& button": { m: 1 } }}>
             <Grid container spacing={2} justifyContent="center" pl={5} pr={5}>
               <Grid
                 item
@@ -135,10 +135,11 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, typeMode }) => {
                 </Typography>
               </Grid>
               <form
+                key={title}
                 className={styles.form}
                 noValidate
                 // onSubmit={handleSubmit((data) => alert(JSON.stringify(data)))}
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={handleSubmit(onHSubmit)}
               >
                 <Grid
                   container

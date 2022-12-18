@@ -8,7 +8,6 @@ import { routes } from "./routes";
 export const PasIndex = () => {
   return (
     <Switch>
-      {/* <Provider store={store}> */}
       {routes.map((route) => (
         <Route
           key={route.path}
@@ -20,8 +19,6 @@ export const PasIndex = () => {
         />
       ))}
       <Notification />
-
-      {/* </Provider> */}
     </Switch>
   );
 };
