@@ -23,7 +23,7 @@ export const PasAportante = () => {
   return (
     <Form
       formJson={formJson}
-      title="Aportante"
+      title="Catálogo Aportante"
       urlApi={routesPasAportanteApi}
       rowUpdate={rowUpdate}
       typeMode={typeMode}

@@ -20,6 +20,7 @@ const RRHConfiguracionView = () => {
         apiRoutes={routesRRHConfiguracionApi}
         field="FechaHora"
         title="Catálogo Configuración"
+        typeMode={typeMode}
       />
     </div>
   );

@@ -112,7 +112,7 @@ export default function Autenticacion() {
                   marginBottom: 3,
                 }}
               >
-                Autenticate
+                Autenticación
               </Typography>
             </Grid>
             <form

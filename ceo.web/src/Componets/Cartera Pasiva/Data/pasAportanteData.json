@@ -1,4 +1,16 @@
 [
+  {
+    "type": "text",
+    "name": "CodigoInterno",
+    "label": "Codigo Interno",
+    "value": 0,
+    "xs": 12,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
   { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
   {
     "type": "text",
@@ -162,11 +174,37 @@
     ]
   },
   {
+    "type": "select",
+    "name": "CodigoDiocesis",
+    "label": "Diocesis",
+    "value": "",
+    "xs": 3,
+    "controller": "ParDiocesis/GetListaParDiocesis",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Congregacion",
+    "label": "Congregación",
+    "value": "",
+    "xs": 12,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
     "type": "text",
     "name": "NombreEncargado",
     "label": "Nombre Encargado",
     "value": "",
-    "xs": 3,
+    "xs": 4,
     "validations": [
       {
         "type": "required"
@@ -178,7 +216,7 @@
     "name": "Apellido1Encargado",
     "label": "Primer Apellido",
     "value": "",
-    "xs": 3,
+    "xs": 4,
     "validations": [
       {
         "type": "required"
@@ -190,7 +228,7 @@
     "name": "Apellido2Encargado",
     "label": "Segundo Apellido",
     "value": "",
-    "xs": 3,
+    "xs": 4,
     "validations": [
       {
         "type": "required"
@@ -254,7 +292,7 @@
   {
     "type": "select",
     "name": "CodigoPais",
-    "label": "País Nacimeinto",
+    "label": "País Nacimiento",
     "value": "",
     "xs": 3,
     "controller": "ParPais/GetParPaises",
@@ -433,39 +471,13 @@
     ]
   },
   {
-    "type": "select",
-    "name": "CodigoDiocesis",
-    "label": "Diocesis",
-    "value": "",
-    "xs": 3,
-    "controller": "ParDiocesis/GetListaParDiocesis",
-    "fieldName": "Descripcion",
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
-  },
-  {
-    "type": "text",
-    "name": "Congregacion",
-    "label": "Congregación",
-    "value": "",
-    "xs": 3,
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
-  },
-  {
     "type": "date",
     "name": "FechaIngreso",
     "label": "Fecha Ingreso",
     "value": "",
     "size": "small",
     "inputFormat": "dd/MM/yyyy",
-    "xs": 3,
+    "xs": 4,
     "validations": [
       {
         "type": "required"
@@ -476,22 +488,11 @@
     "type": "select",
     "name": "CodigoEstado",
     "label": "Estado",
-    "value": "",
-    "xs": 3,
+    "value": "1",
+    "xs": 4,
     "controller": "ParEstado/GetParEstados",
+    "disabled": true,
     "fieldName": "Descripcion",
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
-  },
-  {
-    "type": "text",
-    "name": "CodigoInterno",
-    "label": "Codigo Interno",
-    "value": 0,
-    "xs": 3,
     "validations": [
       {
         "type": "required"
@@ -503,7 +504,7 @@
     "name": "Usuario",
     "label": "Usuario",
     "value": "",
-    "xs": 3,
+    "xs": 4,
     "disabled": true,
     "validations": []
   }

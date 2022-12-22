@@ -12,7 +12,7 @@ export const PasTipoInstrumento = () => {
   return (
     <Form
       formJson={formJson}
-      title="Catálogo tipo Instrumento"
+      title="Catálogo Aportes A Plazo"
       urlApi={routesPasTipoInstrumentoApi}
       rowUpdate={rowUpdate}
       typeMode={typeMode}
