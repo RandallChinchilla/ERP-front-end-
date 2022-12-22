@@ -1,10 +1,10 @@
 import React from "react";
 import { CrudTableFormNew } from "../../CrossComponets/CrudTableFormNew";
 import {
-  columnsPasTipoInstrumento,
-  routesPasTipoInstrumentoApi,
+  columnsRRHGradoAcademico,
+  routesRRHGradoAcademicoApi,
   typeMode,
-} from "../Interfaces/interfacePasTipoInstrumento";
+} from "../Interfaces/interfaceRRHGradoAcademico";
 
 /**
  * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
@@ -12,18 +12,18 @@ import {
  * @returns CrudTableBasic
  */
 
-const PasTipoInstrumentoView = () => {
+const RRHGradoAcademicoView = () => {
   return (
     <div>
       <CrudTableFormNew
-        columns={columnsPasTipoInstrumento}
-        apiRoutes={routesPasTipoInstrumentoApi}
-        field="CodigoTipo"
-        title="Catálogo Aportes A Plazo"
+        columns={columnsRRHGradoAcademico}
+        apiRoutes={routesRRHGradoAcademicoApi}
+        field="CodigoGrado"
+        title="Catálogo Grado Académico"
         typeMode={typeMode}
       />
     </div>
   );
 };
 
-export default PasTipoInstrumentoView;
+export default RRHGradoAcademicoView;

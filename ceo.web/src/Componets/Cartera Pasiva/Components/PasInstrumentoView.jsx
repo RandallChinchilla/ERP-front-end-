@@ -24,7 +24,7 @@ const PasInstrumentoView = () => {
         columns={columnsPasInstrumento}
         apiRoutes={routesPasInstrumentoApi}
         field="CodigoInstrumento"
-        title="Catálogo Instrumentos"
+        title="Catálogo Configuración Aportes"
         typeMode={typeMode}
       />
     </div>

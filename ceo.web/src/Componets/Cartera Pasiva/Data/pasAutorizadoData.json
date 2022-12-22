@@ -1,29 +1,37 @@
 [
-  { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
   {
-    "type": "text",
-    "name": "nombreEmpresa",
-    "label": "Empresa",
-    "value": "",
-    "xs": 3,
-    "disabled": true,
-    "validations": []
-  },
-  {
-    "type": "text",
+    "type": "textSearch",
+    "nameId": "CodigoAportante",
     "name": "CodigoAportante",
     "label": "Aportante",
-    "value": 0,
-    "xs": 3,
-    "disabled": true,
-    "validations": []
+    "value": "",
+    "xs": 4,
+    "columnsModal": [
+      {
+        "title": "Aportante",
+        "field": "CodigoAportante"
+      },
+      {
+        "title": "Nombre Aportante",
+        "field": "Nombre"
+      }
+    ],
+    "setModalFields": [],
+    "apiRouteModal": "PasAportante/GetPasAportantes",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
   },
   {
-    "type": "text",
+    "type": "select",
     "name": "CodigoTipoIdentificacion",
     "label": "Tipo Identificación",
-    "value": 0,
-    "xs": 3,
+    "value": "",
+    "xs": 4,
+    "controller": "ParTipoidentificacion/GetParTiposIdentificacion",
+    "fieldName": "Descripcion",
     "validations": [
       {
         "type": "required"
@@ -35,7 +43,7 @@
     "name": "NumeroId",
     "label": "Número Id",
     "value": "",
-    "xs": 3,
+    "xs": 4,
     "validations": [
       {
         "type": "required"
@@ -120,7 +128,7 @@
     "type": "select",
     "name": "CodigoEstado",
     "label": "Estado",
-    "value": "",
+    "value": "1",
     "xs": 6,
     "controller": "ParEstado/GetParEstados",
     "fieldName": "Descripcion",

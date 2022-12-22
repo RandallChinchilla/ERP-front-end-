@@ -1,6 +1,5 @@
 import { RRHFormaPago } from "../Components/RRHFormaPago";
 import RRHFormaPagoView from "../Components/RRHFormaPagoView";
-import RRHGradoAcademico from "../Components/RRHGradoAcademico";
 import { RRHTipoDeduccion } from "../Components/RRHTipoDeduccion";
 import RRHTipoDeduccionView from "../Components/RRHTipoDeduccionView";
 import { RRHTipoPlanilla } from "../Components/RRHTipoPlanilla";
@@ -26,12 +25,10 @@ import { RRHEstado } from "../Components/RRHEstado";
 import RRHEstadoView from "../Components/RRHEstadoView";
 import { RRHCentroMedico } from "../Components/RRHCentroMedico";
 import RRHCentroMedicoView from "../Components/RRHCentroMedicoView";
+import { RRHGradoAcademico } from "../Components/RRHGradoAcademico";
+import RRHGradoAcademicoView from "../Components/RRHGradoAcademicoView";
 
 export const routes = [
-  {
-    path: "/Dashboard/RRHIndex/RRHGradoAcademico",
-    component: RRHGradoAcademico,
-  },
   {
     path: "/Dashboard/RRHIndex/RRHTipoDeduccionView",
     component: RRHTipoDeduccionView,
@@ -139,5 +136,13 @@ export const routes = [
   {
     path: "/Dashboard/RRHIndex/RRHCentroMedicoView",
     component: RRHCentroMedicoView,
+  },
+  {
+    path: "/Dashboard/RRHIndex/RRHGradoAcademico",
+    component: RRHGradoAcademico,
+  },
+  {
+    path: "/Dashboard/RRHIndex/RRHGradoAcademicoView",
+    component: RRHGradoAcademicoView,
   },
 ];

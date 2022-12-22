@@ -1,43 +1,43 @@
-import { Deleterow } from "../../CrossComponets/Deleterow";
-import { Editrow } from "../../CrossComponets/Editrow";
-
 export const columnsPasAportante = [
   {
     headerName: "Aportante",
     field: "CodigoAportante",
+    width: 175,
+    headerAlign: "center",
+    align: "center",
   },
   {
     headerName: "Nombre Aportante",
     field: "Nombre",
-    width: 300,
+    width: 175,
     headerAlign: "center",
     align: "center",
   },
   {
     headerName: "Código Interno",
     field: "CodigoInterno",
-    width: 200,
+    width: 175,
     headerAlign: "center",
     align: "center",
   },
   {
     headerName: "Teléfono",
     field: "TelefonoCelular",
-    width: 200,
+    width: 175,
     headerAlign: "center",
     align: "center",
   },
   {
     headerName: "Dirección",
     field: "DireccionDomicilio",
-    width: 300,
+    width: 175,
     headerAlign: "center",
     align: "center",
   },
   {
     headerName: "Correo",
     field: "EMailAportante",
-    width: 300,
+    width: 175,
     headerAlign: "center",
     align: "center",
   },
@@ -51,7 +51,7 @@ export const columnsPasAportanteModal = [
   {
     headerName: "Nombre Aportante",
     field: "Nombre",
-    width: 300,
+    width: 175,
     headerAlign: "center",
     align: "center",
   },

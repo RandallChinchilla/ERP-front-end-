@@ -425,8 +425,34 @@ export default function NestedList() {
           <ExpandMore style={{ color: "white" }} />
         )}
       </ListItemButton>
-
       <Collapse in={openCajas} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/FacMaestroView">
+              <ListItemText className={classes.text}>Configuración</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openCajas} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/FacMaestroView">
+              <ListItemText className={classes.text}>Caja</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openCajas} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/FacMaestroView">
+              <ListItemText className={classes.text}>Cierre de Caja</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      {/* <Collapse in={openCajas} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink tag={Link} to="/Dashboard/FacMaestroView">
@@ -434,7 +460,7 @@ export default function NestedList() {
             </NavLink>
           </ListItemButton>
         </List>
-      </Collapse>
+      </Collapse> */}
       <ListItemButton onClick={handleClickContabilidad}>
         <ListItemIcon>
           <AppRegistrationIcon className={classes.iconos} />
@@ -928,7 +954,8 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHMaestroTab">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHMaestroTab"
+              style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>
               <ListItemText className={classes.text}>
                 Aplicar Planilla
               </ListItemText>
@@ -939,7 +966,8 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHISRView">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHISRView"
+              style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>
               <ListItemText className={classes.text}>ISR</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -948,7 +976,8 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHEstadoView">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHEstadoView"
+              style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>
               <ListItemText className={classes.text}>Estado</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -957,7 +986,8 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHFormaPagoView">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHFormaPagoView"
+               style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>
               <ListItemText className={classes.text}>
                 Forma De Pago
               </ListItemText>
@@ -968,7 +998,8 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHTipoPlanillaView">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHTipoPlanillaView"
+              style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>
               <ListItemText className={classes.text}>
                 Tipo Planilla
               </ListItemText>
@@ -979,7 +1010,8 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHCentroMedicoView">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHCentroMedicoView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>
               <ListItemText className={classes.text}>
                 Centro Médico
               </ListItemText>
@@ -990,7 +1022,8 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHGradoAcademico">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHGradoAcademicoView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>
               <ListItemText className={classes.text}>
                 Grado Académico
               </ListItemText>
@@ -1001,7 +1034,8 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHTipoDeduccionView">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHTipoDeduccionView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>
               <ListItemText className={classes.text}>
                 Tipo Deducción
               </ListItemText>
@@ -1012,7 +1046,8 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHMotivoSalidaView">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHMotivoSalidaView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>
               <ListItemText className={classes.text}>
                 Motivo Salida
               </ListItemText>
@@ -1023,7 +1058,8 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHMaestroView">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHMaestroView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>
               <ListItemText className={classes.text}>Maestro</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1032,16 +1068,8 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHMaestroLogView">
-              <ListItemText className={classes.text}>Maestro Log</ListItemText>
-            </NavLink>
-          </ListItemButton>
-        </List>
-      </Collapse>
-      <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHParienteView">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHParienteView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>            
               <ListItemText className={classes.text}>Pariente</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1050,7 +1078,8 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHConfiguracionView">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHConfiguracionView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>            
               <ListItemText className={classes.text}>
                 Configuración
               </ListItemText>
@@ -1061,7 +1090,8 @@ export default function NestedList() {
       <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHAccionPersonalView">
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHAccionPersonalView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>            
               <ListItemText className={classes.text}>
                 Acción Personal
               </ListItemText>
@@ -1075,10 +1105,20 @@ export default function NestedList() {
             <NavLink
               tag={Link}
               to="/Dashboard/RRHIndex/RRHDeduccionEmpleadoView"
-            >
+              style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>
               <ListItemText className={classes.text}>
                 Deducción Empleado
               </ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openRecursosHumanos} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/RRHIndex/RRHMaestroLogView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>            
+              <ListItemText className={classes.text}>Maestro Log</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -1094,7 +1134,13 @@ export default function NestedList() {
           <ExpandMore style={{ color: "white" }} />
         )}
       </ListItemButton>
-
+      <Collapse in={openPresupuesto} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemText className={classes.text}>Partida Presupuesto</ListItemText>
+          </ListItemButton>
+        </List>
+      </Collapse>
       <Collapse in={openPresupuesto} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
@@ -1116,7 +1162,8 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParIndex/ParEmpresaView">
+            <NavLink tag={Link} to="/Dashboard/ParIndex/ParEmpresaView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>            
               <ListItemText className={classes.text}>Empresa</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1125,7 +1172,8 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParIndex/ParMonedaView">
+            <NavLink tag={Link} to="/Dashboard/ParIndex/ParMonedaView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>            
               <ListItemText className={classes.text}>Moneda</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1137,7 +1185,7 @@ export default function NestedList() {
             <NavLink
               tag={Link}
               to="/Dashboard/ParIndex/ParTipoIdentificacionView"
-            >
+              style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>
               <ListItemText className={classes.text}>
                 Tipo de Identificación
               </ListItemText>
@@ -1151,7 +1199,7 @@ export default function NestedList() {
             <NavLink
               tag={Link}
               to="/Dashboard/ParIndex/ParCodigoTransaccionView"
-            >
+              style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>
               <ListItemText className={classes.text}>
                 Códigos Transacción
               </ListItemText>
@@ -1162,7 +1210,8 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParIndex/ParEstadoCivilView">
+            <NavLink tag={Link} to="/Dashboard/ParIndex/ParEstadoCivilView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>            
               <ListItemText className={classes.text}>Estado Civil</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1171,7 +1220,8 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParIndex/ParDistritoView">
+            <NavLink tag={Link} to="/Dashboard/ParIndex/ParDistritoView"
+              style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>          
               <ListItemText className={classes.text}>Distrito</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1180,7 +1230,8 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParIndex/ParPeriodicidadView">
+            <NavLink tag={Link} to="/Dashboard/ParIndex/ParPeriodicidadView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>            
               <ListItemText className={classes.text}>Periodicidad</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1189,7 +1240,8 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParIndex/ParDiocesisView">
+            <NavLink tag={Link} to="/Dashboard/ParIndex/ParDiocesisView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>            
               <ListItemText className={classes.text}>Diocesis</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1198,7 +1250,8 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParIndex/ParEmisorTarjetaView">
+            <NavLink tag={Link} to="/Dashboard/ParIndex/ParEmisorTarjetaView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>            
               <ListItemText className={classes.text}>
                 Emisor Tarjeta
               </ListItemText>
@@ -1209,7 +1262,8 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParIndex/ParParentezcoView">
+            <NavLink tag={Link} to="/Dashboard/ParIndex/ParParentezcoView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>            
               <ListItemText className={classes.text}>Parentezco</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1218,7 +1272,8 @@ export default function NestedList() {
       <Collapse in={openParametros} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/ParIndex/ParTipoCambioView">
+            <NavLink tag={Link} to="/Dashboard/ParIndex/ParTipoCambioView"
+            style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>            
               <ListItemText className={classes.text}>Tipo Cambio</ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1546,8 +1601,23 @@ export default function NestedList() {
               })}
             >
               <ListItemText className={classes.text}>
-                Cliente Aportante
+                Aportantes
               </ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/pasindex/PasAutorizadoView"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Autorizado</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -1563,7 +1633,7 @@ export default function NestedList() {
               })}
             >
               <ListItemText className={classes.text}>
-                Tipo Instrumento
+                Aportes A Plazo
               </ListItemText>
             </NavLink>
           </ListItemButton>
@@ -1579,7 +1649,7 @@ export default function NestedList() {
                 color: isActive ? "inherit" : "inherit",
               })}
             >
-              <ListItemText className={classes.text}>Instrumento</ListItemText>
+              <ListItemText className={classes.text}>Configuración Aportes</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -1606,7 +1676,7 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/Dashboard/PasIndex/PasOrigenAportante"
+              to="/Dashboard/PasIndex/PasOrigenAportanteView"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
               })}
@@ -1614,21 +1684,6 @@ export default function NestedList() {
               <ListItemText className={classes.text}>
                 Origen Aportante
               </ListItemText>
-            </NavLink>
-          </ListItemButton>
-        </List>
-      </Collapse>
-      <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <NavLink
-              tag={Link}
-              to="/Dashboard/pasindex/PasAutorizadoView"
-              style={(isActive) => ({
-                color: isActive ? "inherit" : "inherit",
-              })}
-            >
-              <ListItemText className={classes.text}>Autorizado</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -1837,21 +1892,6 @@ export default function NestedList() {
           <ListItemButton sx={{ pl: 4 }}>
             <NavLink
               tag={Link}
-              to="/Dashboard/AhoIndex/AhoProductoLogView"
-              style={(isActive) => ({
-                color: isActive ? "inherit" : "inherit",
-              })}
-            >
-              <ListItemText className={classes.text}>Producto Log</ListItemText>
-            </NavLink>
-          </ListItemButton>
-        </List>
-      </Collapse>
-      <Collapse in={openAhorros} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <NavLink
-              tag={Link}
               to="/Dashboard/AhoIndex/AhoProductoView"
               style={(isActive) => ({
                 color: isActive ? "inherit" : "inherit",
@@ -1905,6 +1945,18 @@ export default function NestedList() {
               })}
             >
               <ListItemText className={classes.text}>Tasa</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openAhorros} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/AhoIndex/AhoProductoLogView"
+              style={(isActive) => ({color: isActive ? "inherit" : "inherit",})}>
+              <ListItemText className={classes.text}>Producto Log</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>

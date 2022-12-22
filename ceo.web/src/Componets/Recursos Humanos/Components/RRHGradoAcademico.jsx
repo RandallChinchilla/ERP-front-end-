@@ -1,24 +1,18 @@
 import React from "react";
-import { CrudTableBasic } from "../../CrossComponets/CrudTableBasic";
-import { columnsRRHGradoAcademico, routesRRHGradoAcademicoApi } from "../Interfaces/interfaceRRHGradoAcademico";
+import { Form } from "../../CrossComponets/Form";
+import formJson from "../Data/rrhGradoAcademicoData.json";
+import { useLocation } from "react-router-dom";
+import { routesRRHGradoAcademicoApi, typeMode} from "../Interfaces/interfaceRRHGradoAcademico";
 
-/**
- * Este componente renderiza el componente generico CrudTableBasic, el cual nos permite
- * realiazar un crud sobre un componente material-table
- * @returns CrudTableBasic
- */
-
-const RRHGradoAcademico = () => {
+export const RRHGradoAcademico = () => {
+  const { rowUpdate } = useLocation();
   return (
-    <div>
-      <CrudTableBasic
-        columns={columnsRRHGradoAcademico}
-        apiRoutes={routesRRHGradoAcademicoApi}
-        field="CodigoGrado"
-        title="Catálogo Grado Académico"
-      />
-    </div>
+    <Form
+      formJson={formJson}
+      title="Catálogo Grado Académico"
+      urlApi={routesRRHGradoAcademicoApi}
+      rowUpdate={rowUpdate}
+      typeMode={typeMode}
+    />
   );
 };
-
-export default RRHGradoAcademico;

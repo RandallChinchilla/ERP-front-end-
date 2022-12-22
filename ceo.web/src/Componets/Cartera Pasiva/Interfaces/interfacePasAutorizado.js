@@ -1,32 +1,40 @@
 export const columnsPasAutorizado = [
-  // {
-  //   title: "Código Empresa",
-  //   field: "CodigoEmpresa",
-  // },
-  // {
-  //   title: "Empresa",
-  //   field: "CodigoEmpresaNavigation.Nombre",
-  //   id: "CodigoEmpresaNavigation.CodigoEmpresa",
-  // },
   {
-    title: "Tipo Identificación",
+    headerName: "Tipo Identificación",
     field: "CodigoTipoIdentificacion",
+    width: 225,
+    headerAlign: "center",
+    align: "center",
+    valueGetter: (params) => params.row.CodigoTipoIdentificacionNavigation.Descripcion,
   },
   {
-    title: "Número Id",
+    headerName: "Número Id",
     field: "NumeroId",
+    width: 225,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Primer Apellido",
+    headerName: "Primer Apellido",
     field: "Apellido1",
+    width: 225,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Segundo Apellido",
+    headerName: "Segundo Apellido",
     field: "Apellido2",
+    width: 225,
+    headerAlign: "center",
+    align: "center",
   },
   {
-    title: "Estado",
+    headerName: "Estado",
     field: "CodigoEstado",
+    width: 225,
+    headerAlign: "center",
+    align: "center",
+    valueGetter: (params) => params.row.CodigoEstadoNavigation.Descripcion,
   },
 ];
 
@@ -39,13 +47,6 @@ export const routesPasAutorizadoApi = {
   navigationBack: "./PasAutorizadoView",
 };
 
-export const tableStyle = {
-  rowStyle: {
-    fontSize: 12,
-  },
-  headerStyle: {
-    backgroundColor: "#898883",
-    color: "#FFF",
-    fontSize: 13,
-  },
+export const typeMode = {
+  onlyread: false,
 };

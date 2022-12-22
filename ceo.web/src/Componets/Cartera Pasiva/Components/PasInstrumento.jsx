@@ -24,7 +24,7 @@ export const PasInstrumento = () => {
   return (
     <Form
       formJson={formJson}
-      title="INSTRUMENTO"
+      title="Catálogo Configuración Aportes"
       urlApi={routesPasInstrumentoApi}
       rowUpdate={rowUpdate}
       typeMode={typeMode}

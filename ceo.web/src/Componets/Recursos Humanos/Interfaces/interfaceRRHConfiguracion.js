@@ -21,8 +21,8 @@ export const routesRRHConfiguracionApi = {
   post: "RrhConfiguracion/PostRrhConfiguracion",
   update: "RrhConfiguracion/PutRrhConfiguracion",
   delete: "RrhConfiguracion/DeleteRrhConfiguracion",
-  navigation: "./RrhConfiguracion",
-  navigationBack: "./RrhConfiguracionView",
+  navigation: "./RRHConfiguracion",
+  navigationBack: "./RRHConfiguracionView",
 };
 
 export const typeMode = {

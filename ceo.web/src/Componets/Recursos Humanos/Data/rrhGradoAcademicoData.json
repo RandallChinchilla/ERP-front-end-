@@ -1,0 +1,32 @@
+[
+    {
+      "type": "text",
+      "name": "CodigoGrado",
+      "label": "Código Grado",
+      "value": 0,
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "Descripcion",
+      "label": "Descripción",
+      "value": "",
+      "xs": 6,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Usuario",
+      "label": "Usuario",
+      "value": "",
+      "xs": 12,
+      "disabled": true,
+      "validations": []
+    }
+  ]
