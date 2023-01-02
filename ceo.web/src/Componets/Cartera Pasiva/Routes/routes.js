@@ -18,6 +18,8 @@ import PasOrigenFondosView from "../Components/PasOrigenFondosView";
 import { PasOrigenFondo } from "../Components/PasOrigenFondo";
 import { PasAutorizado } from "../Components/PasAutorizado";
 import PasAutorizadoView from "../Components/PasAutorizadoView";
+import { PasPersonaJuridicaCanonica } from "../Components/PasPersonaJuridicaCanonica";
+import PasPersonaJuridicaCanonicaView from "../Components/PasPersonaJuridicaCanonicaView";
 
 export const routes = [
   {
@@ -99,5 +101,21 @@ export const routes = [
   {
     path: "/Dashboard/pasindex/PasAutorizado",
     component: PasAutorizado,
+  },
+  {
+    path: "/Dashboard/pasindex/PasAutorizadoView",
+    component: PasAutorizadoView,
+  },
+  {
+    path: "/Dashboard/pasindex/PasAutorizado",
+    component: PasAutorizado,
+  },
+  {
+    path: "/Dashboard/pasindex/PasPersonaJuridicaCanonica",
+    component: PasPersonaJuridicaCanonica,
+  },
+  {
+    path: "/Dashboard/pasindex/PasPersonaJuridicaCanonicaView",
+    component: PasPersonaJuridicaCanonicaView,
   },
 ];

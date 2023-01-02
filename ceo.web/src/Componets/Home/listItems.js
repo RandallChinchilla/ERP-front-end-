@@ -446,8 +446,35 @@ export default function NestedList() {
       <Collapse in={openCajas} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <NavLink tag={Link} to="/Dashboard/FacMaestroView">
-              <ListItemText className={classes.text}>Cierre de Caja</ListItemText>
+            <NavLink tag={Link} to="/Dashboard/CajIndex/CajTipoDocumentoView">
+              <ListItemText className={classes.text}>Tipo Documento</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openCajas} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/CajIndex/CajEfectivoMilView">
+              <ListItemText className={classes.text}>Efectivo Mil</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openCajas} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/CajIndex/CajEfectivoUSDView">
+              <ListItemText className={classes.text}>Efectivo USD</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
+      <Collapse in={openCajas} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink tag={Link} to="/Dashboard/CajIndex/CajEfectivoEuroView">
+              <ListItemText className={classes.text}>Efectivo Euro</ListItemText>
             </NavLink>
           </ListItemButton>
         </List>
@@ -1750,7 +1777,21 @@ export default function NestedList() {
           </ListItemButton>
         </List>
       </Collapse>
-
+      <Collapse in={openCarteraPasiva} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <NavLink
+              tag={Link}
+              to="/Dashboard/pasindex/PasPersonaJuridicaCanonicaView"
+              style={(isActive) => ({
+                color: isActive ? "inherit" : "inherit",
+              })}
+            >
+              <ListItemText className={classes.text}>Persona Jurídica Canónica</ListItemText>
+            </NavLink>
+          </ListItemButton>
+        </List>
+      </Collapse>
       <ListItemButton onClick={handleClickReguladores}>
         <ListItemIcon>
           <AddTaskIcon className={classes.iconos} />

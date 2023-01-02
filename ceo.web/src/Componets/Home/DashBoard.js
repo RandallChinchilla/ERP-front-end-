@@ -78,6 +78,7 @@ import NestedList from "./listItems";
 import { AhoIndex } from "../Ahorros/Routes/AhoIndex";
 import { SegIndex } from "../Seguidad/Routes/SegIndex";
 import { ParIndex } from "../Parametros/Routes/ParIndex";
+import { CajIndex } from "../Cajas/Routes/CajIndex";
 
 const useStyles = makeStyles(() => ({
   iconos: { color: "white" },
@@ -388,6 +389,7 @@ function DashboardContent() {
             <Route path="/Dashboard/AhoIndex" component={AhoIndex} />
             <Route path="/Dashboard/SegIndex" component={SegIndex} />
             <Route path="/Dashboard/ParIndex" component={ParIndex} />
+            <Route path="/Dashboard/CajIndex" component={CajIndex} />
 
             <Route
               exact
