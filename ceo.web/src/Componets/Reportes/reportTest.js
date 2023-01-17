@@ -13,6 +13,7 @@ import "@boldreports/react-reporting-components/Scripts/bold.reports.react.min";
 var viewerStyle = { height: "700px", width: "100%" };
 
 const reportTest = () => {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   return (
     <div>
       <div style={viewerStyle}>
@@ -21,7 +22,8 @@ const reportTest = () => {
           // reportServiceUrl={
           //   "https://demos.boldreports.com/services/api/ReportViewer"
           // }
-          reportServiceUrl={"https://localhost:5001/api/ReportViewer"}
+
+          reportServiceUrl={`${baseUrl}/ReportViewer`}
           // reportServerUrl={"https://app1673822860.boldbi.com/bi/"}
           //reportPath={"~/Resources/area-chart.rdl"}
         ></BoldReportViewerComponent>
