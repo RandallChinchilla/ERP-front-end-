@@ -1,0 +1,97 @@
+[
+  {
+    "type": "select",
+    "name": "CodigoMoneda",
+    "label": "Moneda",
+    "value": "",
+    "xs": 12,
+    "controller": "ParMonedum/GetParMonedas",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "CantidadBillete1",
+    "label": "500",
+    "value": "",
+    "xs": 4,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "CantidadBillete2",
+    "label": "200",
+    "value": "",
+    "xs": 4,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "CantidadBillete3",
+    "label": "100",
+    "value": "",
+    "xs": 4,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "CantidadBillete4",
+    "label": "50",
+    "value": "",
+    "xs": 4,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "CantidadBillete5",
+    "label": "10",
+    "value": "",
+    "xs": 4,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "CantidadBillete6",
+    "label": "5",
+    "value": "",
+    "xs": 4,
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "Usuario",
+    "label": "Usuario",
+    "value": "",
+    "xs": 12,
+    "disabled": true,
+    "validations": []
+  }
+]  

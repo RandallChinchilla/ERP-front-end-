@@ -23,11 +23,39 @@
   },
   {
     "type": "select",
+    "name": "CodigoOtraPersonaJuridicaCanonica",
+    "label": "Persona Jurídica Canónica",
+    "value": "",
+    "xs": 3,
+    "controller": "PasOrigenAportante/GetPasOrigenAportantes",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
     "name": "CodigoOrigenAportante",
     "label": "Tipo Aportante",
     "value": "",
     "xs": 3,
     "controller": "PasOrigenAportante/GetPasOrigenAportantes",
+    "fieldName": "Descripcion",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "CodigoDiocesis",
+    "label": "Diocesis",
+    "value": "",
+    "xs": 3,
+    "controller": "ParDiocesis/GetListaParDiocesis",
     "fieldName": "Descripcion",
     "validations": [
       {
@@ -174,25 +202,11 @@
     ]
   },
   {
-    "type": "select",
-    "name": "CodigoDiocesis",
-    "label": "Diocesis",
-    "value": "",
-    "xs": 3,
-    "controller": "ParDiocesis/GetListaParDiocesis",
-    "fieldName": "Descripcion",
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
-  },
-  {
     "type": "text",
     "name": "Congregacion",
     "label": "Congregación",
     "value": "",
-    "xs": 12,
+    "xs": 9,
     "validations": [
       {
         "type": "required"

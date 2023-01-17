@@ -1,0 +1,71 @@
+[
+    {
+      "type": "select",
+      "name": "CodigoTipoIdentificacion",
+      "label": "Tipo Identificación",
+      "value": "",
+      "xs": 4,
+      "controller": "ParTipoidentificacion/GetParTiposIdentificacion",
+      "fieldName": "Descripcion",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "CodigoTipoDocumento",
+      "label": "Código Tipo Documento",
+      "value": 0,
+      "xs": 4,
+      "disabled": true,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Descripcion",
+      "label": "Descripción",
+      "value": "",
+      "xs": 4,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+        "type": "textSearch",
+        "nameId": "NumeroCuenta",
+        "name": "NumeroCuenta",
+        "label": "Número Cuenta",
+        "value": "",
+        "xs": 6,
+        "columnsModal": [
+          {
+            "title": "Número Cuenta",
+            "field": "NumeroCuenta"
+          }
+        ],
+        "setModalFields": [],
+        "apiRouteModal": "ConCatalogo/GetConCatalogos",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "Usuario",
+      "label": "Usuario",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    }
+  ]  
