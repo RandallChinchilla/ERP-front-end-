@@ -18,10 +18,12 @@ const reportTest = () => {
       <div style={viewerStyle}>
         <BoldReportViewerComponent
           id="reportviewer-container"
-          reportServiceUrl={
-            "https://demos.boldreports.com/services/api/ReportViewer"
-          }
-          reportPath={"~/Resources/docs/sales-order-detail.rdl"}
+          // reportServiceUrl={
+          //   "https://demos.boldreports.com/services/api/ReportViewer"
+          // }
+          reportServiceUrl={"https://localhost:5001/api/ReportViewer"}
+          // reportServerUrl={"https://app1673822860.boldbi.com/bi/"}
+          //reportPath={"~/Resources/area-chart.rdl"}
         ></BoldReportViewerComponent>
       </div>
     </div>
