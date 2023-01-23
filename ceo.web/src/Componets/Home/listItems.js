@@ -29,7 +29,6 @@ import AddchartIcon from "@mui/icons-material/Addchart";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import linkItemsJson from "./Data/linkItems.json";
 import { styleSx } from "./Styles/homeStyles";
-import ReactHtmlParser from "react-html-parser";
 import { links } from "./Interfaces/linkItems";
 
 
