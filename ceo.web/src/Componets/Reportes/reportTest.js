@@ -23,7 +23,7 @@ const reportTest = () => {
           //   "https://demos.boldreports.com/services/api/ReportViewer"
           // }
 
-          reportServiceUrl={`${baseUrl}/ReportViewer`}
+          reportServiceUrl={`${baseUrl}ReportViewer`}
           // reportServerUrl={"https://app1673822860.boldbi.com/bi/"}
           //reportPath={"~/Resources/area-chart.rdl"}
         ></BoldReportViewerComponent>

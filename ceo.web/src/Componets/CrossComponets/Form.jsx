@@ -57,7 +57,7 @@ export const Form = ({ formJson, title, urlApi, rowUpdate, typeMode }) => {
   console.log(validationschema);
 
   initialValues.nombreEmpresa = userLogged.NombreEmpresa;
-  initialValues.Usuario = userLogged.UserName;
+  initialValues.IdUsuario = userLogged.UserName;
   initialValues.CodigoEmpresa = userLogged.CodigoEmpresa;
   initialValues.Id = userLogged.Id;
 

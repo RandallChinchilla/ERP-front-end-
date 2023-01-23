@@ -103,7 +103,7 @@ function Copyright(props) {
   );
 }
 
-const drawerWidth = 270;
+const drawerWidth = 310;
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -219,7 +219,8 @@ function DashboardContent() {
               alignItems: "center",
               justifyContent: "flex-end",
               px: [1],
-              backgroundColor: indigo[900],
+
+              //backgroundColor: indigo[900],
             }}
           >
             <IconButton onClick={toggleDrawer}>
