@@ -1,0 +1,141 @@
+[
+    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+    {
+      "type": "text",
+      "name": "idParametro",
+      "label": "Consecutivo",
+      "value": "0",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+        "type": "date",
+        "name": "FechaHoraIngreso",
+        "label": "Fecha Ingreso",
+        "value": "",
+        "size": "small",
+        "inputFormat": "dd/MM/yyyy",
+        "xs": 6,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "CantidadDiasVigenciaClave",
+        "label": "# Días Vigencia Password",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "CantidadMinimaCaracteresClave",
+        "label": "Longitud Mínima Password",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "CantidadIntentosFallidos",
+        "label": "Intentos Fallidos Para Bloqueo",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "checkbox",
+        "name": "IndicadorPermiteRepetirClave",
+        "label": "Permite Repetir Password",
+        "value": false,
+        "xs": 3,
+        "validations": []
+    },
+    {
+        "type": "text",
+        "name": "CantidadClavesParaRepetir",
+        "label": "# Password Para Repetir",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "CantidadMayusculasClave",
+        "label": "# Mayúsculas Password",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "CantidadNumerosClave",
+        "label": "#Números Password",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "text",
+        "name": "CantidadCaracterEspecialClave",
+        "label": "# Caracteres Especiales Passwore",
+        "value": "",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "select",
+        "name": "CodigoEstado",
+        "label": "Código Estado",
+        "value": "",
+        "xs": 6,
+        "controller": "ParEstado/GetParEstados",
+        "fieldName": "Descripcion",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "text",
+      "name": "Usuario",
+      "label": "Usuario",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    }
+  ]

@@ -1,0 +1,24 @@
+[
+    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+
+    {
+      "type": "text",
+      "name": "IdEvento",
+      "label": "Id Evento",
+      "value": "",
+      "xs": 6,
+      "validations": []
+    },
+    {
+        "type": "text",
+        "name": "Descripcion",
+        "label": "Descripción",
+        "value": "",
+        "xs": 6,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    }
+  ]

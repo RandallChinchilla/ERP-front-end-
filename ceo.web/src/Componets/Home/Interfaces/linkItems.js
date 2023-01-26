@@ -5,6 +5,7 @@ import {
   AttachMoney,
   Report,
   DocumentScanner,
+  Lock
 } from "@mui/icons-material";
 import Group from "@mui/icons-material/Group";
 import { styleSx } from "../Styles/homeStyles";
@@ -200,6 +201,15 @@ export const links = [
         name: "Facturación",
         route: "/Dashboard/CajaIndex/ParPeriodicidadView",
       },
+    ],
+  },
+  {
+    nameItem: "Seguridad",
+    state: false,
+    icon: () => <Lock sx={styleSx.icon} />,
+    subItems: [
+      { name: "Evento", route: "/Dashboard/SegIndex/SegEventoView" },
+      { name: "Configuracion", route: "/Dashboard/SegIndex/SegConfiguracionView" },
     ],
   },
 ];
