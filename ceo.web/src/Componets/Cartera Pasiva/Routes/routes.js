@@ -14,8 +14,6 @@ import { PasTransaccion } from "../Components/PasTransaccion";
 import PasTransaccionView from "../Components/PasTransaccionView";
 import PasOrigenAportanteView from "../Components/PasOrigenAportanteView";
 import { PasOrigenAportante } from "../Components/PasOrigenAportante";
-import PasOrigenFondosView from "../Components/PasOrigenFondosView";
-import { PasOrigenFondo } from "../Components/PasOrigenFondo";
 import { PasAutorizado } from "../Components/PasAutorizado";
 import PasAutorizadoView from "../Components/PasAutorizadoView";
 import { PasPersonaJuridicaCanonica } from "../Components/PasPersonaJuridicaCanonica";
@@ -57,14 +55,6 @@ export const routes = [
   {
     path: "/Dashboard/pasindex/PasOrigenAportante",
     component: PasOrigenAportante,
-  },
-  {
-    path: "/Dashboard/pasindex/PasOrigenFondosView",
-    component: PasOrigenFondosView,
-  },
-  {
-    path: "/Dashboard/pasindex/PasOrigenFondo",
-    component: PasOrigenFondo,
   },
   {
     path: "/Dashboard/pasindex/PasTasaPlazoView",

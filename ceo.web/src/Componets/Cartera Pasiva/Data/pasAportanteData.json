@@ -27,7 +27,7 @@
     "label": "Persona Jurídica Canónica",
     "value": "",
     "xs": 3,
-    "controller": "PasOrigenAportante/GetPasOrigenAportantes",
+    "controller": "PasPersonaJuridicaCanonica/GetPasPersonasJuridicasCanonicas",
     "fieldName": "Descripcion",
     "validations": [
       {
@@ -188,37 +188,19 @@
     ]
   },
   {
-    "type": "select",
-    "name": "CodigoOrigenFondos",
-    "label": "Origen de fondos",
-    "value": "",
-    "xs": 3,
-    "controller": "PasOrigenFondo/GetPasOrigenFondos",
-    "fieldName": "Descripcion",
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
-  },
-  {
     "type": "text",
     "name": "Congregacion",
     "label": "Congregación",
     "value": "",
-    "xs": 9,
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
+    "xs": 3,
+    "validations": []
   },
   {
     "type": "text",
     "name": "NombreEncargado",
     "label": "Nombre Encargado",
     "value": "",
-    "xs": 4,
+    "xs": 3,
     "validations": [
       {
         "type": "required"
@@ -230,7 +212,7 @@
     "name": "Apellido1Encargado",
     "label": "Primer Apellido",
     "value": "",
-    "xs": 4,
+    "xs": 3,
     "validations": [
       {
         "type": "required"
@@ -242,12 +224,8 @@
     "name": "Apellido2Encargado",
     "label": "Segundo Apellido",
     "value": "",
-    "xs": 4,
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
+    "xs": 3,
+    "validations": []
   },
   {
     "type": "select",
@@ -283,11 +261,7 @@
     "size": "small",
     "inputFormat": "dd/MM/yyyy",
     "xs": 3,
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
+    "validations": []
   },
   {
     "type": "date",
@@ -297,11 +271,7 @@
     "size": "small",
     "inputFormat": "dd/MM/yyyy",
     "xs": 3,
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
+    "validations": []
   },
   {
     "type": "select",
@@ -428,11 +398,7 @@
     "size": "small",
     "inputFormat": "dd/MM/yyyy",
     "xs": 3,
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
+    "validations": []
   },
   {
     "type": "text",
@@ -452,11 +418,7 @@
     "label": "Teléfono",
     "value": "",
     "xs": 3,
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
+    "validations": []
   },
   {
     "type": "text",
@@ -478,11 +440,7 @@
     "size": "small",
     "inputFormat": "dd/MM/yyyy",
     "xs": 3,
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
+    "validations": []
   },
   {
     "type": "date",
@@ -492,11 +450,8 @@
     "size": "small",
     "inputFormat": "dd/MM/yyyy",
     "xs": 4,
-    "validations": [
-      {
-        "type": "required"
-      }
-    ]
+    "disabled": true,
+    "validations": []
   },
   {
     "type": "select",
@@ -520,6 +475,38 @@
     "value": "",
     "xs": 4,
     "disabled": true,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorOrigenFondosColectas",
+    "label": "Colectas",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorOrigenFondosDonaciones",
+    "label": "Donaciones",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorOrigenFondosEstipendios",
+    "label": "Estipendios",
+    "value": false,
+    "xs": 3,
+    "validations": []
+  },
+  {
+    "type": "checkbox",
+    "name": "IndicadorOrigenFondosSubsidios",
+    "label": "Subsidios",
+    "value": false,
+    "xs": 3,
     "validations": []
   }
 ]
