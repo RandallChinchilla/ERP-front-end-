@@ -62,4 +62,5 @@ export const typeMode = {
   deleteButton: false,
   editeButton: false,
   addButton: false,
+  filter: false,
 };

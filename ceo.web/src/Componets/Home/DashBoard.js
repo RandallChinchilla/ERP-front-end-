@@ -18,8 +18,8 @@ import * as React from "react";
 import { Route, Switch } from "react-router-dom";
 import { ActIndex } from "../ActivosFijos/ActIndex";
 import Autenticacion from "../Autenticacion/Autenticacion";
-import FacMaestro from "../Cajas/FacMaestro";
-import FacMaestroView from "../Cajas/FacMaestroView";
+// import FacMaestro from "../Cajas/FacMaestro";
+// import FacMaestroView from "../Cajas/FacMaestroView";
 import { PasIndex } from "../Cartera Pasiva/Routes/PasIndex";
 import CliAportante from "../Clientes/CliAportante";
 import { CliMaestro } from "../Clientes/CliMaestro";
@@ -437,7 +437,7 @@ function DashboardContent() {
               path="/Dashboard/invMaestroView"
               component={InvMaestroView}
             ></Route>
-            <Route
+            {/* <Route
               exact
               path="/Dashboard/FacMaestroView"
               component={FacMaestroView}
@@ -446,7 +446,7 @@ function DashboardContent() {
               exact
               path="/Dashboard/facMaestro/:isNew"
               component={FacMaestro}
-            ></Route>
+            ></Route> */}
             <Route
               exact
               path="/Dashboard/InvMaestro/:isNew"

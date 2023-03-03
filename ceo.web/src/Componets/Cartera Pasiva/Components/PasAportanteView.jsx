@@ -7,7 +7,7 @@ import {
 } from "../Interfaces/interfacePasAportante";
 
 /**
- * Este componente renderiza el componente generico CrudTableForm, el cual nos permite
+ * Este componente renderiza el componente generico CrudTableFormNew, el cual nos permite
  * rendereizar una tabla dinamica a partir de las propiedades dadas.
  * @param columnsPasAportante interfas que define las columnas de las tablas
  * @param routesPasAportanteApi interfas que define las rutas de las Apis que se ven involucradas

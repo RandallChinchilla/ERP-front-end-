@@ -11,21 +11,22 @@ import Tabs from "@mui/material/Tabs";
 import PropTypes from "prop-types";
 import * as React from "react";
 import { CrudTable } from "../../CrossComponets/CrudTable";
-import { Form } from "../../CrossComponets/Form";
+import {
+  themeCustom,
+  useStyles,
+} from "../../CrossComponets/Styles/crossStylesComponent";
 import {
   columnsRRHAplicaAccionesPersonales,
   routesRRHAplicaAccionesPersonales,
 } from "../Interfaces/interfaceRRHAplicaAccionesPersonales";
 import {
-  columnsRRHTabempleados,
-  routesRRHMaestroApi,
-} from "../Interfaces/interfaceRRHMaestro";
-import { themeCustom, useStyles } from "../Styles/styleRHHMaestroTab";
-import formJson from "../Data/rrhDeduccionesTab.json";
-import {
   columnsRRHAplicaDeducciones,
   routesRRHAplicaDeducciones,
 } from "../Interfaces/interfaceRRHAplicaDeducciones";
+import {
+  columnsRRHTabempleados,
+  routesRRHMaestroApi,
+} from "../Interfaces/interfaceRRHMaestro";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

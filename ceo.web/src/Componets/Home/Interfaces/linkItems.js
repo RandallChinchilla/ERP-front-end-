@@ -178,8 +178,8 @@ export const links = [
     state: false,
     icon: () => <AttachMoney sx={styleSx.icon} />,
     subItems: [
-      { name: "Configuración", route: "/Dashboard/CajaIndex/ParEmpresaView" },
-      { name: "Caja", route: "/Dashboard/CajaIndex/ParMonedaView" },
+      { name: "Caja", route: "/Dashboard/CajIndex/CajCajas" },
+      { name: "Configuración", route: "/Dashboard/CajaIndex/ParMonedaView" },
       {
         name: "Tipo Documento",
         route: "/Dashboard/CajaIndex/ParTipoIdentificacionView",

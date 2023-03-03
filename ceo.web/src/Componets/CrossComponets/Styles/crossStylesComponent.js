@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core";
+import { createTheme } from "@mui/material";
 
 export const datagridSx = {
   borderRadius: 2,
@@ -35,3 +36,18 @@ export const useStyles = makeStyles(() => ({
     width: "100%", // Fix IE 11 issue.
   },
 }));
+
+export const themeCustom = createTheme({
+  palette: {
+    primary: {
+      main: "#2e7d32",
+    },
+  },
+});
+
+export const boxTabSx = {
+  backgroundColor: "#2e7d32",
+  borderBottom: 1,
+  borderColor: "divider",
+  color: "#ffff",
+};
