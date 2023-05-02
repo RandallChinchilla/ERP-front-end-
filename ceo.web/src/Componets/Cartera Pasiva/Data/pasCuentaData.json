@@ -1,0 +1,262 @@
+[
+    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+    {
+      "type": "text",
+      "name": "nombreEmpresa",
+      "label": "Empresa",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "CodigoTipo",
+      "label": "Tipo",
+      "value": 0,
+      "xs": 3,
+      "disabled": true,
+      "validations": []
+    },
+    {
+        "type": "date",
+        "name": "FechaHora",
+        "label": "Fecha",
+        "value": "",
+        "size": "small",
+        "inputFormat": "dd/MM/yyyy",
+        "xs": 3,
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+        "type": "select",
+        "name": "CodigoMoneda",
+        "label": "Moneda",
+        "value": "",
+        "xs": 3,
+        "controller": "ParMonedum/GetParMonedas",
+        "fieldName": "Descripcion",
+        "validations": [
+          {
+            "type": "required"
+          }
+        ]
+    },
+    {
+      "type": "textSearch",
+      "nameId": "NumeroCuentaPrincipal",
+      "name": "NumeroCuentaPrincipal",
+      "label": "Cuenta Principal",
+      "value": "",
+      "xs": 3,
+      "columnsModal": [
+        {
+          "title": "Cuenta Principal",
+          "field": "NumeroCuentaPrincipal"
+        }
+      ],
+      "setModalFields": [],
+      "apiRouteModal": "ConCatalogo/GetConCatalogos",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "textSearch",
+      "nameId": "NumeroCuentaInteresPorPagar",
+      "name": "NumeroCuentaInteresPorPagar",
+      "label": "Cuenta Interés por Pagar",
+      "value": "",
+      "xs": 3,
+      "columnsModal": [
+        {
+          "title": "Cuenta Interés por Pagar",
+          "field": "NumeroCuentaInteresPorPagar"
+        }
+      ],
+      "setModalFields": [],
+      "apiRouteModal": "ConCatalogo/GetConCatalogos",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "textSearch",
+      "nameId": "NumeroCuentaGastoInteres",
+      "name": "NumeroCuentaGastoInteres",
+      "label": "Cuenta Gasto Interés",
+      "value": "",
+      "xs": 3,
+      "columnsModal": [
+        {
+          "title": "Cuenta Gasto Interés",
+          "field": "NumeroCuentaGastoInteres"
+        }
+      ],
+      "setModalFields": [],
+      "apiRouteModal": "ConCatalogo/GetConCatalogos",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "textSearch",
+      "nameId": "NumeroCuentaPrima",
+      "name": "NumeroCuentaPrima",
+      "label": "Cuenta Prima",
+      "value": "",
+      "xs": 3,
+      "columnsModal": [
+        {
+          "title": "Cuenta Prima",
+          "field": "NumeroCuentaPrima"
+        }
+      ],
+      "setModalFields": [],
+      "apiRouteModal": "ConCatalogo/GetConCatalogos",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "textSearch",
+      "nameId": "NumeroCuentaGastoPrima",
+      "name": "NumeroCuentaGastoPrima",
+      "label": "Cuenta Gasto Prima",
+      "value": "",
+      "xs": 3,
+      "columnsModal": [
+        {
+          "title": "Cuenta Gasto Prima",
+          "field": "NumeroCuentaGastoPrima"
+        }
+      ],
+      "setModalFields": [],
+      "apiRouteModal": "ConCatalogo/GetConCatalogos",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "textSearch",
+      "nameId": "NumeroCuentaDescuento",
+      "name": "NumeroCuentaDescuento",
+      "label": "Cuenta Descuento",
+      "value": "",
+      "xs": 3,
+      "columnsModal": [
+        {
+          "title": "Cuenta Descuento",
+          "field": "NumeroCuentaDescuento"
+        }
+      ],
+      "setModalFields": [],
+      "apiRouteModal": "ConCatalogo/GetConCatalogos",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "textSearch",
+      "nameId": "NumeroCuentaIngresoDescuento",
+      "name": "NumeroCuentaIngresoDescuento",
+      "label": "Cuenta Ingreso Descuento",
+      "value": "",
+      "xs": 3,
+      "columnsModal": [
+        {
+          "title": "Cuenta Ingreso Descuento",
+          "field": "NumeroCuentaIngresoDescuento"
+        }
+      ],
+      "setModalFields": [],
+      "apiRouteModal": "ConCatalogo/GetConCatalogos",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "textSearch",
+      "nameId": "NumeroCuentaValuacion",
+      "name": "NumeroCuentaValuacion",
+      "label": "Cuenta Valuación",
+      "value": "",
+      "xs": 3,
+      "columnsModal": [
+        {
+          "title": "Cuenta Valuación",
+          "field": "NumeroCuentaValuacion"
+        }
+      ],
+      "setModalFields": [],
+      "apiRouteModal": "ConCatalogo/GetConCatalogos",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },    {
+      "type": "textSearch",
+      "nameId": "NumeroCuentaPatrimonioValuacionAumento",
+      "name": "NumeroCuentaPatrimonioValuacionAumento",
+      "label": "Cuenta Patrimonio Valuación",
+      "value": "",
+      "xs": 3,
+      "columnsModal": [
+        {
+          "title": "Cuenta Patrimonio Valuación",
+          "field": "NumeroCuentaPatrimonioValuacionAumento"
+        }
+      ],
+      "setModalFields": [],
+      "apiRouteModal": "ConCatalogo/GetConCatalogos",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "name": "CodigoEstado",
+      "label": "Estado",
+      "value": 1,
+      "xs": 3,
+      "controller": "ParEstado/GetParEstados",
+      "fieldName": "Descripcion",
+      "disabled": true,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Usuario",
+      "label": "Usuario",
+      "value": "",
+      "xs": 3,
+      "disabled": true,
+      "validations": []
+    }
+  ]
+  

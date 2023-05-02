@@ -50,6 +50,14 @@ export const links = [
         route: "/Dashboard/PasIndex/PasPersonaJuridicaCanonicaView",
       },
       {
+        name: "Cuenta",
+        route: "/Dashboard/PasIndex/PasCuentaView",
+      },
+      {
+        name: "Portafolio",
+        route: "/Dashboard/PasIndex/PasPortafolioView",
+      },
+      {
         nameItem: "Reportes",
         state: false,
         icon: () => <DocumentScanner sx={styleSx.icon} />,

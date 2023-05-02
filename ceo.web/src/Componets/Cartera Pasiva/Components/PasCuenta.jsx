@@ -1,19 +1,19 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { Form } from "../../CrossComponets/Form";
-import formJson from "../Data/pasPortafolioData.json";
+import formJson from "../Data/pasCuentaData.json";
 import {
-  routesPasPortafolioApi,
+  routesPasCuentaApi,
   typeMode,
-} from "../Interfaces/interfacePasPortafolio";
+} from "../Interfaces/interfacePasCuenta";
 
-export const PasPortafolio = () => {
+export const PasCuenta = () => {
   const { rowUpdate } = useLocation();
   return (
     <Form
       formJson={formJson}
-      title="Catálogo Portafolio"
-      urlApi={routesPasPortafolioApi}
+      title="Catálogo Cuenta"
+      urlApi={routesPasCuentaApi}
       rowUpdate={rowUpdate}
       typeMode={typeMode}
     />

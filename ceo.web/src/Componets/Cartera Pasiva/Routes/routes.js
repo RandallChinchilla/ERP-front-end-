@@ -1,7 +1,6 @@
 import { PasInstrumento } from "../Components/PasInstrumento";
 import { PasMaestro } from "../Components/PasMaestro";
 import { PasMaestroView } from "../Components/PasMaestroView";
-import PasPortafolio from "../Components/PasPortafolio";
 import PasInstrumentoView from "../Components/PasInstrumentoView";
 import PasTasaPlazoView from "../Components/PasTasaPlazoView";
 import { PasTasaPlazo } from "../Components/PasTasaPlazo";
@@ -18,6 +17,10 @@ import { PasAutorizado } from "../Components/PasAutorizado";
 import PasAutorizadoView from "../Components/PasAutorizadoView";
 import { PasPersonaJuridicaCanonica } from "../Components/PasPersonaJuridicaCanonica";
 import PasPersonaJuridicaCanonicaView from "../Components/PasPersonaJuridicaCanonicaView";
+import { PasCuenta } from "../Components/PasCuenta";
+import PasCuentaView from "../Components/PasCuentaView";
+import { PasPortafolio } from "../Components/PasPortafolio";
+import PasPortafolioView from "../Components/PasPortafolioView";
 
 export const routes = [
   {
@@ -107,5 +110,21 @@ export const routes = [
   {
     path: "/Dashboard/pasindex/PasPersonaJuridicaCanonicaView",
     component: PasPersonaJuridicaCanonicaView,
+  },
+  {
+    path: "/Dashboard/pasindex/PasCuenta",
+    component: PasCuenta,
+  },
+  {
+    path: "/Dashboard/pasindex/PasCuentaView",
+    component: PasCuentaView,
+  },
+  {
+    path: "/Dashboard/pasindex/PasPortafolio",
+    component: PasPortafolio,
+  },
+  {
+    path: "/Dashboard/pasindex/PasPortafolioView",
+    component: PasPortafolioView,
   },
 ];

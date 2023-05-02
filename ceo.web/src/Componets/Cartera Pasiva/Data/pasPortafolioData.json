@@ -1,0 +1,55 @@
+[
+    { "name": "CodigoEmpresa", "value": 0, "type": "", "validations": [] },
+    {
+      "type": "text",
+      "name": "nombreEmpresa",
+      "label": "Empresa",
+      "value": "",
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "CodigoPortafolio",
+      "label": "Portafolio",
+      "value": 0,
+      "xs": 6,
+      "disabled": true,
+      "validations": []
+    },
+    {
+      "type": "text",
+      "name": "Descripcion",
+      "label": "Descripción",
+      "value": "",
+      "xs": 6,
+      "validations": [
+        {
+          "type": "required"
+        }
+      ]
+    },
+    {
+        "type": "checkbox",
+        "name": "IndicadorRegulado",
+        "label": "Regulado",
+        "value": false,
+        "xs": 3,
+        "validations": []
+    },
+    {
+      "type": "select",
+      "name": "CodigoCentroCosto",
+      "label": "Centro Costo",
+      "value": "",
+      "xs": 3,
+      "controller": "ConCentrocosto/GetConCentrosCosto",
+      "fieldName": "Descripcion",
+      "validations": [
+        {
+         "type": "required"
+        }
+      ]
+    }
+  ]  
